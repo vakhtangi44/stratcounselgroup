@@ -13,12 +13,12 @@ export default async function Hero({ locale }: { locale: string }) {
           Strategic Counsel Group
         </p>
         <h1 className="font-heading text-5xl md:text-6xl font-bold mb-6 leading-tight">
-          {locale === 'ka' ? 'ხედვა. სტრატეგია. გავლენა.' : 'Vision. Strategy. Impact.'}
+          {locale === 'ka' ? 'ხედვა. სტრატეგია. გავლენა.' : 'Insight. Strategy. Impact.'}
         </h1>
         <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
           {locale === 'ka'
-            ? 'გამოცდილი სამართლებრივი გუნდი, რომელიც იცავს თქვენს ინტერესებს'
-            : 'An experienced legal team protecting your interests at every step'}
+            ? 'მაღალკვალიფიციური იურისტებისა და აუდიტორების გუნდი 20 წელზე მეტი გამოცდილებით საჯარო და კერძო სექტორში.'
+            : 'A team of highly qualified lawyers and auditors with over 20 years of experience in public and private sectors.'}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link

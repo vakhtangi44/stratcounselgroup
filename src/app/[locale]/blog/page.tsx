@@ -5,6 +5,19 @@ import { db } from '@/lib/db'
 import { PRACTICE_AREAS } from '@/lib/practice-areas'
 import { formatDate, readTime } from '@/lib/utils'
 
+interface BlogPost {
+  id: string
+  slug: string
+  titleKa: string
+  titleEn: string
+  excerptKa: string
+  excerptEn: string
+  contentKa: string
+  contentEn: string
+  coverImage: string | null
+  publishedAt: Date | null
+}
+
 interface Props {
   searchParams: Promise<{ q?: string; area?: string; page?: string }>
 }
@@ -17,7 +30,7 @@ export default async function BlogPage({ searchParams }: Props) {
   const currentPage = parseInt(page || '1') || 1
   const PAGE_SIZE = 9
 
-  const posts = await db.blogPost.findMany({
+  const posts: BlogPost[] = await db.blogPost.findMany({
     where: {
       status: 'published',
       ...(area ? { tags: { some: { practiceArea: area } } } : {}),

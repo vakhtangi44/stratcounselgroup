@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import NewsletterForm from './NewsletterForm'
 
 export default function Footer({ locale }: { locale: string }) {
@@ -8,8 +9,8 @@ export default function Footer({ locale }: { locale: string }) {
     <footer className="bg-dark text-white">
       <div className="container mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <p className="font-heading text-xl text-gold mb-2">SCG</p>
-          <p className="text-white/60 text-sm leading-relaxed">Vision. Strategy. Impact.</p>
+          <Image src="/logo.webp" alt="Strategic Counsel Group" width={120} height={60} className="h-12 w-auto mb-2 brightness-0 invert" />
+          <p className="text-white/60 text-sm leading-relaxed">Insight. Strategy. Impact.</p>
         </div>
         <div>
           <h4 className="font-heading text-gold mb-4 text-sm uppercase tracking-wider">Quick Links</h4>

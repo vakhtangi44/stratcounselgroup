@@ -13,13 +13,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: locale === 'ka'
       ? 'Strategic Counsel Group | ხედვა. სტრატეგია. გავლენა.'
-      : 'Strategic Counsel Group | Vision. Strategy. Impact.',
+      : 'Strategic Counsel Group | Insight. Strategy. Impact.',
     description: locale === 'ka'
       ? 'გამოცდილი იურიდიული ფირმა თბილისში. კორპორაციული, საგადასახადო, სამედიცინო და ინფრასტრუქტურული სამართალი.'
       : 'Experienced law firm in Tbilisi. Corporate, tax, healthcare, and infrastructure law.',
     openGraph: {
       title: 'Strategic Counsel Group',
-      description: 'Vision. Strategy. Impact.',
+      description: 'Insight. Strategy. Impact.',
     },
     alternates: {
       canonical: locale === 'ka' ? 'https://stratcounselgroup.com' : 'https://stratcounselgroup.com/en',
