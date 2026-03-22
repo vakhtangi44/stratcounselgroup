@@ -69,7 +69,7 @@ export default function Header({ locale }: Props) {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-[13px] uppercase tracking-[0.15em] font-medium transition-colors duration-300 hover:text-gold ${
+                className={`nav-link-elegant text-[13px] uppercase tracking-[0.15em] font-medium transition-colors duration-300 hover:text-gold ${
                   isTransparent ? 'text-white' : 'text-dark'
                 }`}
               >
@@ -81,7 +81,7 @@ export default function Header({ locale }: Props) {
           <div className="flex items-center gap-4">
             <Link
               href={`${prefix}/contact`}
-              className={`hidden lg:inline-flex items-center px-5 py-2 text-[12px] uppercase tracking-[0.15em] font-medium transition-all duration-300 ${
+              className={`hidden lg:inline-flex items-center px-5 py-2 text-[12px] uppercase tracking-[0.15em] font-medium transition-all duration-500 btn-consultation ${
                 isTransparent
                   ? 'border border-gold text-gold hover:bg-gold hover:text-white'
                   : 'bg-gold text-white hover:bg-gold-dark'

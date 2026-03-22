@@ -7,7 +7,12 @@ export default function Footer({ locale }: { locale: string }) {
   const isKa = locale === 'ka'
 
   return (
-    <footer className="bg-navy text-white">
+    <footer className="bg-navy text-white relative">
+      {/* Gold line pattern at top */}
+      <div className="absolute top-0 left-0 right-0 flex items-center justify-center">
+        <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+      </div>
+
       <div className="container mx-auto px-4 lg:px-8 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
@@ -24,18 +29,6 @@ export default function Footer({ locale }: { locale: string }) {
                 ? 'ხედვა. სტრატეგია. გავლენა.'
                 : 'Insight. Strategy. Impact.'}
             </p>
-            {/* Social links placeholder */}
-            <div className="flex items-center gap-4">
-              {['LinkedIn', 'Facebook'].map((name) => (
-                <a
-                  key={name}
-                  href="#"
-                  className="w-9 h-9 border border-white/10 flex items-center justify-center text-white/40 hover:text-gold hover:border-gold/50 transition-all duration-300 text-xs"
-                >
-                  {name[0]}
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Quick Links */}

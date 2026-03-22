@@ -7,10 +7,10 @@
   --color-gold-dark: #9a7f58;
   --color-gold-light: #c9b896;
   --color-dark: #1a1a2e;
-  --color-navy: #0f1629;
+  --color-navy: #0c1220;
   --color-secondary: #5a5a6e;
   --color-bg-alt: #f8f7f4;
-  --color-cream: #faf9f6;
+  --color-cream: #faf8f5;
 
   --font-family-heading: 'Source Serif Pro', Georgia, serif;
   --font-family-body: Roboto, Arial, sans-serif;
@@ -23,6 +23,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
@@ -34,12 +35,15 @@
     font-weight: 300;
     letter-spacing: 0.01em;
     line-height: 1.7;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-heading);
     line-height: 1.2;
     letter-spacing: -0.01em;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'onum' 1;
   }
 
   h1 {
@@ -60,6 +64,11 @@
   ::selection {
     background-color: var(--color-gold);
     color: white;
+  }
+
+  /* Subtle custom cursor for interactive elements */
+  a, button, [role="button"] {
+    cursor: pointer;
   }
 }
 
@@ -114,7 +123,34 @@
     margin-top: 1.25rem;
   }
 
-  /* Scroll-triggered animations */
+  /* ─── Old-money animation keyframes ─── */
+
+  @keyframes draw-line {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
+  @keyframes gold-shimmer {
+    0%, 100% { background-position: -200% center; }
+    50%      { background-position: 200% center; }
+  }
+
+  @keyframes slide-up-elegant {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes reveal-line {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
   @keyframes fade-in-up {
     from {
       opacity: 0;
@@ -147,8 +183,52 @@
     50% { transform: translateY(8px); opacity: 1; }
   }
 
+  @keyframes breathe {
+    0%, 100% { opacity: 0.03; transform: scale(1); }
+    50%      { opacity: 0.06; transform: scale(1.02); }
+  }
+
+  @keyframes corner-draw {
+    from { stroke-dashoffset: 100; }
+    to   { stroke-dashoffset: 0; }
+  }
+
   .animate-scroll-hint {
     animation: scroll-hint 2s ease-in-out infinite;
+  }
+
+  .animate-draw-line {
+    animation: draw-line 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    transform-origin: left center;
+  }
+
+  .animate-shimmer {
+    background-image: linear-gradient(
+      90deg,
+      var(--color-gold) 0%,
+      var(--color-gold-light) 40%,
+      #d4c5a0 50%,
+      var(--color-gold-light) 60%,
+      var(--color-gold) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gold-shimmer 6s ease-in-out infinite;
+  }
+
+  .animate-slide-up-elegant {
+    animation: slide-up-elegant 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-reveal-line {
+    animation: reveal-line 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    transform-origin: center center;
+  }
+
+  .animate-breathe {
+    animation: breathe 8s ease-in-out infinite;
   }
 
   /* Subtle background pattern */
@@ -162,5 +242,108 @@
     background-image:
       radial-gradient(circle at 20% 50%, rgba(177, 151, 107, 0.06) 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, rgba(177, 151, 107, 0.04) 0%, transparent 50%);
+  }
+
+  /* Linen / paper texture overlay */
+  .bg-linen {
+    background-image:
+      url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");
+  }
+
+  /* Nav link elegant underline — draws from center outward */
+  .nav-link-elegant {
+    position: relative;
+  }
+
+  .nav-link-elegant::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-gold);
+    transition: width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), left 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .nav-link-elegant:hover::after {
+    width: 100%;
+    left: 0;
+  }
+
+  /* CTA button — gold fills from left */
+  .btn-gold-fill {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .btn-gold-fill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-gold-dark);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    z-index: -1;
+  }
+
+  .btn-gold-fill:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* Team member name underline animation */
+  .name-underline-animate {
+    position: relative;
+    display: inline;
+  }
+
+  .name-underline-animate::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-gold);
+    transition: width 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  .group:hover .name-underline-animate::after {
+    width: 100%;
+  }
+
+  /* Photo warm tone on hover */
+  .photo-warm-hover {
+    transition: filter 0.7s ease-out;
+  }
+
+  .group:hover .photo-warm-hover {
+    filter: sepia(0.12) saturate(1.1) brightness(1.02);
+  }
+
+  /* Consultation button refined hover */
+  .btn-consultation {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-consultation::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease-out;
+  }
+
+  .btn-consultation:hover::after {
+    transform: translateX(100%);
+  }
+
+  /* Client card subtle glow */
+  .client-glow:hover {
+    box-shadow: 0 0 20px rgba(177, 151, 107, 0.08), 0 4px 12px rgba(0,0,0,0.04);
   }
 }

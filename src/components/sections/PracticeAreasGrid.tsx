@@ -1,12 +1,13 @@
 import Link from 'next/link'
 import { PRACTICE_AREAS } from '@/lib/practice-areas'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import GoldDivider from '@/components/ui/GoldDivider'
 
 export default function PracticeAreasGrid({ locale }: { locale: string }) {
   const prefix = locale === 'en' ? '/en' : ''
 
   return (
-    <section className="py-20 md:py-28 bg-white bg-subtle-pattern">
+    <section className="py-20 md:py-28 bg-white bg-subtle-pattern bg-linen">
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-16">
           <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
@@ -20,19 +21,24 @@ export default function PracticeAreasGrid({ locale }: { locale: string }) {
               ? 'ჩვენ გთავაზობთ სრულყოფილ იურიდიულ მომსახურებას ბიზნესის ყველა ეტაპზე.'
               : 'We provide comprehensive legal services at every stage of your business journey.'}
           </p>
+          <GoldDivider className="mt-8" />
         </ScrollReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
           {PRACTICE_AREAS.map((area, i) => (
-            <ScrollReveal key={area.slug} delay={i * 80}>
+            <ScrollReveal key={area.slug} delay={i * 120}>
               <Link
                 href={`${prefix}/practice-areas/${area.slug}`}
-                className="group block p-7 border border-gray-100 hover:border-gold/30 transition-all duration-500 text-left relative overflow-hidden bg-white hover:shadow-lg hover:shadow-gold/5"
+                className="group block p-7 border border-gray-100 hover:border-gold/40 transition-all duration-700 text-left relative overflow-hidden bg-white hover:shadow-lg hover:shadow-gold/5"
               >
                 {/* Gold left border on hover */}
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gold scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" />
+                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gold scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-top" />
+
+                {/* Small diamond decorative element in top-right */}
+                <div className="absolute top-4 right-4 w-1.5 h-1.5 rotate-45 border border-gold/0 group-hover:border-gold/40 transition-all duration-700 delay-200" />
+
                 <span className="text-3xl mb-4 block">{area.icon}</span>
-                <p className="text-sm font-medium text-dark group-hover:text-gold transition-colors duration-300 leading-snug">
+                <p className="text-sm font-medium text-dark group-hover:text-gold transition-colors duration-500 leading-snug">
                   {locale === 'ka' ? area.nameKa : area.nameEn}
                 </p>
               </Link>

@@ -1,6 +1,7 @@
 'use client'
 
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import GoldDivider from '@/components/ui/GoldDivider'
 
 interface Props {
   locale: string
@@ -123,7 +124,7 @@ export default function TrustedBy({ locale }: Props) {
   const isKa = locale === 'ka'
 
   return (
-    <section id="clients" className="py-20 md:py-28 bg-white">
+    <section id="clients" className="py-20 md:py-28 bg-white bg-linen">
       <div className="container mx-auto px-4">
         <ScrollReveal>
           <div className="text-center mb-16">
@@ -139,21 +140,22 @@ export default function TrustedBy({ locale }: Props) {
                 ? 'ჩვენ წარმატებით ვთანამშრომლობთ წამყვან კომპანიებთან სხვადასხვა სექტორში'
                 : 'We successfully collaborate with leading companies across various sectors'}
             </p>
+            <GoldDivider className="mt-8" />
           </div>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {CLIENT_CATEGORIES.map((category, idx) => (
             <ScrollReveal key={category.labelEn} delay={idx * 80}>
-              <div className="border border-gray-100 p-6 hover:border-gold/30 hover:shadow-md transition-all duration-300 h-full group">
+              <div className="border border-gray-100 p-6 hover:border-gold/30 transition-all duration-500 h-full group client-glow">
                 <div className="text-2xl mb-3">{category.icon}</div>
-                <h3 className="font-heading text-sm text-dark mb-4 group-hover:text-gold transition-colors duration-300">
+                <h3 className="font-heading text-sm text-dark mb-4 group-hover:text-gold transition-colors duration-500">
                   {isKa ? category.labelKa : category.labelEn}
                 </h3>
                 <ul className="space-y-2">
                   {category.clients.map((client) => (
-                    <li key={client} className="text-secondary text-xs font-light flex items-start gap-2">
-                      <span className="text-gold/60 mt-0.5">—</span>
+                    <li key={client} className="text-secondary text-xs font-light flex items-start gap-2 transition-colors duration-300 group-hover:text-secondary/80">
+                      <span className="text-gold/60 mt-0.5">&mdash;</span>
                       {client}
                     </li>
                   ))}
