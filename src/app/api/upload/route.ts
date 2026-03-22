@@ -18,6 +18,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid folder' }, { status: 400 })
   }
 
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return NextResponse.json({
+      error: 'BLOB_READ_WRITE_TOKEN is not configured. Please redeploy after connecting Blob Store.'
+    }, { status: 500 })
+  }
+
   try {
     const url = await saveUploadedFile(file, folder)
     return NextResponse.json({ url })
