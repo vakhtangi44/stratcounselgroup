@@ -163,6 +163,8 @@ model ClientCategory {
 model Client {
   id         Int            @id @default(autoincrement())
   name       String
+  nameKa     String         @default("")
+  nameEn     String         @default("")
   categoryId Int
   category   ClientCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   order      Int            @default(0)

@@ -5,6 +5,8 @@ import { useState } from 'react'
 interface Client {
   id: number
   name: string
+  nameKa: string
+  nameEn: string
   categoryId: number
   order: number
   active: boolean
@@ -36,7 +38,7 @@ export default function ClientsManager({ initialCategories }: Props) {
   // New category form state
   const [newCat, setNewCat] = useState({ icon: '🏢', labelKa: '', labelEn: '', order: 0, active: true })
   // New client form state
-  const [newClient, setNewClient] = useState({ name: '', order: 0, active: true })
+  const [newClient, setNewClient] = useState({ name: '', nameKa: '', nameEn: '', order: 0, active: true })
 
   async function reload() {
     const res = await fetch('/api/admin/clients')
@@ -99,7 +101,7 @@ export default function ClientsManager({ initialCategories }: Props) {
     })
     if (res.ok) {
       setAddingClientToCategoryId(null)
-      setNewClient({ name: '', order: 0, active: true })
+      setNewClient({ name: '', nameKa: '', nameEn: '', order: 0, active: true })
       await reload()
     }
     setLoading(false)
@@ -113,6 +115,8 @@ export default function ClientsManager({ initialCategories }: Props) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: editingClient.name,
+        nameKa: editingClient.nameKa,
+        nameEn: editingClient.nameEn,
         order: editingClient.order,
         active: editingClient.active,
       }),
@@ -263,11 +267,19 @@ export default function ClientsManager({ initialCategories }: Props) {
               {addingClientToCategoryId === cat.id && (
                 <div className="bg-bg-alt rounded p-4 mb-3">
                   <div className="grid grid-cols-3 gap-3 mb-3">
-                    <div className="col-span-2">
-                      <label className="block text-xs text-secondary mb-1">Client Name</label>
+                    <div>
+                      <label className="block text-xs text-secondary mb-1">Name (EN)</label>
                       <input
-                        value={newClient.name}
-                        onChange={(e) => setNewClient({ ...newClient, name: e.target.value })}
+                        value={newClient.nameEn}
+                        onChange={(e) => setNewClient({ ...newClient, nameEn: e.target.value, name: e.target.value })}
+                        className="w-full border rounded px-3 py-2 text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-secondary mb-1">Name (KA)</label>
+                      <input
+                        value={newClient.nameKa}
+                        onChange={(e) => setNewClient({ ...newClient, nameKa: e.target.value })}
                         className="w-full border rounded px-3 py-2 text-sm"
                       />
                     </div>
@@ -312,7 +324,8 @@ export default function ClientsManager({ initialCategories }: Props) {
                 <table className="w-full text-sm">
                   <thead className="bg-bg-alt text-secondary">
                     <tr>
-                      <th className="text-left px-3 py-2">Name</th>
+                      <th className="text-left px-3 py-2">Name (EN)</th>
+                      <th className="text-left px-3 py-2">Name (KA)</th>
                       <th className="text-left px-3 py-2">Order</th>
                       <th className="text-left px-3 py-2">Active</th>
                       <th className="px-3 py-2"></th>
@@ -321,7 +334,8 @@ export default function ClientsManager({ initialCategories }: Props) {
                   <tbody className="divide-y divide-gray-100">
                     {cat.clients.map((client) => (
                       <tr key={client.id} className="hover:bg-bg-alt/50">
-                        <td className="px-3 py-2">{client.name}</td>
+                        <td className="px-3 py-2">{client.nameEn || client.name}</td>
+                        <td className="px-3 py-2 text-secondary">{client.nameKa || client.name}</td>
                         <td className="px-3 py-2 text-secondary">{client.order}</td>
                         <td className="px-3 py-2">
                           <span className={`px-2 py-0.5 rounded text-xs ${client.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
@@ -433,11 +447,19 @@ export default function ClientsManager({ initialCategories }: Props) {
           <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
             <h3 className="font-heading text-lg text-dark mb-4">Edit Client</h3>
             <div className="grid grid-cols-2 gap-4 mb-4">
-              <div className="col-span-2">
-                <label className="block text-xs text-secondary mb-1">Client Name</label>
+              <div>
+                <label className="block text-xs text-secondary mb-1">Name (EN)</label>
                 <input
-                  value={editingClient.name}
-                  onChange={(e) => setEditingClient({ ...editingClient, name: e.target.value })}
+                  value={editingClient.nameEn}
+                  onChange={(e) => setEditingClient({ ...editingClient, nameEn: e.target.value, name: e.target.value })}
+                  className="w-full border rounded px-3 py-2 text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-xs text-secondary mb-1">Name (KA)</label>
+                <input
+                  value={editingClient.nameKa}
+                  onChange={(e) => setEditingClient({ ...editingClient, nameKa: e.target.value })}
                   className="w-full border rounded px-3 py-2 text-sm"
                 />
               </div>

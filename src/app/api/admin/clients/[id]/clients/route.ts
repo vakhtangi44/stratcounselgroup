@@ -14,13 +14,15 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
   const categoryId = parseId(id)
   if (!categoryId) return NextResponse.json({ error: 'Bad request' }, { status: 400 })
   const body = await req.json()
-  const { name, order, active } = body
-  if (!name) {
+  const { name, nameKa, nameEn, order, active } = body
+  if (!name && !nameEn) {
     return NextResponse.json({ error: 'name required' }, { status: 400 })
   }
   const client = await db.client.create({
     data: {
-      name,
+      name: name || nameEn || '',
+      nameKa: nameKa || name || '',
+      nameEn: nameEn || name || '',
       categoryId,
       order: order ?? 0,
       active: active !== false,

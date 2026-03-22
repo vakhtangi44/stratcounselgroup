@@ -7,6 +7,8 @@ import RichText from '@/components/ui/RichText'
 interface ClientData {
   id: number
   name: string
+  nameKa: string
+  nameEn: string
   order: number
   active: boolean
 }
@@ -63,7 +65,7 @@ export default function TrustedBy({ locale, categories, strings }: Props) {
                   {category.clients.map((client) => (
                     <li key={client.id} className="text-white/80 text-sm flex items-start gap-2.5 transition-colors duration-300 group-hover:text-white">
                       <span className="text-gold mt-1 text-xs">&#9670;</span>
-                      {client.name}
+                      {isKa ? (client.nameKa || client.name) : (client.nameEn || client.name)}
                     </li>
                   ))}
                 </ul>

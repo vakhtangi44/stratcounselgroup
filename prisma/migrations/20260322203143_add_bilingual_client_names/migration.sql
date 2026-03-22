@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Client" ADD COLUMN     "nameEn" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "nameKa" TEXT NOT NULL DEFAULT '';
