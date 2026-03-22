@@ -18,7 +18,7 @@ export default async function Hero({ locale, strings }: { locale: string; string
   const words = hasHtml ? [] : headline.split(' ')
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-navy overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-navy overflow-hidden pt-24">
       {/* Animated gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-navy via-dark/95 to-navy/80" />
       <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent opacity-60" />
@@ -67,7 +67,7 @@ export default async function Hero({ locale, strings }: { locale: string; string
           )}
         </h1>
 
-        <RichText html={strings.subtitle} as="p" className="text-white/60 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light opacity-0 animate-slide-up-elegant" style={{ animationDelay: '1400ms', animationFillMode: 'forwards' }} />
+        <RichText html={strings.subtitle} as="p" className="text-white/50 text-base md:text-lg mb-12 max-w-xl mx-auto leading-relaxed font-light opacity-0 animate-slide-up-elegant" style={{ animationDelay: '1400ms', animationFillMode: 'forwards' }} />
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-slide-up-elegant" style={{ animationDelay: '1800ms', animationFillMode: 'forwards' }}>
           <Link
