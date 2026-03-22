@@ -41,6 +41,7 @@ model TeamMember {
   titleEn       String
   gbaNumber     String?
   photo         String?
+  linkedinUrl   String?
   shortBioKa    String
   shortBioEn    String
   fullBioKa     String     @db.Text

@@ -109,6 +109,7 @@ async function main() {
 <li>Lecturer, Academy of the Ministry of Finance of Georgia (2021 – Present)</li>
 </ul>`,
       photo: null,
+      linkedinUrl: null,
       gbaNumber: null,
       practiceAreas: ['criminal-law', 'cybercrime', 'financial-crimes', 'public-procurement', 'civil-law', 'labor-law', 'administrative-law', 'tax-law', 'litigation'],
       isFeatured: true,
@@ -174,6 +175,7 @@ async function main() {
 <li>Risk Management</li>
 </ul>`,
       photo: null,
+      linkedinUrl: null,
       gbaNumber: null,
       practiceAreas: ['corporate-law', 'contract-law', 'labor-law', 'healthcare-law', 'administrative-law', 'litigation', 'risk-management'],
       isFeatured: true,
@@ -191,6 +193,7 @@ async function main() {
       fullBioKa: '',
       fullBioEn: '',
       photo: null,
+      linkedinUrl: null,
       gbaNumber: null,
       practiceAreas: [],
       isFeatured: true,
@@ -252,6 +255,7 @@ async function main() {
 <li>Change Management</li>
 </ul>`,
       photo: null,
+      linkedinUrl: null,
       gbaNumber: null,
       practiceAreas: ['project-management', 'strategic-consulting'],
       isFeatured: false,
@@ -315,6 +319,7 @@ async function main() {
 <li>Budgetary Control</li>
 </ul>`,
       photo: null,
+      linkedinUrl: null,
       gbaNumber: null,
       practiceAreas: ['financial-audit', 'risk-management'],
       isFeatured: false,
@@ -330,64 +335,81 @@ async function main() {
       shortBioKa: 'იურისტი მრავალწლიანი გამოცდილებით კორპორაციული, კომერციული და სამოქალაქო სამართლის სფეროებში.',
       shortBioEn: 'Lawyer with many years of experience in corporate, commercial, and civil law.',
       fullBioKa: `<p>სალომე კობერიძე არის იურისტი მრავალწლიანი პროფესიული გამოცდილებით კორპორაციული, კომერციული და სამოქალაქო სამართლის სფეროებში. ის არის ადვოკატი სამოქალაქო და ადმინისტრაციული სამართლის სპეციალიზაციით.</p>
-<p>მისი პროფესიული საქმიანობა მოიცავს კორპორაციული მმართველობის საკითხებს, კომერციულ ხელშეკრულებებს, სამოქალაქო დავების წარმოებას, შრომის სამართალს და ადმინისტრაციულ სამართალწარმოებას. სალომე წარმატებით წარმოადგენს კლიენტებს საერთო სასამართლოებში და ადმინისტრაციულ ორგანოებთან.</p>
-<p>აქტიური პროფესიული პრაქტიკის პარალელურად სალომე კობერიძე ჩართულია სამართლებრივი კვლევებისა და პუბლიკაციების მომზადებაში.</p>
-<h2>განათლება</h2>
+<p>პროფესიული საქმიანობის ფარგლებში მან მნიშვნელოვანი გამოცდილება შეიძინა როგორც კერძო სექტორის კომპანიებთან, ისე იურიდიულ საკონსულტაციო პრაქტიკაში მუშაობისას. იგი უზრუნველყოფს სამართლებრივ მხარდაჭერას სხვადასხვა ორგანიზაციისთვის, მათ შორის სამართლებრივი დოკუმენტების მომზადებას, კონტრაქტების სამართლებრივ ანალიზს, მოლაპარაკებების პროცესში მონაწილეობას და სამართლებრივი შესაბამისობის უზრუნველყოფას.</p>
+<p>სალომე კობერიძეს აქვს მნიშვნელოვანი გამოცდილება სასამართლო დავებში კლიენტების წარმომადგენლობის მიმართულებით. იგი წარმოადგენს კლიენტების ინტერესებს საქართველოს ყველა ინსტანციის სასამართლოში და უზრუნველყოფს სამართლებრივი პოზიციების შემუშავებასა და საპროცესო დოკუმენტების მომზადებას.</p>
+<p>პროფესიული საქმიანობის პარალელურად იგი ჩართულია აკადემიურ საქმიანობაში და მონაწილეობს სამართლებრივი კვლევისა და სწავლების პროცესში.</p>
+<h2>განათლება, აკადემიური საქმიანობა და პუბლიკაციები</h2>
 <ul>
-<li>სამართალმცოდნეობა — უმაღლესი იურიდიული განათლება</li>
-<li>ადვოკატთა საკვალიფიკაციო გამოცდა — სამოქალაქო და ადმინისტრაციული სამართლის სპეციალიზაცია</li>
+<li>დოქტორანტი, სულხან-საბა ორბელიანის უნივერსიტეტი (2021 – დღემდე)</li>
+<li>გაცვლითი პროგრამა, ესპანეთი, კადისის უნივერსიტეტი (2025–2026, შემოდგომის სემესტრი)</li>
+<li>ნიუ ვიჟენ უნივერსიტეტი — მაგისტრატურა, შედარებითი კერძო და საერთაშორისო სამართალი (2017–2019)</li>
+<li>ივანე ჯავახიშვილის სახელობის თბილისის სახელმწიფო უნივერსიტეტი — ბაკალავრი, სამართალმცოდნეობა (2013–2017)</li>
+<li>კვლევითი ვიზიტი მაქს პლანკის უნივერსიტეტში, ჰამბურგი, გერმანია (2024)</li>
 </ul>
-<h2>სამუშაო გამოცდილება</h2>
+<h2>საერთაშორისო აკადემიური ღონისძიებები</h2>
 <ul>
-<li>წამყვანი იურისტი, Strategic Counsel Group (დღემდე)</li>
-<li>კორპორაციული და კომერციული სამართლის პრაქტიკა</li>
-<li>კლიენტების წარმომადგენლობა სასამართლო პროცესებში</li>
-<li>სამართლებრივი დოკუმენტაციის მომზადება და ექსპერტიზა</li>
+<li>National Identity Through Constitutional Lenses: Legal Reflections From Across the Borders — საერთაშორისო საპანელო დისკუსიის ორგანიზატორი, სულხან-საბა ორბელიანის უნივერსიტეტი (2025)</li>
+<li>Light At the End of the Tunnel: Introduction To the New EU Directive in the Field of Environmental Criminal Law — საერთაშორისო სემინარის ორგანიზატორი, სულხან-საბა ორბელიანის უნივერსიტეტი (2025)</li>
+<li>აფილირებული ასისტენტი, სულხან-საბა ორბელიანის უნივერსიტეტი (2024 – დღემდე)</li>
+<li>მოწვეული ლექტორი, სულხან-საბა ორბელიანის უნივერსიტეტი (2023–2024)</li>
 </ul>
 <h2>პუბლიკაციები</h2>
 <ul>
-<li>სამართლებრივი კვლევები კორპორაციული მმართველობის სფეროში</li>
-<li>სტატიები სამოქალაქო და კომერციული სამართლის აქტუალურ საკითხებზე</li>
+<li>„მედიატორის აკრედიტაციის სტანდარტები საქართველოში" (2018)</li>
+<li>„შრომით დავებში გადაწყვეტილების აღსრულების შეუძლებლობისას უფლების დაცვის პროცესუალური საშუალებები" (2020)</li>
+<li>„მტკიცების პროცესი კაპიტალური ტიპის საზოგადოების პარტნიორის/აქციონერის გამჭოლი პასუხისმგებლობის დროს" (2023)</li>
 </ul>
-<h2>პრაქტიკის სფეროები</h2>
+<h2>სამუშაო გამოცდილება</h2>
 <ul>
-<li>კორპორაციული სამართალი</li>
-<li>სამოქალაქო სამართალი</li>
-<li>სახელშეკრულებო სამართალი</li>
-<li>შრომის სამართალი</li>
-<li>ადმინისტრაციული სამართალი</li>
-<li>სასამართლო წარმომადგენლობა</li>
+<li>სამართლებრივი უზრუნველყოფის სამსახურის უფროსი, შპს „საქართველოს ფოსტა" (2022–2026)</li>
+<li>მიკროსაფინანსო ორგანიზაცია „იზიკრედიტ ჯორჯია" (2023–2024)</li>
+<li>შპს „გვირილა რითეილი" (2023)</li>
+<li>უფროსი იურისტი, იურიდიული კომპანია „ჯეი ენდ თი ქონსალთინგი" (2019–2024)</li>
+<li>უფროსი იურისტი, შპს „საქართველოს ფოსტა" (2019–2022)</li>
+<li>იურისტი, შპს „ჯიარ ლოგისტიკა" — სს „საქართველოს რკინიგზის" შვილობილი კომპანია (2019)</li>
+<li>იურისტი, იურიდიული კომპანია „ჯეი ენდ თი ქონსალთინგი" (2017–2019)</li>
+<li>სტაჟიორი, იურიდიული კომპანია „ჯეი ენდ თი ქონსალთინგი" (2017)</li>
+<li>იურისტ-სტაჟიორი, შპს „დეკო გრუპი" (2016–2017)</li>
 </ul>`,
       fullBioEn: `<p>Salome Koberidze is a lawyer with many years of professional experience in corporate, commercial, and civil law. She is an advocate specializing in civil and administrative law.</p>
-<p>Her professional activities include corporate governance matters, commercial contracts, civil dispute resolution, labor law, and administrative proceedings. Salome successfully represents clients in courts of general jurisdiction and before administrative bodies.</p>
-<p>In parallel with active professional practice, Salome Koberidze is engaged in legal research and publication preparation.</p>
-<h2>Education</h2>
+<p>Throughout her professional career, she has gained significant experience working with private sector companies and in legal consulting practice. She provides legal support to various organizations, including preparation of legal documents, legal analysis of contracts, participation in negotiation processes, and ensuring legal compliance.</p>
+<p>Salome Koberidze has extensive experience in representing clients in court disputes. She represents clients' interests in all instances of Georgian courts and ensures the development of legal positions and preparation of procedural documents.</p>
+<p>In parallel with professional activities, she is engaged in academic work and participates in legal research and teaching processes.</p>
+<h2>Education, Academic Activities & Publications</h2>
 <ul>
-<li>Jurisprudence — Higher Legal Education</li>
-<li>Bar Qualification Exam — Civil and Administrative Law Specialization</li>
+<li>Doctoral Candidate, Sulkhan-Saba Orbeliani University (2021 – Present)</li>
+<li>Exchange Program, University of Cádiz, Spain (2025–2026, Fall Semester)</li>
+<li>New Vision University — Master's Degree, Comparative Private and International Law (2017–2019)</li>
+<li>Ivane Javakhishvili Tbilisi State University — Bachelor's Degree, Law (2013–2017)</li>
+<li>Research Visit, Max Planck Institute, Hamburg, Germany (2024)</li>
 </ul>
-<h2>Work Experience</h2>
+<h2>International Academic Events</h2>
 <ul>
-<li>Lead Lawyer, Strategic Counsel Group (Present)</li>
-<li>Corporate and Commercial Law Practice</li>
-<li>Client Representation in Court Proceedings</li>
-<li>Legal Documentation Preparation and Expertise</li>
+<li>National Identity Through Constitutional Lenses: Legal Reflections From Across the Borders — International Panel Discussion Organizer, Sulkhan-Saba Orbeliani University (2025)</li>
+<li>Light At the End of the Tunnel: Introduction To the New EU Directive in the Field of Environmental Criminal Law — International Seminar Organizer, Sulkhan-Saba Orbeliani University (2025)</li>
+<li>Affiliated Assistant, Sulkhan-Saba Orbeliani University (2024 – Present)</li>
+<li>Visiting Lecturer, Sulkhan-Saba Orbeliani University (2023–2024)</li>
 </ul>
 <h2>Publications</h2>
 <ul>
-<li>Legal research in the field of corporate governance</li>
-<li>Articles on current issues in civil and commercial law</li>
+<li>"Mediator Accreditation Standards in Georgia" (2018)</li>
+<li>"Procedural Means of Protecting Rights When Enforcement of Labor Dispute Decisions is Impossible" (2020)</li>
+<li>"The Burden of Proof in Piercing the Corporate Veil of Capital-Type Company Partners/Shareholders" (2023)</li>
 </ul>
-<h2>Practice Areas</h2>
+<h2>Work Experience</h2>
 <ul>
-<li>Corporate Law</li>
-<li>Civil Law</li>
-<li>Contract Law</li>
-<li>Labor Law</li>
-<li>Administrative Law</li>
-<li>Litigation</li>
+<li>Head of Legal Department, Georgia Post LLC (2022–2026)</li>
+<li>EasyCredit Georgia, Microfinance Organization (2023–2024)</li>
+<li>Gvirila Retail LLC (2023)</li>
+<li>Senior Lawyer, J&T Consulting Law Firm (2019–2024)</li>
+<li>Senior Lawyer, Georgia Post LLC (2019–2022)</li>
+<li>Lawyer, GR Logistics LLC — subsidiary of Georgian Railway JSC (2019)</li>
+<li>Lawyer, J&T Consulting Law Firm (2017–2019)</li>
+<li>Intern, J&T Consulting Law Firm (2017)</li>
+<li>Legal Intern, Deco Group LLC (2016–2017)</li>
 </ul>`,
       photo: null,
+      linkedinUrl: 'https://www.linkedin.com/in/salome-koberidze-a00089150/',
       gbaNumber: null,
       practiceAreas: ['corporate-law', 'civil-law', 'contract-law', 'labor-law', 'administrative-law', 'litigation'],
       isFeatured: false,
@@ -469,6 +491,7 @@ async function main() {
 <li>Litigation</li>
 </ul>`,
       photo: null,
+      linkedinUrl: null,
       gbaNumber: null,
       practiceAreas: ['corporate-law', 'energy-law', 'infrastructure-law', 'project-finance', 'contract-law', 'compliance', 'commercial-law', 'litigation'],
       isFeatured: false,
@@ -490,6 +513,7 @@ async function main() {
         fullBioKa: member.fullBioKa,
         fullBioEn: member.fullBioEn,
         photo: member.photo,
+        linkedinUrl: member.linkedinUrl,
         gbaNumber: member.gbaNumber,
         practiceAreas: member.practiceAreas,
         isFeatured: member.isFeatured,
