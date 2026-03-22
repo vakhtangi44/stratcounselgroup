@@ -31,7 +31,6 @@ export default function Header({ locale }: Props) {
   const prefix = locale === 'en' ? '/en' : ''
   const navLinks = [
     { href: `${prefix}/about`, label: t('about') },
-    { href: `${prefix}/practice-areas`, label: t('practiceAreas') },
     { href: `${prefix}/services`, label: t('services') },
     { href: `${prefix}/blog`, label: t('blog') },
     { href: `${prefix}/team`, label: t('team') },
@@ -65,12 +64,12 @@ export default function Header({ locale }: Props) {
             />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`nav-link-elegant text-[13px] uppercase tracking-[0.15em] font-medium transition-colors duration-300 hover:text-gold ${
+                className={`text-[13px] uppercase tracking-[0.12em] font-medium transition-colors duration-300 hover:text-gold whitespace-nowrap ${
                   isTransparent ? 'text-white' : 'text-dark'
                 }`}
               >
