@@ -339,6 +339,91 @@ async function main() {
     }
   }
 
+  // --- Glossary Terms ---
+  const glossaryTerms = [
+    {
+      termKa: 'იურიდიული პირი',
+      termEn: 'Legal Entity',
+      definitionKa: 'საქართველოს კანონმდებლობით რეგისტრირებული ორგანიზაცია, რომელსაც აქვს საკუთარი სახელით უფლებებისა და ვალდებულებების შეძენის, ქონების ფლობის, სარჩელის აღძვრისა და სასამართლოში მოპასუხედ ყოფნის უფლება.',
+      definitionEn: 'An organization registered under Georgian law that has the right to acquire rights and obligations in its own name, own property, file claims, and be a defendant in court.',
+    },
+    {
+      termKa: 'საგადასახადო რეზიდენტი',
+      termEn: 'Tax Resident',
+      definitionKa: 'ფიზიკური ან იურიდიული პირი, რომელიც საქართველოს საგადასახადო კანონმდებლობის მიხედვით ვალდებულია გადაიხადოს გადასახადები საქართველოში მიღებულ და საქართველოს ფარგლებს გარეთ მიღებულ შემოსავალზე.',
+      definitionEn: 'A natural or legal person who, under Georgian tax legislation, is obligated to pay taxes on income received both within Georgia and abroad.',
+    },
+    {
+      termKa: 'სასამართლო წარმომადგენლობა',
+      termEn: 'Litigation / Court Representation',
+      definitionKa: 'კლიენტის ინტერესების დაცვა და წარმომადგენლობა სასამართლო პროცესებში, მათ შორის სარჩელის მომზადება, შესაგებლის წარდგენა, მტკიცებულებების შეგროვება და სასამართლო სხდომებში მონაწილეობა.',
+      definitionEn: 'Protection and representation of a client\'s interests in court proceedings, including preparation of claims, filing responses, collecting evidence, and participation in court hearings.',
+    },
+    {
+      termKa: 'კორპორაციული მმართველობა',
+      termEn: 'Corporate Governance',
+      definitionKa: 'კომპანიის მართვის სისტემა, რომელიც მოიცავს დირექტორთა საბჭოს, სამეთვალყურეო საბჭოსა და აქციონერთა ურთიერთობებს, ასევე კომპანიის გადაწყვეტილების მიღების პროცედურებს და კონტროლის მექანიზმებს.',
+      definitionEn: 'A company management system that encompasses the board of directors, supervisory board, and shareholder relations, as well as the company\'s decision-making procedures and control mechanisms.',
+    },
+    {
+      termKa: 'დიუ-დილიჯენსი',
+      termEn: 'Due Diligence',
+      definitionKa: 'კომპანიის ან აქტივის ყოვლისმომცველი სამართლებრივი, ფინანსური და ოპერაციული შემოწმება ინვესტიციის, შერწყმის ან შეძენის წინ, რომელიც მიზნად ისახავს რისკების იდენტიფიცირებას და ინფორმირებული გადაწყვეტილების მიღებას.',
+      definitionEn: 'A comprehensive legal, financial, and operational examination of a company or asset prior to investment, merger, or acquisition, aimed at identifying risks and making informed decisions.',
+    },
+    {
+      termKa: 'არბიტრაჟი',
+      termEn: 'Arbitration',
+      definitionKa: 'დავის ალტერნატიული გადაწყვეტის მექანიზმი, რომლის დროსაც მხარეები თანხმდებიან, რომ მათ დავას განიხილავს არბიტრი ან არბიტრთა პანელი სასამართლოს ნაცვლად. გადაწყვეტილება, როგორც წესი, საბოლოოა და სავალდებულო.',
+      definitionEn: 'An alternative dispute resolution mechanism where parties agree to have their dispute resolved by an arbitrator or panel of arbitrators instead of a court. The decision is typically final and binding.',
+    },
+    {
+      termKa: 'ხელშეკრულების შეუსრულებლობა',
+      termEn: 'Breach of Contract',
+      definitionKa: 'ხელშეკრულების მხარის მიერ ხელშეკრულებით ნაკისრი ვალდებულებების სრულად ან ნაწილობრივ შეუსრულებლობა, რაც მეორე მხარეს აძლევს უფლებას მოითხოვოს ზიანის ანაზღაურება ან ხელშეკრულების შეწყვეტა.',
+      definitionEn: 'The full or partial non-performance of contractual obligations by a party, giving the other party the right to claim damages or terminate the contract.',
+    },
+    {
+      termKa: 'ინტელექტუალური საკუთრება',
+      termEn: 'Intellectual Property',
+      definitionKa: 'გონებრივი შემოქმედების შედეგები, მათ შორის პატენტები, სასაქონლო ნიშნები, საავტორო უფლებები და სამრეწველო დიზაინი, რომლებიც დაცულია კანონით და მათ მფლობელს ანიჭებს ექსკლუზიურ უფლებებს.',
+      definitionEn: 'Results of intellectual creation, including patents, trademarks, copyrights, and industrial designs, which are protected by law and grant their owner exclusive rights.',
+    },
+    {
+      termKa: 'სახელმწიფო შესყიდვა',
+      termEn: 'Public Procurement',
+      definitionKa: 'სახელმწიფო ან მუნიციპალური ორგანოების მიერ საქონლის, მომსახურების ან სამშენებლო სამუშაოების შეძენის პროცესი, რომელიც რეგულირდება საქართველოს სახელმწიფო შესყიდვების შესახებ კანონით და ტარდება კონკურენტული ტენდერის პროცედურებით.',
+      definitionEn: 'The process by which state or municipal bodies acquire goods, services, or construction works, regulated by the Georgian Law on Public Procurement and conducted through competitive tender procedures.',
+    },
+    {
+      termKa: 'FIDIC კონტრაქტი',
+      termEn: 'FIDIC Contract',
+      definitionKa: 'საერთაშორისო საინჟინრო კონსულტანტთა ფედერაციის (FIDIC) მიერ შემუშავებული სტანდარტული სამშენებლო კონტრაქტის ფორმები, რომლებიც ფართოდ გამოიყენება საქართველოში ინფრასტრუქტურულ და სამშენებლო პროექტებში.',
+      definitionEn: 'Standard construction contract forms developed by the International Federation of Consulting Engineers (FIDIC), widely used in infrastructure and construction projects in Georgia.',
+    },
+    {
+      termKa: 'იპოთეკა',
+      termEn: 'Mortgage',
+      definitionKa: 'უძრავი ქონების გირავნობა, რომლის დროსაც მსესხებელი გირავნობით უზრუნველყოფს სესხის დაბრუნებას. სესხის შეუსრულებლობის შემთხვევაში კრედიტორს უფლება აქვს მოახდინოს იპოთეკით დატვირთული ქონების რეალიზაცია.',
+      definitionEn: 'A pledge of real property where the borrower secures loan repayment with collateral. In case of default, the creditor has the right to foreclose on the mortgaged property.',
+    },
+    {
+      termKa: 'მედიაცია',
+      termEn: 'Mediation',
+      definitionKa: 'დავის მოგვარების ალტერნატიული მეთოდი, რომლის დროსაც ნეიტრალური მესამე მხარე (მედიატორი) ეხმარება დავის მხარეებს ურთიერთმისაღები გადაწყვეტის მიღწევაში. მედიატორის გადაწყვეტილება არ არის სავალდებულო.',
+      definitionEn: 'An alternative dispute resolution method where a neutral third party (mediator) helps the disputing parties reach a mutually acceptable solution. The mediator\'s decision is not binding.',
+    },
+  ]
+
+  for (const term of glossaryTerms) {
+    const existing = await prisma.glossaryTerm.findFirst({
+      where: { termEn: term.termEn },
+    })
+    if (!existing) {
+      await prisma.glossaryTerm.create({ data: term })
+    }
+  }
+
   console.log('Seed complete.')
 }
 
