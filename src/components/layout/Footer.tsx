@@ -69,7 +69,9 @@ export default function Footer({ locale }: { locale: string }) {
               {isKa ? 'კონტაქტი' : 'Contact'}
             </h4>
             <div className="space-y-3 text-sm text-white/50 font-light">
-              <p>Tbilisi, Georgia</p>
+              <a href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7" target="_blank" rel="noopener noreferrer" className="block hover:text-gold transition-colors duration-300">
+                {isKa ? 'დ.არაყიშვილის N3, ოფისი 71, თბილისი' : 'D. Arakishvili St. N3, Office 71, Tbilisi'}
+              </a>
               <p>
                 <a href="tel:+995551553954" className="hover:text-gold transition-colors duration-300">
                   +995 551 55 39 54
