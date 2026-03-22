@@ -16,3 +16,8 @@ export function s(settings: Settings, key: string, locale: string): string {
   if (!val) return key // fallback to key name
   return locale === 'ka' ? val.ka : val.en
 }
+
+/** Check if a string contains HTML tags */
+export function hasHtml(str: string): boolean {
+  return /<[a-z][\s\S]*>/i.test(str)
+}

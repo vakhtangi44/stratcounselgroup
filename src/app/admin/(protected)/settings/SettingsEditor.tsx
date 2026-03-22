@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
 
 interface Setting {
   id: number
@@ -24,13 +24,78 @@ const categoryLabels: Record<string, string> = {
   general: 'General',
 }
 
+function MiniToolbar({ editorRef }: { editorRef: React.RefObject<HTMLDivElement | null> }) {
+  const applyCommand = useCallback((cmd: string, value?: string) => {
+    const el = editorRef.current
+    if (!el) return
+    el.focus()
+    // execCommand is used here within a trusted admin-only contentEditable context
+    // for formatting text (bold, italic, color). This is standard for WYSIWYG editors.
+    document.execCommand(cmd, false, value)
+  }, [editorRef])
+
+  return (
+    <div className="flex items-center gap-0.5 mb-1 border border-gray-200 rounded-t px-1 py-0.5 bg-gray-50">
+      <button type="button" onClick={() => applyCommand('bold')} className="w-7 h-7 flex items-center justify-center text-xs font-bold hover:bg-gray-200 rounded" title="Bold">B</button>
+      <button type="button" onClick={() => applyCommand('italic')} className="w-7 h-7 flex items-center justify-center text-xs italic hover:bg-gray-200 rounded" title="Italic">I</button>
+      <button type="button" onClick={() => applyCommand('underline')} className="w-7 h-7 flex items-center justify-center text-xs underline hover:bg-gray-200 rounded" title="Underline">U</button>
+      <div className="w-px h-5 bg-gray-300 mx-1" />
+      <button type="button" onClick={() => applyCommand('foreColor', '#b1976b')} className="w-7 h-7 flex items-center justify-center text-xs hover:bg-gray-200 rounded" title="Gold color">
+        <span className="w-4 h-4 rounded-full bg-gold" />
+      </button>
+      <button type="button" onClick={() => applyCommand('foreColor', '#1a1a1a')} className="w-7 h-7 flex items-center justify-center text-xs hover:bg-gray-200 rounded" title="Dark color">
+        <span className="w-4 h-4 rounded-full bg-dark" />
+      </button>
+      <button type="button" onClick={() => applyCommand('foreColor', '#ffffff')} className="w-7 h-7 flex items-center justify-center text-xs hover:bg-gray-200 rounded" title="White color">
+        <span className="w-4 h-4 rounded-full bg-white border border-gray-300" />
+      </button>
+      <div className="w-px h-5 bg-gray-300 mx-1" />
+      <button type="button" onClick={() => applyCommand('removeFormat')} className="w-7 h-7 flex items-center justify-center text-[10px] hover:bg-gray-200 rounded text-red-500" title="Clear formatting">&#x2715;</button>
+    </div>
+  )
+}
+
+function RichTextInput({
+  value,
+  onChange,
+  label,
+}: {
+  value: string
+  onChange: (val: string) => void
+  label: string
+}) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  return (
+    <div>
+      <label className="block text-[11px] text-dark uppercase tracking-wider mb-1 font-medium">
+        {label}
+      </label>
+      <MiniToolbar editorRef={ref} />
+      {/* Content is admin-only (authenticated), not user-generated. The admin edits site text
+          via this contentEditable field; the HTML is stored in the database and rendered on the
+          public site. Only authenticated admins can edit these values. */}
+      <div
+        ref={ref}
+        contentEditable
+        suppressContentEditableWarning
+        dangerouslySetInnerHTML={{ __html: value }}
+        onBlur={() => {
+          if (ref.current) onChange(ref.current.innerHTML)
+        }}
+        className="w-full border border-gray-200 border-t-0 rounded-b px-3 py-2 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/20 min-h-[3rem] max-h-[10rem] overflow-y-auto"
+      />
+    </div>
+  )
+}
+
 export default function SettingsEditor({ grouped }: Props) {
   const [values, setValues] = useState<Record<number, { valueKa: string; valueEn: string }>>(
     () => {
       const map: Record<number, { valueKa: string; valueEn: string }> = {}
       for (const settings of Object.values(grouped)) {
-        for (const s of settings) {
-          map[s.id] = { valueKa: s.valueKa, valueEn: s.valueEn }
+        for (const item of settings) {
+          map[item.id] = { valueKa: item.valueKa, valueEn: item.valueEn }
         }
       }
       return map
@@ -85,28 +150,16 @@ export default function SettingsEditor({ grouped }: Props) {
               <div key={setting.id} className="px-6 py-4">
                 <p className="text-xs text-secondary mb-2 font-mono">{setting.key}</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-[11px] text-dark uppercase tracking-wider mb-1 font-medium">
-                      Georgian (KA)
-                    </label>
-                    <textarea
-                      value={values[setting.id]?.valueKa || ''}
-                      onChange={(e) => updateValue(setting.id, 'valueKa', e.target.value)}
-                      rows={2}
-                      className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/20 resize-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[11px] text-dark uppercase tracking-wider mb-1 font-medium">
-                      English (EN)
-                    </label>
-                    <textarea
-                      value={values[setting.id]?.valueEn || ''}
-                      onChange={(e) => updateValue(setting.id, 'valueEn', e.target.value)}
-                      rows={2}
-                      className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/20 resize-none"
-                    />
-                  </div>
+                  <RichTextInput
+                    label="Georgian (KA)"
+                    value={values[setting.id]?.valueKa || ''}
+                    onChange={(val) => updateValue(setting.id, 'valueKa', val)}
+                  />
+                  <RichTextInput
+                    label="English (EN)"
+                    value={values[setting.id]?.valueEn || ''}
+                    onChange={(val) => updateValue(setting.id, 'valueEn', val)}
+                  />
                 </div>
               </div>
             ))}
