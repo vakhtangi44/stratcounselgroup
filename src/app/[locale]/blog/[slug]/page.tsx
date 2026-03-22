@@ -5,12 +5,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { sanitizeHtml } from '@/lib/sanitize'
 import { formatDate, readTime } from '@/lib/utils'
+import { unstable_noStore as noStore } from 'next/cache'
 
 export default async function BlogPostPage({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>
 }) {
+  noStore()
   const { slug } = await params
   const locale = await getLocale()
   const prefix = locale === 'en' ? '/en' : ''
