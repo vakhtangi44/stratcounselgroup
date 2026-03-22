@@ -161,6 +161,14 @@ function RichTextInput({
     if (ref.current) onChange(ref.current.innerHTML) // eslint-disable-line
   }, [onChange])
 
+  // Strip Word/HTML formatting on paste — keep only plain text
+  const handlePaste = useCallback((e: React.ClipboardEvent) => {
+    e.preventDefault()
+    const text = e.clipboardData.getData('text/plain')
+    document.execCommand('insertText', false, text)
+    syncValue()
+  }, [syncValue])
+
   return (
     <div>
       <label className="block text-[11px] text-dark uppercase tracking-wider mb-1 font-medium">
@@ -171,6 +179,7 @@ function RichTextInput({
         ref={ref}
         contentEditable
         suppressContentEditableWarning
+        onPaste={handlePaste}
         dir="ltr"
         style={{ direction: 'ltr', textAlign: 'left', unicodeBidi: 'plaintext' }}
         onBlur={syncValue}
