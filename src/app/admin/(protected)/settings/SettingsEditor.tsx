@@ -24,6 +24,27 @@ const categoryLabels: Record<string, string> = {
   general: 'General',
 }
 
+function rgbToHex(rgb: string): string {
+  const match = rgb.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/)
+  if (!match) return '#000000'
+  const r = parseInt(match[1]).toString(16).padStart(2, '0')
+  const g = parseInt(match[2]).toString(16).padStart(2, '0')
+  const b = parseInt(match[3]).toString(16).padStart(2, '0')
+  return `#${r}${g}${b}`
+}
+
+function getSelectionColor(): string | null {
+  const sel = window.getSelection()
+  if (!sel || sel.rangeCount === 0) return null
+  const node = sel.anchorNode
+  if (!node) return null
+  const el = node.nodeType === 3 ? node.parentElement : (node as HTMLElement)
+  if (!el) return null
+  const color = window.getComputedStyle(el).color
+  if (color.startsWith('rgb')) return rgbToHex(color)
+  return color
+}
+
 function MiniToolbar({ editorRef }: { editorRef: React.RefObject<HTMLDivElement | null> }) {
   const applyCommand = useCallback((cmd: string, value?: string) => {
     const el = editorRef.current
@@ -36,6 +57,12 @@ function MiniToolbar({ editorRef }: { editorRef: React.RefObject<HTMLDivElement 
 
   const colorInputRef = useRef<HTMLInputElement>(null)
   const [pickedColor, setPickedColor] = useState('#b1976b')
+
+  // Update color picker to match selected text color
+  const syncColor = useCallback(() => {
+    const color = getSelectionColor()
+    if (color) setPickedColor(color)
+  }, [])
 
   const handleColorPick = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const color = e.target.value
@@ -51,7 +78,7 @@ function MiniToolbar({ editorRef }: { editorRef: React.RefObject<HTMLDivElement 
       <div className="w-px h-5 bg-gray-300 mx-1" />
       <button
         type="button"
-        onClick={() => colorInputRef.current?.click()}
+        onClick={() => { syncColor(); colorInputRef.current?.click() }}
         className="w-7 h-7 flex items-center justify-center hover:bg-gray-200 rounded relative"
         title="Pick text color"
       >
