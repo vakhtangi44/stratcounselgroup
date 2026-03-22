@@ -161,6 +161,8 @@ function RichTextInput({
         ref={ref}
         contentEditable
         suppressContentEditableWarning
+        dir="ltr"
+        style={{ direction: 'ltr', textAlign: 'left', unicodeBidi: 'plaintext' }}
         onBlur={syncValue}
         className="w-full border border-gray-200 border-t-0 rounded-b px-3 py-2 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/20 min-h-[3rem] max-h-[10rem] overflow-y-auto"
       />
