@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com',
+      },
+    ],
+  },
   experimental: {},
   async rewrites() {
     return [
