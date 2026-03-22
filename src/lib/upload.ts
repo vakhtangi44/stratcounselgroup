@@ -1,5 +1,4 @@
-import { writeFile, mkdir } from 'fs/promises'
-import { join } from 'path'
+import { put } from '@vercel/blob'
 import { v4 as uuidv4 } from 'uuid'
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp']
@@ -37,9 +36,12 @@ export async function saveUploadedFile(
     throw new Error('File content does not match allowed image types.')
   }
   const ext = file.type === 'image/jpeg' ? 'jpg' : file.type === 'image/png' ? 'png' : 'webp'
-  const filename = `${uuidv4()}.${ext}`
-  const dir = join(process.cwd(), 'uploads', folder)
-  await mkdir(dir, { recursive: true })
-  await writeFile(join(dir, filename), buffer)
-  return `/uploads/${folder}/${filename}`
+  const filename = `${folder}/${uuidv4()}.${ext}`
+
+  const blob = await put(filename, buffer, {
+    access: 'public',
+    contentType: file.type,
+  })
+
+  return blob.url
 }
