@@ -24,6 +24,16 @@ const categoryLabels: Record<string, string> = {
   general: 'General',
 }
 
+// Keys that should use plain text input (no rich text formatting)
+const PLAIN_TEXT_KEYS = new Set([
+  'contact.phone',
+  'contact.email',
+  'contact.whatsapp',
+  'contact.address',
+  'contact.workingHours',
+  'footer.address',
+])
+
 function rgbToHex(rgb: string): string {
   const match = rgb.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/)
   if (!match) return '#000000'
@@ -170,6 +180,30 @@ function RichTextInput({
   )
 }
 
+function PlainTextInput({
+  value,
+  onChange,
+  label,
+}: {
+  value: string
+  onChange: (val: string) => void
+  label: string
+}) {
+  return (
+    <div>
+      <label className="block text-[11px] text-dark uppercase tracking-wider mb-1 font-medium">
+        {label}
+      </label>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full border border-gray-200 rounded px-3 py-2.5 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/20"
+      />
+    </div>
+  )
+}
+
 export default function SettingsEditor({ grouped }: Props) {
   const [values, setValues] = useState<Record<number, { valueKa: string; valueEn: string }>>(
     () => {
@@ -263,16 +297,33 @@ export default function SettingsEditor({ grouped }: Props) {
                   </button>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <RichTextInput
-                    label="Georgian (KA)"
-                    value={values[setting.id]?.valueKa || ''}
-                    onChange={(val) => updateValue(setting.id, 'valueKa', val)}
-                  />
-                  <RichTextInput
-                    label="English (EN)"
-                    value={values[setting.id]?.valueEn || ''}
-                    onChange={(val) => updateValue(setting.id, 'valueEn', val)}
-                  />
+                  {PLAIN_TEXT_KEYS.has(setting.key) ? (
+                    <>
+                      <PlainTextInput
+                        label="Georgian (KA)"
+                        value={values[setting.id]?.valueKa || ''}
+                        onChange={(val) => updateValue(setting.id, 'valueKa', val)}
+                      />
+                      <PlainTextInput
+                        label="English (EN)"
+                        value={values[setting.id]?.valueEn || ''}
+                        onChange={(val) => updateValue(setting.id, 'valueEn', val)}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <RichTextInput
+                        label="Georgian (KA)"
+                        value={values[setting.id]?.valueKa || ''}
+                        onChange={(val) => updateValue(setting.id, 'valueKa', val)}
+                      />
+                      <RichTextInput
+                        label="English (EN)"
+                        value={values[setting.id]?.valueEn || ''}
+                        onChange={(val) => updateValue(setting.id, 'valueEn', val)}
+                      />
+                    </>
+                  )
                 </div>
               </div>
             ))}
