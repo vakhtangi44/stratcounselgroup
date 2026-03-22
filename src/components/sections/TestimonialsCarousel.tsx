@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import type { Testimonial } from '@prisma/client'
+import RichText from '@/components/ui/RichText'
 
 interface Props {
   testimonials: Testimonial[]
@@ -39,12 +40,8 @@ export default function TestimonialsCarousel({ testimonials, locale, strings }: 
   return (
     <section className="py-20 md:py-28 bg-white bg-subtle-pattern">
       <div className="container mx-auto px-4 max-w-3xl text-center">
-        <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-          {strings.subtitle}
-        </p>
-        <h2 className="font-heading text-3xl md:text-4xl text-dark mb-16 gold-underline inline-block">
-          {strings.title}
-        </h2>
+        <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
+        <RichText html={strings.title} as="h2" className="font-heading text-3xl md:text-4xl text-dark mb-16 gold-underline inline-block" />
 
         <div className={`transition-opacity duration-300 ${fade ? 'opacity-100' : 'opacity-0'}`}>
           {/* Large decorative quote marks */}

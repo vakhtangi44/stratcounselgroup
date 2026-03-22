@@ -4,6 +4,7 @@ import { getSettings, s } from '@/lib/settings'
 import Image from 'next/image'
 import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import RichText from '@/components/ui/RichText'
 
 function getInitials(name: string): string {
   return name
@@ -33,13 +34,9 @@ export default async function TeamPage() {
       <section className="relative bg-navy text-white py-24 md:py-32 text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
         <div className="relative z-10">
-          <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-            {s(settings, 'page.team.subtitle', locale)}
-          </p>
+          <RichText html={s(settings, 'page.team.subtitle', locale)} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
           <div className="gold-divider mx-auto mb-8" />
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl tracking-[-0.02em]">
-            {s(settings, 'page.team', locale)}
-          </h1>
+          <RichText html={s(settings, 'page.team', locale)} as="h1" className="font-heading text-4xl md:text-5xl lg:text-6xl tracking-[-0.02em]" />
         </div>
       </section>
 

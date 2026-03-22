@@ -1,5 +1,6 @@
 import type { PressItem } from '@prisma/client'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import RichText from '@/components/ui/RichText'
 
 interface Props {
   items: PressItem[]
@@ -15,9 +16,7 @@ export default function PressStrip({ items, asSeenIn }: Props) {
         <ScrollReveal>
           <div className="flex items-center gap-4 mb-10">
             <div className="flex-1 h-px bg-gray-200" />
-            <p className="text-[11px] text-secondary uppercase tracking-[0.3em] font-medium">
-              {asSeenIn}
-            </p>
+            <RichText html={asSeenIn} as="p" className="text-[11px] text-secondary uppercase tracking-[0.3em] font-medium" />
             <div className="flex-1 h-px bg-gray-200" />
           </div>
         </ScrollReveal>

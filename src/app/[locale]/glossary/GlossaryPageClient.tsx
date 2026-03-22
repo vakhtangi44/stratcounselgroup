@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import RichText from '@/components/ui/RichText'
 
 interface Term {
   id: number
@@ -39,7 +40,7 @@ export default function GlossaryPageClient({ locale, pageTitle }: Props) {
   return (
     <div className="pt-16">
       <section className="bg-dark text-white py-24 text-center px-4">
-        <h1 className="font-heading text-4xl mb-4">{pageTitle}</h1>
+        <RichText html={pageTitle} as="h1" className="font-heading text-4xl mb-4" />
       </section>
 
       <section className="py-8 px-4 bg-bg-alt border-b">

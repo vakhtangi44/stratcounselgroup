@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Turnstile from 'react-turnstile'
+import RichText from '@/components/ui/RichText'
 
 interface Props {
   locale: string
@@ -49,16 +50,10 @@ export default function ContactPageClient({ locale, strings }: Props) {
       <section className="relative bg-navy text-white py-24 md:py-32 text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
         <div className="relative z-10">
-          <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-            {strings.subtitle}
-          </p>
+          <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
           <div className="w-12 h-[2px] bg-gold mx-auto mb-8" />
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]">
-            {strings.heading}
-          </h1>
-          <p className="text-white/50 text-lg font-light">
-            {strings.heroSubtitle}
-          </p>
+          <RichText html={strings.heading} as="h1" className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]" />
+          <RichText html={strings.heroSubtitle} as="p" className="text-white/50 text-lg font-light" />
         </div>
       </section>
 
@@ -68,12 +63,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
             {/* Left: Contact Info */}
             <div className="lg:col-span-2">
-              <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-                {strings.infoSubtitle}
-              </p>
-              <h2 className="font-heading text-2xl md:text-3xl text-dark mb-8">
-                {strings.info}
-              </h2>
+              <RichText html={strings.infoSubtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
+              <RichText html={strings.info} as="h2" className="font-heading text-2xl md:text-3xl text-dark mb-8" />
 
               <div className="space-y-8">
                 {/* Address */}
@@ -85,14 +76,14 @@ export default function ContactPageClient({ locale, strings }: Props) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-dark font-heading text-sm mb-1">{strings.addressLabel}</p>
+                    <RichText html={strings.addressLabel} as="p" className="text-dark font-heading text-sm mb-1" />
                     <a
                       href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-secondary text-sm font-light hover:text-gold transition-colors duration-300"
                     >
-                      {strings.address}
+                      <RichText html={strings.address} />
                     </a>
                   </div>
                 </div>
@@ -130,12 +121,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
 
               {/* Working hours */}
               <div className="mt-12 pt-8 border-t border-gray-200">
-                <p className="text-dark font-heading text-sm mb-3">
-                  {strings.workingHoursLabel}
-                </p>
-                <p className="text-secondary text-sm font-light">
-                  {strings.workingHours}
-                </p>
+                <RichText html={strings.workingHoursLabel} as="p" className="text-dark font-heading text-sm mb-3" />
+                <RichText html={strings.workingHours} as="p" className="text-secondary text-sm font-light" />
               </div>
             </div>
 
@@ -269,9 +256,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
             <div className="container mx-auto max-w-6xl flex items-center justify-between">
               <div className="text-white">
                 <p className="font-heading text-lg mb-1">Strategic Counsel Group</p>
-                <p className="text-white/70 text-sm font-light">
-                  {strings.address}
-                </p>
+                <RichText html={strings.address} as="p" className="text-white/70 text-sm font-light" />
               </div>
               <div className="hidden md:flex items-center gap-2 text-gold text-sm font-medium group-hover:gap-3 transition-all duration-300">
                 {isKa ? 'რუკაზე ნახვა' : 'View on Map'}

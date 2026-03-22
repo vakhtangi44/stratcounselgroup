@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import NewsletterForm from './NewsletterForm'
 import { getSettings, s } from '@/lib/settings'
+import RichText from '@/components/ui/RichText'
 
 export default async function Footer({ locale }: { locale: string }) {
   const prefix = locale === 'en' ? '/en' : ''
@@ -26,16 +27,12 @@ export default async function Footer({ locale }: { locale: string }) {
               height={70}
               className="h-12 w-auto mb-4 brightness-0 invert"
             />
-            <p className="text-white/40 text-sm leading-relaxed mb-6 font-light">
-              {s(settings, 'footer.tagline', locale)}
-            </p>
+            <RichText html={s(settings, 'footer.tagline', locale)} as="p" className="text-white/40 text-sm leading-relaxed mb-6 font-light" />
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.2em]">
-              {s(settings, 'footer.quickLinks', locale)}
-            </h4>
+            <RichText html={s(settings, 'footer.quickLinks', locale)} as="div" className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.2em]" />
             <ul className="space-y-3 text-sm">
               {[
                 ['about', isKa ? 'ჩვენ შესახებ' : 'About'],
@@ -58,12 +55,10 @@ export default async function Footer({ locale }: { locale: string }) {
 
           {/* Contact */}
           <div>
-            <h4 className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.2em]">
-              {s(settings, 'footer.contact', locale)}
-            </h4>
+            <RichText html={s(settings, 'footer.contact', locale)} as="div" className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.2em]" />
             <div className="space-y-3 text-sm text-white/50 font-light">
               <a href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7" target="_blank" rel="noopener noreferrer" className="block hover:text-gold transition-colors duration-300">
-                {s(settings, 'footer.address', locale)}
+                <RichText html={s(settings, 'footer.address', locale)} />
               </a>
               <p>
                 <a href="tel:+995551553954" className="hover:text-gold transition-colors duration-300">
@@ -80,12 +75,8 @@ export default async function Footer({ locale }: { locale: string }) {
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.2em]">
-              {s(settings, 'footer.newsletter', locale)}
-            </h4>
-            <p className="text-white/40 text-sm mb-4 font-light">
-              {s(settings, 'footer.newsletterText', locale)}
-            </p>
+            <RichText html={s(settings, 'footer.newsletter', locale)} as="div" className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.2em]" />
+            <RichText html={s(settings, 'footer.newsletterText', locale)} as="p" className="text-white/40 text-sm mb-4 font-light" />
             <NewsletterForm locale={locale} />
           </div>
         </div>
@@ -95,7 +86,7 @@ export default async function Footer({ locale }: { locale: string }) {
       <div className="border-t border-gold/10">
         <div className="container mx-auto px-4 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/30 text-xs tracking-wide font-light">
-            &copy; {new Date().getFullYear()} {s(settings, 'footer.copyright', locale)}
+            &copy; {new Date().getFullYear()}{' '}<RichText html={s(settings, 'footer.copyright', locale)} />
           </p>
           <div className="flex items-center gap-6 text-white/30 text-xs">
             <Link href={`${prefix}/faq`} className="hover:text-gold transition-colors duration-300">

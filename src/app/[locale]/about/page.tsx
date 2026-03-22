@@ -4,6 +4,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { db } from '@/lib/db'
 import { getSettings, s } from '@/lib/settings'
 import { unstable_noStore as noStore } from 'next/cache'
+import RichText from '@/components/ui/RichText'
 
 export default async function AboutPage() {
   noStore()
@@ -22,16 +23,10 @@ export default async function AboutPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-gold/5 rounded-full" />
 
         <div className="relative z-10">
-          <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-            {s(settings, 'about.subtitle', locale)}
-          </p>
+          <RichText html={s(settings, 'about.subtitle', locale)} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
           <div className="gold-divider mx-auto mb-8" />
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]">
-            {s(settings, 'about.heading', locale)}
-          </h1>
-          <p className="text-white/50 max-w-2xl mx-auto text-lg leading-relaxed font-light">
-            {s(settings, 'about.description', locale)}
-          </p>
+          <RichText html={s(settings, 'about.heading', locale)} as="h1" className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]" />
+          <RichText html={s(settings, 'about.description', locale)} as="p" className="text-white/50 max-w-2xl mx-auto text-lg leading-relaxed font-light" />
         </div>
       </section>
 
@@ -39,12 +34,8 @@ export default async function AboutPage() {
       <section className="py-20 md:py-28 px-4 bg-white bg-subtle-pattern">
         <div className="container mx-auto max-w-5xl">
           <ScrollReveal className="text-center mb-16">
-            <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-              {s(settings, 'about.whyUs.subtitle', locale)}
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block">
-              {s(settings, 'about.whyUs', locale)}
-            </h2>
+            <RichText html={s(settings, 'about.whyUs.subtitle', locale)} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
+            <RichText html={s(settings, 'about.whyUs', locale)} as="h2" className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block" />
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -68,12 +59,8 @@ export default async function AboutPage() {
       <section className="py-20 md:py-28 px-4 bg-cream">
         <div className="container mx-auto max-w-5xl">
           <ScrollReveal className="text-center mb-16">
-            <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-              {s(settings, 'about.values.subtitle', locale)}
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block">
-              {s(settings, 'about.values', locale)}
-            </h2>
+            <RichText html={s(settings, 'about.values.subtitle', locale)} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
+            <RichText html={s(settings, 'about.values', locale)} as="h2" className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block" />
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -111,8 +98,8 @@ export default async function AboutPage() {
                   <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-gold border border-gold/20 group-hover:bg-gold/5 transition-all duration-500">
                     {v.icon}
                   </div>
-                  <h3 className="font-heading text-xl text-dark mb-3">{s(settings, v.titleKey, locale)}</h3>
-                  <p className="text-secondary text-sm font-light leading-relaxed">{s(settings, v.descKey, locale)}</p>
+                  <RichText html={s(settings, v.titleKey, locale)} as="h3" className="font-heading text-xl text-dark mb-3" />
+                  <RichText html={s(settings, v.descKey, locale)} as="p" className="text-secondary text-sm font-light leading-relaxed" />
                 </div>
               </ScrollReveal>
             ))}
@@ -126,17 +113,13 @@ export default async function AboutPage() {
         <div className="relative z-10">
           <ScrollReveal>
             <div className="gold-divider mx-auto mb-8" />
-            <h2 className="font-heading text-3xl md:text-4xl mb-6 tracking-[-0.01em]">
-              {s(settings, 'about.cta.heading', locale)}
-            </h2>
-            <p className="text-white/40 mb-10 max-w-lg mx-auto font-light">
-              {s(settings, 'about.cta.description', locale)}
-            </p>
+            <RichText html={s(settings, 'about.cta.heading', locale)} as="h2" className="font-heading text-3xl md:text-4xl mb-6 tracking-[-0.01em]" />
+            <RichText html={s(settings, 'about.cta.description', locale)} as="p" className="text-white/40 mb-10 max-w-lg mx-auto font-light" />
             <Link
               href={`${prefix}/contact`}
               className="inline-block bg-gold text-white px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold-dark transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
             >
-              {s(settings, 'about.cta.button', locale)}
+              <RichText html={s(settings, 'about.cta.button', locale)} />
             </Link>
           </ScrollReveal>
         </div>

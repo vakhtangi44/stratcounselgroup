@@ -2,6 +2,7 @@
 
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import GoldDivider from '@/components/ui/GoldDivider'
+import RichText from '@/components/ui/RichText'
 
 interface ClientData {
   id: number
@@ -42,16 +43,10 @@ export default function TrustedBy({ locale, categories, strings }: Props) {
       <div className="container mx-auto px-4">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-              {strings.subtitle}
-            </p>
+            <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
             <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
-            <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4">
-              {strings.title}
-            </h2>
-            <p className="text-secondary font-light max-w-2xl mx-auto">
-              {strings.description}
-            </p>
+            <RichText html={strings.title} as="h2" className="font-heading text-3xl md:text-4xl text-dark mb-4" />
+            <RichText html={strings.description} as="p" className="text-secondary font-light max-w-2xl mx-auto" />
             <GoldDivider className="mt-8" />
           </div>
         </ScrollReveal>
@@ -83,27 +78,19 @@ export default function TrustedBy({ locale, categories, strings }: Props) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
                 <p className="font-heading text-3xl text-gold mb-1">50+</p>
-                <p className="text-secondary text-xs font-light uppercase tracking-wider">
-                  {strings.clients}
-                </p>
+                <RichText html={strings.clients} as="p" className="text-secondary text-xs font-light uppercase tracking-wider" />
               </div>
               <div>
                 <p className="font-heading text-3xl text-gold mb-1">10+</p>
-                <p className="text-secondary text-xs font-light uppercase tracking-wider">
-                  {strings.sectors}
-                </p>
+                <RichText html={strings.sectors} as="p" className="text-secondary text-xs font-light uppercase tracking-wider" />
               </div>
               <div>
                 <p className="font-heading text-3xl text-gold mb-1">20+</p>
-                <p className="text-secondary text-xs font-light uppercase tracking-wider">
-                  {strings.experience}
-                </p>
+                <RichText html={strings.experience} as="p" className="text-secondary text-xs font-light uppercase tracking-wider" />
               </div>
               <div>
                 <p className="font-heading text-3xl text-gold mb-1">100%</p>
-                <p className="text-secondary text-xs font-light uppercase tracking-wider">
-                  {strings.confidentiality}
-                </p>
+                <RichText html={strings.confidentiality} as="p" className="text-secondary text-xs font-light uppercase tracking-wider" />
               </div>
             </div>
           </div>

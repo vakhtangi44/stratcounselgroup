@@ -3,6 +3,7 @@ import { getLocale } from 'next-intl/server'
 import { getSettings, s } from '@/lib/settings'
 import Image from 'next/image'
 import { formatDate } from '@/lib/utils'
+import RichText from '@/components/ui/RichText'
 
 export default async function PressPage() {
   const locale = await getLocale()
@@ -19,7 +20,7 @@ export default async function PressPage() {
   return (
     <div className="pt-16">
       <section className="bg-dark text-white py-24 text-center px-4">
-        <h1 className="font-heading text-4xl mb-4">{s(settings, 'page.press', locale)}</h1>
+        <RichText html={s(settings, 'page.press', locale)} as="h1" className="font-heading text-4xl mb-4" />
       </section>
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-4xl space-y-6">

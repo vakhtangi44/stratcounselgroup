@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { PRACTICE_AREAS } from '@/lib/practice-areas'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import GoldDivider from '@/components/ui/GoldDivider'
+import RichText from '@/components/ui/RichText'
 
 interface Props {
   locale: string
@@ -19,15 +20,9 @@ export default function PracticeAreasGrid({ locale, strings }: Props) {
     <section className="py-20 md:py-28 bg-white bg-subtle-pattern bg-linen">
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-16">
-          <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-            {strings.subtitle}
-          </p>
-          <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4 gold-underline inline-block">
-            {strings.title}
-          </h2>
-          <p className="text-secondary mt-6 max-w-2xl mx-auto text-base leading-relaxed">
-            {strings.description}
-          </p>
+          <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
+          <RichText html={strings.title} as="h2" className="font-heading text-3xl md:text-4xl text-dark mb-4 gold-underline inline-block" />
+          <RichText html={strings.description} as="p" className="text-secondary mt-6 max-w-2xl mx-auto text-base leading-relaxed" />
           <GoldDivider className="mt-8" />
         </ScrollReveal>
 

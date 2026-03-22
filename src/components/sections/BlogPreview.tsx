@@ -3,6 +3,7 @@ import Image from 'next/image'
 import type { BlogPost } from '@prisma/client'
 import { formatDate, readTime } from '@/lib/utils'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import RichText from '@/components/ui/RichText'
 
 interface Props {
   posts: BlogPost[]
@@ -22,12 +23,8 @@ export default function BlogPreview({ posts, locale, strings }: Props) {
     <section className="py-20 md:py-28 bg-cream">
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-16">
-          <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-            {strings.subtitle}
-          </p>
-          <h2 className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block">
-            {strings.title}
-          </h2>
+          <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
+          <RichText html={strings.title} as="h2" className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block" />
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -79,7 +76,7 @@ export default function BlogPreview({ posts, locale, strings }: Props) {
             href={`${prefix}/blog`}
             className="inline-flex items-center gap-2 text-gold hover:text-gold-dark text-sm font-medium uppercase tracking-[0.15em] transition-colors duration-300"
           >
-            {strings.allArticles}
+            <RichText html={strings.allArticles} />
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
