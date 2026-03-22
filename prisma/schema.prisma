@@ -131,3 +131,13 @@ model AdminUser {
   passwordHash String
   lastLoginAt  DateTime?
 }
+
+model Advantage {
+  id            Int     @id @default(autoincrement())
+  titleKa       String
+  titleEn       String
+  descriptionKa String? @db.Text
+  descriptionEn String? @db.Text
+  order         Int     @default(0)
+  active        Boolean @default(true)
+}

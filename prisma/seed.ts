@@ -899,6 +899,25 @@ async function main() {
     }
   }
 
+  // --- Advantages ---
+  const advantages = [
+    { titleKa: 'მუდმივი რისკ-მონიტორინგი', titleEn: 'Continuous risk monitoring', order: 1 },
+    { titleKa: 'კონტრაჰენტებთან და ადმინისტრაციულ ორგანოებთან კომუნიკაციის კონტროლი', titleEn: 'Control over communication with counterparties and administrative bodies', order: 2 },
+    { titleKa: 'სახელშეკრულებო არქიტექტურის სწორად აგება', titleEn: 'Proper structuring of contractual architecture', order: 3 },
+    { titleKa: 'დავების ტაქტიკური დაგეგმვა და წარმოება', titleEn: 'Tactical planning and conduct of disputes', order: 4 },
+    { titleKa: 'კონფიდენციალურობის მაღალი სტანდარტი და სანდოობა', titleEn: 'High standard of confidentiality and reliability', order: 5 },
+    { titleKa: 'შედეგზე ორიენტირებული თანამშრომლობა', titleEn: 'Result-oriented cooperation', order: 6 },
+  ]
+
+  for (const adv of advantages) {
+    const existing = await prisma.advantage.findFirst({
+      where: { titleEn: adv.titleEn },
+    })
+    if (!existing) {
+      await prisma.advantage.create({ data: adv })
+    }
+  }
+
   console.log('Seed complete.')
 }
 

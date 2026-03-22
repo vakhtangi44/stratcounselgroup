@@ -1,9 +1,13 @@
 import { getLocale } from 'next-intl/server'
 import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import { db } from '@/lib/db'
+import { unstable_noStore as noStore } from 'next/cache'
 
 export default async function AboutPage() {
+  noStore()
   const locale = await getLocale()
+  const advantages = await db.advantage.findMany({ where: { active: true }, orderBy: { order: 'asc' } })
   const prefix = locale === 'en' ? '/en' : ''
   const isKa = locale === 'ka'
 
@@ -43,33 +47,8 @@ export default async function AboutPage() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {[
-              {
-                titleKa: 'მუდმივი რისკ-მონიტორინგი',
-                titleEn: 'Continuous risk monitoring',
-              },
-              {
-                titleKa: 'კონტრაჰენტებთან და ადმინისტრაციულ ორგანოებთან კომუნიკაციის კონტროლი',
-                titleEn: 'Control over communication with counterparties and administrative bodies',
-              },
-              {
-                titleKa: 'სახელშეკრულებო არქიტექტურის სწორად აგება',
-                titleEn: 'Proper structuring of contractual architecture',
-              },
-              {
-                titleKa: 'დავების ტაქტიკური დაგეგმვა და წარმოება',
-                titleEn: 'Tactical planning and conduct of disputes',
-              },
-              {
-                titleKa: 'კონფიდენციალურობის მაღალი სტანდარტი და სანდოობა',
-                titleEn: 'High standard of confidentiality and reliability',
-              },
-              {
-                titleKa: 'შედეგზე ორიენტირებული თანამშრომლობა',
-                titleEn: 'Result-oriented cooperation',
-              },
-            ].map((v, i) => (
-              <ScrollReveal key={i} delay={i * 100}>
+            {advantages.map((v, i) => (
+              <ScrollReveal key={v.id} delay={i * 100}>
                 <div className="flex items-start gap-4 p-6 bg-cream border border-gray-100 hover:border-gold/30 transition-all duration-500 group">
                   <div className="flex-shrink-0 w-8 h-8 bg-gold/10 flex items-center justify-center mt-0.5">
                     <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
