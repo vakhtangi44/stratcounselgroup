@@ -12,6 +12,7 @@ const links = [
   { href: '/admin/testimonials', label: 'Testimonials' },
   { href: '/admin/faq', label: 'FAQ' },
   { href: '/admin/advantages', label: 'Advantages' },
+  { href: '/admin/clients', label: 'Clients' },
   { href: '/admin/glossary', label: 'Glossary' },
   { href: '/admin/press', label: 'Press' },
   { href: '/admin/stats', label: 'Statistics' },

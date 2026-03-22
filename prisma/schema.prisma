@@ -141,3 +141,22 @@ model Advantage {
   order         Int     @default(0)
   active        Boolean @default(true)
 }
+
+model ClientCategory {
+  id       Int      @id @default(autoincrement())
+  icon     String   @default("🏢")
+  labelKa  String
+  labelEn  String
+  order    Int      @default(0)
+  active   Boolean  @default(true)
+  clients  Client[]
+}
+
+model Client {
+  id         Int            @id @default(autoincrement())
+  name       String
+  categoryId Int
+  category   ClientCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  order      Int            @default(0)
+  active     Boolean        @default(true)
+}

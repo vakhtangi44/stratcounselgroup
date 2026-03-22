@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function HomePage() {
   const locale = await getLocale()
 
-  const [stats, teamMembers, testimonials, blogPosts, pressItems] = await Promise.all([
+  const [stats, teamMembers, testimonials, blogPosts, pressItems, clientCategories] = await Promise.all([
     db.statistic.findMany(),
     db.teamMember.findMany({
       where: { active: true, isFeatured: true },
@@ -49,6 +49,11 @@ export default async function HomePage() {
       take: 3,
     }),
     db.pressItem.findMany({ where: { active: true }, orderBy: { date: 'desc' } }),
+    db.clientCategory.findMany({
+      where: { active: true },
+      orderBy: { order: 'asc' },
+      include: { clients: { where: { active: true }, orderBy: { order: 'asc' } } },
+    }),
   ])
 
   return (
@@ -57,7 +62,7 @@ export default async function HomePage() {
       <PracticeAreasGrid locale={locale} />
       <StatsSection stats={stats} locale={locale} />
       <TeamPreview members={teamMembers} locale={locale} />
-      <TrustedBy locale={locale} />
+      <TrustedBy locale={locale} categories={clientCategories} />
       <TestimonialsCarousel testimonials={testimonials} locale={locale} />
       <BlogPreview posts={blogPosts} locale={locale} />
       <PressStrip items={pressItems} />

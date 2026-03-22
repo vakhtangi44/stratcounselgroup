@@ -918,6 +918,158 @@ async function main() {
     }
   }
 
+  // --- Client Categories & Clients ---
+  const clientCategories = [
+    {
+      icon: '🏗️',
+      labelKa: 'მშენებლობა და ინფრასტრუქტურა',
+      labelEn: 'Construction & Infrastructure',
+      order: 1,
+      clients: [
+        'Caucasus Road Project (CRP)',
+        'Construction Company "Dagi"',
+        'Design and Construction Company "GES"',
+        'Construction Company "Redix Group"',
+        'Construction Company "M Capital"',
+        'Construction Company "Radius Construction"',
+      ],
+    },
+    {
+      icon: '🏛️',
+      labelKa: 'არქიტექტურა და დიზაინი',
+      labelEn: 'Architecture & Design',
+      order: 2,
+      clients: [
+        'Architectural Design Company "Studio 9"',
+        'Caucasus Science and Engineering',
+      ],
+    },
+    {
+      icon: '⛽',
+      labelKa: 'ენერგეტიკა და რესურსები',
+      labelEn: 'Energy & Resources',
+      order: 3,
+      clients: [
+        'British Petroleum (BP)',
+        'Georgian Investment Group',
+        'Oil products supplying company',
+      ],
+    },
+    {
+      icon: '💰',
+      labelKa: 'საფინანსო სექტორი',
+      labelEn: 'Financial Sector',
+      order: 4,
+      clients: [
+        'Microfinance Organization "Rico Group"',
+        'Microfinance Organization "EasyCredit Georgia"',
+      ],
+    },
+    {
+      icon: '🏨',
+      labelKa: 'ტურიზმი',
+      labelEn: 'Tourism & Hospitality',
+      order: 5,
+      clients: [
+        'Hotel "Paragraph Resort & Spa Shekvetili"',
+        'Hotel "Best Western Gudauri"',
+        'Hotel "Sololaki Hills"',
+      ],
+    },
+    {
+      icon: '🚆',
+      labelKa: 'ტრანსპორტი და ლოგისტიკა',
+      labelEn: 'Transport & Logistics',
+      order: 6,
+      clients: [
+        'Tbilisi Branch of Rolling Stock Repair Plant',
+        'Railway Locomotive Repair Company "Georgia"',
+        'Vehicle Import Company "Global Auto Import"',
+        'Leading postal and courier services company',
+        'Courier service operator company',
+      ],
+    },
+    {
+      icon: '🏥',
+      labelKa: 'ჯანდაცვა და სამედიცინო ტექნიკა',
+      labelEn: 'Healthcare & MedTech',
+      order: 7,
+      clients: [
+        'David Tatishvili Medical Center',
+        'Importer of medical and cosmetology equipment',
+        'Other medical service entities',
+      ],
+    },
+    {
+      icon: '🎓',
+      labelKa: 'განათლება',
+      labelEn: 'Education',
+      order: 8,
+      clients: [
+        'Ken Walker International University',
+      ],
+    },
+    {
+      icon: '🛒',
+      labelKa: 'ვაჭრობა და რითეილი',
+      labelEn: 'Trade & Retail',
+      order: 9,
+      clients: [
+        'Retail chain "Gvirila"',
+        'Household appliances retail network',
+      ],
+    },
+    {
+      icon: '🏭',
+      labelKa: 'წარმოება და ინდუსტრია',
+      labelEn: 'Manufacturing & Industry',
+      order: 10,
+      clients: [
+        'Beer and soft drinks manufacturer',
+        'Confectionery manufacturer',
+        'Wood processing enterprise',
+        'Composite materials manufacturer',
+        'Paper cup manufacturer',
+      ],
+    },
+    {
+      icon: '🌍',
+      labelKa: 'საერთაშორისო ორგანიზაციები',
+      labelEn: 'International Organizations',
+      order: 11,
+      clients: [
+        'Japan International Cooperation Agency (JICA)',
+      ],
+    },
+  ]
+
+  for (const cat of clientCategories) {
+    const existing = await prisma.clientCategory.findFirst({
+      where: { labelEn: cat.labelEn },
+    })
+    if (!existing) {
+      const created = await prisma.clientCategory.create({
+        data: {
+          icon: cat.icon,
+          labelKa: cat.labelKa,
+          labelEn: cat.labelEn,
+          order: cat.order,
+          active: true,
+        },
+      })
+      for (let i = 0; i < cat.clients.length; i++) {
+        await prisma.client.create({
+          data: {
+            name: cat.clients[i],
+            categoryId: created.id,
+            order: i + 1,
+            active: true,
+          },
+        })
+      }
+    }
+  }
+
   console.log('Seed complete.')
 }
 
