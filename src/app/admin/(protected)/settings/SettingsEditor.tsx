@@ -145,6 +145,25 @@ export default function SettingsEditor({ grouped }: Props) {
   )
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
+  const [savingId, setSavingId] = useState<number | null>(null)
+  const [savedId, setSavedId] = useState<number | null>(null)
+
+  async function saveOne(id: number) {
+    setSavingId(id)
+    const val = values[id]
+    const res = await fetch('/api/admin/settings', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify([{ id, valueKa: val.valueKa, valueEn: val.valueEn }]),
+    })
+    setSavingId(null)
+    if (res.ok) {
+      setSavedId(id)
+      setTimeout(() => setSavedId(null), 2000)
+    } else {
+      alert('Failed to save')
+    }
+  }
 
   async function handleSaveAll() {
     setSaving(true)
@@ -190,7 +209,20 @@ export default function SettingsEditor({ grouped }: Props) {
           <div className="divide-y divide-gray-100">
             {grouped[cat].map((setting) => (
               <div key={setting.id} className="px-6 py-4">
-                <p className="text-xs text-secondary mb-2 font-mono">{setting.key}</p>
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-xs text-secondary font-mono">{setting.key}</p>
+                  <button
+                    onClick={() => saveOne(setting.id)}
+                    disabled={savingId === setting.id}
+                    className={`text-xs px-3 py-1 rounded transition-all duration-300 ${
+                      savedId === setting.id
+                        ? 'bg-green-100 text-green-700'
+                        : 'bg-gray-100 text-secondary hover:bg-gold hover:text-white'
+                    } disabled:opacity-50`}
+                  >
+                    {savingId === setting.id ? '...' : savedId === setting.id ? 'Saved!' : 'Save'}
+                  </button>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <RichTextInput
                     label="Georgian (KA)"
