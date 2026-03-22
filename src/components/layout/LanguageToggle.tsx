@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from '@/i18n/navigation'
 
 interface Props {
   locale: string
@@ -8,26 +8,27 @@ interface Props {
 
 export default function LanguageToggle({ locale }: Props) {
   const pathname = usePathname()
+  const router = useRouter()
 
-  const pathWithoutLocale = pathname.replace(/^\/en(\/|$)/, '/')
-  const kaHref = pathWithoutLocale || '/'
-  const enHref = `/en${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`
+  function switchTo(newLocale: 'ka' | 'en') {
+    router.replace(pathname, { locale: newLocale })
+  }
 
   return (
     <div className="flex items-center gap-1">
-      <a
-        href={kaHref}
+      <button
+        onClick={() => switchTo('ka')}
         className={`text-xs font-medium px-2 py-1 rounded transition-colors ${locale === 'ka' ? 'text-gold font-bold' : 'text-secondary hover:text-gold'}`}
       >
         KA
-      </a>
+      </button>
       <span className="text-secondary">|</span>
-      <a
-        href={enHref}
+      <button
+        onClick={() => switchTo('en')}
         className={`text-xs font-medium px-2 py-1 rounded transition-colors ${locale === 'en' ? 'text-gold font-bold' : 'text-secondary hover:text-gold'}`}
       >
         EN
-      </a>
+      </button>
     </div>
   )
 }
