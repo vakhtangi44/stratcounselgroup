@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model BlogPost {
+  id          Int           @id @default(autoincrement())
+  slug        String        @unique
+  titleKa     String
+  titleEn     String
+  contentKa   String        @db.Text
+  contentEn   String        @db.Text
+  excerptKa   String
+  excerptEn   String
+  coverImage  String?
+  status      String        @default("draft")
+  publishedAt DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  authorId    Int?
+  author      TeamMember?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  tags        BlogPostTag[]
+}
+
+model BlogPostTag {
+  id           Int      @id @default(autoincrement())
+  postId       Int
+  post         BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  practiceArea String
+}
+
+model TeamMember {
+  id            Int        @id @default(autoincrement())
+  slug          String     @unique
+  nameKa        String
+  nameEn        String
+  titleKa       String
+  titleEn       String
+  gbaNumber     String?
+  photo         String?
+  shortBioKa    String
+  shortBioEn    String
+  fullBioKa     String     @db.Text
+  fullBioEn     String     @db.Text
+  practiceAreas String[]
+  isFeatured    Boolean    @default(false)
+  order         Int        @default(0)
+  active        Boolean    @default(true)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  posts         BlogPost[]
+}
+
+model Testimonial {
+  id           Int      @id @default(autoincrement())
+  clientName   String
+  quoteKa      String   @db.Text
+  quoteEn      String   @db.Text
+  rating       Int      @default(5)
+  practiceArea String?
+  date         DateTime @default(now())
+  active       Boolean  @default(true)
+}
+
+model FAQ {
+  id           Int      @id @default(autoincrement())
+  questionKa   String
+  questionEn   String
+  answerKa     String   @db.Text
+  answerEn     String   @db.Text
+  practiceArea String
+  order        Int      @default(0)
+  active       Boolean  @default(true)
+}
+
+model Statistic {
+  id      Int    @id @default(autoincrement())
+  key     String @unique
+  labelKa String
+  labelEn String
+  value   String
+  suffix  String @default("+")
+}
+
+model PressItem {
+  id         Int      @id @default(autoincrement())
+  outletName String
+  outletLogo String?
+  headlineKa String
+  headlineEn String
+  articleUrl String
+  date       DateTime
+  active     Boolean  @default(true)
+}
+
+model GlossaryTerm {
+  id           Int     @id @default(autoincrement())
+  termKa       String
+  termEn       String
+  definitionKa String  @db.Text
+  definitionEn String  @db.Text
+  active       Boolean @default(true)
+}
+
+model NewsletterSubscriber {
+  id               Int      @id @default(autoincrement())
+  email            String   @unique
+  active           Boolean  @default(true)
+  unsubscribeToken String   @unique @default(uuid())
+  subscribedAt     DateTime @default(now())
+}
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String   @db.Text
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model AdminUser {
+  id           Int       @id @default(autoincrement())
+  email        String    @unique
+  passwordHash String
+  lastLoginAt  DateTime?
+}

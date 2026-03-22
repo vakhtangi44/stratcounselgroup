@@ -10,14 +10,14 @@ const handleAuth = auth((req) => {
   const { pathname } = req.nextUrl
 
   // Allow the login page through without an auth check
-  if (pathname === '/admin/login') {
+  if (pathname === '/admin/login' || pathname.endsWith('/admin/login')) {
     return NextResponse.next()
   }
 
   // If no session, redirect to login
   if (!req.auth) {
     const loginUrl = new URL('/admin/login', req.url)
-    loginUrl.searchParams.set('callbackUrl', req.url)
+    loginUrl.searchParams.set('callbackUrl', req.nextUrl.pathname)
     return NextResponse.redirect(loginUrl)
   }
 

@@ -26,10 +26,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         if (!valid) return null
 
-        await db.adminUser.update({
-          where: { id: admin.id },
-          data: { lastLoginAt: new Date() },
-        })
+        try {
+          await db.adminUser.update({
+            where: { id: admin.id },
+            data: { lastLoginAt: new Date() },
+          })
+        } catch {
+          // non-fatal: audit write failed, login still succeeds
+        }
 
         return { id: String(admin.id), email: admin.email }
       },
@@ -41,10 +45,5 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   session: {
     strategy: 'jwt',
     maxAge: 24 * 60 * 60, // 24 hours
-  },
-  callbacks: {
-    authorized({ auth }) {
-      return !!auth
-    },
   },
 })

@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "practiceAreas": "Practice Areas",
+    "blog": "Blog",
+    "team": "Our Team",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "glossary": "Glossary",
+    "press": "Press"
+  },
+  "hero": {
+    "cta1": "Book Consultation",
+    "cta2": "Our Services"
+  },
+  "contact": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send",
+    "success": "Your message has been sent!"
+  },
+  "footer": {
+    "newsletter": "Subscribe to updates",
+    "subscribe": "Subscribe",
+    "rights": "All rights reserved"
+  },
+  "common": {
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "minutes": "min read",
+    "loading": "Loading..."
+  }
+}
