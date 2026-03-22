@@ -14,7 +14,8 @@ export default async function Hero({ locale, strings }: { locale: string; string
   const prefix = locale === 'en' ? '/en' : ''
 
   const headline = strings.heading
-  const words = headline.split(' ')
+  const hasHtml = /<[a-z][\s\S]*>/i.test(headline)
+  const words = hasHtml ? [] : headline.split(' ')
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-navy overflow-hidden">
@@ -47,14 +48,23 @@ export default async function Hero({ locale, strings }: { locale: string; string
         </div>
 
         <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] tracking-[-0.02em]">
-          {words.map((word, i) => (
+          {hasHtml ? (
             <RichText
-              key={i}
-              html={word}
-              className="inline-block opacity-0 animate-slide-up-elegant mr-[0.3em]"
-              style={{ animationDelay: `${800 + i * 200}ms`, animationFillMode: 'forwards' }}
+              html={headline}
+              className="opacity-0 animate-slide-up-elegant"
+              style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}
             />
-          ))}
+          ) : (
+            words.map((word, i) => (
+              <span
+                key={i}
+                className="inline-block opacity-0 animate-slide-up-elegant mr-[0.3em]"
+                style={{ animationDelay: `${800 + i * 200}ms`, animationFillMode: 'forwards' }}
+              >
+                {word}
+              </span>
+            ))
+          )}
         </h1>
 
         <RichText html={strings.subtitle} as="p" className="text-white/60 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light opacity-0 animate-slide-up-elegant" style={{ animationDelay: '1400ms', animationFillMode: 'forwards' }} />

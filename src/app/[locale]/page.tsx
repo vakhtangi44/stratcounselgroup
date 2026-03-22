@@ -9,6 +9,7 @@ import BlogPreview from '@/components/sections/BlogPreview'
 import PressStrip from '@/components/sections/PressStrip'
 import PracticeAreasGrid from '@/components/sections/PracticeAreasGrid'
 import TrustedBy from '@/components/sections/TrustedBy'
+import ServicesPreview from '@/components/sections/ServicesPreview'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -37,7 +38,7 @@ export default async function HomePage() {
   const locale = await getLocale()
   const settings = await getSettings()
 
-  const [stats, teamMembers, testimonials, blogPosts, pressItems, clientCategories] = await Promise.all([
+  const [stats, teamMembers, testimonials, blogPosts, pressItems, clientCategories, services] = await Promise.all([
     db.statistic.findMany(),
     db.teamMember.findMany({
       where: { active: true, isFeatured: true },
@@ -55,6 +56,11 @@ export default async function HomePage() {
       where: { active: true },
       orderBy: { order: 'asc' },
       include: { clients: { where: { active: true }, orderBy: { order: 'asc' } } },
+    }),
+    db.service.findMany({
+      where: { active: true },
+      orderBy: { order: 'asc' },
+      include: { items: { orderBy: { order: 'asc' } } },
     }),
   ])
 
@@ -89,6 +95,7 @@ export default async function HomePage() {
         title: s(settings, 'section.practiceAreas', locale),
         description: s(settings, 'section.practiceAreas.description', locale),
       }} />
+      {services.length > 0 && <ServicesPreview services={services} locale={locale} />}
       <StatsSection stats={stats} locale={locale} />
       <TeamPreview members={teamMembers} locale={locale} strings={{
         subtitle: s(settings, 'section.ourTeam.subtitle', locale),

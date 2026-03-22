@@ -32,6 +32,7 @@ export default function Header({ locale }: Props) {
   const navLinks = [
     { href: `${prefix}/about`, label: t('about') },
     { href: `${prefix}/practice-areas`, label: t('practiceAreas') },
+    { href: `${prefix}/services`, label: t('services') },
     { href: `${prefix}/blog`, label: t('blog') },
     { href: `${prefix}/team`, label: t('team') },
     { href: `${prefix}/#clients`, label: t('clients') },

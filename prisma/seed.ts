@@ -1070,6 +1070,72 @@ async function main() {
     }
   }
 
+  // --- Services ---
+  const services = [
+    {
+      titleKa: 'I. წინასახელშეკრულებო ეტაპი — მოლაპარაკება და ხელშეკრულების გაფორმება',
+      titleEn: 'I. Pre-Contractual Stage — Negotiation and Contract Conclusion',
+      descriptionKa: 'ჩვენ ვმართავთ პროცესს იქიდან, სადაც იქმნება რისკი - მოლაპარაკების მაგიდიდან.',
+      descriptionEn: 'We manage the process from the point where the risk arises — at the negotiation table.',
+      order: 1,
+      items: [
+        { textKa: 'კომუნიკაციის სამართლებრივი პროტოკოლის შემუშავება და კონტროლი', textEn: 'Development and control of a legal communication protocol', order: 1 },
+        { textKa: 'სტრატეგიულად მნიშვნელოვანი კორესპონდენციის მომზადება და წარმოება', textEn: 'Preparation and management of strategically important correspondence', order: 2 },
+        { textKa: 'ხელშეკრულებების იურიდიული მოდელირება და სახელშეკრულებო არქიტექტურის შექმნა', textEn: 'Legal modeling of contracts and creation of contractual architecture', order: 3 },
+        { textKa: 'რისკების იდენტიფიცირება და პრევენციული მექანიზმების ინტეგრირება ხელშეკრულებაში', textEn: 'Identification of risks and integration of preventive mechanisms into the contract', order: 4 },
+      ],
+    },
+    {
+      titleKa: 'II. დავის დაწყებამდე — სამართლებრივი პოზიციის სტრატეგიული მომზადება',
+      titleEn: 'II. Before the Dispute — Strategic Preparation of Legal Position',
+      descriptionKa: 'დავა იწყება ბევრად ადრე, ვიდრე ის სასამართლოში გადავა. ჩვენი მიზანია — დავაში შესვლამდე კლიენტი უკვე იყოს ნახევრად გამარჯვებული.',
+      descriptionEn: 'A dispute begins long before it reaches court. Our goal is for the client to be half-victorious before entering the dispute.',
+      order: 2,
+      items: [
+        { textKa: 'სამოქმედო სტრატეგიის შემუშავება', textEn: 'Development of an action strategy', order: 1 },
+        { textKa: 'საჩივრების სტრუქტურირება', textEn: 'Structuring of claims', order: 2 },
+        { textKa: 'საქმის ძლიერი და სუსტი მხარეების იდენტიფიცირება და კომპლექსური ანალიზი', textEn: 'Identification and comprehensive analysis of strengths and weaknesses', order: 3 },
+        { textKa: 'მტკიცებულებების მოძიება, ორგანიზება და შეფასება', textEn: 'Collection, organization, and evaluation of evidence', order: 4 },
+        { textKa: 'შესაძლო ზიანის კალკულაცია და ფინანსური რისკების შეფასება', textEn: 'Calculation of potential damages and assessment of financial risks', order: 5 },
+        { textKa: 'სამართლებრივი პოზიციის ფორმირება და არგუმენტირება', textEn: 'Formation and substantiation of the legal position', order: 6 },
+      ],
+    },
+    {
+      titleKa: 'III. სამართლებრივი დავის წარმოება — სრულმასშტაბიანი წარმომადგენლობა',
+      titleEn: 'III. Legal Dispute Resolution — Full-Scale Representation',
+      descriptionKa: 'ჩვენ უზრუნველვყოფთ კლიენტის ინტერესების მაღალკვალიფიციურ დაცვას ყველა ინსტანციაში.',
+      descriptionEn: 'We ensure highly qualified protection of client interests in all instances.',
+      order: 3,
+      items: [
+        { textKa: 'წარმომადგენლობა სამოქალაქო, ადმინისტრაციულ და სისხლის სამართლის საქმეებზე', textEn: 'Representation in civil, administrative, and criminal cases', order: 1 },
+        { textKa: 'სახელმწიფო შესყიდვებთან დაკავშირებული დავების წარმოება', textEn: 'Handling disputes related to public procurement', order: 2 },
+        { textKa: 'ფინანსური სანქციების გასაჩივრება', textEn: 'Appeal of financial sanctions', order: 3 },
+        { textKa: 'ქონებაზე ყადაღის გაუქმებასთან დაკავშირებული სამართლებრივი პროცესები', textEn: 'Legal proceedings related to lifting of seizure over property', order: 4 },
+        { textKa: 'ზიანის ანაზღაურების მოთხოვნები (მათ შორის, სახელმწიფოს მიმართ)', textEn: 'Claims for damages (including against the state)', order: 5 },
+        { textKa: 'სრული საპროცესო დოკუმენტაციის მომზადება (სარჩელები, შესაგებლები, შუამდგომლობები და სხვა)', textEn: 'Preparation of full procedural documentation (claims, responses, motions, etc.)', order: 6 },
+      ],
+    },
+  ]
+
+  for (const svc of services) {
+    const existing = await prisma.service.findFirst({ where: { titleEn: svc.titleEn } })
+    if (!existing) {
+      await prisma.service.create({
+        data: {
+          titleKa: svc.titleKa,
+          titleEn: svc.titleEn,
+          descriptionKa: svc.descriptionKa,
+          descriptionEn: svc.descriptionEn,
+          order: svc.order,
+          active: true,
+          items: {
+            create: svc.items,
+          },
+        },
+      })
+    }
+  }
+
   console.log('Seed complete.')
 }
 

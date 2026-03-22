@@ -168,3 +168,23 @@ model Client {
   order      Int            @default(0)
   active     Boolean        @default(true)
 }
+
+model Service {
+  id            Int           @id @default(autoincrement())
+  titleKa       String
+  titleEn       String
+  descriptionKa String        @db.Text
+  descriptionEn String        @db.Text
+  items         ServiceItem[]
+  order         Int           @default(0)
+  active        Boolean       @default(true)
+}
+
+model ServiceItem {
+  id        Int     @id @default(autoincrement())
+  textKa    String
+  textEn    String
+  serviceId Int
+  service   Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  order     Int     @default(0)
+}

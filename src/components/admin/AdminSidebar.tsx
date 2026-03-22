@@ -24,6 +24,7 @@ const sections = [
     links: [
       { href: '/admin/advantages', label: 'Why Us' },
       { href: '/admin/clients', label: 'Our Clients' },
+      { href: '/admin/services', label: 'Services' },
       { href: '/admin/settings', label: 'Site Strings' },
     ],
   },
