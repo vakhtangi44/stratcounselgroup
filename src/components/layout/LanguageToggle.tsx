@@ -1,6 +1,7 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 interface Props {
   locale: string
@@ -8,34 +9,29 @@ interface Props {
 
 export default function LanguageToggle({ locale }: Props) {
   const pathname = usePathname()
-  const router = useRouter()
 
-  function toggle() {
-    if (locale === 'ka') {
-      // Going from Georgian (no prefix) to English (/en/...)
-      router.push(`/en${pathname}`)
-    } else {
-      // Going from English (/en/...) to Georgian (remove /en)
-      const newPath = pathname.replace(/^\/en(\/|$)/, '/')
-      router.push(newPath || '/')
-    }
-  }
+  // Build the path for each locale
+  const pathWithoutLocale = pathname.replace(/^\/en(\/|$)/, '/')
+  const kaHref = pathWithoutLocale || '/'
+  const enHref = `/en${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`
 
   return (
     <div className="flex items-center gap-1">
-      <button
-        onClick={() => locale !== 'ka' && toggle()}
+      <Link
+        href={kaHref}
+        locale="ka"
         className={`text-xs font-medium px-2 py-1 rounded transition-colors ${locale === 'ka' ? 'text-gold font-bold' : 'text-secondary hover:text-gold'}`}
       >
         KA
-      </button>
+      </Link>
       <span className="text-secondary">|</span>
-      <button
-        onClick={() => locale !== 'en' && toggle()}
+      <Link
+        href={enHref}
+        locale="en"
         className={`text-xs font-medium px-2 py-1 rounded transition-colors ${locale === 'en' ? 'text-gold font-bold' : 'text-secondary hover:text-gold'}`}
       >
         EN
-      </button>
+      </Link>
     </div>
   )
 }
