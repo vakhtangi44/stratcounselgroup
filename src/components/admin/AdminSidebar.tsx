@@ -5,20 +5,35 @@ import { usePathname } from 'next/navigation'
 import { signOut } from 'next-auth/react'
 import { cn } from '@/lib/utils'
 
-const links = [
-  { href: '/admin', label: 'Dashboard' },
-  { href: '/admin/blog', label: 'Blog Posts' },
-  { href: '/admin/team', label: 'Team' },
-  { href: '/admin/testimonials', label: 'Testimonials' },
-  { href: '/admin/faq', label: 'FAQ' },
-  { href: '/admin/advantages', label: 'Advantages' },
-  { href: '/admin/clients', label: 'Clients' },
-  { href: '/admin/glossary', label: 'Glossary' },
-  { href: '/admin/press', label: 'Press' },
-  { href: '/admin/stats', label: 'Statistics' },
-  { href: '/admin/newsletter', label: 'Newsletter' },
-  { href: '/admin/messages', label: 'Messages' },
-  { href: '/admin/settings', label: 'Settings' },
+const sections = [
+  {
+    label: 'Content',
+    links: [
+      { href: '/admin', label: 'Dashboard' },
+      { href: '/admin/blog', label: 'Blog Posts' },
+      { href: '/admin/team', label: 'Team' },
+      { href: '/admin/testimonials', label: 'Testimonials' },
+      { href: '/admin/faq', label: 'FAQ' },
+      { href: '/admin/glossary', label: 'Glossary' },
+      { href: '/admin/press', label: 'Press' },
+      { href: '/admin/stats', label: 'Statistics' },
+    ],
+  },
+  {
+    label: 'Site Management',
+    links: [
+      { href: '/admin/advantages', label: 'Why Us' },
+      { href: '/admin/clients', label: 'Our Clients' },
+      { href: '/admin/settings', label: 'Site Strings' },
+    ],
+  },
+  {
+    label: 'Communication',
+    links: [
+      { href: '/admin/newsletter', label: 'Newsletter' },
+      { href: '/admin/messages', label: 'Messages' },
+    ],
+  },
 ]
 
 export default function AdminSidebar() {
@@ -29,20 +44,29 @@ export default function AdminSidebar() {
       <div className="p-6 border-b border-white/10">
         <p className="font-heading text-lg text-gold">SCG Admin</p>
       </div>
-      <nav className="flex-1 p-4 space-y-1">
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={cn(
-              'block px-3 py-2 rounded text-sm transition-colors',
-              pathname === link.href
-                ? 'bg-gold text-white'
-                : 'text-white/70 hover:text-white hover:bg-white/10'
-            )}
-          >
-            {link.label}
-          </Link>
+      <nav className="flex-1 p-4 space-y-6 overflow-y-auto">
+        {sections.map((section) => (
+          <div key={section.label}>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 px-3 mb-2">
+              {section.label}
+            </p>
+            <div className="space-y-0.5">
+              {section.links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    'block px-3 py-2 rounded text-sm transition-colors',
+                    pathname === link.href || (link.href !== '/admin' && pathname.startsWith(link.href))
+                      ? 'bg-gold text-white'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
         ))}
       </nav>
       <div className="p-4 border-t border-white/10">
