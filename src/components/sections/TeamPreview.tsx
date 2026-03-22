@@ -1,10 +1,20 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { TeamMember } from '@prisma/client'
+import ScrollReveal from '@/components/ui/ScrollReveal'
 
 interface Props {
   members: TeamMember[]
   locale: string
+}
+
+function getInitials(name: string): string {
+  return name
+    .split(' ')
+    .map((w) => w[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase()
 }
 
 export default function TeamPreview({ members, locale }: Props) {
@@ -12,37 +22,66 @@ export default function TeamPreview({ members, locale }: Props) {
   if (members.length === 0) return null
 
   return (
-    <section className="py-16 bg-bg-alt">
-      <div className="container mx-auto px-4">
-        <h2 className="font-heading text-3xl text-dark text-center mb-12">
-          {locale === 'ka' ? 'ჩვენი გუნდი' : 'Our Team'}
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {members.map((member) => (
-            <Link key={member.id} href={`${prefix}/team/${member.slug}`} className="group text-center">
-              <div className="relative w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 bg-gray-200">
-                {member.photo ? (
-                  <Image src={member.photo} alt={member.nameEn} fill className="object-cover" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-4xl text-gray-400">
-                    👤
-                  </div>
-                )}
-              </div>
-              <p className="font-heading text-lg text-dark group-hover:text-gold transition-colors">
-                {locale === 'ka' ? member.nameKa : member.nameEn}
-              </p>
-              <p className="text-sm text-secondary mt-1">
-                {locale === 'ka' ? member.titleKa : member.titleEn}
-              </p>
-            </Link>
+    <section className="py-20 md:py-28 bg-cream">
+      <div className="container mx-auto px-4 lg:px-8">
+        <ScrollReveal className="text-center mb-16">
+          <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
+            {locale === 'ka' ? 'პროფესიონალები' : 'Professionals'}
+          </p>
+          <h2 className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block">
+            {locale === 'ka' ? 'ჩვენი გუნდი' : 'Our Team'}
+          </h2>
+        </ScrollReveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          {members.map((member, i) => (
+            <ScrollReveal key={member.id} delay={i * 150}>
+              <Link
+                href={`${prefix}/team/${member.slug}`}
+                className="group block bg-white overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-dark/5"
+              >
+                <div className="relative h-80 bg-bg-alt overflow-hidden">
+                  {member.photo ? (
+                    <Image
+                      src={member.photo}
+                      alt={locale === 'ka' ? member.nameKa : member.nameEn}
+                      fill
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-dark to-navy">
+                      <span className="font-heading text-4xl text-gold/40 tracking-wider">
+                        {getInitials(member.nameEn)}
+                      </span>
+                    </div>
+                  )}
+                  {/* Gold border on hover at bottom */}
+                  <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                </div>
+                <div className="p-6 border-l-2 border-transparent group-hover:border-gold transition-colors duration-500">
+                  <p className="font-heading text-lg text-dark group-hover:text-gold transition-colors duration-300">
+                    {locale === 'ka' ? member.nameKa : member.nameEn}
+                  </p>
+                  <p className="text-secondary text-sm mt-1 font-light tracking-wide">
+                    {locale === 'ka' ? member.titleKa : member.titleEn}
+                  </p>
+                </div>
+              </Link>
+            </ScrollReveal>
           ))}
         </div>
-        <div className="text-center mt-10">
-          <Link href={`${prefix}/team`} className="text-gold hover:underline text-sm font-medium">
-            {locale === 'ka' ? 'მთელი გუნდი →' : 'Meet the full team →'}
+
+        <ScrollReveal className="text-center mt-14">
+          <Link
+            href={`${prefix}/team`}
+            className="inline-flex items-center gap-2 text-gold hover:text-gold-dark text-sm font-medium uppercase tracking-[0.15em] transition-colors duration-300"
+          >
+            {locale === 'ka' ? 'მთელი გუნდი' : 'Meet the full team'}
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </Link>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   )
