@@ -4,9 +4,7 @@ import Link from 'next/link'
 import { PRACTICE_AREAS, getPracticeArea } from '@/lib/practice-areas'
 import { db } from '@/lib/db'
 
-export async function generateStaticParams() {
-  return PRACTICE_AREAS.map((area) => ({ slug: area.slug }))
-}
+export const dynamic = 'force-dynamic'
 
 export default async function PracticeAreaPage({
   params,
@@ -21,7 +19,7 @@ export default async function PracticeAreaPage({
   const area = getPracticeArea(slug)
   if (!area) notFound()
 
-  const [relatedPosts, relatedFaq] = await Promise.all([
+  const [relatedPosts, relatedFaq]: [Array<{ id: number; slug: string; titleKa: string; titleEn: string }>, Array<{ id: number; questionKa: string; questionEn: string; answerKa: string; answerEn: string }>] = await Promise.all([
     db.blogPost.findMany({
       where: { status: 'published', tags: { some: { practiceArea: slug } } },
       orderBy: { publishedAt: 'desc' },
@@ -34,7 +32,7 @@ export default async function PracticeAreaPage({
   ])
 
   return (
-    <div className="pt-16">
+    <div className="pt-20">
       <section className="bg-dark text-white py-24 px-4">
         <div className="container mx-auto max-w-4xl">
           <span className="text-5xl block mb-6">{area.icon}</span>
