@@ -7,6 +7,7 @@ import TestimonialsCarousel from '@/components/sections/TestimonialsCarousel'
 import BlogPreview from '@/components/sections/BlogPreview'
 import PressStrip from '@/components/sections/PressStrip'
 import PracticeAreasGrid from '@/components/sections/PracticeAreasGrid'
+import TrustedBy from '@/components/sections/TrustedBy'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -56,6 +57,7 @@ export default async function HomePage() {
       <PracticeAreasGrid locale={locale} />
       <StatsSection stats={stats} locale={locale} />
       <TeamPreview members={teamMembers} locale={locale} />
+      <TrustedBy locale={locale} />
       <TestimonialsCarousel testimonials={testimonials} locale={locale} />
       <BlogPreview posts={blogPosts} locale={locale} />
       <PressStrip items={pressItems} />
