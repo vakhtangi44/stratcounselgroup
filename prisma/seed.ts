@@ -241,17 +241,7 @@ async function main() {
     const { tags, ...postData } = post
     const upserted = await prisma.blogPost.upsert({
       where: { slug: post.slug },
-      update: {
-        titleKa: postData.titleKa,
-        titleEn: postData.titleEn,
-        contentKa: postData.contentKa,
-        contentEn: postData.contentEn,
-        excerptKa: postData.excerptKa,
-        excerptEn: postData.excerptEn,
-        status: postData.status,
-        publishedAt: postData.publishedAt,
-        authorId: postData.authorId,
-      },
+      update: {},
       create: {
         slug: postData.slug,
         titleKa: postData.titleKa,
@@ -269,17 +259,9 @@ async function main() {
       },
     })
 
-    // On update, sync tags: delete existing and recreate
-    const existingTags = await prisma.blogPostTag.findMany({
-      where: { postId: upserted.id },
-    })
-    const existingSlugs = existingTags.map((t) => t.practiceArea)
-    const tagsMatch =
-      existingSlugs.length === tags.length &&
-      tags.every((t) => existingSlugs.includes(t))
-
-    if (!tagsMatch) {
-      await prisma.blogPostTag.deleteMany({ where: { postId: upserted.id } })
+    // Only create tags if none exist (new post)
+    const existingTags = await prisma.blogPostTag.count({ where: { postId: upserted.id } })
+    if (existingTags === 0) {
       await prisma.blogPostTag.createMany({
         data: tags.map((practiceArea) => ({
           postId: upserted.id,
