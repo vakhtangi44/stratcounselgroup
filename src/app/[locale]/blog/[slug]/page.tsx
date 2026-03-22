@@ -22,7 +22,7 @@ export default async function BlogPostPage({
   })
   if (!post) notFound()
 
-  const relatedPosts = await db.blogPost.findMany({
+  const relatedPosts: Array<{ id: string; slug: string; titleKa: string; titleEn: string }> = await db.blogPost.findMany({
     where: {
       status: 'published',
       id: { not: post.id },
