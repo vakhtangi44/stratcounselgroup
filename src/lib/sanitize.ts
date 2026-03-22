@@ -1,13 +1,4 @@
 import DOMPurify from 'isomorphic-dompurify'
-import { JSDOM } from 'jsdom'
-
-type WindowLike = Pick<
-  typeof globalThis,
-  'NodeFilter' | 'Node' | 'Element' | 'HTMLTemplateElement' | 'DocumentFragment' | 'HTMLFormElement' | 'DOMParser' | 'NamedNodeMap'
->
-
-const { window } = new JSDOM('')
-const purify = DOMPurify(window as unknown as WindowLike)
 
 const ALLOWED_TAGS = [
   'p', 'br', 'strong', 'em', 'u', 's', 'h1', 'h2', 'h3', 'h4',
@@ -16,8 +7,20 @@ const ALLOWED_TAGS = [
 
 const ALLOWED_ATTR = ['href', 'src', 'alt', 'target', 'rel', 'class']
 
+let purify: ReturnType<typeof DOMPurify> | null = null
+
+function getPurify() {
+  if (!purify) {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { JSDOM } = require('jsdom') as typeof import('jsdom')
+    const { window } = new JSDOM('')
+    purify = DOMPurify(window as unknown as Window)
+  }
+  return purify
+}
+
 export function sanitizeHtml(dirty: string): string {
-  return purify.sanitize(dirty, {
+  return getPurify().sanitize(dirty, {
     ALLOWED_TAGS,
     ALLOWED_ATTR,
     FORCE_BODY: true,
