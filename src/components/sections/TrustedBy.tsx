@@ -8,74 +8,80 @@ interface Props {
 
 const CLIENT_CATEGORIES = [
   {
-    iconKa: '🏗️',
+    icon: '🏗️',
     labelKa: 'მშენებლობა და ინფრასტრუქტურა',
     labelEn: 'Construction & Infrastructure',
     clients: [
       'Caucasus Road Project (CRP)',
-      'Dagi',
-      'GES',
-      'Redix Group',
-      'M Capital',
-      'Radius Construction',
+      'Construction Company "Dagi"',
+      'Design and Construction Company "GES"',
+      'Construction Company "Redix Group"',
+      'Construction Company "M Capital"',
+      'Construction Company "Radius Construction"',
     ],
   },
   {
-    iconKa: '🏛️',
+    icon: '🏛️',
     labelKa: 'არქიტექტურა და დიზაინი',
     labelEn: 'Architecture & Design',
     clients: [
-      'Studio 9',
+      'Architectural Design Company "Studio 9"',
       'Caucasus Science and Engineering',
     ],
   },
   {
-    iconKa: '⛽',
-    labelKa: 'ენერგეტიკა',
+    icon: '⛽',
+    labelKa: 'ენერგეტიკა და რესურსები',
     labelEn: 'Energy & Resources',
     clients: [
       'British Petroleum (BP)',
       'Georgian Investment Group',
+      'Oil products supplying company',
     ],
   },
   {
-    iconKa: '💰',
+    icon: '💰',
     labelKa: 'საფინანსო სექტორი',
     labelEn: 'Financial Sector',
     clients: [
-      'Rico Group',
-      'EasyCredit Georgia',
+      'Microfinance Organization "Rico Group"',
+      'Microfinance Organization "EasyCredit Georgia"',
     ],
   },
   {
-    iconKa: '🏨',
+    icon: '🏨',
     labelKa: 'ტურიზმი',
     labelEn: 'Tourism & Hospitality',
     clients: [
-      'Paragraph Resort & Spa Shekvetili',
-      'Best Western Gudauri',
-      'Sololaki Hills',
+      'Hotel "Paragraph Resort & Spa Shekvetili"',
+      'Hotel "Best Western Gudauri"',
+      'Hotel "Sololaki Hills"',
     ],
   },
   {
-    iconKa: '🚆',
+    icon: '🚆',
     labelKa: 'ტრანსპორტი და ლოგისტიკა',
     labelEn: 'Transport & Logistics',
     clients: [
-      'Global Auto Import',
-      'Georgia Post',
+      'Tbilisi Branch of Rolling Stock Repair Plant',
+      'Railway Locomotive Repair Company "Georgia"',
+      'Vehicle Import Company "Global Auto Import"',
+      'Leading postal and courier services company',
+      'Courier service operator company',
     ],
   },
   {
-    iconKa: '🏥',
-    labelKa: 'ჯანდაცვა',
-    labelEn: 'Healthcare',
+    icon: '🏥',
+    labelKa: 'ჯანდაცვა და სამედიცინო ტექნიკა',
+    labelEn: 'Healthcare & MedTech',
     clients: [
       'David Tatishvili Medical Center',
+      'Importer of medical and cosmetology equipment',
+      'Other medical service entities',
     ],
   },
   {
-    iconKa: '🎓',
+    icon: '🎓',
     labelKa: 'განათლება',
     labelEn: 'Education',
     clients: [
@@ -83,19 +89,32 @@ const CLIENT_CATEGORIES = [
     ],
   },
   {
-    iconKa: '🛒',
-    labelKa: 'ვაჭრობა და წარმოება',
-    labelEn: 'Trade & Manufacturing',
+    icon: '🛒',
+    labelKa: 'ვაჭრობა და რითეილი',
+    labelEn: 'Trade & Retail',
     clients: [
-      'Gvirila Retail',
+      'Retail chain "Gvirila"',
+      'Household appliances retail network',
     ],
   },
   {
-    iconKa: '🌍',
+    icon: '🏭',
+    labelKa: 'წარმოება და ინდუსტრია',
+    labelEn: 'Manufacturing & Industry',
+    clients: [
+      'Beer and soft drinks manufacturer',
+      'Confectionery manufacturer',
+      'Wood processing enterprise',
+      'Composite materials manufacturer',
+      'Paper cup manufacturer',
+    ],
+  },
+  {
+    icon: '🌍',
     labelKa: 'საერთაშორისო ორგანიზაციები',
     labelEn: 'International Organizations',
     clients: [
-      'JICA (Japan International Cooperation Agency)',
+      'Japan International Cooperation Agency (JICA)',
     ],
   },
 ]
@@ -127,7 +146,7 @@ export default function TrustedBy({ locale }: Props) {
           {CLIENT_CATEGORIES.map((category, idx) => (
             <ScrollReveal key={category.labelEn} delay={idx * 80}>
               <div className="border border-gray-100 p-6 hover:border-gold/30 hover:shadow-md transition-all duration-300 h-full group">
-                <div className="text-2xl mb-3">{category.iconKa}</div>
+                <div className="text-2xl mb-3">{category.icon}</div>
                 <h3 className="font-heading text-sm text-dark mb-4 group-hover:text-gold transition-colors duration-300">
                   {isKa ? category.labelKa : category.labelEn}
                 </h3>
