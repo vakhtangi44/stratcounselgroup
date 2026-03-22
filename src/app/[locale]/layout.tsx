@@ -5,6 +5,7 @@ import { routing } from '@/i18n/routing'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Script from 'next/script'
+import { getSettings, s } from '@/lib/settings'
 
 export default async function LocaleLayout({
   children,
@@ -17,7 +18,8 @@ export default async function LocaleLayout({
 
   if (!routing.locales.includes(locale as 'ka' | 'en')) notFound()
 
-  const messages = await getMessages()
+  const [messages, settings] = await Promise.all([getMessages(), getSettings()])
+  const whatsapp = s(settings, 'contact.whatsapp', locale)
 
   return (
     <NextIntlClientProvider messages={messages}>
@@ -41,7 +43,7 @@ export default async function LocaleLayout({
       {/* WhatsApp + Telegram floating buttons */}
       <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
         <a
-          href="https://wa.me/995551553954"
+          href={`https://wa.me/${whatsapp}`}
           target="_blank"
           rel="noopener noreferrer"
           className="bg-green-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"

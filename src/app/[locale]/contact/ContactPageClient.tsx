@@ -97,8 +97,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
                   </div>
                   <div>
                     <p className="text-dark font-heading text-sm mb-1">{isKa ? 'ტელეფონი' : 'Phone'}</p>
-                    <a href="tel:+995551553954" className="text-secondary text-sm font-light hover:text-gold transition-colors duration-300">
-                      +995 551 55 39 54
+                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-secondary text-sm font-light hover:text-gold transition-colors duration-300">
+                      {strings.phone}
                     </a>
                   </div>
                 </div>
@@ -112,8 +112,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
                   </div>
                   <div>
                     <p className="text-dark font-heading text-sm mb-1">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
-                    <a href="mailto:info@stratcounselgroup.com" className="text-secondary text-sm font-light hover:text-gold transition-colors duration-300">
-                      info@stratcounselgroup.com
+                    <a href={`mailto:${strings.email}`} className="text-secondary text-sm font-light hover:text-gold transition-colors duration-300">
+                      {strings.email}
                     </a>
                   </div>
                 </div>

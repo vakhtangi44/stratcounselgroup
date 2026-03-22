@@ -16,6 +16,8 @@ export default async function ContactPage() {
     address: s(settings, 'contact.address', locale),
     workingHoursLabel: s(settings, 'contact.workingHours.label', locale),
     workingHours: s(settings, 'contact.workingHours', locale),
+    phone: s(settings, 'contact.phone', locale),
+    email: s(settings, 'contact.email', locale),
   }
 
   return <ContactPageClient locale={locale} strings={strings} />

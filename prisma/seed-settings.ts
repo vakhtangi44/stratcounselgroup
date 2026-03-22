@@ -63,6 +63,9 @@ const settings = [
   { key: 'contact.address', valueKa: 'თბილისი, დ.არაყიშვილის N3, ოფისი 71', valueEn: 'D. Arakishvili St. N3, Office 71, Tbilisi, Georgia', category: 'contact' },
   { key: 'contact.workingHours.label', valueKa: 'სამუშაო საათები', valueEn: 'Working Hours', category: 'contact' },
   { key: 'contact.workingHours', valueKa: 'ორშაბათი - პარასკევი: 10:00 - 19:00', valueEn: 'Monday - Friday: 10:00 - 19:00', category: 'contact' },
+  { key: 'contact.phone', valueKa: '+995 551 55 39 54', valueEn: '+995 551 55 39 54', category: 'contact' },
+  { key: 'contact.email', valueKa: 'info@stratcounselgroup.com', valueEn: 'info@stratcounselgroup.com', category: 'contact' },
+  { key: 'contact.whatsapp', valueKa: '995551553954', valueEn: '995551553954', category: 'contact' },
 
   // Footer
   { key: 'footer.tagline', valueKa: 'ხედვა. სტრატეგია. გავლენა.', valueEn: 'Insight. Strategy. Impact.', category: 'footer' },

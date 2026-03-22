@@ -61,13 +61,13 @@ export default async function Footer({ locale }: { locale: string }) {
                 <RichText html={s(settings, 'footer.address', locale)} />
               </a>
               <p>
-                <a href="tel:+995551553954" className="hover:text-gold transition-colors duration-300">
-                  +995 551 55 39 54
+                <a href={`tel:${s(settings, 'contact.phone', locale).replace(/\s/g, '')}`} className="hover:text-gold transition-colors duration-300">
+                  {s(settings, 'contact.phone', locale)}
                 </a>
               </p>
               <p>
-                <a href="mailto:info@stratcounselgroup.com" className="hover:text-gold transition-colors duration-300">
-                  info@stratcounselgroup.com
+                <a href={`mailto:${s(settings, 'contact.email', locale)}`} className="hover:text-gold transition-colors duration-300">
+                  {s(settings, 'contact.email', locale)}
                 </a>
               </p>
             </div>
