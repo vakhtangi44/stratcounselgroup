@@ -18,6 +18,7 @@ const links = [
   { href: '/admin/stats', label: 'Statistics' },
   { href: '/admin/newsletter', label: 'Newsletter' },
   { href: '/admin/messages', label: 'Messages' },
+  { href: '/admin/settings', label: 'Settings' },
 ]
 
 export default function AdminSidebar() {

@@ -3,9 +3,10 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 
 interface Props {
   items: PressItem[]
+  asSeenIn: string
 }
 
-export default function PressStrip({ items }: Props) {
+export default function PressStrip({ items, asSeenIn }: Props) {
   if (items.length === 0) return null
 
   return (
@@ -15,7 +16,7 @@ export default function PressStrip({ items }: Props) {
           <div className="flex items-center gap-4 mb-10">
             <div className="flex-1 h-px bg-gray-200" />
             <p className="text-[11px] text-secondary uppercase tracking-[0.3em] font-medium">
-              As Seen In
+              {asSeenIn}
             </p>
             <div className="flex-1 h-px bg-gray-200" />
           </div>

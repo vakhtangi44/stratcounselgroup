@@ -3,7 +3,16 @@ import { PRACTICE_AREAS } from '@/lib/practice-areas'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import GoldDivider from '@/components/ui/GoldDivider'
 
-export default function PracticeAreasGrid({ locale }: { locale: string }) {
+interface Props {
+  locale: string
+  strings: {
+    subtitle: string
+    title: string
+    description: string
+  }
+}
+
+export default function PracticeAreasGrid({ locale, strings }: Props) {
   const prefix = locale === 'en' ? '/en' : ''
 
   return (
@@ -11,15 +20,13 @@ export default function PracticeAreasGrid({ locale }: { locale: string }) {
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-16">
           <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-            {locale === 'ka' ? 'რას ვაკეთებთ' : 'What We Do'}
+            {strings.subtitle}
           </p>
           <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4 gold-underline inline-block">
-            {locale === 'ka' ? 'პრაქტიკის სფეროები' : 'Practice Areas'}
+            {strings.title}
           </h2>
           <p className="text-secondary mt-6 max-w-2xl mx-auto text-base leading-relaxed">
-            {locale === 'ka'
-              ? 'ჩვენ გთავაზობთ სრულყოფილ იურიდიულ მომსახურებას ბიზნესის ყველა ეტაპზე.'
-              : 'We provide comprehensive legal services at every stage of your business journey.'}
+            {strings.description}
           </p>
           <GoldDivider className="mt-8" />
         </ScrollReveal>

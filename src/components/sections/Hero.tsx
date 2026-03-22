@@ -1,13 +1,18 @@
-import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import HeroScrollIndicator from '@/components/ui/HeroScrollIndicator'
 import HeroAnimations from '@/components/ui/HeroAnimations'
 
-export default async function Hero({ locale }: { locale: string }) {
-  const t = await getTranslations('hero')
+interface HeroStrings {
+  heading: string
+  subtitle: string
+  cta1: string
+  cta2: string
+}
+
+export default async function Hero({ locale, strings }: { locale: string; strings: HeroStrings }) {
   const prefix = locale === 'en' ? '/en' : ''
 
-  const headline = locale === 'ka' ? 'ხედვა. სტრატეგია. გავლენა.' : 'Insight. Strategy. Impact.'
+  const headline = strings.heading
   const words = headline.split(' ')
 
   return (
@@ -53,9 +58,7 @@ export default async function Hero({ locale }: { locale: string }) {
         </h1>
 
         <p className="text-white/60 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light opacity-0 animate-slide-up-elegant" style={{ animationDelay: '1400ms', animationFillMode: 'forwards' }}>
-          {locale === 'ka'
-            ? 'მაღალკვალიფიციური იურისტებისა და აუდიტორების გუნდი 20 წელზე მეტი გამოცდილებით საჯარო და კერძო სექტორში.'
-            : 'A team of highly qualified lawyers and auditors with over 20 years of experience in public and private sectors.'}
+          {strings.subtitle}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-slide-up-elegant" style={{ animationDelay: '1800ms', animationFillMode: 'forwards' }}>
@@ -63,13 +66,13 @@ export default async function Hero({ locale }: { locale: string }) {
             href={`${prefix}/contact`}
             className="btn-gold-fill bg-gold text-white px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500 hover:shadow-lg hover:shadow-gold/20"
           >
-            {t('cta1')}
+            {strings.cta1}
           </Link>
           <Link
             href={`${prefix}/practice-areas`}
             className="border border-white/30 text-white hover:border-gold hover:text-gold px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500"
           >
-            {t('cta2')}
+            {strings.cta2}
           </Link>
         </div>
       </div>

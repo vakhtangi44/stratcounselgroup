@@ -114,6 +114,14 @@ model NewsletterSubscriber {
   subscribedAt     DateTime @default(now())
 }
 
+model SiteSetting {
+  id       Int    @id @default(autoincrement())
+  key      String @unique
+  valueKa  String @db.Text
+  valueEn  String @db.Text
+  category String @default("general")
+}
+
 model ContactMessage {
   id        Int      @id @default(autoincrement())
   name      String

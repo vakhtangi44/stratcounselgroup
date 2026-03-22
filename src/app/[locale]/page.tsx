@@ -1,5 +1,6 @@
 import { db } from '@/lib/db'
 import { getLocale } from 'next-intl/server'
+import { getSettings, s } from '@/lib/settings'
 import Hero from '@/components/sections/Hero'
 import StatsSection from '@/components/sections/StatsSection'
 import TeamPreview from '@/components/sections/TeamPreview'
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function HomePage() {
   const locale = await getLocale()
+  const settings = await getSettings()
 
   const [stats, teamMembers, testimonials, blogPosts, pressItems, clientCategories] = await Promise.all([
     db.statistic.findMany(),
@@ -56,16 +58,51 @@ export default async function HomePage() {
     }),
   ])
 
+  // Pre-resolve strings for client components
+  const heroStrings = {
+    heading: s(settings, 'hero.heading', locale),
+    subtitle: s(settings, 'hero.subtitle', locale),
+    cta1: s(settings, 'hero.cta1', locale),
+    cta2: s(settings, 'hero.cta2', locale),
+  }
+
+  const testimonialStrings = {
+    subtitle: s(settings, 'section.testimonials.subtitle', locale),
+    title: s(settings, 'section.testimonials', locale),
+  }
+
+  const trustedByStrings = {
+    subtitle: s(settings, 'section.trustedBy.subtitle', locale),
+    title: s(settings, 'section.trustedBy.title', locale),
+    description: s(settings, 'section.trustedBy.description', locale),
+    clients: s(settings, 'section.trustedBy.clients', locale),
+    sectors: s(settings, 'section.trustedBy.sectors', locale),
+    experience: s(settings, 'section.trustedBy.experience', locale),
+    confidentiality: s(settings, 'section.trustedBy.confidentiality', locale),
+  }
+
   return (
     <>
-      <Hero locale={locale} />
-      <PracticeAreasGrid locale={locale} />
+      <Hero locale={locale} strings={heroStrings} />
+      <PracticeAreasGrid locale={locale} strings={{
+        subtitle: s(settings, 'section.practiceAreas.subtitle', locale),
+        title: s(settings, 'section.practiceAreas', locale),
+        description: s(settings, 'section.practiceAreas.description', locale),
+      }} />
       <StatsSection stats={stats} locale={locale} />
-      <TeamPreview members={teamMembers} locale={locale} />
-      <TrustedBy locale={locale} categories={clientCategories} />
-      <TestimonialsCarousel testimonials={testimonials} locale={locale} />
-      <BlogPreview posts={blogPosts} locale={locale} />
-      <PressStrip items={pressItems} />
+      <TeamPreview members={teamMembers} locale={locale} strings={{
+        subtitle: s(settings, 'section.ourTeam.subtitle', locale),
+        title: s(settings, 'section.ourTeam', locale),
+        meetFullTeam: s(settings, 'section.meetFullTeam', locale),
+      }} />
+      <TrustedBy locale={locale} categories={clientCategories} strings={trustedByStrings} />
+      <TestimonialsCarousel testimonials={testimonials} locale={locale} strings={testimonialStrings} />
+      <BlogPreview posts={blogPosts} locale={locale} strings={{
+        subtitle: s(settings, 'section.latestArticles.subtitle', locale),
+        title: s(settings, 'section.latestArticles', locale),
+        allArticles: s(settings, 'section.allArticles', locale),
+      }} />
+      <PressStrip items={pressItems} asSeenIn={s(settings, 'section.asSeenIn', locale)} />
     </>
   )
 }

@@ -1,5 +1,6 @@
 import { db } from '@/lib/db'
 import { getLocale } from 'next-intl/server'
+import { getSettings, s } from '@/lib/settings'
 import Image from 'next/image'
 import { formatDate } from '@/lib/utils'
 
@@ -7,15 +8,18 @@ export default async function PressPage() {
   const locale = await getLocale()
   const isKa = locale === 'ka'
 
-  const items = await db.pressItem.findMany({
-    where: { active: true },
-    orderBy: { date: 'desc' },
-  })
+  const [items, settings] = await Promise.all([
+    db.pressItem.findMany({
+      where: { active: true },
+      orderBy: { date: 'desc' },
+    }),
+    getSettings(),
+  ])
 
   return (
     <div className="pt-16">
       <section className="bg-dark text-white py-24 text-center px-4">
-        <h1 className="font-heading text-4xl mb-4">{isKa ? 'პრესა' : 'Press'}</h1>
+        <h1 className="font-heading text-4xl mb-4">{s(settings, 'page.press', locale)}</h1>
       </section>
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-4xl space-y-6">

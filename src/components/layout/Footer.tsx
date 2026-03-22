@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import NewsletterForm from './NewsletterForm'
+import { getSettings, s } from '@/lib/settings'
 
-export default function Footer({ locale }: { locale: string }) {
+export default async function Footer({ locale }: { locale: string }) {
   const prefix = locale === 'en' ? '/en' : ''
   const isKa = locale === 'ka'
+  const settings = await getSettings()
 
   return (
     <footer className="bg-navy text-white relative">
@@ -25,16 +27,14 @@ export default function Footer({ locale }: { locale: string }) {
               className="h-12 w-auto mb-4 brightness-0 invert"
             />
             <p className="text-white/40 text-sm leading-relaxed mb-6 font-light">
-              {isKa
-                ? 'ხედვა. სტრატეგია. გავლენა.'
-                : 'Insight. Strategy. Impact.'}
+              {s(settings, 'footer.tagline', locale)}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.2em]">
-              {isKa ? 'ბმულები' : 'Quick Links'}
+              {s(settings, 'footer.quickLinks', locale)}
             </h4>
             <ul className="space-y-3 text-sm">
               {[
@@ -59,11 +59,11 @@ export default function Footer({ locale }: { locale: string }) {
           {/* Contact */}
           <div>
             <h4 className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.2em]">
-              {isKa ? 'კონტაქტი' : 'Contact'}
+              {s(settings, 'footer.contact', locale)}
             </h4>
             <div className="space-y-3 text-sm text-white/50 font-light">
               <a href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7" target="_blank" rel="noopener noreferrer" className="block hover:text-gold transition-colors duration-300">
-                {isKa ? 'დ.არაყიშვილის N3, ოფისი 71, თბილისი' : 'D. Arakishvili St. N3, Office 71, Tbilisi'}
+                {s(settings, 'footer.address', locale)}
               </a>
               <p>
                 <a href="tel:+995551553954" className="hover:text-gold transition-colors duration-300">
@@ -81,10 +81,10 @@ export default function Footer({ locale }: { locale: string }) {
           {/* Newsletter */}
           <div>
             <h4 className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.2em]">
-              {isKa ? 'განახლებები' : 'Newsletter'}
+              {s(settings, 'footer.newsletter', locale)}
             </h4>
             <p className="text-white/40 text-sm mb-4 font-light">
-              {isKa ? 'გამოიწერეთ სიახლეები' : 'Stay informed with our latest insights'}
+              {s(settings, 'footer.newsletterText', locale)}
             </p>
             <NewsletterForm locale={locale} />
           </div>
@@ -95,7 +95,7 @@ export default function Footer({ locale }: { locale: string }) {
       <div className="border-t border-gold/10">
         <div className="container mx-auto px-4 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/30 text-xs tracking-wide font-light">
-            &copy; {new Date().getFullYear()} Strategic Counsel Group. All rights reserved.
+            &copy; {new Date().getFullYear()} {s(settings, 'footer.copyright', locale)}
           </p>
           <div className="flex items-center gap-6 text-white/30 text-xs">
             <Link href={`${prefix}/faq`} className="hover:text-gold transition-colors duration-300">

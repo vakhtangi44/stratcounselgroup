@@ -23,9 +23,18 @@ interface CategoryData {
 interface Props {
   locale: string
   categories: CategoryData[]
+  strings: {
+    subtitle: string
+    title: string
+    description: string
+    clients: string
+    sectors: string
+    experience: string
+    confidentiality: string
+  }
 }
 
-export default function TrustedBy({ locale, categories }: Props) {
+export default function TrustedBy({ locale, categories, strings }: Props) {
   const isKa = locale === 'ka'
 
   return (
@@ -34,16 +43,14 @@ export default function TrustedBy({ locale, categories }: Props) {
         <ScrollReveal>
           <div className="text-center mb-16">
             <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-              {isKa ? 'ვინც ჩვენ გვენდობა' : 'Who Trusts Us'}
+              {strings.subtitle}
             </p>
             <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
             <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4">
-              {isKa ? 'ჩვენი კლიენტები' : 'Our Clients'}
+              {strings.title}
             </h2>
             <p className="text-secondary font-light max-w-2xl mx-auto">
-              {isKa
-                ? 'ჩვენ წარმატებით ვთანამშრომლობთ წამყვან კომპანიებთან სხვადასხვა სექტორში'
-                : 'We successfully collaborate with leading companies across various sectors'}
+              {strings.description}
             </p>
             <GoldDivider className="mt-8" />
           </div>
@@ -77,25 +84,25 @@ export default function TrustedBy({ locale, categories }: Props) {
               <div>
                 <p className="font-heading text-3xl text-gold mb-1">50+</p>
                 <p className="text-secondary text-xs font-light uppercase tracking-wider">
-                  {isKa ? 'კლიენტი' : 'Clients'}
+                  {strings.clients}
                 </p>
               </div>
               <div>
                 <p className="font-heading text-3xl text-gold mb-1">10+</p>
                 <p className="text-secondary text-xs font-light uppercase tracking-wider">
-                  {isKa ? 'სექტორი' : 'Sectors'}
+                  {strings.sectors}
                 </p>
               </div>
               <div>
                 <p className="font-heading text-3xl text-gold mb-1">20+</p>
                 <p className="text-secondary text-xs font-light uppercase tracking-wider">
-                  {isKa ? 'წლის გამოცდილება' : 'Years Experience'}
+                  {strings.experience}
                 </p>
               </div>
               <div>
                 <p className="font-heading text-3xl text-gold mb-1">100%</p>
                 <p className="text-secondary text-xs font-light uppercase tracking-wider">
-                  {isKa ? 'კონფიდენციალურობა' : 'Confidentiality'}
+                  {strings.confidentiality}
                 </p>
               </div>
             </div>

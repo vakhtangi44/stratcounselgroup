@@ -6,9 +6,13 @@ import type { Testimonial } from '@prisma/client'
 interface Props {
   testimonials: Testimonial[]
   locale: string
+  strings: {
+    subtitle: string
+    title: string
+  }
 }
 
-export default function TestimonialsCarousel({ testimonials, locale }: Props) {
+export default function TestimonialsCarousel({ testimonials, locale, strings }: Props) {
   const [idx, setIdx] = useState(0)
   const [fade, setFade] = useState(true)
 
@@ -36,10 +40,10 @@ export default function TestimonialsCarousel({ testimonials, locale }: Props) {
     <section className="py-20 md:py-28 bg-white bg-subtle-pattern">
       <div className="container mx-auto px-4 max-w-3xl text-center">
         <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-          {locale === 'ka' ? 'შეფასებები' : 'Testimonials'}
+          {strings.subtitle}
         </p>
         <h2 className="font-heading text-3xl md:text-4xl text-dark mb-16 gold-underline inline-block">
-          {locale === 'ka' ? 'კლიენტების შეფასება' : 'Client Testimonials'}
+          {strings.title}
         </h2>
 
         <div className={`transition-opacity duration-300 ${fade ? 'opacity-100' : 'opacity-0'}`}>

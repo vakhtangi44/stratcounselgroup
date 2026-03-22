@@ -1,5 +1,6 @@
 import { db } from '@/lib/db'
 import { getLocale } from 'next-intl/server'
+import { getSettings, s } from '@/lib/settings'
 import Image from 'next/image'
 import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
@@ -18,10 +19,13 @@ export default async function TeamPage() {
   const prefix = locale === 'en' ? '/en' : ''
   const isKa = locale === 'ka'
 
-  const members = await db.teamMember.findMany({
-    where: { active: true },
-    orderBy: { order: 'asc' },
-  })
+  const [members, settings] = await Promise.all([
+    db.teamMember.findMany({
+      where: { active: true },
+      orderBy: { order: 'asc' },
+    }),
+    getSettings(),
+  ])
 
   return (
     <div className="pt-[82px]">
@@ -30,11 +34,11 @@ export default async function TeamPage() {
         <div className="absolute inset-0 bg-dark-pattern" />
         <div className="relative z-10">
           <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-            {isKa ? 'პროფესიონალები' : 'Professionals'}
+            {s(settings, 'page.team.subtitle', locale)}
           </p>
           <div className="gold-divider mx-auto mb-8" />
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl tracking-[-0.02em]">
-            {isKa ? 'ჩვენი გუნდი' : 'Our Team'}
+            {s(settings, 'page.team', locale)}
           </h1>
         </div>
       </section>

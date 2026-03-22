@@ -2,6 +2,7 @@ import { getLocale } from 'next-intl/server'
 import Link from 'next/link'
 import Image from 'next/image'
 import { db } from '@/lib/db'
+import { getSettings, s } from '@/lib/settings'
 import { PRACTICE_AREAS } from '@/lib/practice-areas'
 import { formatDate, readTime } from '@/lib/utils'
 
@@ -30,23 +31,26 @@ export default async function BlogPage({ searchParams }: Props) {
   const currentPage = parseInt(page || '1') || 1
   const PAGE_SIZE = 9
 
-  const posts: BlogPost[] = await db.blogPost.findMany({
-    where: {
-      status: 'published',
-      ...(area ? { tags: { some: { practiceArea: area } } } : {}),
-      ...(q ? {
-        OR: [
-          { titleKa: { contains: q, mode: 'insensitive' } },
-          { titleEn: { contains: q, mode: 'insensitive' } },
-          { excerptKa: { contains: q, mode: 'insensitive' } },
-          { excerptEn: { contains: q, mode: 'insensitive' } },
-        ],
-      } : {}),
-    },
-    orderBy: { publishedAt: 'desc' },
-    skip: (currentPage - 1) * PAGE_SIZE,
-    take: PAGE_SIZE + 1,
-  })
+  const [posts, settings]: [BlogPost[], Awaited<ReturnType<typeof getSettings>>] = await Promise.all([
+    db.blogPost.findMany({
+      where: {
+        status: 'published',
+        ...(area ? { tags: { some: { practiceArea: area } } } : {}),
+        ...(q ? {
+          OR: [
+            { titleKa: { contains: q, mode: 'insensitive' } },
+            { titleEn: { contains: q, mode: 'insensitive' } },
+            { excerptKa: { contains: q, mode: 'insensitive' } },
+            { excerptEn: { contains: q, mode: 'insensitive' } },
+          ],
+        } : {}),
+      },
+      orderBy: { publishedAt: 'desc' },
+      skip: (currentPage - 1) * PAGE_SIZE,
+      take: PAGE_SIZE + 1,
+    }),
+    getSettings(),
+  ])
 
   const hasMore = posts.length > PAGE_SIZE
   const displayPosts = hasMore ? posts.slice(0, PAGE_SIZE) : posts
@@ -54,7 +58,7 @@ export default async function BlogPage({ searchParams }: Props) {
   return (
     <div className="pt-16">
       <section className="bg-dark text-white py-24 text-center px-4">
-        <h1 className="font-heading text-4xl mb-4">{isKa ? 'ბლოგი' : 'Blog'}</h1>
+        <h1 className="font-heading text-4xl mb-4">{s(settings, 'page.blog', locale)}</h1>
       </section>
 
       <section className="py-8 px-4 bg-bg-alt border-b border-gray-100">

@@ -7,9 +7,14 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 interface Props {
   posts: BlogPost[]
   locale: string
+  strings: {
+    subtitle: string
+    title: string
+    allArticles: string
+  }
 }
 
-export default function BlogPreview({ posts, locale }: Props) {
+export default function BlogPreview({ posts, locale, strings }: Props) {
   const prefix = locale === 'en' ? '/en' : ''
   if (posts.length === 0) return null
 
@@ -18,10 +23,10 @@ export default function BlogPreview({ posts, locale }: Props) {
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-16">
           <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-            {locale === 'ka' ? 'სიახლეები' : 'Insights'}
+            {strings.subtitle}
           </p>
           <h2 className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block">
-            {locale === 'ka' ? 'ბლოგი' : 'Latest Articles'}
+            {strings.title}
           </h2>
         </ScrollReveal>
 
@@ -74,7 +79,7 @@ export default function BlogPreview({ posts, locale }: Props) {
             href={`${prefix}/blog`}
             className="inline-flex items-center gap-2 text-gold hover:text-gold-dark text-sm font-medium uppercase tracking-[0.15em] transition-colors duration-300"
           >
-            {locale === 'ka' ? 'ყველა სტატია' : 'All articles'}
+            {strings.allArticles}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

@@ -1,15 +1,19 @@
 import { db } from '@/lib/db'
 import { getLocale } from 'next-intl/server'
+import { getSettings, s } from '@/lib/settings'
 import { PRACTICE_AREAS } from '@/lib/practice-areas'
 
 export default async function FaqPage() {
   const locale = await getLocale()
   const isKa = locale === 'ka'
 
-  const faqs = await db.fAQ.findMany({
-    where: { active: true },
-    orderBy: [{ practiceArea: 'asc' }, { order: 'asc' }],
-  })
+  const [faqs, settings] = await Promise.all([
+    db.fAQ.findMany({
+      where: { active: true },
+      orderBy: [{ practiceArea: 'asc' }, { order: 'asc' }],
+    }),
+    getSettings(),
+  ])
 
   const grouped: Record<string, typeof faqs> = {}
   for (const faq of faqs) {
@@ -27,7 +31,7 @@ export default async function FaqPage() {
   return (
     <div className="pt-16">
       <section className="bg-dark text-white py-24 text-center px-4">
-        <h1 className="font-heading text-4xl mb-4">{isKa ? 'ხშირი კითხვები' : 'Frequently Asked Questions'}</h1>
+        <h1 className="font-heading text-4xl mb-4">{s(settings, 'page.faq', locale)}</h1>
       </section>
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-3xl space-y-12">
