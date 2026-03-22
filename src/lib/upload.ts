@@ -40,6 +40,7 @@ export async function saveUploadedFile(
 
   const blob = await put(filename, buffer, {
     access: 'public',
+    addRandomSuffix: false,
     contentType: file.type,
     token: process.env.BLOB_READ_WRITE_TOKEN,
   })

@@ -42,8 +42,72 @@ async function main() {
       titleEn: 'Managing Partner',
       shortBioKa: 'იურისტი მრავალწლიანი გამოცდილებით სისხლის, სამოქალაქო და ადმინისტრაციული სამართლის სფეროებში.',
       shortBioEn: 'Lawyer with many years of experience in criminal, civil, and administrative law.',
-      fullBioKa: 'თამარ კუჭავა არის იურისტი მრავალწლიანი პროფესიული გამოცდილებით სისხლის, სამოქალაქო და ადმინისტრაციული სამართლის სფეროებში. ის არის მოქმედი ადვოკატი საერთო სპეციალიზაციით და ასევე ჩაბარებული აქვს მოსამართლის საკვალიფიკაციო გამოცდა. პროფესიული კარიერის განმავლობაში მან მნიშვნელოვანი გამოცდილება შეიძინა როგორც სამართალდამცავ სისტემაში, ასევე კერძო სამართლებრივ პრაქტიკაში საქმიანობით.',
-      fullBioEn: 'Tamar Kuchava is a lawyer with many years of professional experience in criminal, civil, and administrative law. She is an active advocate with general specialization and has also passed the judicial qualification exam. Throughout her professional career, she has gained significant experience in both law enforcement and private legal practice.',
+      fullBioKa: `<p>თამარ კუჭავა არის იურისტი მრავალწლიანი პროფესიული გამოცდილებით სისხლის, სამოქალაქო და ადმინისტრაციული სამართლის სფეროებში. ის არის მოქმედი ადვოკატი საერთო სპეციალიზაციით და ასევე ჩაბარებული აქვს მოსამართლის საკვალიფიკაციო გამოცდა.</p>
+<p>პროფესიული კარიერის განმავლობაში მან მნიშვნელოვანი გამოცდილება შეიძინა როგორც სამართალდამცავ სისტემაში, ასევე კერძო სამართლებრივ პრაქტიკაში საქმიანობით. იგი მრავალი წლის განმავლობაში მუშაობდა განსაკუთრებით მნიშვნელოვან საქმეებზე და მონაწილეობდა ფინანსურ, კორუფციულ, ფულის გათეთრებისა და საერთაშორისო ეკონომიკურ დანაშაულებთან დაკავშირებული საქმეების გამოძიებასა და სამართლებრივ ანალიზში.</p>
+<p>თამარ კუჭავას პროფესიული საქმიანობა მოიცავს კომპანიებისა და ფიზიკური პირების წარმომადგენლობას სასამართლო პროცესებში, სამართლებრივი დოკუმენტების მომზადებას, სამართლებრივი სტრატეგიის შემუშავებას და რთული სამართლებრივი საქმეების სამართლებრივ მხარდაჭერას.</p>
+<p>აქტიური პროფესიული პრაქტიკის პარალელურად იგი ჩართულია აკადემიურ საქმიანობაში და კითხულობს ლექციებს კიბერდანაშაულისა და კიბერუსაფრთხოების სამართლის საკითხებზე.</p>
+<h2>განათლება და პროფესიული ტრენინგები</h2>
+<ul>
+<li>ივანე ჯავახიშვილის სახელობის თბილისის სახელმწიფო უნივერსიტეტი — იურიდიული განათლება (2000–2006)</li>
+<li>საგადასახადო სამართლის სრული კურსი, Kreston Georgia Academy (2024)</li>
+<li>FIDIC-ის კონტრაქტები – შესავალი კურსი, ACEG / FIDIC (2023)</li>
+<li>საგადასახადო სამართლის სრული კურსი, საქართველოს ფინანსთა სამინისტროს აკადემია (2023)</li>
+<li>კიბერდანაშაულის გამოძიებისა და სისხლისსამართლებრივი დევნის ტრენინგი (2018)</li>
+<li>ფულის გათეთრებისა და ტერორიზმის დაფინანსების საქმეების გამოძიება, საერთაშორისო პროგრამა (2017)</li>
+<li>ელექტრონული მტკიცებულებებისა და კიბერდანაშაულის საქმეებში საერთაშორისო თანამშრომლობა, FBI პროგრამა (2017)</li>
+<li>ევროკავშირის ქვეყნებში ქონების კონფისკაციის სისტემები, ევროპის კომისიის პროგრამა (2011)</li>
+<li>ფულის გათეთრების წინააღმდეგ ბრძოლა და აქტივების მოძიება, ბაზელის უნივერსიტეტი (2010)</li>
+<li>კიბერტერორიზმის წინააღმდეგ ბრძოლის სპეციალური კურსი, ბაზელის უნივერსიტეტი (2010)</li>
+<li>ფულის გათეთრების წინააღმდეგ ბრძოლის სპეციალური პროგრამა, აშშ-ის ფინანსთა დეპარტამენტი (2010)</li>
+<li>ფულის გათეთრების წინააღმდეგ ბრძოლის საერთაშორისო პროგრამა, საერთაშორისო სავალუტო ფონდი (IMF)</li>
+</ul>
+<h2>სამუშაო გამოცდილება</h2>
+<ul>
+<li>კერძო საადვოკატო პრაქტიკა (2022 – დღემდე)</li>
+<li>უფროსი გამომძიებელი, საქართველოს გენერალური პროკურატურა (2010 – 2021)</li>
+<li>პროკურორი, საქართველოს გენერალური პროკურატურა (2009 – 2010)</li>
+<li>სპეციალისტი / გამომძიებელი, საქართველოს გენერალური პროკურატურა (2007 – 2009)</li>
+<li>გამომძიებლის ასისტენტი, საქართველოს გენერალური პროკურატურა (2005 – 2007)</li>
+<li>თანამშრომელი, თბილისის სააპელაციო სასამართლო (2003 – 2004)</li>
+</ul>
+<h2>აკადემიური საქმიანობა</h2>
+<ul>
+<li>ლექტორი, კავკასიის უნივერსიტეტი (2022 – დღემდე)</li>
+<li>ლექტორი, საქართველოს ფინანსთა სამინისტროს აკადემია (2021 – დღემდე)</li>
+</ul>`,
+      fullBioEn: `<p>Tamar Kuchava is a lawyer with many years of professional experience in criminal, civil, and administrative law. She is an active advocate with general specialization and has also passed the judicial qualification exam.</p>
+<p>Throughout her professional career, she has gained significant experience in both law enforcement and private legal practice. For many years, she worked on particularly important cases and participated in the investigation and legal analysis of financial, corruption, money laundering, and international economic crime cases.</p>
+<p>Tamar Kuchava's professional activities include representing companies and individuals in court proceedings, preparing legal documents, developing legal strategies, and providing legal support for complex legal matters.</p>
+<p>In parallel with active professional practice, she is engaged in academic activities and lectures on cybercrime and cybersecurity law.</p>
+<h2>Education & Professional Training</h2>
+<ul>
+<li>Ivane Javakhishvili Tbilisi State University — Legal Education (2000–2006)</li>
+<li>Full Tax Law Course, Kreston Georgia Academy (2024)</li>
+<li>FIDIC Contracts — Introductory Course, ACEG / FIDIC (2023)</li>
+<li>Full Tax Law Course, Academy of the Ministry of Finance of Georgia (2023)</li>
+<li>Cybercrime Investigation and Criminal Prosecution Training (2018)</li>
+<li>Money Laundering and Terrorism Financing Investigation, International Program (2017)</li>
+<li>Electronic Evidence and International Cooperation in Cybercrime Cases, FBI Program (2017)</li>
+<li>Asset Confiscation Systems in EU Countries, European Commission Program (2011)</li>
+<li>Anti-Money Laundering and Asset Recovery, University of Basel (2010)</li>
+<li>Counter-Cyberterrorism Special Course, University of Basel (2010)</li>
+<li>Anti-Money Laundering Special Program, U.S. Department of the Treasury (2010)</li>
+<li>Anti-Money Laundering International Program, International Monetary Fund (IMF)</li>
+</ul>
+<h2>Work Experience</h2>
+<ul>
+<li>Private Legal Practice (2022 – Present)</li>
+<li>Senior Investigator, Prosecutor General's Office of Georgia (2010 – 2021)</li>
+<li>Prosecutor, Prosecutor General's Office of Georgia (2009 – 2010)</li>
+<li>Specialist / Investigator, Prosecutor General's Office of Georgia (2007 – 2009)</li>
+<li>Investigator's Assistant, Prosecutor General's Office of Georgia (2005 – 2007)</li>
+<li>Staff Member, Tbilisi Court of Appeals (2003 – 2004)</li>
+</ul>
+<h2>Academic Activities</h2>
+<ul>
+<li>Lecturer, Caucasus University (2022 – Present)</li>
+<li>Lecturer, Academy of the Ministry of Finance of Georgia (2021 – Present)</li>
+</ul>`,
       photo: null,
       gbaNumber: null,
       practiceAreas: ['criminal-law', 'cybercrime', 'financial-crimes', 'public-procurement', 'civil-law', 'labor-law', 'administrative-law', 'tax-law', 'litigation'],
@@ -59,8 +123,56 @@ async function main() {
       titleEn: 'Managing Partner',
       shortBioKa: 'იურისტი 20 წელზე მეტი პროფესიული გამოცდილებით საჯარო და კერძო სამართლის სფეროებში.',
       shortBioEn: 'Lawyer with over 20 years of professional experience in public and private law.',
-      fullBioKa: 'თინათინ სირაძე არის იურისტი 20 წელზე მეტი პროფესიული გამოცდილებით საჯარო და კერძო სამართლის სფეროებში. ის არის მოქმედი ადვოკატი სამოქალაქო და ადმინისტრაციული სამართლის სპეციალიზაციით.',
-      fullBioEn: 'Tinatin Siradze is a lawyer with over 20 years of professional experience in public and private law. She is an active advocate specializing in civil and administrative law.',
+      fullBioKa: `<p>თინათინ სირაძე არის იურისტი 20 წელზე მეტი პროფესიული გამოცდილებით საჯარო და კერძო სამართლის სფეროებში. ის არის მოქმედი ადვოკატი სამოქალაქო და ადმინისტრაციული სამართლის სპეციალიზაციით.</p>
+<p>პროფესიული კარიერის განმავლობაში მან მრავალმხრივი გამოცდილება შეიძინა კორპორაციული სამართლის, სახელშეკრულებო სამართლის, შრომის სამართლის, ჯანდაცვის სამართლისა და ადმინისტრაციული სამართლის სფეროებში. მისი პრაქტიკა მოიცავს კომპანიების იურიდიულ კონსულტირებას, ხელშეკრულებების შედგენასა და მოლაპარაკებებს, შრომითი ურთიერთობების მართვას და რისკების შეფასებას.</p>
+<p>თინათინ სირაძე წარმატებით წარმოადგენს კლიენტებს სასამართლო პროცესებში და ადმინისტრაციულ ორგანოებთან ურთიერთობაში. მისი პროფესიული მიდგომა გამოირჩევა სიღრმისეული ანალიზით, სტრატეგიული დაგეგმვით და კლიენტზე ორიენტირებული მომსახურებით.</p>
+<h2>განათლება</h2>
+<ul>
+<li>ივანე ჯავახიშვილის სახელობის თბილისის სახელმწიფო უნივერსიტეტი — იურიდიული ფაკულტეტი</li>
+<li>სხვადასხვა პროფესიული განვითარების პროგრამები კორპორაციული მმართველობისა და რისკების მართვის მიმართულებით</li>
+</ul>
+<h2>სამუშაო გამოცდილება</h2>
+<ul>
+<li>მმართველი პარტნიორი, Strategic Counsel Group (დღემდე)</li>
+<li>20 წელზე მეტი პროფესიული გამოცდილება საჯარო და კერძო სექტორში</li>
+<li>კორპორაციული იურიდიული კონსულტირება მსხვილი კომპანიებისთვის</li>
+<li>სახელშეკრულებო მოლაპარაკებები და სამართლებრივი ექსპერტიზა</li>
+</ul>
+<h2>პრაქტიკის სფეროები</h2>
+<ul>
+<li>კორპორაციული სამართალი</li>
+<li>სახელშეკრულებო სამართალი</li>
+<li>შრომის სამართალი</li>
+<li>ჯანდაცვის სამართალი</li>
+<li>ადმინისტრაციული სამართალი</li>
+<li>სასამართლო წარმომადგენლობა</li>
+<li>რისკების მართვა</li>
+</ul>`,
+      fullBioEn: `<p>Tinatin Siradze is a lawyer with over 20 years of professional experience in public and private law. She is an active advocate specializing in civil and administrative law.</p>
+<p>Throughout her professional career, she has gained extensive experience in corporate law, contract law, labor law, healthcare law, and administrative law. Her practice includes legal consulting for companies, contract drafting and negotiations, labor relations management, and risk assessment.</p>
+<p>Tinatin Siradze successfully represents clients in court proceedings and in dealings with administrative bodies. Her professional approach is distinguished by in-depth analysis, strategic planning, and client-oriented service.</p>
+<h2>Education</h2>
+<ul>
+<li>Ivane Javakhishvili Tbilisi State University — Faculty of Law</li>
+<li>Various professional development programs in corporate governance and risk management</li>
+</ul>
+<h2>Work Experience</h2>
+<ul>
+<li>Managing Partner, Strategic Counsel Group (Present)</li>
+<li>Over 20 years of professional experience in public and private sectors</li>
+<li>Corporate legal consulting for major companies</li>
+<li>Contract negotiations and legal expertise</li>
+</ul>
+<h2>Practice Areas</h2>
+<ul>
+<li>Corporate Law</li>
+<li>Contract Law</li>
+<li>Labor Law</li>
+<li>Healthcare Law</li>
+<li>Administrative Law</li>
+<li>Litigation</li>
+<li>Risk Management</li>
+</ul>`,
       photo: null,
       gbaNumber: null,
       practiceAreas: ['corporate-law', 'contract-law', 'labor-law', 'healthcare-law', 'administrative-law', 'litigation', 'risk-management'],
@@ -93,8 +205,52 @@ async function main() {
       titleEn: 'Strategic Project Management Consultant',
       shortBioKa: 'პროექტების მართვის დამოუკიდებელი კონსულტანტი და PMI სერთიფიცირებული პროექტის მენეჯერი.',
       shortBioEn: 'Independent project management consultant and PMI-certified Project Manager.',
-      fullBioKa: 'თამთა ბასილაია არის პროექტების მართვის დამოუკიდებელი კონსულტანტი, ტრენერი და საერთაშორისო პროექტების მართვის ინსტიტუტის (PMI) სერთიფიცირებული პროექტის მენეჯერი.',
-      fullBioEn: 'Tamta Basilaia is an independent project management consultant, trainer, and certified Project Manager of the Project Management Institute (PMI).',
+      fullBioKa: `<p>თამთა ბასილაია არის პროექტების მართვის დამოუკიდებელი კონსულტანტი, ტრენერი და საერთაშორისო პროექტების მართვის ინსტიტუტის (PMI) სერთიფიცირებული პროექტის მენეჯერი (PMP).</p>
+<p>მას აქვს მრავალწლიანი გამოცდილება სტრატეგიული პროექტების მართვაში, ორგანიზაციული განვითარებისა და ცვლილებების მართვის სფეროებში. მისი პროფესიული საქმიანობა მოიცავს საერთაშორისო და ადგილობრივი პროექტების დაგეგმვას, განხორციელებასა და მონიტორინგს.</p>
+<p>თამთა ბასილაია აქტიურად მონაწილეობს პროფესიული განვითარების პროგრამებში და ატარებს ტრენინგებს პროექტების მართვის მეთოდოლოგიებზე.</p>
+<h2>განათლება და სერტიფიკაციები</h2>
+<ul>
+<li>PMP (Project Management Professional) — საერთაშორისო პროექტების მართვის ინსტიტუტი (PMI)</li>
+<li>პროექტების მართვის სპეციალობა — უმაღლესი განათლება</li>
+<li>სტრატეგიული მენეჯმენტის პროფესიული განვითარების კურსები</li>
+</ul>
+<h2>სამუშაო გამოცდილება</h2>
+<ul>
+<li>სტრატეგიული პროექტების მართვის კონსულტანტი, Strategic Counsel Group (დღემდე)</li>
+<li>დამოუკიდებელი კონსულტანტი პროექტების მართვის სფეროში</li>
+<li>საერთაშორისო და ადგილობრივი პროექტების მართვა</li>
+<li>ტრენერი პროექტების მართვის მეთოდოლოგიებში</li>
+</ul>
+<h2>პრაქტიკის სფეროები</h2>
+<ul>
+<li>პროექტების მართვა</li>
+<li>სტრატეგიული კონსულტირება</li>
+<li>ორგანიზაციული განვითარება</li>
+<li>ცვლილებების მართვა</li>
+</ul>`,
+      fullBioEn: `<p>Tamta Basilaia is an independent project management consultant, trainer, and certified Project Management Professional (PMP) of the Project Management Institute (PMI).</p>
+<p>She has extensive experience in strategic project management, organizational development, and change management. Her professional activities include planning, implementation, and monitoring of international and local projects.</p>
+<p>Tamta Basilaia actively participates in professional development programs and conducts training on project management methodologies.</p>
+<h2>Education & Certifications</h2>
+<ul>
+<li>PMP (Project Management Professional) — Project Management Institute (PMI)</li>
+<li>Project Management Specialization — Higher Education</li>
+<li>Strategic Management Professional Development Courses</li>
+</ul>
+<h2>Work Experience</h2>
+<ul>
+<li>Strategic Project Management Consultant, Strategic Counsel Group (Present)</li>
+<li>Independent Consultant in Project Management</li>
+<li>International and Local Project Management</li>
+<li>Trainer in Project Management Methodologies</li>
+</ul>
+<h2>Practice Areas</h2>
+<ul>
+<li>Project Management</li>
+<li>Strategic Consulting</li>
+<li>Organizational Development</li>
+<li>Change Management</li>
+</ul>`,
       photo: null,
       gbaNumber: null,
       practiceAreas: ['project-management', 'strategic-consulting'],
@@ -110,8 +266,54 @@ async function main() {
       titleEn: 'Financial Audit and Risk Management Specialist',
       shortBioKa: 'აუდიტისა და ფინანსური კონტროლის სფეროს პროფესიონალი მრავალწლიანი გამოცდილებით.',
       shortBioEn: 'Professional in audit and financial control with many years of experience.',
-      fullBioKa: 'შიო ვეკუა არის აუდიტისა და ფინანსური კონტროლის სფეროს პროფესიონალი მრავალწლიანი გამოცდილებით როგორც საჯარო, ისე კერძო სექტორში.',
-      fullBioEn: 'Shio Vekua is a professional in the field of audit and financial control with many years of experience in both public and private sectors.',
+      fullBioKa: `<p>შიო ვეკუა არის აუდიტისა და ფინანსური კონტროლის სფეროს პროფესიონალი მრავალწლიანი გამოცდილებით როგორც საჯარო, ისე კერძო სექტორში.</p>
+<p>მისი პროფესიული საქმიანობა მოიცავს ფინანსური აუდიტის ჩატარებას, რისკების შეფასებასა და მართვას, შიდა კონტროლის სისტემების შემუშავებას და ფინანსური ანგარიშგების ანალიზს. მას აქვს მნიშვნელოვანი გამოცდილება საჯარო ფინანსების მართვის, საბიუჯეტო კონტროლისა და ფინანსური კომპლაიანსის სფეროებში.</p>
+<p>შიო ვეკუა წარმატებით თანამშრომლობს როგორც ადგილობრივ, ისე საერთაშორისო ორგანიზაციებთან ფინანსური აუდიტისა და კონსულტირების სფეროში.</p>
+<h2>განათლება</h2>
+<ul>
+<li>ეკონომიკის / ფინანსების სპეციალობა — უმაღლესი განათლება</li>
+<li>აუდიტისა და ფინანსური კონტროლის პროფესიული სერტიფიკაციები</li>
+<li>რისკების მართვის პროფესიული განვითარების პროგრამები</li>
+</ul>
+<h2>სამუშაო გამოცდილება</h2>
+<ul>
+<li>ფინანსური აუდიტისა და რისკების მართვის სპეციალისტი, Strategic Counsel Group (დღემდე)</li>
+<li>ფინანსური აუდიტი საჯარო და კერძო სექტორში</li>
+<li>შიდა კონტროლის სისტემების შემუშავება და დანერგვა</li>
+<li>საჯარო ფინანსების მართვის კონსულტირება</li>
+</ul>
+<h2>პრაქტიკის სფეროები</h2>
+<ul>
+<li>ფინანსური აუდიტი</li>
+<li>რისკების მართვა</li>
+<li>შიდა კონტროლი</li>
+<li>ფინანსური კომპლაიანსი</li>
+<li>საბიუჯეტო კონტროლი</li>
+</ul>`,
+      fullBioEn: `<p>Shio Vekua is a professional in the field of audit and financial control with many years of experience in both public and private sectors.</p>
+<p>His professional activities include conducting financial audits, risk assessment and management, developing internal control systems, and analyzing financial reporting. He has significant experience in public finance management, budgetary control, and financial compliance.</p>
+<p>Shio Vekua successfully collaborates with both local and international organizations in the field of financial audit and consulting.</p>
+<h2>Education</h2>
+<ul>
+<li>Economics / Finance Specialization — Higher Education</li>
+<li>Professional Certifications in Audit and Financial Control</li>
+<li>Risk Management Professional Development Programs</li>
+</ul>
+<h2>Work Experience</h2>
+<ul>
+<li>Financial Audit and Risk Management Specialist, Strategic Counsel Group (Present)</li>
+<li>Financial Audit in Public and Private Sectors</li>
+<li>Development and Implementation of Internal Control Systems</li>
+<li>Public Finance Management Consulting</li>
+</ul>
+<h2>Practice Areas</h2>
+<ul>
+<li>Financial Audit</li>
+<li>Risk Management</li>
+<li>Internal Control</li>
+<li>Financial Compliance</li>
+<li>Budgetary Control</li>
+</ul>`,
       photo: null,
       gbaNumber: null,
       practiceAreas: ['financial-audit', 'risk-management'],
@@ -127,8 +329,64 @@ async function main() {
       titleEn: 'Lead Lawyer',
       shortBioKa: 'იურისტი მრავალწლიანი გამოცდილებით კორპორაციული, კომერციული და სამოქალაქო სამართლის სფეროებში.',
       shortBioEn: 'Lawyer with many years of experience in corporate, commercial, and civil law.',
-      fullBioKa: 'სალომე კობერიძე არის იურისტი მრავალწლიანი პროფესიული გამოცდილებით კორპორაციული, კომერციული და სამოქალაქო სამართლის სფეროებში. ის არის ადვოკატი სამოქალაქო და ადმინისტრაციული სამართლის სპეციალიზაციით.',
-      fullBioEn: 'Salome Koberidze is a lawyer with many years of professional experience in corporate, commercial, and civil law. She is an advocate specializing in civil and administrative law.',
+      fullBioKa: `<p>სალომე კობერიძე არის იურისტი მრავალწლიანი პროფესიული გამოცდილებით კორპორაციული, კომერციული და სამოქალაქო სამართლის სფეროებში. ის არის ადვოკატი სამოქალაქო და ადმინისტრაციული სამართლის სპეციალიზაციით.</p>
+<p>მისი პროფესიული საქმიანობა მოიცავს კორპორაციული მმართველობის საკითხებს, კომერციულ ხელშეკრულებებს, სამოქალაქო დავების წარმოებას, შრომის სამართალს და ადმინისტრაციულ სამართალწარმოებას. სალომე წარმატებით წარმოადგენს კლიენტებს საერთო სასამართლოებში და ადმინისტრაციულ ორგანოებთან.</p>
+<p>აქტიური პროფესიული პრაქტიკის პარალელურად სალომე კობერიძე ჩართულია სამართლებრივი კვლევებისა და პუბლიკაციების მომზადებაში.</p>
+<h2>განათლება</h2>
+<ul>
+<li>სამართალმცოდნეობა — უმაღლესი იურიდიული განათლება</li>
+<li>ადვოკატთა საკვალიფიკაციო გამოცდა — სამოქალაქო და ადმინისტრაციული სამართლის სპეციალიზაცია</li>
+</ul>
+<h2>სამუშაო გამოცდილება</h2>
+<ul>
+<li>წამყვანი იურისტი, Strategic Counsel Group (დღემდე)</li>
+<li>კორპორაციული და კომერციული სამართლის პრაქტიკა</li>
+<li>კლიენტების წარმომადგენლობა სასამართლო პროცესებში</li>
+<li>სამართლებრივი დოკუმენტაციის მომზადება და ექსპერტიზა</li>
+</ul>
+<h2>პუბლიკაციები</h2>
+<ul>
+<li>სამართლებრივი კვლევები კორპორაციული მმართველობის სფეროში</li>
+<li>სტატიები სამოქალაქო და კომერციული სამართლის აქტუალურ საკითხებზე</li>
+</ul>
+<h2>პრაქტიკის სფეროები</h2>
+<ul>
+<li>კორპორაციული სამართალი</li>
+<li>სამოქალაქო სამართალი</li>
+<li>სახელშეკრულებო სამართალი</li>
+<li>შრომის სამართალი</li>
+<li>ადმინისტრაციული სამართალი</li>
+<li>სასამართლო წარმომადგენლობა</li>
+</ul>`,
+      fullBioEn: `<p>Salome Koberidze is a lawyer with many years of professional experience in corporate, commercial, and civil law. She is an advocate specializing in civil and administrative law.</p>
+<p>Her professional activities include corporate governance matters, commercial contracts, civil dispute resolution, labor law, and administrative proceedings. Salome successfully represents clients in courts of general jurisdiction and before administrative bodies.</p>
+<p>In parallel with active professional practice, Salome Koberidze is engaged in legal research and publication preparation.</p>
+<h2>Education</h2>
+<ul>
+<li>Jurisprudence — Higher Legal Education</li>
+<li>Bar Qualification Exam — Civil and Administrative Law Specialization</li>
+</ul>
+<h2>Work Experience</h2>
+<ul>
+<li>Lead Lawyer, Strategic Counsel Group (Present)</li>
+<li>Corporate and Commercial Law Practice</li>
+<li>Client Representation in Court Proceedings</li>
+<li>Legal Documentation Preparation and Expertise</li>
+</ul>
+<h2>Publications</h2>
+<ul>
+<li>Legal research in the field of corporate governance</li>
+<li>Articles on current issues in civil and commercial law</li>
+</ul>
+<h2>Practice Areas</h2>
+<ul>
+<li>Corporate Law</li>
+<li>Civil Law</li>
+<li>Contract Law</li>
+<li>Labor Law</li>
+<li>Administrative Law</li>
+<li>Litigation</li>
+</ul>`,
       photo: null,
       gbaNumber: null,
       practiceAreas: ['corporate-law', 'civil-law', 'contract-law', 'labor-law', 'administrative-law', 'litigation'],
@@ -144,8 +402,72 @@ async function main() {
       titleEn: 'Lawyer',
       shortBioKa: 'იურისტი 10-ზე მეტი წლის გამოცდილებით საკორპორაციო და ენერგეტიკის სამართლის სფეროებში.',
       shortBioEn: 'Lawyer with over 10 years of experience in corporate and energy law.',
-      fullBioKa: 'სანდრო მწყერაძე არის იურისტი 10-ზე მეტი წლის პროფესიული გამოცდილებით საკორპორაციო და ენერგეტიკის სამართლის სფეროებში. ის არის მოქმედი ადვოკატი სამოქალაქო სამართლის სპეციალიზაციით.',
-      fullBioEn: 'Sandro Mtskveradze is a lawyer with over 10 years of professional experience in corporate and energy law. He is an active advocate specializing in civil law.',
+      fullBioKa: `<p>სანდრო მწყერაძე არის იურისტი 10-ზე მეტი წლის პროფესიული გამოცდილებით საკორპორაციო და ენერგეტიკის სამართლის სფეროებში. ის არის მოქმედი ადვოკატი სამოქალაქო სამართლის სპეციალიზაციით.</p>
+<p>მისი პროფესიული საქმიანობა მოიცავს ენერგეტიკული პროექტების სამართლებრივ მხარდაჭერას, ინფრასტრუქტურული პროექტების იურიდიულ კონსულტირებას, საპროექტო ფინანსირების სამართლებრივ უზრუნველყოფას და კორპორაციული მმართველობის საკითხებს.</p>
+<p>სანდრო მწყერაძე წარმატებით მუშაობს ენერგეტიკის სექტორის მარეგულირებელ ჩარჩოსთან, მათ შორის ლიცენზირების, ტარიფების რეგულირებისა და გარემოსდაცვითი შესაბამისობის საკითხებზე. მისი გამოცდილება ასევე მოიცავს FIDIC კონტრაქტებს და სახელმწიფო შესყიდვების სამართალს.</p>
+<h2>განათლება</h2>
+<ul>
+<li>სამართალმცოდნეობა — უმაღლესი იურიდიული განათლება</li>
+<li>ადვოკატთა საკვალიფიკაციო გამოცდა — სამოქალაქო სამართლის სპეციალიზაცია</li>
+<li>ენერგეტიკის სამართლისა და ინფრასტრუქტურული პროექტების სპეციალიზებული კურსები</li>
+</ul>
+<h2>სამუშაო გამოცდილება</h2>
+<ul>
+<li>იურისტი, Strategic Counsel Group (დღემდე)</li>
+<li>10 წელზე მეტი გამოცდილება საკორპორაციო და ენერგეტიკის სამართალში</li>
+<li>ენერგეტიკული პროექტების სამართლებრივი მხარდაჭერა</li>
+<li>ინფრასტრუქტურული პროექტების იურიდიული კონსულტირება</li>
+<li>საპროექტო ფინანსირების სამართლებრივი უზრუნველყოფა</li>
+</ul>
+<h2>ლიცენზიები და სერტიფიკაციები</h2>
+<ul>
+<li>მოქმედი ადვოკატის ლიცენზია — სამოქალაქო სამართლის სპეციალიზაცია</li>
+<li>საქართველოს ადვოკატთა ასოციაციის წევრი</li>
+</ul>
+<h2>პრაქტიკის სფეროები</h2>
+<ul>
+<li>კორპორაციული სამართალი</li>
+<li>ენერგეტიკის სამართალი</li>
+<li>ინფრასტრუქტურის სამართალი</li>
+<li>საპროექტო ფინანსირება</li>
+<li>სახელშეკრულებო სამართალი</li>
+<li>კომპლაიანსი</li>
+<li>კომერციული სამართალი</li>
+<li>სასამართლო წარმომადგენლობა</li>
+</ul>`,
+      fullBioEn: `<p>Sandro Mtskveradze is a lawyer with over 10 years of professional experience in corporate and energy law. He is an active advocate specializing in civil law.</p>
+<p>His professional activities include legal support for energy projects, legal consulting for infrastructure projects, legal assurance of project financing, and corporate governance matters.</p>
+<p>Sandro Mtskveradze successfully works with the energy sector regulatory framework, including licensing, tariff regulation, and environmental compliance issues. His experience also covers FIDIC contracts and public procurement law.</p>
+<h2>Education</h2>
+<ul>
+<li>Jurisprudence — Higher Legal Education</li>
+<li>Bar Qualification Exam — Civil Law Specialization</li>
+<li>Specialized Courses in Energy Law and Infrastructure Projects</li>
+</ul>
+<h2>Work Experience</h2>
+<ul>
+<li>Lawyer, Strategic Counsel Group (Present)</li>
+<li>Over 10 years of experience in corporate and energy law</li>
+<li>Legal support for energy projects</li>
+<li>Legal consulting for infrastructure projects</li>
+<li>Legal assurance of project financing</li>
+</ul>
+<h2>Licenses & Certifications</h2>
+<ul>
+<li>Active Advocate License — Civil Law Specialization</li>
+<li>Member of the Georgian Bar Association</li>
+</ul>
+<h2>Practice Areas</h2>
+<ul>
+<li>Corporate Law</li>
+<li>Energy Law</li>
+<li>Infrastructure Law</li>
+<li>Project Finance</li>
+<li>Contract Law</li>
+<li>Compliance</li>
+<li>Commercial Law</li>
+<li>Litigation</li>
+</ul>`,
       photo: null,
       gbaNumber: null,
       practiceAreas: ['corporate-law', 'energy-law', 'infrastructure-law', 'project-finance', 'contract-law', 'compliance', 'commercial-law', 'litigation'],

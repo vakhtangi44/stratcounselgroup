@@ -123,7 +123,7 @@ export default function TrustedBy({ locale }: Props) {
   const isKa = locale === 'ka'
 
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section id="clients" className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4">
         <ScrollReveal>
           <div className="text-center mb-16">

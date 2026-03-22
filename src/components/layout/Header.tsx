@@ -34,6 +34,7 @@ export default function Header({ locale }: Props) {
     { href: `${prefix}/practice-areas`, label: t('practiceAreas') },
     { href: `${prefix}/blog`, label: t('blog') },
     { href: `${prefix}/team`, label: t('team') },
+    { href: `${prefix}/#clients`, label: t('clients') },
     { href: `${prefix}/contact`, label: t('contact') },
   ]
 
