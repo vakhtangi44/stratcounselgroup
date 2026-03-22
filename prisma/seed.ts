@@ -504,6 +504,8 @@ async function main() {
     await prisma.teamMember.upsert({
       where: { slug: member.slug },
       update: {
+        // Only update text content from seed — preserve admin-managed fields
+        // (photo, isFeatured, active are managed via admin panel)
         nameKa: member.nameKa,
         nameEn: member.nameEn,
         titleKa: member.titleKa,
@@ -512,13 +514,10 @@ async function main() {
         shortBioEn: member.shortBioEn,
         fullBioKa: member.fullBioKa,
         fullBioEn: member.fullBioEn,
-        photo: member.photo,
         linkedinUrl: member.linkedinUrl,
         gbaNumber: member.gbaNumber,
         practiceAreas: member.practiceAreas,
-        isFeatured: member.isFeatured,
         order: member.order,
-        active: member.active,
       },
       create: member,
     })
