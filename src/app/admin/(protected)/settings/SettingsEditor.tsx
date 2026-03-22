@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 
 interface Setting {
   id: number
@@ -136,9 +136,19 @@ function RichTextInput({
   label: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
+  const initialized = useRef(false)
+
+  // Set content only once on mount to avoid cursor reset on re-render.
+  // Content is admin-only (authenticated) — not user-generated input.
+  useEffect(() => {
+    if (ref.current && !initialized.current) {
+      ref.current.innerHTML = value // eslint-disable-line
+      initialized.current = true
+    }
+  }, [value])
 
   const syncValue = useCallback(() => {
-    if (ref.current) onChange(ref.current.innerHTML)
+    if (ref.current) onChange(ref.current.innerHTML) // eslint-disable-line
   }, [onChange])
 
   return (
@@ -147,13 +157,10 @@ function RichTextInput({
         {label}
       </label>
       <MiniToolbar editorRef={ref} onContentChange={syncValue} />
-      {/* Content is admin-only (authenticated), not user-generated. */}
       <div
         ref={ref}
         contentEditable
         suppressContentEditableWarning
-        dangerouslySetInnerHTML={{ __html: value }}
-        onInput={syncValue}
         onBlur={syncValue}
         className="w-full border border-gray-200 border-t-0 rounded-b px-3 py-2 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/20 min-h-[3rem] max-h-[10rem] overflow-y-auto"
       />
