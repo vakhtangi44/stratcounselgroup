@@ -1,16 +1,16 @@
 import { getLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { PRACTICE_AREAS, getPracticeArea } from '@/lib/practice-areas'
+import { getPracticeArea } from '@/lib/practice-areas'
 import { db } from '@/lib/db'
-
-export const dynamic = 'force-dynamic'
+import { unstable_noStore as noStore } from 'next/cache'
 
 export default async function PracticeAreaPage({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>
 }) {
+  noStore()
   const { slug } = await params
   const locale = await getLocale()
   const prefix = locale === 'en' ? '/en' : ''
@@ -19,17 +19,24 @@ export default async function PracticeAreaPage({
   const area = getPracticeArea(slug)
   if (!area) notFound()
 
-  const [relatedPosts, relatedFaq]: [Array<{ id: number; slug: string; titleKa: string; titleEn: string }>, Array<{ id: number; questionKa: string; questionEn: string; answerKa: string; answerEn: string }>] = await Promise.all([
-    db.blogPost.findMany({
-      where: { status: 'published', tags: { some: { practiceArea: slug } } },
-      orderBy: { publishedAt: 'desc' },
-      take: 3,
-    }),
-    db.fAQ.findMany({
-      where: { active: true, practiceArea: slug },
-      orderBy: { order: 'asc' },
-    }),
-  ])
+  let relatedPosts: Array<{ id: number; slug: string; titleKa: string; titleEn: string }> = []
+  let relatedFaq: Array<{ id: number; questionKa: string; questionEn: string; answerKa: string; answerEn: string }> = []
+
+  try {
+    [relatedPosts, relatedFaq] = await Promise.all([
+      db.blogPost.findMany({
+        where: { status: 'published', tags: { some: { practiceArea: slug } } },
+        orderBy: { publishedAt: 'desc' },
+        take: 3,
+      }),
+      db.fAQ.findMany({
+        where: { active: true, practiceArea: slug },
+        orderBy: { order: 'asc' },
+      }),
+    ])
+  } catch {
+    // DB queries may fail gracefully
+  }
 
   return (
     <div className="pt-20">
