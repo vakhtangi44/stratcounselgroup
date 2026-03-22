@@ -69,8 +69,8 @@ export default function Header({ locale }: Props) {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-[13px] uppercase tracking-[0.12em] font-medium transition-colors duration-300 hover:text-gold whitespace-nowrap ${
-                  isTransparent ? 'text-white' : 'text-dark'
+                className={`text-[13px] uppercase tracking-[0.12em] font-medium transition-colors duration-300 whitespace-nowrap ${
+                  isTransparent ? 'text-white hover:text-gold' : 'text-gold hover:text-gold-dark'
                 }`}
               >
                 {link.label}
