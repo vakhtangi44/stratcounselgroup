@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname, useRouter } from '@/i18n/navigation'
+import { usePathname } from 'next/navigation'
 
 interface Props {
   locale: string
@@ -8,10 +8,26 @@ interface Props {
 
 export default function LanguageToggle({ locale }: Props) {
   const pathname = usePathname()
-  const router = useRouter()
 
   function switchTo(newLocale: 'ka' | 'en') {
-    router.replace(pathname, { locale: newLocale })
+    // Set the NEXT_LOCALE cookie so middleware knows the preferred locale
+    document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000`
+
+    let newPath: string
+    if (newLocale === 'en') {
+      // Add /en prefix
+      if (pathname.startsWith('/en')) {
+        newPath = pathname // already on /en
+      } else {
+        newPath = `/en${pathname}`
+      }
+    } else {
+      // Remove /en prefix for Georgian (default locale, no prefix)
+      newPath = pathname.replace(/^\/en(\/|$)/, '/') || '/'
+    }
+
+    // Full page navigation to trigger middleware
+    window.location.href = newPath
   }
 
   return (
