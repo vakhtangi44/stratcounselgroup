@@ -34,20 +34,35 @@ function MiniToolbar({ editorRef }: { editorRef: React.RefObject<HTMLDivElement 
     document.execCommand(cmd, false, value)
   }, [editorRef])
 
+  const colorInputRef = useRef<HTMLInputElement>(null)
+  const [pickedColor, setPickedColor] = useState('#b1976b')
+
+  const handleColorPick = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const color = e.target.value
+    setPickedColor(color)
+    applyCommand('foreColor', color)
+  }, [applyCommand])
+
   return (
     <div className="flex items-center gap-0.5 mb-1 border border-gray-200 rounded-t px-1 py-0.5 bg-gray-50">
       <button type="button" onClick={() => applyCommand('bold')} className="w-7 h-7 flex items-center justify-center text-xs font-bold hover:bg-gray-200 rounded" title="Bold">B</button>
       <button type="button" onClick={() => applyCommand('italic')} className="w-7 h-7 flex items-center justify-center text-xs italic hover:bg-gray-200 rounded" title="Italic">I</button>
       <button type="button" onClick={() => applyCommand('underline')} className="w-7 h-7 flex items-center justify-center text-xs underline hover:bg-gray-200 rounded" title="Underline">U</button>
       <div className="w-px h-5 bg-gray-300 mx-1" />
-      <button type="button" onClick={() => applyCommand('foreColor', '#b1976b')} className="w-7 h-7 flex items-center justify-center text-xs hover:bg-gray-200 rounded" title="Gold color">
-        <span className="w-4 h-4 rounded-full bg-gold" />
-      </button>
-      <button type="button" onClick={() => applyCommand('foreColor', '#1a1a1a')} className="w-7 h-7 flex items-center justify-center text-xs hover:bg-gray-200 rounded" title="Dark color">
-        <span className="w-4 h-4 rounded-full bg-dark" />
-      </button>
-      <button type="button" onClick={() => applyCommand('foreColor', '#ffffff')} className="w-7 h-7 flex items-center justify-center text-xs hover:bg-gray-200 rounded" title="White color">
-        <span className="w-4 h-4 rounded-full bg-white border border-gray-300" />
+      <button
+        type="button"
+        onClick={() => colorInputRef.current?.click()}
+        className="w-7 h-7 flex items-center justify-center hover:bg-gray-200 rounded relative"
+        title="Pick text color"
+      >
+        <span className="w-5 h-5 rounded-full border-2 border-gray-300" style={{ background: pickedColor }} />
+        <input
+          ref={colorInputRef}
+          type="color"
+          value={pickedColor}
+          onChange={handleColorPick}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+        />
       </button>
       <div className="w-px h-5 bg-gray-300 mx-1" />
       <button type="button" onClick={() => applyCommand('removeFormat')} className="w-7 h-7 flex items-center justify-center text-[10px] hover:bg-gray-200 rounded text-red-500" title="Clear formatting">&#x2715;</button>
