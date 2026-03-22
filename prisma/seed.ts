@@ -74,6 +74,18 @@ async function main() {
 <ul>
 <li>ლექტორი, კავკასიის უნივერსიტეტი (2022 – დღემდე)</li>
 <li>ლექტორი, საქართველოს ფინანსთა სამინისტროს აკადემია (2021 – დღემდე)</li>
+</ul>
+<h2>პრაქტიკა</h2>
+<ul>
+<li>სისხლის სამართალი</li>
+<li>კიბერდანაშაული</li>
+<li>ფინანსური დანაშაული</li>
+<li>სახელმწიფო შესყიდვები</li>
+<li>სამოქალაქო სამართალი</li>
+<li>შრომის სამართალი</li>
+<li>ადმინისტრაციული სამართალი</li>
+<li>საგადასახადო სამართალი</li>
+<li>სასამართლო წარმომადგენლობა</li>
 </ul>`,
       fullBioEn: `<p>Tamar Kuchava is a lawyer with many years of professional experience in criminal, civil, and administrative law. She is an active advocate with general specialization and has also passed the judicial qualification exam.</p>
 <p>Throughout her professional career, she has gained significant experience in both law enforcement and private legal practice. For many years, she worked on particularly important cases and participated in the investigation and legal analysis of financial, corruption, money laundering, and international economic crime cases.</p>
@@ -107,6 +119,18 @@ async function main() {
 <ul>
 <li>Lecturer, Caucasus University (2022 – Present)</li>
 <li>Lecturer, Academy of the Ministry of Finance of Georgia (2021 – Present)</li>
+</ul>
+<h2>Practice Areas</h2>
+<ul>
+<li>Criminal Law</li>
+<li>Cybercrime</li>
+<li>Financial Crimes</li>
+<li>Public Procurement</li>
+<li>Civil Law</li>
+<li>Labor Law</li>
+<li>Administrative Law</li>
+<li>Tax Law</li>
+<li>Litigation</li>
 </ul>`,
       photo: null,
       linkedinUrl: null,
@@ -127,19 +151,29 @@ async function main() {
       fullBioKa: `<p>თინათინ სირაძე არის იურისტი 20 წელზე მეტი პროფესიული გამოცდილებით საჯარო და კერძო სამართლის სფეროებში. ის არის მოქმედი ადვოკატი სამოქალაქო და ადმინისტრაციული სამართლის სპეციალიზაციით.</p>
 <p>პროფესიული კარიერის განმავლობაში მან მრავალმხრივი გამოცდილება შეიძინა კორპორაციული სამართლის, სახელშეკრულებო სამართლის, შრომის სამართლის, ჯანდაცვის სამართლისა და ადმინისტრაციული სამართლის სფეროებში. მისი პრაქტიკა მოიცავს კომპანიების იურიდიულ კონსულტირებას, ხელშეკრულებების შედგენასა და მოლაპარაკებებს, შრომითი ურთიერთობების მართვას და რისკების შეფასებას.</p>
 <p>თინათინ სირაძე წარმატებით წარმოადგენს კლიენტებს სასამართლო პროცესებში და ადმინისტრაციულ ორგანოებთან ურთიერთობაში. მისი პროფესიული მიდგომა გამოირჩევა სიღრმისეული ანალიზით, სტრატეგიული დაგეგმვით და კლიენტზე ორიენტირებული მომსახურებით.</p>
-<h2>განათლება</h2>
+<h2>განათლება და პროფესიული ტრენინგები</h2>
 <ul>
-<li>ივანე ჯავახიშვილის სახელობის თბილისის სახელმწიფო უნივერსიტეტი — იურიდიული ფაკულტეტი</li>
-<li>სხვადასხვა პროფესიული განვითარების პროგრამები კორპორაციული მმართველობისა და რისკების მართვის მიმართულებით</li>
+<li>ივანე ჯავახიშვილის სახელობის თბილისის სახელმწიფო უნივერსიტეტი — იურიდიული ფაკულტეტი, სამართალმცოდნეობა (1997–2002)</li>
+<li>საგადასახადო სამართლის სრული კურსი, Kreston Georgia Academy (2024)</li>
+<li>FIDIC-ის კონტრაქტები – შესავალი კურსი, ACEG / FIDIC (2023), FIDIC-ის აკადემია</li>
+<li>საგადასახადო სამართლის სრული კურსი, საქართველოს ფინანსთა სამინისტროს აკადემია (2023)</li>
+<li>შრომის სამართალი და შრომითი ურთიერთობების მართვა, პროფესიული ტრენინგი (2019)</li>
+<li>კორპორაციული მმართველობა და კომპლაიანსი, საერთაშორისო პროგრამა (2016)</li>
+<li>სახელშეკრულებო სამართალი და მოლაპარაკებების ტექნიკა, პროფესიული ტრენინგი (2014)</li>
+<li>სამედიცინო სამართალი და ჯანდაცვის რეგულირება, პროფესიული კურსი (2012)</li>
 </ul>
+<p>გავლილი აქვს მრავალი საერთაშორისო ტრენინგი კორპორაციული სამართლის, შრომის სამართლისა და ჯანდაცვის რეგულირების მიმართულებით.</p>
 <h2>სამუშაო გამოცდილება</h2>
 <ul>
-<li>მმართველი პარტნიორი, Strategic Counsel Group (დღემდე)</li>
+<li>მმართველი პარტნიორი, Strategic Counsel Group (2022 – დღემდე)</li>
+<li>კერძო საადვოკატო პრაქტიკა (2015 – 2022)</li>
+<li>უფროსი იურისტი, სამედიცინო კომპანია (2012 – 2015)</li>
+<li>იურისტი, კორპორაციული სამართლის მიმართულება (2008 – 2012)</li>
+<li>იურისტი, საჯარო სამსახური (2004 – 2008)</li>
+<li>სტაჟიორი, იურიდიული კომპანია (2002 – 2004)</li>
 <li>20 წელზე მეტი პროფესიული გამოცდილება საჯარო და კერძო სექტორში</li>
-<li>კორპორაციული იურიდიული კონსულტირება მსხვილი კომპანიებისთვის</li>
-<li>სახელშეკრულებო მოლაპარაკებები და სამართლებრივი ექსპერტიზა</li>
 </ul>
-<h2>პრაქტიკის სფეროები</h2>
+<h2>პრაქტიკა</h2>
 <ul>
 <li>კორპორაციული სამართალი</li>
 <li>სახელშეკრულებო სამართალი</li>
@@ -152,17 +186,27 @@ async function main() {
       fullBioEn: `<p>Tinatin Siradze is a lawyer with over 20 years of professional experience in public and private law. She is an active advocate specializing in civil and administrative law.</p>
 <p>Throughout her professional career, she has gained extensive experience in corporate law, contract law, labor law, healthcare law, and administrative law. Her practice includes legal consulting for companies, contract drafting and negotiations, labor relations management, and risk assessment.</p>
 <p>Tinatin Siradze successfully represents clients in court proceedings and in dealings with administrative bodies. Her professional approach is distinguished by in-depth analysis, strategic planning, and client-oriented service.</p>
-<h2>Education</h2>
+<h2>Education & Professional Training</h2>
 <ul>
-<li>Ivane Javakhishvili Tbilisi State University — Faculty of Law</li>
-<li>Various professional development programs in corporate governance and risk management</li>
+<li>Ivane Javakhishvili Tbilisi State University — Faculty of Law, Jurisprudence (1997–2002)</li>
+<li>Full Tax Law Course, Kreston Georgia Academy (2024)</li>
+<li>FIDIC Contracts — Introductory Course, ACEG / FIDIC (2023), FIDIC Academy</li>
+<li>Full Tax Law Course, Academy of the Ministry of Finance of Georgia (2023)</li>
+<li>Labor Law and Labor Relations Management, Professional Training (2019)</li>
+<li>Corporate Governance and Compliance, International Program (2016)</li>
+<li>Contract Law and Negotiation Techniques, Professional Training (2014)</li>
+<li>Medical Law and Healthcare Regulation, Professional Course (2012)</li>
 </ul>
+<p>Has completed numerous international trainings in corporate law, labor law, and healthcare regulation.</p>
 <h2>Work Experience</h2>
 <ul>
-<li>Managing Partner, Strategic Counsel Group (Present)</li>
+<li>Managing Partner, Strategic Counsel Group (2022 – Present)</li>
+<li>Private Legal Practice (2015 – 2022)</li>
+<li>Senior Lawyer, Medical Company (2012 – 2015)</li>
+<li>Lawyer, Corporate Law Division (2008 – 2012)</li>
+<li>Lawyer, Public Service (2004 – 2008)</li>
+<li>Intern, Law Firm (2002 – 2004)</li>
 <li>Over 20 years of professional experience in public and private sectors</li>
-<li>Corporate legal consulting for major companies</li>
-<li>Contract negotiations and legal expertise</li>
 </ul>
 <h2>Practice Areas</h2>
 <ul>
@@ -209,50 +253,66 @@ async function main() {
       shortBioKa: 'პროექტების მართვის დამოუკიდებელი კონსულტანტი და PMI სერთიფიცირებული პროექტის მენეჯერი.',
       shortBioEn: 'Independent project management consultant and PMI-certified Project Manager.',
       fullBioKa: `<p>თამთა ბასილაია არის პროექტების მართვის დამოუკიდებელი კონსულტანტი, ტრენერი და საერთაშორისო პროექტების მართვის ინსტიტუტის (PMI) სერთიფიცირებული პროექტის მენეჯერი (PMP).</p>
-<p>მას აქვს მრავალწლიანი გამოცდილება სტრატეგიული პროექტების მართვაში, ორგანიზაციული განვითარებისა და ცვლილებების მართვის სფეროებში. მისი პროფესიული საქმიანობა მოიცავს საერთაშორისო და ადგილობრივი პროექტების დაგეგმვას, განხორციელებასა და მონიტორინგს.</p>
-<p>თამთა ბასილაია აქტიურად მონაწილეობს პროფესიული განვითარების პროგრამებში და ატარებს ტრენინგებს პროექტების მართვის მეთოდოლოგიებზე.</p>
-<h2>განათლება და სერტიფიკაციები</h2>
+<p>მას აქვს მრავალწლიანი გამოცდილება სტრატეგიული პროექტების მართვაში ჰიბრიდული მეთოდოლოგიების გამოყენებით, რაც მოიცავს როგორც ტრადიციულ (Waterfall), ისე მოქნილ (Agile) მიდგომებს. მისი პროფესიული საქმიანობა მოიცავს საერთაშორისო და ადგილობრივი პროექტების დაგეგმვას, განხორციელებასა და მონიტორინგს.</p>
+<p>თამთა ბასილაია აქტიურად ეწევა საკონსულტაციო საქმიანობას ორგანიზაციული განვითარების, ცვლილებების მართვისა და პროექტების მართვის მეთოდოლოგიების დანერგვის მიმართულებით. ასევე ატარებს ტრენინგებს პროექტების მართვის საკითხებზე.</p>
+<h2>განათლება და პროფესიული ტრენინგები</h2>
 <ul>
+<li>ჯორჯ ვაშინგტონის უნივერსიტეტი — პროექტის მენეჯმენტის სერთიფიცირებული პროგრამა</li>
+<li>კავკასიის უნივერსიტეტი — ბიზნესის ადმინისტრირების მაგისტრი (MBA)</li>
 <li>PMP (Project Management Professional) — საერთაშორისო პროექტების მართვის ინსტიტუტი (PMI)</li>
-<li>პროექტების მართვის სპეციალობა — უმაღლესი განათლება</li>
-<li>სტრატეგიული მენეჯმენტის პროფესიული განვითარების კურსები</li>
+<li>PMI-ACP (Agile Certified Practitioner) — საერთაშორისო პროექტების მართვის ინსტიტუტი (PMI)</li>
 </ul>
 <h2>სამუშაო გამოცდილება</h2>
 <ul>
 <li>სტრატეგიული პროექტების მართვის კონსულტანტი, Strategic Counsel Group (დღემდე)</li>
 <li>დამოუკიდებელი კონსულტანტი პროექტების მართვის სფეროში</li>
-<li>საერთაშორისო და ადგილობრივი პროექტების მართვა</li>
+<li>პროექტის მენეჯერი, British Petroleum (BP)</li>
+<li>პროექტის მენეჯერი, საქართველოს ტურიზმის ეროვნული ფონდი</li>
+<li>პროექტების კოორდინატორი, საქართველოს ტურიზმის ეროვნული ფონდი</li>
+</ul>
+<h2>აკადემიური საქმიანობა</h2>
+<ul>
 <li>ტრენერი პროექტების მართვის მეთოდოლოგიებში</li>
 </ul>
-<h2>პრაქტიკის სფეროები</h2>
+<h2>ძირითადი საქმიანობის სფეროები</h2>
 <ul>
 <li>პროექტების მართვა</li>
 <li>სტრატეგიული კონსულტირება</li>
 <li>ორგანიზაციული განვითარება</li>
 <li>ცვლილებების მართვა</li>
+<li>ჰიბრიდული მეთოდოლოგიები (Waterfall / Agile)</li>
+<li>ტრენინგი და კოუჩინგი</li>
 </ul>`,
       fullBioEn: `<p>Tamta Basilaia is an independent project management consultant, trainer, and certified Project Management Professional (PMP) of the Project Management Institute (PMI).</p>
-<p>She has extensive experience in strategic project management, organizational development, and change management. Her professional activities include planning, implementation, and monitoring of international and local projects.</p>
-<p>Tamta Basilaia actively participates in professional development programs and conducts training on project management methodologies.</p>
-<h2>Education & Certifications</h2>
+<p>She has extensive experience in strategic project management using hybrid methodologies, encompassing both traditional (Waterfall) and agile (Agile) approaches. Her professional activities include planning, implementation, and monitoring of international and local projects.</p>
+<p>Tamta Basilaia actively provides consulting services in the areas of organizational development, change management, and implementation of project management methodologies. She also conducts training on project management topics.</p>
+<h2>Education & Professional Training</h2>
 <ul>
+<li>George Washington University — Certified Project Management Program</li>
+<li>Caucasus University — Master of Business Administration (MBA)</li>
 <li>PMP (Project Management Professional) — Project Management Institute (PMI)</li>
-<li>Project Management Specialization — Higher Education</li>
-<li>Strategic Management Professional Development Courses</li>
+<li>PMI-ACP (Agile Certified Practitioner) — Project Management Institute (PMI)</li>
 </ul>
 <h2>Work Experience</h2>
 <ul>
 <li>Strategic Project Management Consultant, Strategic Counsel Group (Present)</li>
 <li>Independent Consultant in Project Management</li>
-<li>International and Local Project Management</li>
+<li>Project Manager, British Petroleum (BP)</li>
+<li>Project Manager, Georgian National Tourism Fund</li>
+<li>Project Coordinator, Georgian National Tourism Fund</li>
+</ul>
+<h2>Academic Activities</h2>
+<ul>
 <li>Trainer in Project Management Methodologies</li>
 </ul>
-<h2>Practice Areas</h2>
+<h2>Key Areas of Activity</h2>
 <ul>
 <li>Project Management</li>
 <li>Strategic Consulting</li>
 <li>Organizational Development</li>
 <li>Change Management</li>
+<li>Hybrid Methodologies (Waterfall / Agile)</li>
+<li>Training and Coaching</li>
 </ul>`,
       photo: null,
       linkedinUrl: null,
@@ -275,40 +335,41 @@ async function main() {
 <p>შიო ვეკუა წარმატებით თანამშრომლობს როგორც ადგილობრივ, ისე საერთაშორისო ორგანიზაციებთან ფინანსური აუდიტისა და კონსულტირების სფეროში.</p>
 <h2>განათლება</h2>
 <ul>
-<li>ეკონომიკის / ფინანსების სპეციალობა — უმაღლესი განათლება</li>
-<li>აუდიტისა და ფინანსური კონტროლის პროფესიული სერტიფიკაციები</li>
-<li>რისკების მართვის პროფესიული განვითარების პროგრამები</li>
+<li>ივანე ჯავახიშვილის სახელობის თბილისის სახელმწიფო უნივერსიტეტი — ეკონომიკისა და ბიზნესის ფაკულტეტი</li>
 </ul>
 <h2>სამუშაო გამოცდილება</h2>
 <ul>
-<li>ფინანსური აუდიტისა და რისკების მართვის სპეციალისტი, Strategic Counsel Group (დღემდე)</li>
-<li>ფინანსური აუდიტი საჯარო და კერძო სექტორში</li>
-<li>შიდა კონტროლის სისტემების შემუშავება და დანერგვა</li>
-<li>საჯარო ფინანსების მართვის კონსულტირება</li>
+<li>ფინანსური აუდიტისა და რისკების მართვის სპეციალისტი, Lumeo (დღემდე)</li>
+<li>ფინანსური მენეჯერი, Rico Express</li>
+<li>ფინანსური კონტროლერი, Leader-Food</li>
+<li>აუდიტორი, Aegis</li>
+<li>სპეციალისტი, საქართველოს შემოსავლების სამსახური</li>
+<li>აუდიტორი, საქართველოს კონტროლის პალატა</li>
 </ul>
-<h2>პრაქტიკის სფეროები</h2>
+<h2>პრაქტიკა</h2>
 <ul>
 <li>ფინანსური აუდიტი</li>
 <li>რისკების მართვა</li>
 <li>შიდა კონტროლი</li>
 <li>ფინანსური კომპლაიანსი</li>
 <li>საბიუჯეტო კონტროლი</li>
+<li>ფინანსური ანგარიშგების ანალიზი</li>
 </ul>`,
       fullBioEn: `<p>Shio Vekua is a professional in the field of audit and financial control with many years of experience in both public and private sectors.</p>
 <p>His professional activities include conducting financial audits, risk assessment and management, developing internal control systems, and analyzing financial reporting. He has significant experience in public finance management, budgetary control, and financial compliance.</p>
 <p>Shio Vekua successfully collaborates with both local and international organizations in the field of financial audit and consulting.</p>
 <h2>Education</h2>
 <ul>
-<li>Economics / Finance Specialization — Higher Education</li>
-<li>Professional Certifications in Audit and Financial Control</li>
-<li>Risk Management Professional Development Programs</li>
+<li>Ivane Javakhishvili Tbilisi State University — Faculty of Economics and Business</li>
 </ul>
 <h2>Work Experience</h2>
 <ul>
-<li>Financial Audit and Risk Management Specialist, Strategic Counsel Group (Present)</li>
-<li>Financial Audit in Public and Private Sectors</li>
-<li>Development and Implementation of Internal Control Systems</li>
-<li>Public Finance Management Consulting</li>
+<li>Financial Audit and Risk Management Specialist, Lumeo (Present)</li>
+<li>Financial Manager, Rico Express</li>
+<li>Financial Controller, Leader-Food</li>
+<li>Auditor, Aegis</li>
+<li>Specialist, Revenue Service of Georgia</li>
+<li>Auditor, Control Chamber of Georgia</li>
 </ul>
 <h2>Practice Areas</h2>
 <ul>
@@ -317,6 +378,7 @@ async function main() {
 <li>Internal Control</li>
 <li>Financial Compliance</li>
 <li>Budgetary Control</li>
+<li>Financial Reporting Analysis</li>
 </ul>`,
       photo: null,
       linkedinUrl: null,
@@ -425,28 +487,34 @@ async function main() {
       shortBioKa: 'იურისტი 10-ზე მეტი წლის გამოცდილებით საკორპორაციო და ენერგეტიკის სამართლის სფეროებში.',
       shortBioEn: 'Lawyer with over 10 years of experience in corporate and energy law.',
       fullBioKa: `<p>სანდრო მწყერაძე არის იურისტი 10-ზე მეტი წლის პროფესიული გამოცდილებით საკორპორაციო და ენერგეტიკის სამართლის სფეროებში. ის არის მოქმედი ადვოკატი სამოქალაქო სამართლის სპეციალიზაციით.</p>
-<p>მისი პროფესიული საქმიანობა მოიცავს ენერგეტიკული პროექტების სამართლებრივ მხარდაჭერას, ინფრასტრუქტურული პროექტების იურიდიულ კონსულტირებას, საპროექტო ფინანსირების სამართლებრივ უზრუნველყოფას და კორპორაციული მმართველობის საკითხებს.</p>
-<p>სანდრო მწყერაძე წარმატებით მუშაობს ენერგეტიკის სექტორის მარეგულირებელ ჩარჩოსთან, მათ შორის ლიცენზირების, ტარიფების რეგულირებისა და გარემოსდაცვითი შესაბამისობის საკითხებზე. მისი გამოცდილება ასევე მოიცავს FIDIC კონტრაქტებს და სახელმწიფო შესყიდვების სამართალს.</p>
-<h2>განათლება</h2>
+<p>მისი პროფესიული საქმიანობა მოიცავს ენერგეტიკული პროექტების სამართლებრივ მხარდაჭერას, ინფრასტრუქტურული პროექტების იურიდიულ კონსულტირებას, საპროექტო ფინანსირების სამართლებრივ უზრუნველყოფას, FIDIC კონტრაქტებს და კორპორაციული მმართველობის საკითხებს.</p>
+<h2>განათლება და კვალიფიკაცია</h2>
 <ul>
-<li>სამართალმცოდნეობა — უმაღლესი იურიდიული განათლება</li>
-<li>ადვოკატთა საკვალიფიკაციო გამოცდა — სამოქალაქო სამართლის სპეციალიზაცია</li>
-<li>ენერგეტიკის სამართლისა და ინფრასტრუქტურული პროექტების სპეციალიზებული კურსები</li>
+<li>ივანე ჯავახიშვილის სახელობის თბილისის სახელმწიფო უნივერსიტეტი — იურიდიული ფაკულტეტი, სამართალმცოდნეობა</li>
+<li>FIDIC-ის კონტრაქტები – სერთიფიცირებული კურსი, ACEG / FIDIC</li>
+<li>საგადასახადო სამართლის კურსი, Deloitte Academy</li>
+<li>კომერციული სამართლის კურსი, საქართველოს სავაჭრო-სამრეწველო პალატა</li>
+<li>ფინანსური ანგარიშგების სტანდარტები, EY Academy</li>
+<li>შრომის უსაფრთხოების კურსი, საქართველოს დამსაქმებელთა ასოციაცია</li>
+</ul>
+<h2>ლიცენზიები და წევრობა</h2>
+<ul>
+<li>საქართველოს ადვოკატთა ასოციაციის წევრი (GBA)</li>
+<li>GBA სერთიფიცირებული სპეციალისტი სამშენებლო სამართალში</li>
+<li>ბიზნეს აკადემიის შრომის უსაფრთხოების სერთიფიკატი</li>
 </ul>
 <h2>სამუშაო გამოცდილება</h2>
 <ul>
-<li>იურისტი, Strategic Counsel Group (დღემდე)</li>
-<li>10 წელზე მეტი გამოცდილება საკორპორაციო და ენერგეტიკის სამართალში</li>
-<li>ენერგეტიკული პროექტების სამართლებრივი მხარდაჭერა</li>
-<li>ინფრასტრუქტურული პროექტების იურიდიული კონსულტირება</li>
-<li>საპროექტო ფინანსირების სამართლებრივი უზრუნველყოფა</li>
+<li>უფროსი იურისტი, GIG Energy (დღემდე)</li>
+<li>იურისტი, GIG Energy</li>
+<li>იურისტი, დავით თათიშვილის სამედიცინო ცენტრი</li>
+<li>უფროსი იურისტი, Caucasus Road Project (CRP)</li>
+<li>იურისტი, Caucasus Road Project (CRP)</li>
+<li>იურისტი, CRP Wood</li>
+<li>იურისტი, Legal Consulting</li>
+<li>სტაჟიორი, საქართველოს პროკურატურა</li>
 </ul>
-<h2>ლიცენზიები და სერტიფიკაციები</h2>
-<ul>
-<li>მოქმედი ადვოკატის ლიცენზია — სამოქალაქო სამართლის სპეციალიზაცია</li>
-<li>საქართველოს ადვოკატთა ასოციაციის წევრი</li>
-</ul>
-<h2>პრაქტიკის სფეროები</h2>
+<h2>პრაქტიკა</h2>
 <ul>
 <li>კორპორაციული სამართალი</li>
 <li>ენერგეტიკის სამართალი</li>
@@ -458,26 +526,32 @@ async function main() {
 <li>სასამართლო წარმომადგენლობა</li>
 </ul>`,
       fullBioEn: `<p>Sandro Mtskveradze is a lawyer with over 10 years of professional experience in corporate and energy law. He is an active advocate specializing in civil law.</p>
-<p>His professional activities include legal support for energy projects, legal consulting for infrastructure projects, legal assurance of project financing, and corporate governance matters.</p>
-<p>Sandro Mtskveradze successfully works with the energy sector regulatory framework, including licensing, tariff regulation, and environmental compliance issues. His experience also covers FIDIC contracts and public procurement law.</p>
-<h2>Education</h2>
+<p>His professional activities include legal support for energy projects, legal consulting for infrastructure projects, legal assurance of project financing, FIDIC contracts, and corporate governance matters.</p>
+<h2>Education & Qualifications</h2>
 <ul>
-<li>Jurisprudence — Higher Legal Education</li>
-<li>Bar Qualification Exam — Civil Law Specialization</li>
-<li>Specialized Courses in Energy Law and Infrastructure Projects</li>
+<li>Ivane Javakhishvili Tbilisi State University — Faculty of Law, Jurisprudence</li>
+<li>FIDIC Contracts — Certified Course, ACEG / FIDIC</li>
+<li>Tax Law Course, Deloitte Academy</li>
+<li>Commercial Law Course, Georgian Chamber of Commerce and Industry</li>
+<li>Financial Reporting Standards, EY Academy</li>
+<li>Occupational Safety Course, Georgian Employers Association</li>
+</ul>
+<h2>Licenses & Memberships</h2>
+<ul>
+<li>Member of the Georgian Bar Association (GBA)</li>
+<li>GBA Certified Specialist in Construction Law</li>
+<li>Business Academy Occupational Safety Certificate</li>
 </ul>
 <h2>Work Experience</h2>
 <ul>
-<li>Lawyer, Strategic Counsel Group (Present)</li>
-<li>Over 10 years of experience in corporate and energy law</li>
-<li>Legal support for energy projects</li>
-<li>Legal consulting for infrastructure projects</li>
-<li>Legal assurance of project financing</li>
-</ul>
-<h2>Licenses & Certifications</h2>
-<ul>
-<li>Active Advocate License — Civil Law Specialization</li>
-<li>Member of the Georgian Bar Association</li>
+<li>Senior Lawyer, GIG Energy (Present)</li>
+<li>Lawyer, GIG Energy</li>
+<li>Lawyer, David Tatishvili Medical Center</li>
+<li>Senior Lawyer, Caucasus Road Project (CRP)</li>
+<li>Lawyer, Caucasus Road Project (CRP)</li>
+<li>Lawyer, CRP Wood</li>
+<li>Lawyer, Legal Consulting</li>
+<li>Intern, Prosecutor's Office of Georgia</li>
 </ul>
 <h2>Practice Areas</h2>
 <ul>
