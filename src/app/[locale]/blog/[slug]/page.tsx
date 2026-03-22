@@ -27,7 +27,7 @@ export default async function BlogPostPage({
       status: 'published',
       id: { not: post.id },
       ...(post.tags.length > 0
-        ? { tags: { some: { practiceArea: { in: post.tags.map((t) => t.practiceArea) } } } }
+        ? { tags: { some: { practiceArea: { in: post.tags.map((t: { practiceArea: string }) => t.practiceArea) } } } }
         : {}),
     },
     take: 3,
