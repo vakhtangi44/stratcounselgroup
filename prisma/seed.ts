@@ -285,6 +285,102 @@ async function main() {
       authorId: null,
       tags: ['energy-law', 'infrastructure-law', 'project-finance'],
     },
+    {
+      slug: 'telecommunications-law-georgia-digital-regulation',
+      titleKa: 'სატელეკომუნიკაციო სამართალი საქართველოში — ციფრული რეგულირების ახალი ეპოქა',
+      titleEn: 'Telecommunications Law in Georgia — A New Era of Digital Regulation',
+      contentKa: `<p>საქართველოს სატელეკომუნიკაციო სექტორი სწრაფად ვითარდება და მისი სამართლებრივი რეგულირება მუდმივად განახლებას საჭიროებს. საქართველოს კომუნიკაციების ეროვნული კომისია (GNCC) არის ძირითადი მარეგულირებელი ორგანო, რომელიც პასუხისმგებელია ლიცენზირებაზე, ტარიფების რეგულირებაზე და ბაზრის კონკურენტუნარიანობის უზრუნველყოფაზე.</p>
+<h2>ძირითადი სამართლებრივი ჩარჩო</h2>
+<p>„ელექტრონული კომუნიკაციების შესახებ" საქართველოს კანონი არეგულირებს სატელეკომუნიკაციო მომსახურებების მიწოდებას, ქსელების აგებასა და ოპერატორთა ვალდებულებებს. კანონი მოიცავს ინტერკონექციის, ნუმერაციის, რადიოსიხშირული სპექტრის მართვისა და მომხმარებელთა უფლებების დაცვის საკითხებს. 2025 წლის ცვლილებებით გაძლიერდა მონაცემთა დაცვის მოთხოვნები და დაინერგა 5G ქსელების განლაგების ახალი პროცედურები.</p>
+<h2>პერსონალურ მონაცემთა დაცვა</h2>
+<p>სატელეკომუნიკაციო კომპანიები ვალდებულნი არიან დაიცვან მომხმარებელთა პერსონალური მონაცემები „პერსონალურ მონაცემთა დაცვის შესახებ" საქართველოს კანონის შესაბამისად. ეს მოიცავს მონაცემთა შეგროვების, დამუშავებისა და შენახვის მკაცრ სტანდარტებს, რომლებიც ჰარმონიზირებულია ევროკავშირის GDPR-თან.</p>
+<p>ჩვენი გუნდი უზრუნველყოფს სატელეკომუნიკაციო კომპანიებისთვის ყოვლისმომცველ სამართლებრივ მხარდაჭერას — ლიცენზირებიდან მარეგულირებელ ორგანოებთან წარმომადგენლობამდე.</p>`,
+      contentEn: `<p>Georgia's telecommunications sector is rapidly evolving, requiring constant updates to its legal regulation. The Georgian National Communications Commission (GNCC) serves as the primary regulatory body responsible for licensing, tariff regulation, and ensuring market competitiveness.</p>
+<h2>Core Legal Framework</h2>
+<p>The Georgian Law on Electronic Communications regulates the provision of telecommunications services, network construction, and operator obligations. The law covers interconnection, numbering, radio frequency spectrum management, and consumer rights protection. The 2025 amendments strengthened data protection requirements and introduced new procedures for 5G network deployment.</p>
+<h2>Personal Data Protection</h2>
+<p>Telecommunications companies are required to protect consumer personal data in accordance with the Georgian Law on Personal Data Protection. This includes strict standards for data collection, processing, and storage, harmonized with the EU's GDPR.</p>
+<p>Our team provides comprehensive legal support for telecommunications companies — from licensing to representation before regulatory bodies.</p>`,
+      excerptKa: 'საქართველოს სატელეკომუნიკაციო სექტორის სამართლებრივი რეგულირება, ლიცენზირება და მონაცემთა დაცვის მოთხოვნები.',
+      excerptEn: 'Legal regulation of Georgia\'s telecommunications sector, licensing, and data protection requirements.',
+      status: 'published',
+      publishedAt: new Date('2026-03-10T10:00:00Z'),
+      authorId: null,
+      tags: ['telecommunications-law', 'compliance'],
+    },
+    {
+      slug: 'healthcare-law-georgia-medical-regulation',
+      titleKa: 'სამედიცინო სამართალი საქართველოში — პაციენტთა უფლებები და სამედიცინო დაწესებულებების რეგულირება',
+      titleEn: 'Healthcare Law in Georgia — Patient Rights and Medical Facility Regulation',
+      contentKa: `<p>საქართველოს ჯანდაცვის სამართალი მოიცავს სამედიცინო საქმიანობის ლიცენზირების, პაციენტთა უფლებების დაცვის, სამედიცინო პერსონალის პასუხისმგებლობისა და ფარმაცევტული რეგულირების საკითხებს. „ჯანმრთელობის დაცვის შესახებ" საქართველოს კანონი ადგენს ჯანდაცვის სისტემის ფუნქციონირების ძირითად პრინციპებს.</p>
+<h2>სამედიცინო დაწესებულებების ლიცენზირება</h2>
+<p>საქართველოში სამედიცინო საქმიანობის განსახორციელებლად აუცილებელია შესაბამისი ნებართვის მოპოვება. სამედიცინო დაწესებულებებმა უნდა დააკმაყოფილონ ინფრასტრუქტურის, აღჭურვილობის, პერსონალის კვალიფიკაციისა და ჰიგიენური სტანდარტების მოთხოვნები. რეგულირების ზედამხედველობის ორგანო — სახელმწიფო რეგულირების სააგენტო — ახორციელებს პერიოდულ ინსპექციებს.</p>
+<h2>პაციენტთა უფლებები</h2>
+<p>საქართველოს კანონმდებლობა იცავს პაციენტთა უფლებებს, მათ შორის ინფორმირებული თანხმობის, სამედიცინო დოკუმენტაციაზე წვდომის, კონფიდენციალურობისა და მკურნალობის არჩევის უფლებას. სამედიცინო შეცდომის შემთხვევაში პაციენტს უფლება აქვს მოითხოვოს ზიანის ანაზღაურება როგორც სამოქალაქო, ისე სისხლის სამართლის წესით.</p>
+<p>ჩვენი ფირმა სპეციალიზირდება სამედიცინო დაწესებულებების სამართლებრივ მხარდაჭერაში, მათ შორის ლიცენზირების, სამედიცინო დავების წარმოებისა და მარეგულირებელ ორგანოებთან ურთიერთობის საკითხებში.</p>`,
+      contentEn: `<p>Georgian healthcare law encompasses medical activity licensing, patient rights protection, medical personnel liability, and pharmaceutical regulation. The Georgian Law on Healthcare establishes the fundamental principles of the healthcare system's operation.</p>
+<h2>Medical Facility Licensing</h2>
+<p>To conduct medical activities in Georgia, obtaining the appropriate permits is mandatory. Medical facilities must meet requirements for infrastructure, equipment, personnel qualifications, and hygiene standards. The regulatory oversight body — the State Regulation Agency — conducts periodic inspections.</p>
+<h2>Patient Rights</h2>
+<p>Georgian legislation protects patient rights, including informed consent, access to medical records, confidentiality, and the right to choose treatment. In cases of medical malpractice, patients have the right to seek compensation through both civil and criminal proceedings.</p>
+<p>Our firm specializes in legal support for medical institutions, including licensing, medical dispute resolution, and regulatory body relations.</p>`,
+      excerptKa: 'საქართველოს ჯანდაცვის სამართალი — სამედიცინო ლიცენზირება, პაციენტთა უფლებები და სამედიცინო დავების გადაწყვეტა.',
+      excerptEn: 'Georgian healthcare law — medical licensing, patient rights, and medical dispute resolution.',
+      status: 'published',
+      publishedAt: new Date('2026-03-14T10:00:00Z'),
+      authorId: null,
+      tags: ['healthcare-law', 'litigation', 'administrative-law'],
+    },
+    {
+      slug: 'transportation-law-georgia-logistics-regulation',
+      titleKa: 'სატრანსპორტო სამართალი საქართველოში — ლოგისტიკის რეგულირება და საერთაშორისო გადაზიდვები',
+      titleEn: 'Transportation Law in Georgia — Logistics Regulation and International Shipping',
+      contentKa: `<p>საქართველოს სტრატეგიული გეოგრაფიული მდებარეობა ევროპასა და აზიას შორის ქმნის უნიკალურ შესაძლებლობებს სატრანსპორტო და ლოგისტიკური სექტორისთვის. სატრანსპორტო სამართალი მოიცავს საავტომობილო, სარკინიგზო, საჰაერო და საზღვაო გადაზიდვების რეგულირებას, ასევე მულტიმოდალური ტრანსპორტირების სამართლებრივ ჩარჩოს.</p>
+<h2>საერთაშორისო გადაზიდვების რეგულირება</h2>
+<p>საქართველო არის CMR კონვენციის, COTIF-ის და სხვა საერთაშორისო სატრანსპორტო ხელშეკრულებების მონაწილე. ეს ხელშეკრულებები არეგულირებს გადამზიდავის პასუხისმგებლობას, ტვირთის დაზღვევას, საბაჟო პროცედურებს და სატრანზიტო გადაზიდვების წესებს. 2025 წელს საქართველომ გააძლიერა თანამშრომლობა „შუა დერეფნის" ფარგლებში, რამაც გამოიწვია სატრანზიტო რეგულაციების განახლება.</p>
+<h2>სალიცენზიო მოთხოვნები</h2>
+<p>სატრანსპორტო საქმიანობა საქართველოში მოითხოვს შესაბამის ლიცენზიებსა და ნებართვებს. საერთაშორისო სატვირთო გადაზიდვების ლიცენზია, სამგზავრო გადაყვანის ნებართვა და სპეციალური ტვირთების (საშიში ტვირთები, არაგაბარიტული ტვირთები) გადაზიდვის ნებართვები რეგულირდება „საავტომობილო ტრანსპორტის შესახებ" საქართველოს კანონით.</p>
+<p>Strategic Counsel Group-ის გუნდი უზრუნველყოფს სატრანსპორტო კომპანიებისა და ლოგისტიკური ოპერატორების სრულ სამართლებრივ მხარდაჭერას.</p>`,
+      contentEn: `<p>Georgia's strategic geographical location between Europe and Asia creates unique opportunities for the transport and logistics sector. Transportation law encompasses the regulation of road, rail, air, and maritime transport, as well as the legal framework for multimodal transportation.</p>
+<h2>International Shipping Regulation</h2>
+<p>Georgia is a party to the CMR Convention, COTIF, and other international transport agreements. These agreements regulate carrier liability, cargo insurance, customs procedures, and transit transport rules. In 2025, Georgia strengthened cooperation within the "Middle Corridor" framework, leading to updates in transit regulations.</p>
+<h2>Licensing Requirements</h2>
+<p>Transport activities in Georgia require appropriate licenses and permits. International freight transport licenses, passenger transport permits, and special cargo (hazardous materials, oversized loads) transport permits are regulated by the Georgian Law on Road Transport.</p>
+<p>The Strategic Counsel Group team provides comprehensive legal support for transport companies and logistics operators.</p>`,
+      excerptKa: 'საქართველოს სატრანსპორტო სამართალი — საერთაშორისო გადაზიდვების რეგულირება, ლიცენზირება და „შუა დერეფნის" სამართლებრივი ჩარჩო.',
+      excerptEn: 'Georgian transportation law — international shipping regulation, licensing, and the Middle Corridor legal framework.',
+      status: 'published',
+      publishedAt: new Date('2026-03-19T10:00:00Z'),
+      authorId: null,
+      tags: ['transportation-law', 'compliance', 'contract-law'],
+    },
+    {
+      slug: 'construction-law-georgia-building-permits-safety',
+      titleKa: 'სამშენებლო სამართალი საქართველოში — მშენებლობის ნებართვები, უსაფრთხოება და FIDIC კონტრაქტები',
+      titleEn: 'Construction Law in Georgia — Building Permits, Safety, and FIDIC Contracts',
+      contentKa: `<p>საქართველოს სამშენებლო სექტორი ბოლო წლებში მნიშვნელოვან ზრდას განიცდის, რაც სამშენებლო სამართლის აქტუალურობას კიდევ უფრო ზრდის. „მშენებლობის ნებართვის შესახებ" საქართველოს კანონი და შესაბამისი კანონქვემდებარე აქტები არეგულირებს მშენებლობის დაგეგმვას, ნებართვების გაცემას, სამშენებლო ზედამხედველობასა და ექსპლუატაციაში მიღების პროცედურებს.</p>
+<h2>მშენებლობის ნებართვების სისტემა</h2>
+<p>საქართველოში მშენებლობის ნებართვის მოპოვება მოიცავს რამდენიმე ეტაპს: მიწის ნაკვეთის სამშენებლო განვითარების პირობების დადგენა, არქიტექტურული პროექტის შეთანხმება, მშენებლობის ნებართვის გაცემა და მშენებლობის ზედამხედველობა. 2025 წლიდან დაინერგა ელექტრონული ნებართვების სისტემა, რამაც მნიშვნელოვნად გაამარტივა პროცესი.</p>
+<h2>FIDIC კონტრაქტები საქართველოში</h2>
+<p>საქართველოში ინფრასტრუქტურულ პროექტებში ფართოდ გამოიყენება FIDIC-ის სტანდარტული კონტრაქტის ფორმები. ეს განსაკუთრებით ეხება საერთაშორისო დაფინანსების (მსოფლიო ბანკი, ADB, EBRD) მქონე პროექტებს. FIDIC-ის „წითელი წიგნის" და „ყვითელი წიგნის" კონტრაქტები ყველაზე ხშირად გამოიყენება გზების, ხიდების და ენერგეტიკული ინფრასტრუქტურის მშენებლობაში.</p>
+<h2>სეისმური უსაფრთხოება</h2>
+<p>საქართველო სეისმურად აქტიურ ზონაში მდებარეობს, რის გამოც სამშენებლო კოდექსი მკაცრ მოთხოვნებს აწესებს შენობების სეისმურ მდგრადობაზე. ყველა ახალი მშენებლობა უნდა აკმაყოფილებდეს ეროვნულ სეისმურ სტანდარტებს, რომლებიც ჰარმონიზირებულია ევროკოდებთან (Eurocodes).</p>
+<p>ჩვენი გუნდი გთავაზობთ სრულ სამართლებრივ მხარდაჭერას სამშენებლო პროექტებში — ნებართვების მოპოვებიდან FIDIC კონტრაქტების მომზადებასა და დავების წარმოებამდე.</p>`,
+      contentEn: `<p>Georgia's construction sector has experienced significant growth in recent years, making construction law increasingly relevant. The Georgian Law on Construction Permits and related subordinate legislation regulates construction planning, permit issuance, construction supervision, and commissioning procedures.</p>
+<h2>Building Permit System</h2>
+<p>Obtaining a construction permit in Georgia involves several stages: establishing land plot development conditions, architectural project approval, construction permit issuance, and construction supervision. Since 2025, an electronic permitting system has been introduced, significantly simplifying the process.</p>
+<h2>FIDIC Contracts in Georgia</h2>
+<p>FIDIC standard contract forms are widely used in infrastructure projects in Georgia. This particularly applies to projects with international financing (World Bank, ADB, EBRD). FIDIC "Red Book" and "Yellow Book" contracts are most commonly used in the construction of roads, bridges, and energy infrastructure.</p>
+<h2>Seismic Safety</h2>
+<p>Georgia is located in a seismically active zone, which is why the building code imposes strict requirements on buildings' seismic resistance. All new construction must meet national seismic standards harmonized with Eurocodes.</p>
+<p>Our team offers comprehensive legal support for construction projects — from obtaining permits to preparing FIDIC contracts and dispute resolution.</p>`,
+      excerptKa: 'საქართველოს სამშენებლო სამართალი — ნებართვები, FIDIC კონტრაქტები, სეისმური უსაფრთხოება და სამშენებლო დავების წარმოება.',
+      excerptEn: 'Georgian construction law — permits, FIDIC contracts, seismic safety, and construction dispute resolution.',
+      status: 'published',
+      publishedAt: new Date('2026-03-20T10:00:00Z'),
+      authorId: null,
+      tags: ['construction-law', 'infrastructure-law', 'contract-law'],
+    },
   ]
 
   for (const post of blogPosts) {
