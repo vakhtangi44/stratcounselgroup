@@ -1,12 +1,20 @@
+import 'dotenv/config'
 import { db } from '../src/lib/db'
 
 async function main() {
   // Create one category to hold all clients
-  const cat = await db.clientCategory.upsert({
-    where: { id: 1 },
-    update: { labelEn: 'Our Clients', labelKa: 'ჩვენი კლიენტები', icon: '🏢', order: 0, active: true },
-    create: { labelEn: 'Our Clients', labelKa: 'ჩვენი კლიენტები', icon: '🏢', order: 0, active: true },
-  })
+  // Find existing category by label or create it
+  let cat = await db.clientCategory.findFirst({ where: { labelEn: 'Our Clients' } })
+  if (!cat) {
+    cat = await db.clientCategory.create({
+      data: { labelEn: 'Our Clients', labelKa: 'ჩვენი კლიენტები', icon: '🏢', order: 0, active: true },
+    })
+  } else {
+    cat = await db.clientCategory.update({
+      where: { id: cat.id },
+      data: { labelKa: 'ჩვენი კლიენტები', icon: '🏢', order: 0, active: true },
+    })
+  }
 
   const clients = [
     {
@@ -124,22 +132,39 @@ async function main() {
   ]
 
   for (const c of clients) {
-    await db.client.create({
-      data: {
-        name: c.nameEn,
-        nameEn: c.nameEn,
-        nameKa: c.nameKa,
-        logoEn: c.logoEn,
-        logoKa: c.logoKa,
-        order: c.order,
-        active: true,
-        categoryId: cat.id,
-      },
+    const existing = await db.client.findFirst({
+      where: { nameEn: c.nameEn, categoryId: cat.id },
     })
-    console.log(`✓ ${c.nameEn}`)
+
+    if (existing) {
+      await db.client.update({
+        where: { id: existing.id },
+        data: {
+          nameKa: c.nameKa,
+          logoEn: c.logoEn,
+          logoKa: c.logoKa,
+          order: c.order,
+        },
+      })
+      console.log(`↺ Updated ${c.nameEn}`)
+    } else {
+      await db.client.create({
+        data: {
+          name: c.nameEn,
+          nameEn: c.nameEn,
+          nameKa: c.nameKa,
+          logoEn: c.logoEn,
+          logoKa: c.logoKa,
+          order: c.order,
+          active: true,
+          categoryId: cat.id,
+        },
+      })
+      console.log(`✓ Created ${c.nameEn}`)
+    }
   }
 
-  console.log('\nDone! 16 clients seeded.')
+  console.log('\nDone! 16 clients seeded/updated.')
 }
 
 main().catch(console.error).finally(() => db.$disconnect())

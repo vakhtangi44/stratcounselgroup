@@ -59,20 +59,20 @@ export default function TrustedBy({ locale, categories, strings }: Props) {
         </ScrollReveal>
 
         {/* Logo Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
           {allClients.map((client, idx) => {
             const logo = isKa ? (client.logoKa || client.logoEn) : (client.logoEn || client.logoKa)
             const name = isKa ? (client.nameKa || client.name) : (client.nameEn || client.name)
 
             return (
               <ScrollReveal key={client.id} delay={idx * 40}>
-                <div className="group flex items-center justify-center aspect-[3/2] p-4 border border-white/10 hover:border-gold/40 transition-all duration-500">
+                <div className="group flex items-center justify-center min-h-[200px] p-4 border border-white/10 hover:border-gold/40 transition-all duration-500">
                   {logo ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={logo}
                       alt={name}
-                      className="object-contain w-full max-h-[72px] opacity-75 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
+                      className="object-contain w-full max-h-[160px] mix-blend-multiply opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
                     />
                   ) : (
                     <span className="text-white/70 group-hover:text-white text-sm font-medium text-center leading-snug transition-colors duration-300">{name}</span>
