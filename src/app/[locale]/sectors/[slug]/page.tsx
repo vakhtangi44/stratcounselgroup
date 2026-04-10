@@ -128,7 +128,7 @@ export default async function SectorDetailPage({
               href={`${prefix}/contact`}
               className="inline-block bg-gold text-white px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold-dark transition-all duration-300"
             >
-              {isKa ? 'კონსულტაციის ჯავშნა' : 'Book Consultation'}
+              {isKa ? 'კონსულტაციის დაჯავშნა' : 'Book Consultation'}
             </Link>
           </ScrollReveal>
         </div>

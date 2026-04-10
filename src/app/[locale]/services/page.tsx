@@ -131,7 +131,7 @@ export default async function ServicesPage() {
               href={`${prefix}/contact`}
               className="inline-block bg-gold text-white px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold-dark transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
             >
-              {locale === 'ka' ? 'კონსულტაციის ჯავშნა' : 'Book Consultation'}
+              {locale === 'ka' ? 'კონსულტაციის დაჯავშნა' : 'Book Consultation'}
             </Link>
           </ScrollReveal>
         </div>
