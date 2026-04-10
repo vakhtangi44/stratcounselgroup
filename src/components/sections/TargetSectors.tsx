@@ -1,7 +1,6 @@
 'use client'
 
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import GoldDivider from '@/components/ui/GoldDivider'
 
 const SECTORS = [
   {
@@ -37,17 +36,6 @@ export default function TargetSectors({ locale }: { locale: string }) {
   return (
     <section className="py-20 md:py-28 bg-navy text-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <ScrollReveal className="text-center mb-12">
-          <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-            {isKa ? 'ჩვენი გამოცდილება' : 'Our Expertise'}
-          </p>
-          <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
-          <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">
-            {isKa ? 'სამიზნე სექტორები' : 'Target Sectors'}
-          </h2>
-          <GoldDivider className="mt-8" />
-        </ScrollReveal>
-
         {/* 3 + 2 grid layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
           {SECTORS.map((sector, i) => (
