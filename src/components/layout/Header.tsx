@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import LanguageToggle from './LanguageToggle'
 import MobileMenu from './MobileMenu'
 import { useState, useEffect, useRef } from 'react'
-import { PRACTICE_AREAS } from '@/lib/practice-areas'
+import { SECTORS } from '@/lib/sectors'
 
 interface Props {
   locale: string
@@ -83,10 +83,6 @@ export default function Header({ locale }: Props) {
 
   const prefix = locale === 'en' ? '/en' : ''
 
-  // Split practice areas into 2 columns
-  const half = Math.ceil(PRACTICE_AREAS.length / 2)
-  const col1 = PRACTICE_AREAS.slice(0, half)
-  const col2 = PRACTICE_AREAS.slice(half)
 
   return (
     <>
@@ -121,36 +117,29 @@ export default function Header({ locale }: Props) {
               {t('about')}
             </Link>
 
-            {/* Practice Areas Dropdown */}
-            <DropdownMenu label={isKa ? 'პრაქტიკის სფეროები' : 'Practice Areas'} isTransparent={isTransparent}>
-              <div className="w-[560px] p-6">
-                <div className="flex items-center justify-between mb-4 pb-3 border-b border-gray-100">
+            {/* Sectors Dropdown */}
+            <DropdownMenu label={isKa ? 'სექტორები' : 'Sectors'} isTransparent={isTransparent}>
+              <div className="w-[300px] p-4">
+                <div className="flex items-center justify-between mb-3 pb-3 border-b border-gray-100">
                   <p className="text-[11px] uppercase tracking-[0.2em] text-gold font-medium">
-                    {isKa ? 'პრაქტიკის სფეროები' : 'Practice Areas'}
+                    {isKa ? 'სექტორები' : 'Sectors'}
                   </p>
                   <Link
-                    href={`${prefix}/practice-areas`}
+                    href={`${prefix}/sectors`}
                     className="text-[11px] uppercase tracking-wider text-secondary hover:text-gold transition-colors"
                   >
                     {isKa ? 'ყველა →' : 'View All →'}
                   </Link>
                 </div>
-                <div className="grid grid-cols-2 gap-x-6 gap-y-1">
-                  {[col1, col2].map((col, colIdx) => (
-                    <div key={colIdx} className="space-y-0.5">
-                      {col.map((area) => (
-                        <Link
-                          key={area.slug}
-                          href={`${prefix}/practice-areas/${area.slug}`}
-                          className="flex items-center gap-2.5 px-2 py-1.5 rounded hover:bg-cream transition-colors duration-200 group"
-                        >
-                          <span className="text-sm">{area.icon}</span>
-                          <span className="text-[12px] text-dark group-hover:text-gold transition-colors duration-200">
-                            {isKa ? area.nameKa : area.nameEn}
-                          </span>
-                        </Link>
-                      ))}
-                    </div>
+                <div className="space-y-0.5">
+                  {SECTORS.map((sector) => (
+                    <Link
+                      key={sector.slug}
+                      href={`${prefix}/sectors/${sector.slug}`}
+                      className="block px-3 py-2 text-[13px] text-dark hover:text-gold hover:bg-cream rounded transition-colors duration-200"
+                    >
+                      {isKa ? sector.nameKa : sector.nameEn}
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -232,7 +221,7 @@ export default function Header({ locale }: Props) {
             <LanguageToggle locale={locale} />
             <MobileMenu locale={locale} links={[
               { href: `${prefix}/about`, label: t('about') },
-              { href: `${prefix}/practice-areas`, label: isKa ? 'პრაქტიკის სფეროები' : 'Practice Areas' },
+              { href: `${prefix}/sectors`, label: isKa ? 'სექტორები' : 'Sectors' },
               { href: `${prefix}/services`, label: t('services') },
               { href: `${prefix}/blog`, label: t('blog') },
               { href: `${prefix}/team`, label: t('team') },

@@ -1,37 +1,12 @@
 'use client'
 
+import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-
-const SECTORS = [
-  {
-    nameKa: 'გადაზიდვები',
-    nameEn: 'Transportation & Logistics',
-    image: '/images/sectors/transport.jpg',
-  },
-  {
-    nameKa: 'ენერგეტიკა',
-    nameEn: 'Energy',
-    image: '/images/sectors/energy.jpg',
-  },
-  {
-    nameKa: 'ინფრასტრუქტურა',
-    nameEn: 'Infrastructure',
-    image: '/images/sectors/infrastructure.jpg',
-  },
-  {
-    nameKa: 'მედიცინა',
-    nameEn: 'Medicine & Healthcare',
-    image: '/images/sectors/medicine.jpg',
-  },
-  {
-    nameKa: 'მშენებლობა',
-    nameEn: 'Construction',
-    image: '/images/sectors/construction.jpg',
-  },
-]
+import { SECTORS } from '@/lib/sectors'
 
 export default function TargetSectors({ locale }: { locale: string }) {
   const isKa = locale === 'ka'
+  const prefix = locale === 'en' ? '/en' : ''
 
   return (
     <section className="py-20 md:py-28 bg-navy text-white">
@@ -40,7 +15,7 @@ export default function TargetSectors({ locale }: { locale: string }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
           {SECTORS.map((sector, i) => (
             <ScrollReveal
-              key={sector.nameEn}
+              key={sector.slug}
               delay={i * 100}
               className={
                 i < 3
@@ -50,7 +25,10 @@ export default function TargetSectors({ locale }: { locale: string }) {
                   : 'lg:col-span-2 lg:col-start-4'
               }
             >
-              <div className="relative overflow-hidden group h-64 md:h-72">
+              <Link
+                href={`${prefix}/sectors/${sector.slug}`}
+                className="relative overflow-hidden group h-64 md:h-72 block"
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={sector.image}
@@ -67,7 +45,7 @@ export default function TargetSectors({ locale }: { locale: string }) {
                     {isKa ? sector.nameKa : sector.nameEn}
                   </p>
                 </div>
-              </div>
+              </Link>
             </ScrollReveal>
           ))}
         </div>
