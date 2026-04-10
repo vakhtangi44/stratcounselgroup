@@ -62,7 +62,7 @@ export default async function SectorDetailPage({
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]">
             {sector.name}
           </h1>
-          <p className="text-white/70 max-w-2xl mx-auto text-lg leading-relaxed font-light whitespace-pre-wrap">
+          <p className="text-white/70 max-w-2xl mx-auto text-lg leading-relaxed font-light whitespace-pre-wrap text-justify">
             {sector.description}
           </p>
         </div>

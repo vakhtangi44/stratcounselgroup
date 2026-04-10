@@ -68,52 +68,49 @@ export interface SectorData {
   enabled: boolean
 }
 
-/** Reads a setting value, falling back to default if not set or still the key name. */
-function readOverride(settings: Settings, key: string, fallback: string): string {
-  const val = getSetting(settings, key, 'ka')
-  const valEn = getSetting(settings, key, 'en')
-  // s() returns the key name as fallback when missing; treat that as unset
-  if (!val || val === key) return fallback
-  return val || valEn || fallback
+/** Builds SectorData for a single raw sector, merging admin overrides. */
+function buildSectorData(
+  sector: (typeof SECTORS)[number],
+  settings: Settings,
+  locale: string,
+): SectorData {
+  const defaultName = locale === 'ka' ? sector.nameKa : sector.nameEn
+  const defaultDesc = locale === 'ka' ? sector.descriptionKa : sector.descriptionEn
+  const enabledVal = getSetting(settings, `sector.${sector.slug}.enabled`, locale)
+  const enabled = enabledVal !== 'false'
+
+  const titleKey = `sector.${sector.slug}.title`
+  const titleVal = getSetting(settings, titleKey, locale)
+  const name = titleVal === titleKey || !titleVal ? defaultName : titleVal
+
+  const descKey = `sector.${sector.slug}.description`
+  const descVal = getSetting(settings, descKey, locale)
+  const description = descVal === descKey || !descVal ? defaultDesc : descVal
+
+  return {
+    slug: sector.slug,
+    name,
+    description,
+    image: sector.image,
+    enabled,
+  }
 }
 
-/** Returns all active sectors with admin-overridable title and description. */
+/** Returns all ENABLED sectors (for menus, homepage TargetSectors, /sectors list). */
 export function getSectorsData(settings: Settings, locale: string): SectorData[] {
   return SECTORS
-    .map((sector) => {
-      const defaultName = locale === 'ka' ? sector.nameKa : sector.nameEn
-      const defaultDesc = locale === 'ka' ? sector.descriptionKa : sector.descriptionEn
-      const enabledVal = getSetting(settings, `sector.${sector.slug}.enabled`, locale)
-      const enabled = enabledVal !== 'false'
-      const name =
-        getSetting(settings, `sector.${sector.slug}.title`, locale) === `sector.${sector.slug}.title`
-          ? defaultName
-          : getSetting(settings, `sector.${sector.slug}.title`, locale) || defaultName
-      const description =
-        getSetting(settings, `sector.${sector.slug}.description`, locale) ===
-        `sector.${sector.slug}.description`
-          ? defaultDesc
-          : getSetting(settings, `sector.${sector.slug}.description`, locale) || defaultDesc
-      return {
-        slug: sector.slug,
-        name,
-        description,
-        image: sector.image,
-        enabled,
-      }
-    })
+    .map((sector) => buildSectorData(sector, settings, locale))
     .filter((s) => s.enabled)
 }
 
-/** Returns one sector with admin-overridable text, or null. */
+/** Returns one sector by slug regardless of enabled state (detail page always accessible). */
 export function getSectorData(
   slug: string,
   settings: Settings,
-  locale: string
+  locale: string,
 ): SectorData | null {
   const sector = getSector(slug)
   if (!sector) return null
-  const [data] = getSectorsData(settings, locale).filter((s) => s.slug === slug)
-  return data || null
+  return buildSectorData(sector, settings, locale)
 }
 
