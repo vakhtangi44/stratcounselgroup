@@ -1,5 +1,6 @@
 import { db } from '@/lib/db'
 import { getLocale } from 'next-intl/server'
+import { unstable_noStore as noStore } from 'next/cache'
 import { getSettings, s } from '@/lib/settings'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,6 +17,7 @@ function getInitials(name: string): string {
 }
 
 export default async function TeamPage() {
+  noStore()
   const locale = await getLocale()
   const prefix = locale === 'en' ? '/en' : ''
   const isKa = locale === 'ka'

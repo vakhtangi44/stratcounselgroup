@@ -1,5 +1,6 @@
 import { db } from '@/lib/db'
 import { getLocale } from 'next-intl/server'
+import { unstable_noStore as noStore } from 'next/cache'
 import { getSettings, s } from '@/lib/settings'
 import { getSectorsData } from '@/lib/sectors'
 import Hero from '@/components/sections/Hero'
@@ -38,6 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function HomePage() {
+  noStore()
   const locale = await getLocale()
   const settings = await getSettings()
   const sectorsEnabled = s(settings, 'sectors.enabled', locale) !== 'false'

@@ -1,8 +1,10 @@
 import { getLocale } from 'next-intl/server'
+import { unstable_noStore as noStore } from 'next/cache'
 import { getSettings, s } from '@/lib/settings'
 import ContactPageClient from './ContactPageClient'
 
 export default async function ContactPage() {
+  noStore()
   const locale = await getLocale()
   const settings = await getSettings()
 
