@@ -9,6 +9,15 @@ export default async function Footer({ locale }: { locale: string }) {
   const isKa = locale === 'ka'
   const settings = await getSettings()
 
+  const companyName = s(settings, 'footer.companyName', locale)
+  const companyId = s(settings, 'footer.companyId', locale)
+  const legalAddressLabel = s(settings, 'footer.legalAddressLabel', locale)
+  const legalAddress = s(settings, 'footer.legalAddress', locale)
+  const officeAddressLabel = s(settings, 'footer.officeAddressLabel', locale)
+  const officeAddress = s(settings, 'footer.address', locale)
+  const phoneLabel = s(settings, 'footer.phoneLabel', locale)
+  const phone = s(settings, 'contact.phone', locale)
+
   return (
     <footer className="bg-navy text-white relative">
       {/* Gold line pattern at top */}
@@ -27,16 +36,16 @@ export default async function Footer({ locale }: { locale: string }) {
               height={280}
               className="h-24 w-auto mb-4"
             />
-            <RichText html={s(settings, 'footer.tagline', locale)} as="p" className="text-white/40 text-sm leading-relaxed mb-6 font-light" />
+            <RichText html={s(settings, 'footer.tagline', locale)} as="p" className="text-white/40 text-base leading-relaxed mb-6 font-light" />
           </div>
 
           {/* Quick Links */}
           <div>
-            <RichText html={s(settings, 'footer.quickLinks', locale)} as="div" className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.2em]" />
-            <ul className="space-y-3 text-sm">
+            <RichText html={s(settings, 'footer.quickLinks', locale)} as="div" className="font-heading text-gold mb-6 text-[14px] uppercase tracking-[0.2em]" />
+            <ul className="space-y-3 text-base">
               {[
                 ['about', isKa ? 'ჩვენ შესახებ' : 'About'],
-                ['practice-areas', isKa ? 'პრაქტიკა' : 'Practice Areas'],
+                ['sectors', isKa ? 'სექტორები' : 'Sectors'],
                 ['blog', isKa ? 'ბლოგი' : 'Blog'],
                 ['team', isKa ? 'გუნდი' : 'Team'],
                 ['contact', isKa ? 'კონტაქტი' : 'Contact'],
@@ -55,19 +64,31 @@ export default async function Footer({ locale }: { locale: string }) {
 
           {/* Contact */}
           <div>
-            <RichText html={s(settings, 'footer.contact', locale)} as="div" className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.2em]" />
-            <div className="space-y-3 text-sm text-white/50 font-light">
-              <a href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7" target="_blank" rel="noopener noreferrer" className="block hover:text-gold transition-colors duration-300">
-                <RichText html={s(settings, 'footer.address', locale)} />
-              </a>
-              <p>
-                <a href={`tel:${s(settings, 'contact.phone', locale).replace(/\s/g, '')}`} className="hover:text-gold transition-colors duration-300">
-                  {s(settings, 'contact.phone', locale)}
+            <RichText html={s(settings, 'footer.contact', locale)} as="div" className="font-heading text-gold mb-6 text-[14px] uppercase tracking-[0.2em]" />
+            <div className="space-y-3 text-base text-white/50 font-light">
+              <p className="text-white/70 font-medium leading-snug">{companyName}</p>
+              <p className="leading-snug">{companyId}</p>
+              <p className="leading-snug">
+                <span className="text-white/40">{legalAddressLabel}:</span> {legalAddress}
+              </p>
+              <p className="leading-snug">
+                <span className="text-white/40">{officeAddressLabel}:</span>{' '}
+                <a
+                  href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gold transition-colors duration-300"
+                >
+                  {officeAddress}
                 </a>
               </p>
-              <p>
-                <a href={`mailto:${s(settings, 'contact.email', locale)}`} className="hover:text-gold transition-colors duration-300">
-                  {s(settings, 'contact.email', locale)}
+              <p className="leading-snug">
+                <span className="text-white/40">{phoneLabel}:</span>{' '}
+                <a
+                  href={`tel:${phone.replace(/\s/g, '')}`}
+                  className="hover:text-gold transition-colors duration-300"
+                >
+                  {phone}
                 </a>
               </p>
             </div>
@@ -75,8 +96,8 @@ export default async function Footer({ locale }: { locale: string }) {
 
           {/* Newsletter */}
           <div>
-            <RichText html={s(settings, 'footer.newsletter', locale)} as="div" className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.2em]" />
-            <RichText html={s(settings, 'footer.newsletterText', locale)} as="p" className="text-white/40 text-sm mb-4 font-light" />
+            <RichText html={s(settings, 'footer.newsletter', locale)} as="div" className="font-heading text-gold mb-6 text-[14px] uppercase tracking-[0.2em]" />
+            <RichText html={s(settings, 'footer.newsletterText', locale)} as="p" className="text-white/40 text-base mb-4 font-light" />
             <NewsletterForm locale={locale} />
           </div>
         </div>
