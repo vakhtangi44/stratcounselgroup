@@ -95,14 +95,14 @@ export default function Header({ locale }: Props) {
             : 'bg-navy/98 shadow-lg backdrop-blur-md'
         }`}
       >
-        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-32">
+        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-64">
           <Link href={prefix || '/'} className="relative z-10">
             <Image
               src="/logo.webp"
               alt="Strategic Counsel Group"
-              width={360}
-              height={180}
-              className="h-28 w-auto transition-all duration-500"
+              width={560}
+              height={560}
+              className="h-56 w-auto transition-all duration-500"
               priority
             />
           </Link>

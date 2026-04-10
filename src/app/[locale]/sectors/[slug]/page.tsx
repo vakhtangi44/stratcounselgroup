@@ -36,7 +36,7 @@ export default async function SectorDetailPage({
   if (!sector) notFound()
 
   return (
-    <div className="pt-[130px]">
+    <div className="pt-[258px]">
       {/* Hero with sector photo */}
       <section className="relative bg-navy text-white py-32 md:py-40 text-center px-4 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}

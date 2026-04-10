@@ -23,9 +23,9 @@ export default async function Footer({ locale }: { locale: string }) {
             <Image
               src="/logo.webp"
               alt="Strategic Counsel Group"
-              width={140}
-              height={70}
-              className="h-12 w-auto mb-4 brightness-0 invert"
+              width={280}
+              height={280}
+              className="h-24 w-auto mb-4"
             />
             <RichText html={s(settings, 'footer.tagline', locale)} as="p" className="text-white/40 text-sm leading-relaxed mb-6 font-light" />
           </div>
