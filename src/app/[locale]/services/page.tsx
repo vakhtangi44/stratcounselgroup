@@ -75,7 +75,7 @@ export default async function ServicesPage() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-secondary text-base md:text-lg leading-relaxed mb-6 max-w-3xl font-light italic">
+                    <p className="text-secondary text-base md:text-lg leading-relaxed mb-6 max-w-3xl font-light italic text-justify">
                       {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                     </p>
 
@@ -90,7 +90,7 @@ export default async function ServicesPage() {
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                               </div>
-                              <p className="text-dark text-sm leading-relaxed group-hover/item:text-gold transition-colors duration-300">
+                              <p className="text-dark text-sm leading-relaxed group-hover/item:text-gold transition-colors duration-300 text-justify">
                                 {locale === 'ka' ? item.textKa : item.textEn}
                               </p>
                             </div>

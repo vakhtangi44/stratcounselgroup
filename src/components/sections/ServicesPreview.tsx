@@ -60,7 +60,7 @@ export default function ServicesPreview({ services, locale }: Props) {
                   {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
                 </h3>
 
-                <p className="text-secondary text-sm font-light leading-relaxed mb-5 line-clamp-3">
+                <p className="text-secondary text-sm font-light leading-relaxed mb-5 line-clamp-3 text-justify">
                   {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                 </p>
 
