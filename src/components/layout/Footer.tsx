@@ -18,6 +18,9 @@ export default async function Footer({ locale }: { locale: string }) {
   const phoneLabel = s(settings, 'footer.phoneLabel', locale)
   const phone = s(settings, 'contact.phone', locale)
 
+  // Unified body text style — same color, weight, size everywhere in the footer
+  const bodyText = 'text-white/70 text-[15px] font-light'
+
   return (
     <footer className="bg-navy text-white relative">
       {/* Gold line pattern at top */}
@@ -36,13 +39,21 @@ export default async function Footer({ locale }: { locale: string }) {
               height={280}
               className="h-24 w-auto mb-4"
             />
-            <RichText html={s(settings, 'footer.tagline', locale)} as="p" className="text-white/40 text-[15px] leading-relaxed mb-6 font-light text-justify" />
+            <RichText
+              html={s(settings, 'footer.tagline', locale)}
+              as="p"
+              className={`${bodyText} leading-relaxed mb-6 text-justify`}
+            />
           </div>
 
           {/* Quick Links */}
           <div>
-            <RichText html={s(settings, 'footer.quickLinks', locale)} as="div" className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]" />
-            <ul className="space-y-3 text-[15px]">
+            <RichText
+              html={s(settings, 'footer.quickLinks', locale)}
+              as="div"
+              className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]"
+            />
+            <ul className="space-y-3">
               {[
                 ['about', isKa ? 'ჩვენ შესახებ' : 'About'],
                 ['sectors', isKa ? 'სექტორები' : 'Sectors'],
@@ -53,7 +64,7 @@ export default async function Footer({ locale }: { locale: string }) {
                 <li key={slug}>
                   <Link
                     href={`${prefix}/${slug}`}
-                    className="text-white/50 hover:text-gold transition-colors duration-300 font-light"
+                    className={`${bodyText} hover:text-gold transition-colors duration-300`}
                   >
                     {label}
                   </Link>
@@ -64,15 +75,19 @@ export default async function Footer({ locale }: { locale: string }) {
 
           {/* Contact */}
           <div>
-            <RichText html={s(settings, 'footer.contact', locale)} as="div" className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]" />
-            <div className="space-y-3 text-[15px] text-white/50 font-light">
-              <p className="text-white/70 font-medium leading-snug text-justify">{companyName}</p>
+            <RichText
+              html={s(settings, 'footer.contact', locale)}
+              as="div"
+              className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]"
+            />
+            <div className={`space-y-3 ${bodyText}`}>
+              <p className="leading-snug text-justify">{companyName}</p>
               <p className="leading-snug text-justify">{companyId}</p>
               <p className="leading-snug text-justify">
-                <span className="text-white/40">{legalAddressLabel}:</span> {legalAddress}
+                {legalAddressLabel}: {legalAddress}
               </p>
               <p className="leading-snug text-justify">
-                <span className="text-white/40">{officeAddressLabel}:</span>{' '}
+                {officeAddressLabel}:{' '}
                 <a
                   href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
                   target="_blank"
@@ -83,7 +98,7 @@ export default async function Footer({ locale }: { locale: string }) {
                 </a>
               </p>
               <p className="leading-snug text-justify">
-                <span className="text-white/40">{phoneLabel}:</span>{' '}
+                {phoneLabel}:{' '}
                 <a
                   href={`tel:${phone.replace(/\s/g, '')}`}
                   className="hover:text-gold transition-colors duration-300"
@@ -96,8 +111,16 @@ export default async function Footer({ locale }: { locale: string }) {
 
           {/* Newsletter */}
           <div>
-            <RichText html={s(settings, 'footer.newsletter', locale)} as="div" className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]" />
-            <RichText html={s(settings, 'footer.newsletterText', locale)} as="p" className="text-white/40 text-[15px] mb-4 font-light text-justify" />
+            <RichText
+              html={s(settings, 'footer.newsletter', locale)}
+              as="div"
+              className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]"
+            />
+            <RichText
+              html={s(settings, 'footer.newsletterText', locale)}
+              as="p"
+              className={`${bodyText} mb-4 text-justify`}
+            />
             <NewsletterForm locale={locale} />
           </div>
         </div>
@@ -106,10 +129,10 @@ export default async function Footer({ locale }: { locale: string }) {
       {/* Bottom bar */}
       <div className="border-t border-gold/10">
         <div className="container mx-auto px-4 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/30 text-xs tracking-wide font-light">
+          <p className="text-white/50 text-xs tracking-wide font-light">
             &copy; {new Date().getFullYear()}{' '}<RichText html={s(settings, 'footer.copyright', locale)} />
           </p>
-          <div className="flex items-center gap-6 text-white/30 text-xs">
+          <div className="flex items-center gap-6 text-white/50 text-xs">
             <Link href={`${prefix}/faq`} className="hover:text-gold transition-colors duration-300">
               FAQ
             </Link>
