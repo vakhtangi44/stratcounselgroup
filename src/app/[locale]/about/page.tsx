@@ -5,6 +5,7 @@ import { db } from '@/lib/db'
 import { getSettings, s } from '@/lib/settings'
 import { unstable_noStore as noStore } from 'next/cache'
 import RichText from '@/components/ui/RichText'
+import AboutPreview from '@/components/sections/AboutPreview'
 
 export default async function AboutPage() {
   noStore()
@@ -26,9 +27,23 @@ export default async function AboutPage() {
           <RichText html={s(settings, 'about.subtitle', locale)} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
           <div className="gold-divider mx-auto mb-8" />
           <RichText html={s(settings, 'about.heading', locale)} as="h1" className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]" />
-          <RichText html={s(settings, 'about.description', locale)} as="p" className="text-white/50 max-w-2xl mx-auto text-lg leading-relaxed font-light" />
         </div>
       </section>
+
+      {/* About body — white section, same style as homepage AboutPreview */}
+      <AboutPreview
+        locale={locale}
+        strings={{
+          heading: s(settings, 'about.heading', locale),
+          body: s(settings, 'about.pageBody', locale),
+          stat: s(settings, 'about.pageStat', locale),
+          statLabel: s(settings, 'about.pageStatLabel', locale),
+          cta: '',
+          image: s(settings, 'about.pageImage', locale),
+          imagePosition: s(settings, 'about.pageImagePosition', locale),
+          imageSize: s(settings, 'about.pageImageSize', locale),
+        }}
+      />
 
       {/* Advantages */}
       <section className="py-20 md:py-28 px-4 bg-white bg-subtle-pattern">
