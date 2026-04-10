@@ -6,9 +6,14 @@ interface Props {
   imageSettingId: number | null
   positionSettingId: number | null
   sizeSettingId: number | null
+  statSettingId: number | null
+  statLabelSettingId: number | null
   currentImage: string
   currentPosition: string
   currentSize: string
+  currentStat: string
+  currentStatLabelKa: string
+  currentStatLabelEn: string
 }
 
 async function saveSetting(id: number, value: string) {
@@ -19,17 +24,33 @@ async function saveSetting(id: number, value: string) {
   })
 }
 
+async function saveBilingualSetting(id: number, ka: string, en: string) {
+  return fetch('/api/admin/settings', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify([{ id, valueKa: ka, valueEn: en }]),
+  })
+}
+
 export default function AboutPhotoUploader({
   imageSettingId,
   positionSettingId,
   sizeSettingId,
+  statSettingId,
+  statLabelSettingId,
   currentImage,
   currentPosition,
   currentSize,
+  currentStat,
+  currentStatLabelKa,
+  currentStatLabelEn,
 }: Props) {
   const [preview, setPreview] = useState(currentImage || '')
   const [position, setPosition] = useState(currentPosition || 'right')
   const [size, setSize] = useState(currentSize || 'medium')
+  const [stat, setStat] = useState(currentStat || '')
+  const [statLabelKa, setStatLabelKa] = useState(currentStatLabelKa || '')
+  const [statLabelEn, setStatLabelEn] = useState(currentStatLabelEn || '')
   const [uploading, setUploading] = useState(false)
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState('')
@@ -89,6 +110,17 @@ export default function AboutPhotoUploader({
     if (!sizeSettingId) return
     await saveSetting(sizeSettingId, value)
     flashSaved()
+  }
+
+  async function saveStat() {
+    setError('')
+    try {
+      if (statSettingId) await saveSetting(statSettingId, stat)
+      if (statLabelSettingId) await saveBilingualSetting(statLabelSettingId, statLabelKa, statLabelEn)
+      flashSaved()
+    } catch {
+      setError('Failed to save stat')
+    }
   }
 
   function onDrop(e: React.DragEvent) {
@@ -232,6 +264,63 @@ export default function AboutPhotoUploader({
               <option value="xlarge">Extra Large (800px)</option>
             </select>
           </div>
+        </div>
+      </div>
+
+      {/* Stat Box editor */}
+      <div className="bg-white rounded-lg shadow-sm p-6">
+        <h2 className="font-heading text-lg text-dark mb-4">Stat Box</h2>
+        <p className="text-xs text-secondary mb-6">
+          The large number + label shown in the gold-bordered box (e.g. "20+ Years of Experience").
+        </p>
+
+        <div className="grid grid-cols-1 gap-4">
+          <div>
+            <label className="block text-xs text-secondary mb-2 uppercase tracking-wider">
+              Number (e.g. 20+)
+            </label>
+            <input
+              type="text"
+              value={stat}
+              onChange={(e) => setStat(e.target.value)}
+              className="w-full border border-gray-200 rounded px-4 py-3 text-sm bg-white"
+              placeholder="20+"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs text-secondary mb-2 uppercase tracking-wider">
+                Label (Georgian)
+              </label>
+              <input
+                type="text"
+                value={statLabelKa}
+                onChange={(e) => setStatLabelKa(e.target.value)}
+                className="w-full border border-gray-200 rounded px-4 py-3 text-sm bg-white"
+                placeholder="წელზე მეტი გამოცდილება"
+              />
+            </div>
+            <div>
+              <label className="block text-xs text-secondary mb-2 uppercase tracking-wider">
+                Label (English)
+              </label>
+              <input
+                type="text"
+                value={statLabelEn}
+                onChange={(e) => setStatLabelEn(e.target.value)}
+                className="w-full border border-gray-200 rounded px-4 py-3 text-sm bg-white"
+                placeholder="Years of Experience"
+              />
+            </div>
+          </div>
+
+          <button
+            onClick={saveStat}
+            className="bg-dark text-white px-6 py-2.5 rounded text-sm hover:bg-navy transition-colors self-start"
+          >
+            Save Stat Box
+          </button>
         </div>
       </div>
 
