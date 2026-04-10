@@ -1,3 +1,6 @@
+import type { Settings } from '@/lib/settings'
+import { s as getSetting } from '@/lib/settings'
+
 export const SECTORS = [
   {
     slug: 'transportation-logistics',
@@ -53,19 +56,16 @@ export const SECTORS = [
 
 export type SectorSlug = (typeof SECTORS)[number]['slug']
 
-export function getSector(slug: string) {
-  return SECTORS.find((s) => s.slug === slug)
-}
-
-import type { Settings } from '@/lib/settings'
-import { s as getSetting } from '@/lib/settings'
-
 export interface SectorData {
   slug: string
   name: string
   description: string
   image: string
   enabled: boolean
+}
+
+export function getSector(slug: string) {
+  return SECTORS.find((s) => s.slug === slug)
 }
 
 /** Builds SectorData for a single raw sector, merging admin overrides. */
@@ -76,16 +76,17 @@ function buildSectorData(
 ): SectorData {
   const defaultName = locale === 'ka' ? sector.nameKa : sector.nameEn
   const defaultDesc = locale === 'ka' ? sector.descriptionKa : sector.descriptionEn
+
   const enabledVal = getSetting(settings, `sector.${sector.slug}.enabled`, locale)
   const enabled = enabledVal !== 'false'
 
   const titleKey = `sector.${sector.slug}.title`
   const titleVal = getSetting(settings, titleKey, locale)
-  const name = titleVal === titleKey || !titleVal ? defaultName : titleVal
+  const name = !titleVal || titleVal === titleKey ? defaultName : titleVal
 
   const descKey = `sector.${sector.slug}.description`
   const descVal = getSetting(settings, descKey, locale)
-  const description = descVal === descKey || !descVal ? defaultDesc : descVal
+  const description = !descVal || descVal === descKey ? defaultDesc : descVal
 
   return {
     slug: sector.slug,
@@ -113,4 +114,3 @@ export function getSectorData(
   if (!sector) return null
   return buildSectorData(sector, settings, locale)
 }
-

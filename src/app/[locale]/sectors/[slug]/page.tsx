@@ -1,14 +1,10 @@
 import { getLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { SECTORS, getSectorData, getSectorsData } from '@/lib/sectors'
+import { getSectorData, getSectorsData } from '@/lib/sectors'
 import { getSettings } from '@/lib/settings'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import { unstable_noStore as noStore } from 'next/cache'
-
-export async function generateStaticParams() {
-  return SECTORS.map((s) => ({ slug: s.slug }))
-}
 
 export async function generateMetadata({
   params,
