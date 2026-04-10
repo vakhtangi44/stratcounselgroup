@@ -104,7 +104,7 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
         <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-64">
           <Link href={prefix || '/'} className="relative z-10">
             <Image
-              src="/logo.png"
+              src="/logo-v2.png"
               alt="Strategic Counsel Group"
               width={560}
               height={560}
