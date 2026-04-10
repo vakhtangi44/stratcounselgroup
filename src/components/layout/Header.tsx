@@ -106,7 +106,7 @@ export default function Header({ locale }: Props) {
               alt="Strategic Counsel Group"
               width={360}
               height={180}
-              className="h-28 w-auto brightness-0 invert transition-all duration-500"
+              className="h-28 w-auto transition-all duration-500"
               priority
             />
           </Link>
