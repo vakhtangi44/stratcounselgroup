@@ -36,13 +36,13 @@ export default async function Footer({ locale }: { locale: string }) {
               height={280}
               className="h-24 w-auto mb-4"
             />
-            <RichText html={s(settings, 'footer.tagline', locale)} as="p" className="text-white/40 text-base leading-relaxed mb-6 font-light" />
+            <RichText html={s(settings, 'footer.tagline', locale)} as="p" className="text-white/40 text-[15px] leading-relaxed mb-6 font-light text-justify" />
           </div>
 
           {/* Quick Links */}
           <div>
-            <RichText html={s(settings, 'footer.quickLinks', locale)} as="div" className="font-heading text-gold mb-6 text-[14px] uppercase tracking-[0.2em]" />
-            <ul className="space-y-3 text-base">
+            <RichText html={s(settings, 'footer.quickLinks', locale)} as="div" className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]" />
+            <ul className="space-y-3 text-[15px]">
               {[
                 ['about', isKa ? 'ჩვენ შესახებ' : 'About'],
                 ['sectors', isKa ? 'სექტორები' : 'Sectors'],
@@ -64,14 +64,14 @@ export default async function Footer({ locale }: { locale: string }) {
 
           {/* Contact */}
           <div>
-            <RichText html={s(settings, 'footer.contact', locale)} as="div" className="font-heading text-gold mb-6 text-[14px] uppercase tracking-[0.2em]" />
-            <div className="space-y-3 text-base text-white/50 font-light">
-              <p className="text-white/70 font-medium leading-snug">{companyName}</p>
-              <p className="leading-snug">{companyId}</p>
-              <p className="leading-snug">
+            <RichText html={s(settings, 'footer.contact', locale)} as="div" className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]" />
+            <div className="space-y-3 text-[15px] text-white/50 font-light">
+              <p className="text-white/70 font-medium leading-snug text-justify">{companyName}</p>
+              <p className="leading-snug text-justify">{companyId}</p>
+              <p className="leading-snug text-justify">
                 <span className="text-white/40">{legalAddressLabel}:</span> {legalAddress}
               </p>
-              <p className="leading-snug">
+              <p className="leading-snug text-justify">
                 <span className="text-white/40">{officeAddressLabel}:</span>{' '}
                 <a
                   href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
@@ -82,7 +82,7 @@ export default async function Footer({ locale }: { locale: string }) {
                   {officeAddress}
                 </a>
               </p>
-              <p className="leading-snug">
+              <p className="leading-snug text-justify">
                 <span className="text-white/40">{phoneLabel}:</span>{' '}
                 <a
                   href={`tel:${phone.replace(/\s/g, '')}`}
@@ -96,8 +96,8 @@ export default async function Footer({ locale }: { locale: string }) {
 
           {/* Newsletter */}
           <div>
-            <RichText html={s(settings, 'footer.newsletter', locale)} as="div" className="font-heading text-gold mb-6 text-[14px] uppercase tracking-[0.2em]" />
-            <RichText html={s(settings, 'footer.newsletterText', locale)} as="p" className="text-white/40 text-base mb-4 font-light" />
+            <RichText html={s(settings, 'footer.newsletter', locale)} as="div" className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]" />
+            <RichText html={s(settings, 'footer.newsletterText', locale)} as="p" className="text-white/40 text-[15px] mb-4 font-light text-justify" />
             <NewsletterForm locale={locale} />
           </div>
         </div>
