@@ -60,24 +60,24 @@ export default function TrustedBy({ locale, categories, strings }: Props) {
         </ScrollReveal>
 
         {/* Logo Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
           {allClients.map((client, idx) => {
             const logo = isKa ? (client.logoKa || client.logoEn) : (client.logoEn || client.logoKa)
             const name = isKa ? (client.nameKa || client.name) : (client.nameEn || client.name)
 
             return (
               <ScrollReveal key={client.id} delay={idx * 40}>
-                <div className="group bg-white rounded-sm p-4 flex items-center justify-center aspect-[3/2] hover:shadow-[0_0_20px_rgba(196,163,90,0.25)] transition-all duration-500 border border-transparent hover:border-gold/30">
+                <div className="group flex items-center justify-center aspect-[3/2] border border-white/10 hover:border-gold/40 transition-all duration-500 p-3">
                   {logo ? (
                     <Image
                       src={logo}
                       alt={name}
                       width={180}
                       height={90}
-                      className="object-contain w-full h-full max-h-[72px] transition-all duration-500 group-hover:scale-105"
+                      className="object-contain w-full h-full max-h-[72px] brightness-0 invert opacity-50 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
                     />
                   ) : (
-                    <span className="text-navy text-sm font-medium text-center leading-snug">{name}</span>
+                    <span className="text-white/70 group-hover:text-white text-sm font-medium text-center leading-snug transition-colors duration-300">{name}</span>
                   )}
                 </div>
               </ScrollReveal>
