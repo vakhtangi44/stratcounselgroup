@@ -7,7 +7,7 @@ import TeamPreview from '@/components/sections/TeamPreview'
 import TestimonialsCarousel from '@/components/sections/TestimonialsCarousel'
 import BlogPreview from '@/components/sections/BlogPreview'
 import PressStrip from '@/components/sections/PressStrip'
-import PracticeAreasGrid from '@/components/sections/PracticeAreasGrid'
+import TargetSectors from '@/components/sections/TargetSectors'
 import TrustedBy from '@/components/sections/TrustedBy'
 import ServicesPreview from '@/components/sections/ServicesPreview'
 
@@ -55,7 +55,7 @@ export default async function HomePage() {
     db.clientCategory.findMany({
       where: { active: true },
       orderBy: { order: 'asc' },
-      include: { clients: { where: { active: true }, orderBy: { order: 'asc' } } },
+      include: { clients: { where: { active: true }, orderBy: { order: 'asc' }, select: { id: true, name: true, nameKa: true, nameEn: true, logoKa: true, logoEn: true, order: true, active: true, categoryId: true } } },
     }),
     db.service.findMany({
       where: { active: true },
@@ -90,11 +90,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero locale={locale} strings={heroStrings} />
-      <PracticeAreasGrid locale={locale} strings={{
-        subtitle: s(settings, 'section.practiceAreas.subtitle', locale),
-        title: s(settings, 'section.practiceAreas', locale),
-        description: s(settings, 'section.practiceAreas.description', locale),
-      }} />
+      <TargetSectors locale={locale} />
       {services.length > 0 && <ServicesPreview services={services} locale={locale} />}
       <StatsSection stats={stats} locale={locale} />
       <TeamPreview members={teamMembers} locale={locale} strings={{
