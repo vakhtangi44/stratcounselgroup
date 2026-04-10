@@ -18,6 +18,10 @@ export default async function ContactPage() {
     workingHours: s(settings, 'contact.workingHours', locale),
     phone: s(settings, 'contact.phone', locale),
     email: s(settings, 'contact.email', locale),
+    whatsapp: s(settings, 'contact.whatsapp', locale),
+    telegram: s(settings, 'contact.telegram', locale),
+    facebook: s(settings, 'contact.facebook', locale),
+    linkedin: s(settings, 'contact.linkedin', locale),
   }
 
   return <ContactPageClient locale={locale} strings={strings} />
