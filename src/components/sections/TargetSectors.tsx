@@ -24,7 +24,7 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
     <section className="py-20 md:py-28 bg-navy text-white">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Adaptive grid: if 5 sectors use 3+2 layout, else centered */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
           {sectors.map((sector, i) => {
             const cardContent = (
               <div className="relative overflow-hidden group h-64 md:h-72">
