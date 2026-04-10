@@ -72,7 +72,7 @@ export default async function TeamPage() {
                       <h2 className="font-heading text-2xl text-navy group-hover:text-gold transition-colors duration-300 leading-snug font-semibold line-clamp-2">
                         {isKa ? member.nameKa : member.nameEn}
                       </h2>
-                      <p className="text-navy/70 text-[1.2rem] mt-1 font-bold tracking-wide leading-snug">
+                      <p className="text-navy/70 text-[1.15rem] mt-1 font-bold tracking-wide leading-snug line-clamp-2">
                         {isKa ? member.titleKa : member.titleEn}
                       </p>
                       {member.gbaNumber && (
