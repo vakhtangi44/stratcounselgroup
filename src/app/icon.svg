@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <rect width="64" height="64" rx="8" fill="#0c1220"/>
-  <text x="32" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#b1976b">SCG</text>
-  <line x1="16" y1="34" x2="48" y2="34" stroke="#b1976b" stroke-width="1"/>
-  <path d="M32 38 L26 50 L38 50 Z" fill="none" stroke="#b1976b" stroke-width="1.5" stroke-linejoin="round"/>
-  <line x1="32" y1="42" x2="32" y2="48" stroke="#b1976b" stroke-width="1.5"/>
-  <line x1="29" y1="46" x2="35" y2="46" stroke="#b1976b" stroke-width="1.5"/>
+  <text x="32" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#C4A35A">SCG</text>
+  <line x1="16" y1="34" x2="48" y2="34" stroke="#C4A35A" stroke-width="1"/>
+  <path d="M32 38 L26 50 L38 50 Z" fill="none" stroke="#C4A35A" stroke-width="1.5" stroke-linejoin="round"/>
+  <line x1="32" y1="42" x2="32" y2="48" stroke="#C4A35A" stroke-width="1.5"/>
+  <line x1="29" y1="46" x2="35" y2="46" stroke="#C4A35A" stroke-width="1.5"/>
 </svg>
