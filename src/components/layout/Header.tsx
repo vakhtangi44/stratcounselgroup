@@ -7,10 +7,16 @@ import { usePathname } from 'next/navigation'
 import LanguageToggle from './LanguageToggle'
 import MobileMenu from './MobileMenu'
 import { useState, useEffect, useRef } from 'react'
-import { SECTORS } from '@/lib/sectors'
+
+interface SectorLink {
+  slug: string
+  name: string
+}
 
 interface Props {
   locale: string
+  sectorsEnabled: boolean
+  sectors: SectorLink[]
 }
 
 function DropdownMenu({
@@ -65,7 +71,7 @@ function DropdownMenu({
   )
 }
 
-export default function Header({ locale }: Props) {
+export default function Header({ locale, sectorsEnabled, sectors }: Props) {
   const t = useTranslations('nav')
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
@@ -118,32 +124,34 @@ export default function Header({ locale }: Props) {
             </Link>
 
             {/* Sectors Dropdown */}
-            <DropdownMenu label={isKa ? 'სექტორები' : 'Sectors'} isTransparent={isTransparent}>
-              <div className="w-[300px] p-4">
-                <div className="flex items-center justify-between mb-3 pb-3 border-b border-gray-100">
-                  <p className="text-[11px] uppercase tracking-[0.2em] text-gold font-medium">
-                    {isKa ? 'სექტორები' : 'Sectors'}
-                  </p>
-                  <Link
-                    href={`${prefix}/sectors`}
-                    className="text-[11px] uppercase tracking-wider text-secondary hover:text-gold transition-colors"
-                  >
-                    {isKa ? 'ყველა →' : 'View All →'}
-                  </Link>
-                </div>
-                <div className="space-y-0.5">
-                  {SECTORS.map((sector) => (
+            {sectorsEnabled && sectors.length > 0 && (
+              <DropdownMenu label={isKa ? 'სექტორები' : 'Sectors'} isTransparent={isTransparent}>
+                <div className="w-[300px] p-4">
+                  <div className="flex items-center justify-between mb-3 pb-3 border-b border-gray-100">
+                    <p className="text-[11px] uppercase tracking-[0.2em] text-gold font-medium">
+                      {isKa ? 'სექტორები' : 'Sectors'}
+                    </p>
                     <Link
-                      key={sector.slug}
-                      href={`${prefix}/sectors/${sector.slug}`}
-                      className="block px-3 py-2 text-[13px] text-dark hover:text-gold hover:bg-cream rounded transition-colors duration-200"
+                      href={`${prefix}/sectors`}
+                      className="text-[11px] uppercase tracking-wider text-secondary hover:text-gold transition-colors"
                     >
-                      {isKa ? sector.nameKa : sector.nameEn}
+                      {isKa ? 'ყველა →' : 'View All →'}
                     </Link>
-                  ))}
+                  </div>
+                  <div className="space-y-0.5">
+                    {sectors.map((sector) => (
+                      <Link
+                        key={sector.slug}
+                        href={`${prefix}/sectors/${sector.slug}`}
+                        className="block px-3 py-2 text-[13px] text-dark hover:text-gold hover:bg-cream rounded transition-colors duration-200"
+                      >
+                        {sector.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </DropdownMenu>
+              </DropdownMenu>
+            )}
 
             {/* Services Dropdown */}
             <DropdownMenu label={t('services')} isTransparent={isTransparent}>
@@ -221,7 +229,7 @@ export default function Header({ locale }: Props) {
             <LanguageToggle locale={locale} />
             <MobileMenu locale={locale} links={[
               { href: `${prefix}/about`, label: t('about') },
-              { href: `${prefix}/sectors`, label: isKa ? 'სექტორები' : 'Sectors' },
+              ...(sectorsEnabled ? [{ href: `${prefix}/sectors`, label: isKa ? 'სექტორები' : 'Sectors' }] : []),
               { href: `${prefix}/services`, label: t('services') },
               { href: `${prefix}/blog`, label: t('blog') },
               { href: `${prefix}/team`, label: t('team') },

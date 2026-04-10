@@ -1,6 +1,7 @@
 import { db } from '@/lib/db'
 import { getLocale } from 'next-intl/server'
 import { getSettings, s } from '@/lib/settings'
+import { getSectorsData } from '@/lib/sectors'
 import Hero from '@/components/sections/Hero'
 import AboutPreview from '@/components/sections/AboutPreview'
 import StatsSection from '@/components/sections/StatsSection'
@@ -39,6 +40,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function HomePage() {
   const locale = await getLocale()
   const settings = await getSettings()
+  const sectorsEnabled = s(settings, 'sectors.enabled', locale) !== 'false'
+  const sectorsData = getSectorsData(settings, locale)
 
   const [stats, teamMembers, testimonials, blogPosts, pressItems, clientCategories, services] = await Promise.all([
     db.statistic.findMany(),
@@ -106,7 +109,7 @@ export default async function HomePage() {
     <>
       <Hero locale={locale} strings={heroStrings} />
       <AboutPreview locale={locale} strings={aboutStrings} />
-      <TargetSectors locale={locale} />
+      <TargetSectors locale={locale} sectors={sectorsData} enabled={sectorsEnabled} />
       {services.length > 0 && <ServicesPreview services={services} locale={locale} />}
       <StatsSection stats={stats} locale={locale} />
       <TeamPreview members={teamMembers} locale={locale} strings={{

@@ -56,3 +56,64 @@ export type SectorSlug = (typeof SECTORS)[number]['slug']
 export function getSector(slug: string) {
   return SECTORS.find((s) => s.slug === slug)
 }
+
+import type { Settings } from '@/lib/settings'
+import { s as getSetting } from '@/lib/settings'
+
+export interface SectorData {
+  slug: string
+  name: string
+  description: string
+  image: string
+  enabled: boolean
+}
+
+/** Reads a setting value, falling back to default if not set or still the key name. */
+function readOverride(settings: Settings, key: string, fallback: string): string {
+  const val = getSetting(settings, key, 'ka')
+  const valEn = getSetting(settings, key, 'en')
+  // s() returns the key name as fallback when missing; treat that as unset
+  if (!val || val === key) return fallback
+  return val || valEn || fallback
+}
+
+/** Returns all active sectors with admin-overridable title and description. */
+export function getSectorsData(settings: Settings, locale: string): SectorData[] {
+  return SECTORS
+    .map((sector) => {
+      const defaultName = locale === 'ka' ? sector.nameKa : sector.nameEn
+      const defaultDesc = locale === 'ka' ? sector.descriptionKa : sector.descriptionEn
+      const enabledVal = getSetting(settings, `sector.${sector.slug}.enabled`, locale)
+      const enabled = enabledVal !== 'false'
+      const name =
+        getSetting(settings, `sector.${sector.slug}.title`, locale) === `sector.${sector.slug}.title`
+          ? defaultName
+          : getSetting(settings, `sector.${sector.slug}.title`, locale) || defaultName
+      const description =
+        getSetting(settings, `sector.${sector.slug}.description`, locale) ===
+        `sector.${sector.slug}.description`
+          ? defaultDesc
+          : getSetting(settings, `sector.${sector.slug}.description`, locale) || defaultDesc
+      return {
+        slug: sector.slug,
+        name,
+        description,
+        image: sector.image,
+        enabled,
+      }
+    })
+    .filter((s) => s.enabled)
+}
+
+/** Returns one sector with admin-overridable text, or null. */
+export function getSectorData(
+  slug: string,
+  settings: Settings,
+  locale: string
+): SectorData | null {
+  const sector = getSector(slug)
+  if (!sector) return null
+  const [data] = getSectorsData(settings, locale).filter((s) => s.slug === slug)
+  return data || null
+}
+

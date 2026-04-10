@@ -6,6 +6,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Script from 'next/script'
 import { getSettings, s } from '@/lib/settings'
+import { getSectorsData } from '@/lib/sectors'
 
 export default async function LocaleLayout({
   children,
@@ -20,10 +21,15 @@ export default async function LocaleLayout({
 
   const [messages, settings] = await Promise.all([getMessages(), getSettings()])
   const whatsapp = s(settings, 'contact.whatsapp', locale)
+  const sectorsEnabled = s(settings, 'sectors.enabled', locale) !== 'false'
+  const sectorLinks = getSectorsData(settings, locale).map((sector) => ({
+    slug: sector.slug,
+    name: sector.name,
+  }))
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <Header locale={locale} />
+      <Header locale={locale} sectorsEnabled={sectorsEnabled} sectors={sectorLinks} />
       <main>{children}</main>
       <Footer locale={locale} />
       {/* Tawk.to live chat */}

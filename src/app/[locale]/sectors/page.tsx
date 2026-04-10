@@ -1,7 +1,9 @@
 import { getLocale } from 'next-intl/server'
 import Link from 'next/link'
-import { SECTORS } from '@/lib/sectors'
+import { getSectorsData } from '@/lib/sectors'
+import { getSettings } from '@/lib/settings'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import { unstable_noStore as noStore } from 'next/cache'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -16,9 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function SectorsPage() {
+  noStore()
   const locale = await getLocale()
   const prefix = locale === 'en' ? '/en' : ''
   const isKa = locale === 'ka'
+  const settings = await getSettings()
+  const sectors = getSectorsData(settings, locale)
 
   return (
     <div className="pt-[258px]">
@@ -38,7 +43,7 @@ export default async function SectorsPage() {
       <section className="py-20 md:py-28 bg-navy text-white">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SECTORS.map((sector, i) => (
+            {sectors.map((sector, i) => (
               <ScrollReveal key={sector.slug} delay={i * 100}>
                 <Link
                   href={`${prefix}/sectors/${sector.slug}`}
@@ -47,20 +52,21 @@ export default async function SectorsPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={sector.image}
-                    alt={isKa ? sector.nameKa : sector.nameEn}
+                    alt={sector.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-navy/55 group-hover:bg-navy/40 transition-colors duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <p className="text-white font-medium text-xl md:text-2xl text-center px-6 drop-shadow-lg tracking-wide">
-                      {isKa ? sector.nameKa : sector.nameEn}
+                      {sector.name}
                     </p>
                   </div>
                 </Link>
               </ScrollReveal>
             ))}
           </div>
+          {!isKa && null}
         </div>
       </section>
     </div>

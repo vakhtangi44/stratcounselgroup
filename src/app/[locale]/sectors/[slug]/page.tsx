@@ -1,8 +1,10 @@
 import { getLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getSector, SECTORS } from '@/lib/sectors'
+import { SECTORS, getSectorData, getSectorsData } from '@/lib/sectors'
+import { getSettings } from '@/lib/settings'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import { unstable_noStore as noStore } from 'next/cache'
 
 export async function generateStaticParams() {
   return SECTORS.map((s) => ({ slug: s.slug }))
@@ -14,11 +16,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const sector = getSector(slug)
+  const settings = await getSettings()
+  const sector = getSectorData(slug, settings, locale)
   if (!sector) return {}
   return {
-    title: `${locale === 'ka' ? sector.nameKa : sector.nameEn} | Strategic Counsel Group`,
-    description: locale === 'ka' ? sector.descriptionKa : sector.descriptionEn,
+    title: `${sector.name} | Strategic Counsel Group`,
+    description: sector.description,
   }
 }
 
@@ -27,13 +30,16 @@ export default async function SectorDetailPage({
 }: {
   params: Promise<{ locale: string; slug: string }>
 }) {
+  noStore()
   const { slug } = await params
   const locale = await getLocale()
   const prefix = locale === 'en' ? '/en' : ''
   const isKa = locale === 'ka'
+  const settings = await getSettings()
 
-  const sector = getSector(slug)
+  const sector = getSectorData(slug, settings, locale)
   if (!sector) notFound()
+  const otherSectors = getSectorsData(settings, locale).filter((s) => s.slug !== slug)
 
   return (
     <div className="pt-[258px]">
@@ -42,7 +48,7 @@ export default async function SectorDetailPage({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={sector.image}
-          alt={isKa ? sector.nameKa : sector.nameEn}
+          alt={sector.name}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-navy/75" />
@@ -54,10 +60,10 @@ export default async function SectorDetailPage({
           </p>
           <div className="gold-divider mx-auto mb-8" />
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]">
-            {isKa ? sector.nameKa : sector.nameEn}
+            {sector.name}
           </h1>
-          <p className="text-white/70 max-w-2xl mx-auto text-lg leading-relaxed font-light">
-            {isKa ? sector.descriptionKa : sector.descriptionEn}
+          <p className="text-white/70 max-w-2xl mx-auto text-lg leading-relaxed font-light whitespace-pre-wrap">
+            {sector.description}
           </p>
         </div>
       </section>
@@ -70,7 +76,7 @@ export default async function SectorDetailPage({
               {isKa ? 'სხვა სექტორები' : 'Other Sectors'}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {SECTORS.filter((s) => s.slug !== sector.slug).map((s) => (
+              {otherSectors.map((s) => (
                 <Link
                   key={s.slug}
                   href={`${prefix}/sectors/${s.slug}`}
@@ -79,13 +85,13 @@ export default async function SectorDetailPage({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={s.image}
-                    alt={isKa ? s.nameKa : s.nameEn}
+                    alt={s.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-navy/60 group-hover:bg-navy/40 transition-colors duration-500" />
                   <div className="absolute inset-0 flex items-center justify-center p-3">
                     <p className="text-white font-medium text-sm text-center drop-shadow-lg">
-                      {isKa ? s.nameKa : s.nameEn}
+                      {s.name}
                     </p>
                   </div>
                 </Link>
