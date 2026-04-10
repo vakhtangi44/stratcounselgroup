@@ -22,6 +22,12 @@ export default async function ContactPage() {
     telegram: s(settings, 'contact.telegram', locale),
     facebook: s(settings, 'contact.facebook', locale),
     linkedin: s(settings, 'contact.linkedin', locale),
+    companyName: s(settings, 'footer.companyName', locale),
+    companyId: s(settings, 'footer.companyId', locale),
+    legalAddressLabel: s(settings, 'footer.legalAddressLabel', locale),
+    legalAddress: s(settings, 'footer.legalAddress', locale),
+    officeAddressLabel: s(settings, 'footer.officeAddressLabel', locale),
+    officeAddress: s(settings, 'footer.address', locale),
   }
 
   return <ContactPageClient locale={locale} strings={strings} />

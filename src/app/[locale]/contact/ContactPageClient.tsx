@@ -22,6 +22,12 @@ interface Props {
     telegram: string
     facebook: string
     linkedin: string
+    companyName: string
+    companyId: string
+    legalAddressLabel: string
+    legalAddress: string
+    officeAddressLabel: string
+    officeAddress: string
   }
 }
 
@@ -72,7 +78,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
               <RichText html={strings.info} as="h2" className="font-heading text-2xl md:text-3xl text-dark mb-8" />
 
               <div className="space-y-8">
-                {/* Address */}
+                {/* Company + Address */}
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 border border-gold/20 flex items-center justify-center flex-shrink-0">
                     <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -80,16 +86,24 @@ export default function ContactPageClient({ locale, strings }: Props) {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                     </svg>
                   </div>
-                  <div>
-                    <RichText html={strings.addressLabel} as="p" className="text-dark font-heading text-sm mb-1" />
-                    <a
-                      href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-secondary text-sm font-light hover:text-gold transition-colors duration-300"
-                    >
-                      <RichText html={strings.address} />
-                    </a>
+                  <div className="space-y-1.5">
+                    <RichText html={strings.addressLabel} as="p" className="text-dark font-heading text-[17px] mb-2" />
+                    <p className="text-navy text-[17px] font-medium leading-snug">{strings.companyName}</p>
+                    <p className="text-navy text-[17px] leading-snug">{strings.companyId}</p>
+                    <p className="text-navy text-[17px] leading-snug">
+                      {strings.legalAddressLabel}: {strings.legalAddress}
+                    </p>
+                    <p className="text-navy text-[17px] leading-snug">
+                      {strings.officeAddressLabel}:{' '}
+                      <a
+                        href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gold transition-colors duration-300"
+                      >
+                        {strings.officeAddress}
+                      </a>
+                    </p>
                   </div>
                 </div>
 
@@ -101,8 +115,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-dark font-heading text-sm mb-1">{isKa ? 'ტელეფონი' : 'Phone'}</p>
-                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-secondary text-sm font-light hover:text-gold transition-colors duration-300">
+                    <p className="text-dark font-heading text-[17px] mb-2">{isKa ? 'ტელეფონი' : 'Phone'}</p>
+                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-navy text-[17px] hover:text-gold transition-colors duration-300">
                       {strings.phone}
                     </a>
                   </div>
@@ -116,8 +130,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-dark font-heading text-sm mb-1">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
-                    <a href={`mailto:${strings.email}`} className="text-secondary text-sm font-light hover:text-gold transition-colors duration-300">
+                    <p className="text-dark font-heading text-[17px] mb-2">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
+                    <a href={`mailto:${strings.email}`} className="text-navy text-[17px] hover:text-gold transition-colors duration-300">
                       {strings.email}
                     </a>
                   </div>
@@ -126,7 +140,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
 
               {/* Connect with Us */}
               <div className="mt-10 pt-8 border-t border-gray-200">
-                <p className="text-dark font-heading text-sm mb-4">
+                <p className="text-dark font-heading text-[17px] mb-4">
                   {isKa ? 'დაგვიკავშირდით' : 'Connect with Us'}
                 </p>
                 <div className="flex items-center gap-3">
@@ -188,8 +202,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
 
               {/* Working hours */}
               <div className="mt-10 pt-8 border-t border-gray-200">
-                <RichText html={strings.workingHoursLabel} as="p" className="text-dark font-heading text-sm mb-3" />
-                <RichText html={strings.workingHours} as="p" className="text-secondary text-sm font-light" />
+                <RichText html={strings.workingHoursLabel} as="p" className="text-dark font-heading text-[17px] mb-3" />
+                <RichText html={strings.workingHours} as="p" className="text-navy text-[17px]" />
               </div>
             </div>
 
