@@ -42,7 +42,7 @@ export default async function SectorDetailPage({
   const otherSectors = getSectorsData(settings, locale).filter((s) => s.slug !== slug)
 
   return (
-    <div className="pt-[258px]">
+    <div className="pt-[194px]">
       {/* Hero with sector photo */}
       <section className="relative bg-navy text-white py-32 md:py-40 text-center px-4 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}

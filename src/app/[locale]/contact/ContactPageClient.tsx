@@ -46,7 +46,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
     'w-full border border-gray-200 px-5 py-3.5 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/20 transition-all duration-300 bg-white font-light'
 
   return (
-    <div className="pt-[258px]">
+    <div className="pt-[194px]">
       {/* Hero */}
       <section className="relative bg-navy text-white py-24 md:py-32 text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />

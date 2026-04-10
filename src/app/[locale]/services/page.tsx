@@ -29,7 +29,7 @@ export default async function ServicesPage() {
   })
 
   return (
-    <div className="pt-[258px]">
+    <div className="pt-[194px]">
       {/* Hero */}
       <section className="relative bg-navy text-white py-24 md:py-32 text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
