@@ -8,7 +8,7 @@ interface Props {
   links: { href: string; label: string }[]
 }
 
-export default function MobileMenu({ locale: _locale, links }: Props) {
+export default function MobileMenu({ links }: Props) {
   const [open, setOpen] = useState(false)
 
   return (

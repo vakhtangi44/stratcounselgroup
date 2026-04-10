@@ -10,7 +10,7 @@ interface Props {
   placeholder?: string
 }
 
-export default function RichTextEditor({ value, onChange, placeholder }: Props) {
+export default function RichTextEditor({ value, onChange }: Props) {
   const editor = useEditor({
     extensions: [StarterKit],
     content: value,

@@ -9,10 +9,10 @@ function UnsubscribeContent() {
   const locale = (params?.locale as string) || 'ka'
   const isKa = locale === 'ka'
   const token = searchParams.get('token')
-  const [status, setStatus] = useState<'loading' | 'success' | 'error' | 'missing'>('loading')
+  const [status, setStatus] = useState<'loading' | 'success' | 'error' | 'missing'>(() => token ? 'loading' : 'missing')
 
   useEffect(() => {
-    if (!token) { setStatus('missing'); return }
+    if (!token) return
     fetch('/api/newsletter/unsubscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

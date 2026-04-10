@@ -16,12 +16,13 @@ interface Props {
     address: string
     workingHoursLabel: string
     workingHours: string
+    phone: string
+    email: string
   }
 }
 
 export default function ContactPageClient({ locale, strings }: Props) {
   const isKa = locale === 'ka'
-  const prefix = locale === 'en' ? '/en' : ''
 
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
   const [token, setToken] = useState('')

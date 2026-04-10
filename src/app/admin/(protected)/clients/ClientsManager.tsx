@@ -256,7 +256,7 @@ export default function ClientsManager({ initialCategories }: Props) {
               <div className="flex justify-between items-center mb-3">
                 <p className="text-xs text-secondary font-medium uppercase tracking-wider">Clients</p>
                 <button
-                  onClick={() => { setAddingClientToCategoryId(cat.id); setNewClient({ name: '', order: 0, active: true }); }}
+                  onClick={() => { setAddingClientToCategoryId(cat.id); setNewClient({ name: '', nameKa: '', nameEn: '', order: 0, active: true }); }}
                   className="text-gold hover:underline text-xs"
                 >
                   + Add Client

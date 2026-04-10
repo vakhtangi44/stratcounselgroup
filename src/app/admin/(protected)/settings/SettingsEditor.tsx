@@ -152,13 +152,13 @@ function RichTextInput({
   // Content is admin-only (authenticated) — not user-generated input.
   useEffect(() => {
     if (ref.current && !initialized.current) {
-      ref.current.innerHTML = value // eslint-disable-line
+      ref.current.innerHTML = value
       initialized.current = true
     }
   }, [value])
 
   const syncValue = useCallback(() => {
-    if (ref.current) onChange(ref.current.innerHTML) // eslint-disable-line
+    if (ref.current) onChange(ref.current.innerHTML)
   }, [onChange])
 
   // Strip Word/HTML formatting on paste — keep only plain text
@@ -332,7 +332,7 @@ export default function SettingsEditor({ grouped }: Props) {
                         onChange={(val) => updateValue(setting.id, 'valueEn', val)}
                       />
                     </>
-                  )
+                  )}
                 </div>
               </div>
             ))}

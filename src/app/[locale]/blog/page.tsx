@@ -8,7 +8,7 @@ import { formatDate, readTime } from '@/lib/utils'
 import RichText from '@/components/ui/RichText'
 
 interface BlogPost {
-  id: string
+  id: number
   slug: string
   titleKa: string
   titleEn: string
