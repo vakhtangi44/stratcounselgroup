@@ -54,7 +54,13 @@ export default function TargetSectors({ locale }: { locale: string }) {
             <ScrollReveal
               key={sector.nameEn}
               delay={i * 100}
-              className={i < 3 ? 'lg:col-span-2' : 'lg:col-span-3'}
+              className={
+                i < 3
+                  ? 'lg:col-span-2'
+                  : i === 3
+                  ? 'lg:col-span-2 lg:col-start-2'
+                  : 'lg:col-span-2 lg:col-start-4'
+              }
             >
               <div className="relative overflow-hidden group h-64 md:h-72">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
