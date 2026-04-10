@@ -67,9 +67,7 @@ export default async function Hero({ locale, strings }: { locale: string; string
           )}
         </h1>
 
-        <RichText html={strings.subtitle} as="p" className="text-white/50 text-base md:text-lg mb-12 max-w-xl mx-auto leading-relaxed font-light opacity-0 animate-slide-up-elegant" style={{ animationDelay: '1400ms', animationFillMode: 'forwards' }} />
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-slide-up-elegant" style={{ animationDelay: '1800ms', animationFillMode: 'forwards' }}>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-slide-up-elegant" style={{ animationDelay: '1400ms', animationFillMode: 'forwards' }}>
           <Link
             href={`${prefix}/contact`}
             className="btn-gold-fill bg-gold text-white px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500 hover:shadow-lg hover:shadow-gold/20"
