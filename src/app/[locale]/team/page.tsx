@@ -46,15 +46,15 @@ export default async function TeamPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-[5rem]">
             {members.map((member, i) => (
               <ScrollReveal key={member.id} delay={i * 100}>
-                <Link href={`${prefix}/team/${member.slug}`} className="group block w-full h-full" style={{ perspective: '900px' }}>
-                  <div className="bg-white overflow-hidden flex flex-col h-full card-3d">
+                <Link href={`${prefix}/team/${member.slug}`} className="group block w-full h-full">
+                  <div className="bg-white overflow-hidden flex flex-col h-full shadow-md hover:shadow-xl transition-shadow duration-500">
                     <div className="relative aspect-[10/9] bg-bg-alt overflow-hidden flex-shrink-0">
                       {member.photo ? (
                         <Image
                           src={member.photo}
                           alt={isKa ? member.nameKa : member.nameEn}
                           fill
-                          className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                          className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                         />
                       ) : (
                         <div className="flex items-center justify-center h-full bg-gradient-to-br from-dark to-navy">
@@ -63,16 +63,12 @@ export default async function TeamPage() {
                           </span>
                         </div>
                       )}
-                      {/* Dark overlay on hover */}
-                      <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/25 transition-all duration-500" />
-                      {/* Gold bottom line sweeping in */}
-                      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                     </div>
-                    <div className="pt-3 px-3 pb-4 border-l-[3px] border-transparent group-hover:border-gold transition-all duration-500 flex flex-col flex-1 min-h-[140px]">
-                      <h2 className="font-heading text-2xl text-navy group-hover:text-gold transition-colors duration-300 leading-snug font-semibold line-clamp-2">
+                    <div className="pt-4 px-4 pb-5 flex flex-col flex-1 min-h-[110px]">
+                      <h2 className="font-heading text-lg text-dark group-hover:text-gold transition-colors duration-300 leading-snug line-clamp-2">
                         {isKa ? member.nameKa : member.nameEn}
                       </h2>
-                      <p className="text-navy/70 text-[1.15rem] mt-1 font-bold tracking-wide leading-snug line-clamp-2">
+                      <p className="text-secondary text-sm mt-1 font-light tracking-wide leading-snug line-clamp-2">
                         {isKa ? member.titleKa : member.titleEn}
                       </p>
                       {member.gbaNumber && (
