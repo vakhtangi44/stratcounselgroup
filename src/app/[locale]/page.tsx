@@ -2,6 +2,7 @@ import { db } from '@/lib/db'
 import { getLocale } from 'next-intl/server'
 import { getSettings, s } from '@/lib/settings'
 import Hero from '@/components/sections/Hero'
+import AboutPreview from '@/components/sections/AboutPreview'
 import StatsSection from '@/components/sections/StatsSection'
 import TeamPreview from '@/components/sections/TeamPreview'
 import TestimonialsCarousel from '@/components/sections/TestimonialsCarousel'
@@ -10,6 +11,7 @@ import PressStrip from '@/components/sections/PressStrip'
 import TargetSectors from '@/components/sections/TargetSectors'
 import TrustedBy from '@/components/sections/TrustedBy'
 import ServicesPreview from '@/components/sections/ServicesPreview'
+import type { CategoryData } from '@/components/sections/TrustedBy'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -55,11 +57,12 @@ export default async function HomePage() {
     db.clientCategory.findMany({
       where: { active: true },
       orderBy: { order: 'asc' },
-      include: { clients: { where: { active: true }, orderBy: { order: 'asc' }, select: { id: true, name: true, nameKa: true, nameEn: true, logoKa: true, logoEn: true, order: true, active: true, categoryId: true } } },
+      include: { clients: { where: { active: true }, orderBy: { order: 'asc' } } },
     }),
     db.service.findMany({
       where: { active: true },
       orderBy: { order: 'asc' },
+      take: 3,
       include: { items: { orderBy: { order: 'asc' } } },
     }),
   ])
@@ -70,6 +73,14 @@ export default async function HomePage() {
     subtitle: s(settings, 'hero.subtitle', locale),
     cta1: s(settings, 'hero.cta1', locale),
     cta2: s(settings, 'hero.cta2', locale),
+  }
+
+  const aboutStrings = {
+    heading: s(settings, 'about.heading', locale),
+    body: s(settings, 'section.about.body', locale),
+    stat: s(settings, 'section.about.stat', locale),
+    statLabel: s(settings, 'section.about.statLabel', locale),
+    cta: s(settings, 'section.about.cta', locale),
   }
 
   const testimonialStrings = {
@@ -85,11 +96,13 @@ export default async function HomePage() {
     sectors: s(settings, 'section.trustedBy.sectors', locale),
     experience: s(settings, 'section.trustedBy.experience', locale),
     confidentiality: s(settings, 'section.trustedBy.confidentiality', locale),
+    viewAll: s(settings, 'section.trustedBy.viewAll', locale),
   }
 
   return (
     <>
       <Hero locale={locale} strings={heroStrings} />
+      <AboutPreview locale={locale} strings={aboutStrings} />
       <TargetSectors locale={locale} />
       {services.length > 0 && <ServicesPreview services={services} locale={locale} />}
       <StatsSection stats={stats} locale={locale} />
@@ -98,7 +111,7 @@ export default async function HomePage() {
         title: s(settings, 'section.ourTeam', locale),
         meetFullTeam: s(settings, 'section.meetFullTeam', locale),
       }} />
-      <TrustedBy locale={locale} categories={clientCategories} strings={trustedByStrings} />
+      <TrustedBy locale={locale} preview categories={clientCategories as unknown as CategoryData[]} strings={trustedByStrings} />
       <TestimonialsCarousel testimonials={testimonials} locale={locale} strings={testimonialStrings} />
       <BlogPreview posts={blogPosts} locale={locale} strings={{
         subtitle: s(settings, 'section.latestArticles.subtitle', locale),

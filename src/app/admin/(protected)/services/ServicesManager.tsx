@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 interface ServiceItem {
   id: number
@@ -33,6 +33,41 @@ export default function ServicesManager({ initialServices }: Props) {
   const [showNewService, setShowNewService] = useState(false)
   const [addingItemToServiceId, setAddingItemToServiceId] = useState<number | null>(null)
   const [loading, setLoading] = useState(false)
+  const [savingOrder, setSavingOrder] = useState(false)
+  const [savedOrder, setSavedOrder] = useState(false)
+  const dragIndex = useRef<number | null>(null)
+
+  function onDragStart(index: number) {
+    dragIndex.current = index
+  }
+
+  function onDragOver(e: React.DragEvent, index: number) {
+    e.preventDefault()
+    const from = dragIndex.current
+    if (from === null || from === index) return
+    const updated = [...services]
+    const [moved] = updated.splice(from, 1)
+    updated.splice(index, 0, moved)
+    dragIndex.current = index
+    setServices(updated)
+  }
+
+  function onDrop(e: React.DragEvent) {
+    e.preventDefault()
+    dragIndex.current = null
+  }
+
+  async function saveOrder() {
+    setSavingOrder(true)
+    await fetch('/api/admin/services/reorder', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(services.map((svc, i) => ({ id: svc.id, order: i }))),
+    })
+    setSavingOrder(false)
+    setSavedOrder(true)
+    setTimeout(() => setSavedOrder(false), 2500)
+  }
 
   const [newService, setNewService] = useState({
     titleKa: '', titleEn: '', descriptionKa: '', descriptionEn: '', order: 0, active: true,
@@ -136,8 +171,19 @@ export default function ServicesManager({ initialServices }: Props) {
 
   return (
     <div className="space-y-4">
-      {/* Add Service Button */}
-      <div className="flex justify-end">
+      {/* Header: Save Order + New Service */}
+      <div className="flex justify-end gap-3">
+        <button
+          onClick={saveOrder}
+          disabled={savingOrder}
+          className={`px-4 py-2 rounded text-sm transition-all duration-300 ${
+            savedOrder
+              ? 'bg-green-100 text-green-700'
+              : 'bg-dark text-white hover:bg-navy disabled:opacity-50'
+          }`}
+        >
+          {savingOrder ? 'Saving…' : savedOrder ? 'Order Saved!' : 'Save Order'}
+        </button>
         <button
           onClick={() => setShowNewService(true)}
           className="bg-gold text-white px-4 py-2 rounded text-sm hover:bg-gold-dark"
@@ -221,15 +267,27 @@ export default function ServicesManager({ initialServices }: Props) {
         </div>
       )}
 
+      {services.length > 0 && (
+        <p className="text-xs text-secondary -mt-1">Drag cards to reorder, then click "Save Order".</p>
+      )}
+
       {/* Services List */}
-      {services.map((svc) => (
-        <div key={svc.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
+      {services.map((svc, i) => (
+        <div
+          key={svc.id}
+          draggable
+          onDragStart={() => onDragStart(i)}
+          onDragOver={(e) => onDragOver(e, i)}
+          onDrop={onDrop}
+          className="bg-white rounded-lg shadow-sm overflow-hidden cursor-grab active:cursor-grabbing active:bg-gold/5"
+        >
           {/* Service Header */}
           <div
-            className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-bg-alt/50"
+            className="flex items-center justify-between px-4 py-3 hover:bg-bg-alt/50"
             onClick={() => setExpandedId(expandedId === svc.id ? null : svc.id)}
           >
             <div className="flex items-center gap-3">
+              <span className="text-secondary text-lg select-none" title="Drag to reorder">⠿</span>
               <div>
                 <p className="font-medium text-sm text-dark">{svc.titleEn}</p>
                 <p className="text-xs text-secondary">{svc.titleKa}</p>
