@@ -128,8 +128,10 @@ export default async function AboutPage() {
         <div className="relative z-10">
           <ScrollReveal>
             <div className="gold-divider mx-auto mb-8" />
-            <RichText html={s(settings, 'about.cta.heading', locale)} as="h2" className="font-heading text-3xl md:text-4xl mb-6 tracking-[-0.01em]" />
-            <RichText html={s(settings, 'about.cta.description', locale)} as="p" className="text-white/40 mb-10 max-w-lg mx-auto font-light" />
+            <RichText html={s(settings, 'about.cta.heading', locale)} as="h2" className="font-heading text-3xl md:text-4xl mb-10 tracking-[-0.01em]" />
+            {s(settings, 'about.cta.description', locale) && (
+              <RichText html={s(settings, 'about.cta.description', locale)} as="p" className="text-white/40 mb-10 max-w-lg mx-auto font-light" />
+            )}
             <Link
               href={`${prefix}/contact`}
               className="inline-block bg-gold text-white px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold-dark transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
