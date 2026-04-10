@@ -123,6 +123,20 @@
     margin-top: 1.25rem;
   }
 
+  /* ─── 3D perspective tilt card ─── */
+  .card-3d {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  .card-3d:hover {
+    transform: perspective(900px) rotateX(7deg) rotateY(-7deg) scale(1.03);
+    box-shadow:
+      8px 16px 40px rgba(12, 18, 32, 0.25),
+      0 0 20px rgba(196, 163, 90, 0.2);
+  }
+
   /* ─── Old-money animation keyframes ─── */
 
   @keyframes draw-line {
