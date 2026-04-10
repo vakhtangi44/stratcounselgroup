@@ -66,16 +66,16 @@ export default function TrustedBy({ locale, categories, strings }: Props) {
 
             return (
               <ScrollReveal key={client.id} delay={idx * 40}>
-                <div className="group bg-white flex items-center justify-center aspect-[3/2] p-4 border border-transparent hover:border-gold/50 hover:shadow-[0_0_18px_rgba(196,163,90,0.2)] transition-all duration-500">
+                <div className="group flex items-center justify-center aspect-[3/2] p-4 border border-white/10 hover:border-gold/40 transition-all duration-500">
                   {logo ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={logo}
                       alt={name}
-                      className="object-contain w-full max-h-[72px] opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
+                      className="object-contain w-full max-h-[72px] opacity-75 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
                     />
                   ) : (
-                    <span className="text-navy text-sm font-medium text-center leading-snug">{name}</span>
+                    <span className="text-white/70 group-hover:text-white text-sm font-medium text-center leading-snug transition-colors duration-300">{name}</span>
                   )}
                 </div>
               </ScrollReveal>
