@@ -13,13 +13,28 @@ interface Props {
     statLabel: string
     cta: string
     image: string
+    imagePosition: string
+    imageSize: string
   }
+}
+
+const SIZE_MAP: Record<string, string> = {
+  small: 'lg:min-h-[350px]',
+  medium: 'lg:min-h-[500px]',
+  large: 'lg:min-h-[650px]',
+  xlarge: 'lg:min-h-[800px]',
 }
 
 export default function AboutPreview({ locale, strings }: Props) {
   const prefix = locale === 'en' ? '/en' : ''
 
-  const hasImage = strings.image && strings.image !== 'section.about.image'
+  const hasImage =
+    strings.image &&
+    strings.image !== 'section.about.image' &&
+    strings.image.trim() !== ''
+
+  const imageOnLeft = strings.imagePosition === 'left'
+  const sizeClass = SIZE_MAP[strings.imageSize] || SIZE_MAP.medium
 
   return (
     <section className="py-20 md:py-28 bg-white">
@@ -27,7 +42,7 @@ export default function AboutPreview({ locale, strings }: Props) {
         <div className={`grid grid-cols-1 gap-12 lg:gap-16 items-stretch max-w-6xl mx-auto${hasImage ? ' lg:grid-cols-2' : ''}`}>
 
           {/* Left: text + stat box */}
-          <ScrollReveal className="flex flex-col justify-center">
+          <ScrollReveal className={`flex flex-col justify-center${hasImage && imageOnLeft ? ' lg:order-2' : ''}`}>
             <div className="w-12 h-[2px] bg-gold mb-8" />
             <RichText
               html={strings.heading}
@@ -66,7 +81,7 @@ export default function AboutPreview({ locale, strings }: Props) {
 
           {/* Right: photo — only rendered when image URL is set */}
           {hasImage && (
-            <ScrollReveal delay={150} className="min-h-[400px] lg:min-h-[500px]">
+            <ScrollReveal delay={150} className={`min-h-[400px] ${sizeClass}${imageOnLeft ? ' lg:order-1' : ''}`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={strings.image}

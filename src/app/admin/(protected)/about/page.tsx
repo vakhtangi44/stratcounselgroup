@@ -2,15 +2,25 @@ import { db } from '@/lib/db'
 import AboutPhotoUploader from './AboutPhotoUploader'
 
 export default async function AdminAboutPage() {
-  const setting = await db.siteSetting.findUnique({
-    where: { key: 'section.about.image' },
+  const settings = await db.siteSetting.findMany({
+    where: {
+      key: {
+        in: ['section.about.image', 'section.about.imagePosition', 'section.about.imageSize'],
+      },
+    },
   })
+
+  const byKey = Object.fromEntries(settings.map((s) => [s.key, s]))
 
   return (
     <div className="max-w-2xl">
       <AboutPhotoUploader
-        settingId={setting?.id ?? null}
-        currentImage={setting?.valueEn || ''}
+        imageSettingId={byKey['section.about.image']?.id ?? null}
+        positionSettingId={byKey['section.about.imagePosition']?.id ?? null}
+        sizeSettingId={byKey['section.about.imageSize']?.id ?? null}
+        currentImage={byKey['section.about.image']?.valueEn || ''}
+        currentPosition={byKey['section.about.imagePosition']?.valueEn || 'right'}
+        currentSize={byKey['section.about.imageSize']?.valueEn || 'medium'}
       />
     </div>
   )
