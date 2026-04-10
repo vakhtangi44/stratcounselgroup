@@ -19,10 +19,12 @@ interface Props {
 export default function AboutPreview({ locale, strings }: Props) {
   const prefix = locale === 'en' ? '/en' : ''
 
+  const hasImage = strings.image && strings.image !== 'section.about.image'
+
   return (
     <section className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch max-w-6xl mx-auto">
+        <div className={`grid grid-cols-1 gap-12 lg:gap-16 items-stretch max-w-6xl mx-auto${hasImage ? ' lg:grid-cols-2' : ''}`}>
 
           {/* Left: text + stat box */}
           <ScrollReveal className="flex flex-col justify-center">
@@ -35,7 +37,7 @@ export default function AboutPreview({ locale, strings }: Props) {
             <RichText
               html={strings.body}
               as="div"
-              className="text-dark/70 text-base md:text-lg leading-relaxed mb-8"
+              className={`text-dark/70 text-base md:text-lg leading-relaxed mb-8${!hasImage ? ' max-w-3xl' : ''}`}
             />
 
             {/* Stat box */}
@@ -62,25 +64,17 @@ export default function AboutPreview({ locale, strings }: Props) {
             )}
           </ScrollReveal>
 
-          {/* Right: photo */}
-          <ScrollReveal delay={150} className="min-h-[400px] lg:min-h-[500px]">
-            {strings.image ? (
-              // eslint-disable-next-line @next/next/no-img-element
+          {/* Right: photo — only rendered when image URL is set */}
+          {hasImage && (
+            <ScrollReveal delay={150} className="min-h-[400px] lg:min-h-[500px]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={strings.image}
                 alt={strings.heading}
                 className="w-full h-full object-cover"
               />
-            ) : (
-              <div className="w-full h-full min-h-[400px] bg-navy/5 border border-gray-100 flex items-center justify-center">
-                <p className="text-dark/30 text-sm text-center px-8">
-                  {locale === 'ka'
-                    ? 'ფოტო არ არის დამატებული — დაამატეთ Admin → Settings → "About Photo"'
-                    : 'No photo set — add one in Admin → Settings → "About Photo"'}
-                </p>
-              </div>
-            )}
-          </ScrollReveal>
+            </ScrollReveal>
+          )}
 
         </div>
       </div>
