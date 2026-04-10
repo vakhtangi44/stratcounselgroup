@@ -73,7 +73,7 @@ export default async function HomePage() {
   // Pre-resolve strings for client components
   const aboutStrings = {
     heading: s(settings, 'about.heading', locale),
-    body: s(settings, 'section.about.body', locale),
+    body: s(settings, 'section.about.shortBody', locale),
     stat: s(settings, 'section.about.stat', locale),
     statLabel: s(settings, 'section.about.statLabel', locale),
     cta: s(settings, 'section.about.cta', locale),
