@@ -101,14 +101,14 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
             : 'bg-navy/98 shadow-lg backdrop-blur-md'
         }`}
       >
-        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-48">
+        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[168px]">
           <Link href={prefix || '/'} className="relative z-10">
             <Image
               src="/logo-v2.png"
               alt="Strategic Counsel Group"
-              width={400}
-              height={400}
-              className="h-40 w-auto transition-all duration-500"
+              width={340}
+              height={340}
+              className="h-[136px] w-auto transition-all duration-500"
               priority
             />
           </Link>

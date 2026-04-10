@@ -17,7 +17,7 @@ export default async function AboutPage() {
   const prefix = locale === 'en' ? '/en' : ''
 
   return (
-    <div className="pt-[194px]">
+    <div className="pt-[170px]">
       {/* Hero */}
       <section className="relative bg-navy text-white py-24 md:py-32 text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
