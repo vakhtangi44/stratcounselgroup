@@ -32,6 +32,7 @@ const PLAIN_TEXT_KEYS = new Set([
   'contact.address',
   'contact.workingHours',
   'footer.address',
+  'section.about.image',
 ])
 
 function rgbToHex(rgb: string): string {

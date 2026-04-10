@@ -2,6 +2,7 @@ import { db } from '@/lib/db'
 import { getLocale } from 'next-intl/server'
 import { getSettings, s } from '@/lib/settings'
 import Hero from '@/components/sections/Hero'
+import AboutPreview from '@/components/sections/AboutPreview'
 import StatsSection from '@/components/sections/StatsSection'
 import TeamPreview from '@/components/sections/TeamPreview'
 import TestimonialsCarousel from '@/components/sections/TestimonialsCarousel'
@@ -67,6 +68,15 @@ export default async function HomePage() {
   ])
 
   // Pre-resolve strings for client components
+  const aboutStrings = {
+    heading: s(settings, 'about.heading', locale),
+    body: s(settings, 'section.about.body', locale),
+    stat: s(settings, 'section.about.stat', locale),
+    statLabel: s(settings, 'section.about.statLabel', locale),
+    cta: s(settings, 'section.about.cta', locale),
+    image: s(settings, 'section.about.image', locale),
+  }
+
   const heroStrings = {
     heading: s(settings, 'hero.heading', locale),
     subtitle: s(settings, 'hero.subtitle', locale),
@@ -93,6 +103,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero locale={locale} strings={heroStrings} />
+      <AboutPreview locale={locale} strings={aboutStrings} />
       <TargetSectors locale={locale} />
       {services.length > 0 && <ServicesPreview services={services} locale={locale} />}
       <StatsSection stats={stats} locale={locale} />

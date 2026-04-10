@@ -12,6 +12,7 @@ interface Props {
     stat: string
     statLabel: string
     cta: string
+    image: string
   }
 }
 
@@ -21,9 +22,10 @@ export default function AboutPreview({ locale, strings }: Props) {
   return (
     <section className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-          {/* Left: text */}
-          <ScrollReveal>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch max-w-6xl mx-auto">
+
+          {/* Left: text + stat box */}
+          <ScrollReveal className="flex flex-col justify-center">
             <div className="w-12 h-[2px] bg-gold mb-8" />
             <RichText
               html={strings.heading}
@@ -33,31 +35,53 @@ export default function AboutPreview({ locale, strings }: Props) {
             <RichText
               html={strings.body}
               as="div"
-              className="text-dark/70 text-lg leading-relaxed"
+              className="text-dark/70 text-base md:text-lg leading-relaxed mb-8"
             />
+
+            {/* Stat box */}
+            {(strings.stat || strings.statLabel) && (
+              <div className="border border-gold/40 p-5 inline-flex items-center gap-5 mb-8">
+                <span className="font-heading text-4xl md:text-5xl text-gold leading-none">
+                  {strings.stat}
+                </span>
+                <RichText
+                  html={strings.statLabel}
+                  as="p"
+                  className="text-dark/60 text-sm leading-snug max-w-[220px]"
+                />
+              </div>
+            )}
+
             {strings.cta && (
               <Link
                 href={`${prefix}/about`}
-                className="inline-block mt-8 text-gold text-sm uppercase tracking-[0.15em] font-medium border-b border-gold/40 pb-1 hover:border-gold transition-colors duration-300"
+                className="inline-block text-gold text-sm uppercase tracking-[0.15em] font-medium border-b border-gold/40 pb-1 hover:border-gold transition-colors duration-300 self-start"
               >
                 {strings.cta} →
               </Link>
             )}
           </ScrollReveal>
 
-          {/* Right: stat box */}
-          <ScrollReveal delay={150}>
-            <div className="border border-gold/40 p-10 flex flex-col items-start gap-3">
-              <span className="font-heading text-5xl md:text-6xl text-gold leading-none">
-                {strings.stat}
-              </span>
-              <RichText
-                html={strings.statLabel}
-                as="p"
-                className="text-dark/60 text-base leading-relaxed max-w-xs"
+          {/* Right: photo */}
+          <ScrollReveal delay={150} className="min-h-[400px] lg:min-h-[500px]">
+            {strings.image ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={strings.image}
+                alt={strings.heading}
+                className="w-full h-full object-cover"
               />
-            </div>
+            ) : (
+              <div className="w-full h-full min-h-[400px] bg-navy/5 border border-gray-100 flex items-center justify-center">
+                <p className="text-dark/30 text-sm text-center px-8">
+                  {locale === 'ka'
+                    ? 'ფოტო არ არის დამატებული — დაამატეთ Admin → Settings → "About Photo"'
+                    : 'No photo set — add one in Admin → Settings → "About Photo"'}
+                </p>
+              </div>
+            )}
           </ScrollReveal>
+
         </div>
       </div>
     </section>
