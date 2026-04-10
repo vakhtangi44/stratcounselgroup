@@ -64,15 +64,18 @@ export default function TrustedBy({ locale, categories, strings }: Props) {
             const logo = isKa ? (client.logoKa || client.logoEn) : (client.logoEn || client.logoKa)
             const name = isKa ? (client.nameKa || client.name) : (client.nameEn || client.name)
 
+            // Only white-background logos need mix-blend-multiply to hide the white box
+            const hasWhiteBg = logo ? ['redix', 'gig-energy', 'liderfood'].some(n => logo.toLowerCase().includes(n)) : false
+
             return (
               <ScrollReveal key={client.id} delay={idx * 40}>
-                <div className="group flex items-center justify-center min-h-[260px] p-6">
+                <div className="group flex items-center justify-center min-h-[280px] p-4">
                   {logo ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={logo}
                       alt={name}
-                      className="object-contain h-[180px] w-auto max-w-full mx-auto mix-blend-multiply opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
+                      className={`object-contain h-[320px] w-full opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105${hasWhiteBg ? ' mix-blend-multiply' : ''}`}
                     />
                   ) : (
                     <span className="text-white/70 group-hover:text-white text-sm font-medium text-center leading-snug transition-colors duration-300">{name}</span>
