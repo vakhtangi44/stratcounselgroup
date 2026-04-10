@@ -75,7 +75,7 @@ export default async function Hero({ locale, strings }: { locale: string; string
             <RichText html={strings.cta1} />
           </Link>
           <Link
-            href={`${prefix}/practice-areas`}
+            href={`${prefix}/services`}
             className="border border-white/30 text-white hover:border-gold hover:text-gold px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500"
           >
             <RichText html={strings.cta2} />

@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 import { db } from '@/lib/db'
-import { PRACTICE_AREAS } from '@/lib/practice-areas'
+import { SECTORS } from '@/lib/sectors'
 
 const BASE = 'https://stratcounselgroup.com'
 
@@ -10,7 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     db.teamMember.findMany({ where: { active: true }, select: { slug: true, updatedAt: true } }),
   ])
 
-  const staticPages = ['', '/about', '/practice-areas', '/blog', '/team', '/contact', '/faq', '/glossary', '/press']
+  const staticPages = ['', '/about', '/services', '/sectors', '/clients', '/blog', '/team', '/contact', '/faq', '/glossary', '/press']
   const locales = ['', '/en']
 
   const staticUrls = locales.flatMap((locale) =>
@@ -22,9 +22,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   )
 
-  const practiceAreaUrls = locales.flatMap((locale) =>
-    PRACTICE_AREAS.map((area) => ({
-      url: `${BASE}${locale}/practice-areas/${area.slug}`,
+  const sectorUrls = locales.flatMap((locale) =>
+    SECTORS.map((sector) => ({
+      url: `${BASE}${locale}/sectors/${sector.slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
@@ -49,5 +49,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   )
 
-  return [...staticUrls, ...practiceAreaUrls, ...blogUrls, ...teamUrls]
+  return [...staticUrls, ...sectorUrls, ...blogUrls, ...teamUrls]
 }

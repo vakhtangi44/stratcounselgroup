@@ -120,13 +120,12 @@ export default async function TeamMemberPage({
             </h2>
             <div className="flex flex-wrap gap-3">
               {member.practiceAreas.map((area: string) => (
-                <Link
+                <span
                   key={area}
-                  href={`${prefix}/practice-areas#${area}`}
-                  className="px-4 py-2 bg-white border border-gray-200 text-secondary text-sm hover:border-gold hover:text-gold transition-colors"
+                  className="px-4 py-2 bg-white border border-gray-200 text-secondary text-sm"
                 >
                   {area.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
-                </Link>
+                </span>
               ))}
             </div>
           </div>
