@@ -37,7 +37,7 @@ export default function AboutPreview({ locale, strings }: Props) {
             <RichText
               html={strings.body}
               as="div"
-              className={`text-dark/70 text-base md:text-lg leading-relaxed mb-8${!hasImage ? ' max-w-3xl' : ''}`}
+              className={`text-navy text-base md:text-lg leading-relaxed text-justify mb-8 [&_p]:mb-4 [&_p:last-child]:mb-0${!hasImage ? ' max-w-3xl' : ''}`}
             />
 
             {/* Stat box */}
