@@ -39,7 +39,7 @@ function DropdownMenu({
     <div ref={ref} className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <button
         className={`text-[13px] uppercase tracking-[0.12em] font-medium transition-colors duration-300 whitespace-nowrap flex items-center gap-1 ${
-          isTransparent ? 'text-white hover:text-gold' : 'text-gold hover:text-gold-dark'
+          'text-white hover:text-gold'
         }`}
       >
         {label}
@@ -96,19 +96,17 @@ export default function Header({ locale }: Props) {
         className={`fixed top-[2px] left-0 right-0 z-40 transition-all duration-500 ${
           isTransparent
             ? 'bg-transparent'
-            : 'bg-white/98 shadow-lg backdrop-blur-md'
+            : 'bg-navy/98 shadow-lg backdrop-blur-md'
         }`}
       >
-        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-20">
+        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-32">
           <Link href={prefix || '/'} className="relative z-10">
             <Image
               src="/logo.webp"
               alt="Strategic Counsel Group"
-              width={180}
-              height={90}
-              className={`h-14 w-auto transition-all duration-500 ${
-                isTransparent ? 'brightness-0 invert' : ''
-              }`}
+              width={360}
+              height={180}
+              className="h-28 w-auto brightness-0 invert transition-all duration-500"
               priority
             />
           </Link>
@@ -117,7 +115,7 @@ export default function Header({ locale }: Props) {
             <Link
               href={`${prefix}/about`}
               className={`text-[13px] uppercase tracking-[0.12em] font-medium transition-colors duration-300 whitespace-nowrap ${
-                isTransparent ? 'text-white hover:text-gold' : 'text-gold hover:text-gold-dark'
+                'text-white hover:text-gold'
               }`}
             >
               {t('about')}
@@ -186,7 +184,7 @@ export default function Header({ locale }: Props) {
             <Link
               href={`${prefix}/blog`}
               className={`text-[13px] uppercase tracking-[0.12em] font-medium transition-colors duration-300 whitespace-nowrap ${
-                isTransparent ? 'text-white hover:text-gold' : 'text-gold hover:text-gold-dark'
+                'text-white hover:text-gold'
               }`}
             >
               {t('blog')}
@@ -195,7 +193,7 @@ export default function Header({ locale }: Props) {
             <Link
               href={`${prefix}/team`}
               className={`text-[13px] uppercase tracking-[0.12em] font-medium transition-colors duration-300 whitespace-nowrap ${
-                isTransparent ? 'text-white hover:text-gold' : 'text-gold hover:text-gold-dark'
+                'text-white hover:text-gold'
               }`}
             >
               {t('team')}
@@ -204,7 +202,7 @@ export default function Header({ locale }: Props) {
             <Link
               href={`${prefix}/#clients`}
               className={`text-[13px] uppercase tracking-[0.12em] font-medium transition-colors duration-300 whitespace-nowrap ${
-                isTransparent ? 'text-white hover:text-gold' : 'text-gold hover:text-gold-dark'
+                'text-white hover:text-gold'
               }`}
             >
               {t('clients')}
@@ -213,7 +211,7 @@ export default function Header({ locale }: Props) {
             <Link
               href={`${prefix}/contact`}
               className={`text-[13px] uppercase tracking-[0.12em] font-medium transition-colors duration-300 whitespace-nowrap ${
-                isTransparent ? 'text-white hover:text-gold' : 'text-gold hover:text-gold-dark'
+                'text-white hover:text-gold'
               }`}
             >
               {t('contact')}
