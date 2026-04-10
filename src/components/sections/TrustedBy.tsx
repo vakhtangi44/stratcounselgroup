@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import GoldDivider from '@/components/ui/GoldDivider'
 import RichText from '@/components/ui/RichText'
@@ -69,12 +68,11 @@ export default function TrustedBy({ locale, categories, strings }: Props) {
               <ScrollReveal key={client.id} delay={idx * 40}>
                 <div className="group flex items-center justify-center aspect-[3/2] border border-white/10 hover:border-gold/40 transition-all duration-500 p-3">
                   {logo ? (
-                    <Image
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
                       src={logo}
                       alt={name}
-                      width={180}
-                      height={90}
-                      className="object-contain w-full h-full max-h-[72px] brightness-0 invert opacity-50 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
+                      className="object-contain w-full max-h-[72px] brightness-0 invert opacity-50 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
                     />
                   ) : (
                     <span className="text-white/70 group-hover:text-white text-sm font-medium text-center leading-snug transition-colors duration-300">{name}</span>
