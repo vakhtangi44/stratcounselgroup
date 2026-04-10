@@ -14,7 +14,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
   const categoryId = parseId(id)
   if (!categoryId) return NextResponse.json({ error: 'Bad request' }, { status: 400 })
   const body = await req.json()
-  const { name, nameKa, nameEn, order, active } = body
+  const { name, nameKa, nameEn, logoKa, logoEn, order, active } = body
   if (!name && !nameEn) {
     return NextResponse.json({ error: 'name required' }, { status: 400 })
   }
@@ -23,6 +23,8 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       name: name || nameEn || '',
       nameKa: nameKa || name || '',
       nameEn: nameEn || name || '',
+      logoKa: logoKa || null,
+      logoEn: logoEn || null,
       categoryId,
       order: order ?? 0,
       active: active !== false,

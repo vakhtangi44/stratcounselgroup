@@ -7,6 +7,8 @@ interface Client {
   name: string
   nameKa: string
   nameEn: string
+  logoKa: string | null
+  logoEn: string | null
   categoryId: number
   order: number
   active: boolean
@@ -38,7 +40,7 @@ export default function ClientsManager({ initialCategories }: Props) {
   // New category form state
   const [newCat, setNewCat] = useState({ icon: '🏢', labelKa: '', labelEn: '', order: 0, active: true })
   // New client form state
-  const [newClient, setNewClient] = useState({ name: '', nameKa: '', nameEn: '', order: 0, active: true })
+  const [newClient, setNewClient] = useState({ name: '', nameKa: '', nameEn: '', logoKa: '', logoEn: '', order: 0, active: true })
 
   async function reload() {
     const res = await fetch('/api/admin/clients')
@@ -101,7 +103,7 @@ export default function ClientsManager({ initialCategories }: Props) {
     })
     if (res.ok) {
       setAddingClientToCategoryId(null)
-      setNewClient({ name: '', nameKa: '', nameEn: '', order: 0, active: true })
+      setNewClient({ name: '', nameKa: '', nameEn: '', logoKa: '', logoEn: '', order: 0, active: true })
       await reload()
     }
     setLoading(false)
@@ -256,7 +258,7 @@ export default function ClientsManager({ initialCategories }: Props) {
               <div className="flex justify-between items-center mb-3">
                 <p className="text-xs text-secondary font-medium uppercase tracking-wider">Clients</p>
                 <button
-                  onClick={() => { setAddingClientToCategoryId(cat.id); setNewClient({ name: '', nameKa: '', nameEn: '', order: 0, active: true }); }}
+                  onClick={() => { setAddingClientToCategoryId(cat.id); setNewClient({ name: '', nameKa: '', nameEn: '', logoKa: '', logoEn: '', order: 0, active: true }); }}
                   className="text-gold hover:underline text-xs"
                 >
                   + Add Client
@@ -266,7 +268,7 @@ export default function ClientsManager({ initialCategories }: Props) {
               {/* Add Client Form */}
               {addingClientToCategoryId === cat.id && (
                 <div className="bg-bg-alt rounded p-4 mb-3">
-                  <div className="grid grid-cols-3 gap-3 mb-3">
+                  <div className="grid grid-cols-2 gap-3 mb-3">
                     <div>
                       <label className="block text-xs text-secondary mb-1">Name (EN)</label>
                       <input
@@ -280,6 +282,24 @@ export default function ClientsManager({ initialCategories }: Props) {
                       <input
                         value={newClient.nameKa}
                         onChange={(e) => setNewClient({ ...newClient, nameKa: e.target.value })}
+                        className="w-full border rounded px-3 py-2 text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-secondary mb-1">Logo EN (path or URL)</label>
+                      <input
+                        value={newClient.logoEn}
+                        onChange={(e) => setNewClient({ ...newClient, logoEn: e.target.value })}
+                        placeholder="/logos/clients/name-en.png"
+                        className="w-full border rounded px-3 py-2 text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-secondary mb-1">Logo KA (path or URL)</label>
+                      <input
+                        value={newClient.logoKa}
+                        onChange={(e) => setNewClient({ ...newClient, logoKa: e.target.value })}
+                        placeholder="/logos/clients/name-ka.png"
                         className="w-full border rounded px-3 py-2 text-sm"
                       />
                     </div>
@@ -460,6 +480,24 @@ export default function ClientsManager({ initialCategories }: Props) {
                 <input
                   value={editingClient.nameKa}
                   onChange={(e) => setEditingClient({ ...editingClient, nameKa: e.target.value })}
+                  className="w-full border rounded px-3 py-2 text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-xs text-secondary mb-1">Logo EN (path or URL)</label>
+                <input
+                  value={editingClient.logoEn || ''}
+                  onChange={(e) => setEditingClient({ ...editingClient, logoEn: e.target.value })}
+                  placeholder="/logos/clients/name-en.png"
+                  className="w-full border rounded px-3 py-2 text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-xs text-secondary mb-1">Logo KA (path or URL)</label>
+                <input
+                  value={editingClient.logoKa || ''}
+                  onChange={(e) => setEditingClient({ ...editingClient, logoKa: e.target.value })}
+                  placeholder="/logos/clients/name-ka.png"
                   className="w-full border rounded px-3 py-2 text-sm"
                 />
               </div>

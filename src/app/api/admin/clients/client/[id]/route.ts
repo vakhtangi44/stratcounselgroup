@@ -14,13 +14,15 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
   const numericId = parseId(id)
   if (!numericId) return NextResponse.json({ error: 'Bad request' }, { status: 400 })
   const body = await req.json()
-  const { name, nameKa, nameEn, order, active } = body
+  const { name, nameKa, nameEn, logoKa, logoEn, order, active } = body
   const client = await db.client.update({
     where: { id: numericId },
     data: {
       name: name || nameEn || '',
       nameKa: nameKa || '',
       nameEn: nameEn || '',
+      logoKa: logoKa ?? undefined,
+      logoEn: logoEn ?? undefined,
       order: order ?? 0,
       active: active !== false,
     },

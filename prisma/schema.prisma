@@ -165,6 +165,8 @@ model Client {
   name       String
   nameKa     String         @default("")
   nameEn     String         @default("")
+  logoKa     String?
+  logoEn     String?
   categoryId Int
   category   ClientCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   order      Int            @default(0)
