@@ -124,10 +124,10 @@ export default function ContactPageClient({ locale, strings }: Props) {
                 </div>
               </div>
 
-              {/* Social Media */}
+              {/* Connect with Us */}
               <div className="mt-10 pt-8 border-t border-gray-200">
                 <p className="text-dark font-heading text-sm mb-4">
-                  {isKa ? 'სოციალური ქსელები' : 'Follow Us'}
+                  {isKa ? 'დაგვიკავშირდით' : 'Connect with Us'}
                 </p>
                 <div className="flex items-center gap-3">
                   {strings.facebook && (
