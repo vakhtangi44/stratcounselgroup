@@ -22,6 +22,7 @@ const sections = [
   {
     label: 'Site Management',
     links: [
+      { href: '/admin/about', label: 'About Photo' },
       { href: '/admin/advantages', label: 'Why Us' },
       { href: '/admin/clients', label: 'Our Clients' },
       { href: '/admin/services', label: 'Services' },
