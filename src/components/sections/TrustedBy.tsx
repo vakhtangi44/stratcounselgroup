@@ -85,10 +85,15 @@ export default function TrustedBy({ locale, categories, preview = false, strings
   // Preview mode: show first 8 (2 rows of 4). Full mode: all.
   const displayClients = preview ? allClients.slice(0, 8) : allClients
 
+  // Homepage preview: fully navy. /clients page (preview=false): white header + navy logos.
+  const headerBg = preview ? 'bg-navy' : 'bg-white'
+  const headerTitleColor = preview ? 'text-white' : 'text-dark'
+  const headerDescColor = preview ? 'text-white/70' : 'text-secondary'
+
   return (
     <section id="clients">
-      {/* White header — title + description */}
-      <div className="bg-white py-20 md:py-28">
+      {/* Header — title + description */}
+      <div className={`${headerBg} ${preview ? 'pt-20 md:pt-28 pb-0' : 'py-20 md:py-28'}`}>
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center">
@@ -101,12 +106,12 @@ export default function TrustedBy({ locale, categories, preview = false, strings
               <RichText
                 html={strings.title}
                 as="h2"
-                className="font-heading text-3xl md:text-4xl text-dark mb-4"
+                className={`font-heading text-3xl md:text-4xl ${headerTitleColor} mb-4`}
               />
               <RichText
                 html={strings.description}
                 as="p"
-                className="text-secondary font-light max-w-2xl mx-auto text-lg"
+                className={`${headerDescColor} font-light max-w-2xl mx-auto text-lg`}
               />
               <GoldDivider className="mt-8" />
             </div>
@@ -115,7 +120,7 @@ export default function TrustedBy({ locale, categories, preview = false, strings
       </div>
 
       {/* Navy logos grid */}
-      <div className="bg-navy py-16 md:py-24">
+      <div className={`bg-navy ${preview ? 'pt-16 md:pt-20 pb-20 md:pb-28' : 'py-16 md:py-24'}`}>
         <div className="container mx-auto px-4">
           {displayClients.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14 max-w-6xl mx-auto">
