@@ -31,7 +31,7 @@ export default function ServicesPreview({ services, locale }: Props) {
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-16">
           <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-            {locale === 'ka' ? 'რას ვთავაზობთ' : 'What We Offer'}
+            {locale === 'ka' ? 'რას გთავაზობთ' : 'What We Offer'}
           </p>
           <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4 gold-underline inline-block">
             {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
@@ -44,16 +44,23 @@ export default function ServicesPreview({ services, locale }: Props) {
           <GoldDivider className="mt-8" />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {services.map((service, i) => (
-            <ScrollReveal key={service.id} delay={i * 150}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 max-w-[120rem] mx-auto">
+          {services.map((service, i) => {
+            const colClass =
+              i < 3
+                ? 'lg:col-span-2'
+                : i === 3
+                ? 'lg:col-span-2 lg:col-start-2'
+                : 'lg:col-span-2 lg:col-start-4'
+            return (
+            <ScrollReveal key={service.id} delay={i * 150} className={colClass}>
               <div className="relative h-full p-8 bg-white border border-gray-100 hover:border-gold/40 transition-all duration-700 group hover:shadow-lg hover:shadow-gold/5">
                 {/* Gold left border on hover */}
                 <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gold scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-top" />
 
                 {/* Roman numeral */}
                 <div className="text-gold/20 font-heading text-5xl mb-4 leading-none">
-                  {['I', 'II', 'III'][i] || (i + 1).toString()}
+                  {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                 </div>
 
                 <h3 className="font-heading text-lg text-dark mb-3 leading-snug group-hover:text-gold transition-colors duration-500">
@@ -82,7 +89,8 @@ export default function ServicesPreview({ services, locale }: Props) {
                 </ul>
               </div>
             </ScrollReveal>
-          ))}
+            )
+          })}
         </div>
 
         <ScrollReveal className="text-center mt-12">

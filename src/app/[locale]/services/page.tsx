@@ -2,7 +2,9 @@ import { getLocale } from 'next-intl/server'
 import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import GoldDivider from '@/components/ui/GoldDivider'
+import RichText from '@/components/ui/RichText'
 import { db } from '@/lib/db'
+import { getSettings, s } from '@/lib/settings'
 import { unstable_noStore as noStore } from 'next/cache'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -22,11 +24,14 @@ export default async function ServicesPage() {
   const locale = await getLocale()
   const prefix = locale === 'en' ? '/en' : ''
 
-  const services = await db.service.findMany({
-    where: { active: true },
-    orderBy: { order: 'asc' },
-    include: { items: { orderBy: { order: 'asc' } } },
-  })
+  const [services, settings] = await Promise.all([
+    db.service.findMany({
+      where: { active: true },
+      orderBy: { order: 'asc' },
+      include: { items: { orderBy: { order: 'asc' } } },
+    }),
+    getSettings(),
+  ])
 
   return (
     <div className="pt-[170px]">
@@ -38,7 +43,7 @@ export default async function ServicesPage() {
 
         <div className="relative z-10">
           <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-            {locale === 'ka' ? 'რას ვთავაზობთ' : 'What We Offer'}
+            {locale === 'ka' ? 'რას გთავაზობთ' : 'What We Offer'}
           </p>
           <div className="gold-divider mx-auto mb-8" />
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]">
@@ -75,7 +80,7 @@ export default async function ServicesPage() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-secondary text-base md:text-lg leading-relaxed mb-6 max-w-3xl font-light italic text-justify">
+                    <p className="text-secondary text-base md:text-lg leading-relaxed mb-6 font-light italic text-justify">
                       {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                     </p>
 
@@ -119,14 +124,9 @@ export default async function ServicesPage() {
         <div className="relative z-10">
           <ScrollReveal>
             <div className="gold-divider mx-auto mb-8" />
-            <h2 className="font-heading text-3xl md:text-4xl mb-6 tracking-[-0.01em]">
-              {locale === 'ka' ? 'გჭირდებათ სამართლებრივი კონსულტაცია?' : 'Need Legal Consultation?'}
+            <h2 className="font-heading text-3xl md:text-4xl mb-10 tracking-[-0.01em]">
+              {locale === 'ka' ? 'დაგვიკავშირდით' : 'Contact Us'}
             </h2>
-            <p className="text-white/40 mb-10 max-w-lg mx-auto font-light">
-              {locale === 'ka'
-                ? 'დაგვიკავშირდით და ჩვენი გუნდი მოგიყვანთ საუკეთესო შედეგამდე.'
-                : 'Contact us and our team will guide you to the best outcome.'}
-            </p>
             <Link
               href={`${prefix}/contact`}
               className="inline-block bg-gold text-white px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold-dark transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"

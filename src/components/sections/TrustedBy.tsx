@@ -120,10 +120,10 @@ export default function TrustedBy({ locale, categories, preview = false, strings
       </div>
 
       {/* Navy logos grid */}
-      <div className={`bg-navy ${preview ? 'pt-16 md:pt-20 pb-20 md:pb-28' : 'py-16 md:py-24'}`}>
+      <div className={`bg-navy ${preview ? 'pt-8 md:pt-10 pb-16 md:pb-20' : 'py-8 md:py-12'}`}>
         <div className="container mx-auto px-4">
           {displayClients.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14 max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-0 max-w-[44rem] mx-auto">
               {displayClients.map((client, idx) => {
                 const logo = isKa
                   ? client.logoKa || client.logoEn
@@ -133,25 +133,23 @@ export default function TrustedBy({ locale, categories, preview = false, strings
                   : client.nameEn || client.name
 
                 return (
-                  <div
-                    key={client.id}
-                    className="flex items-center justify-center aspect-square animate-logo-drop hover:scale-105 transition-transform duration-500"
-                    style={{ animationDelay: `${idx * 120}ms` }}
-                  >
-                    {logo ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={logo}
-                        alt={name}
-                        className="max-w-full max-h-full object-contain"
-                        style={getLogoStyle(logo)}
-                      />
-                    ) : (
-                      <span className="text-white/70 text-sm font-medium text-center leading-snug">
-                        {name}
-                      </span>
-                    )}
-                  </div>
+                  <ScrollReveal key={client.id} delay={idx * 150}>
+                    <div className="flex items-center justify-center h-20 md:h-24 hover:scale-105 transition-transform duration-500 overflow-hidden">
+                      {logo ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={logo}
+                          alt={name}
+                          className="w-full h-full object-cover"
+                          style={getLogoStyle(logo)}
+                        />
+                      ) : (
+                        <span className="text-white/70 text-sm font-medium text-center leading-snug">
+                          {name}
+                        </span>
+                      )}
+                    </div>
+                  </ScrollReveal>
                 )
               })}
             </div>

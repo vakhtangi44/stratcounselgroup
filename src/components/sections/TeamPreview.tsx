@@ -37,20 +37,20 @@ export default function TeamPreview({ members, locale, strings }: Props) {
           <GoldDivider className="mt-8" />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-3xl mx-auto">
           {members.map((member, i) => (
             <ScrollReveal key={member.id} delay={i * 150}>
               <Link
                 href={`${prefix}/team/${member.slug}`}
-                className="group block bg-white overflow-hidden transition-all duration-700 hover:shadow-xl hover:shadow-dark/5"
+                className="group block"
               >
-                <div className="relative aspect-[10/9] bg-bg-alt overflow-hidden">
+                <div className="relative aspect-[10/9] overflow-hidden mb-4">
                   {member.photo ? (
                     <Image
                       src={member.photo}
                       alt={locale === 'ka' ? member.nameKa : member.nameEn}
                       fill
-                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105 photo-warm-hover"
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-dark to-navy">
@@ -59,14 +59,12 @@ export default function TeamPreview({ members, locale, strings }: Props) {
                       </span>
                     </div>
                   )}
-                  {/* Gold border on hover at bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
                 </div>
-                <div className="p-4 border-l-2 border-transparent group-hover:border-gold transition-colors duration-700">
-                  <p className="font-heading text-base text-dark group-hover:text-gold transition-colors duration-500 name-underline-animate">
+                <div className="text-center">
+                  <p className="font-heading text-lg text-dark group-hover:text-gold transition-colors duration-500">
                     {locale === 'ka' ? member.nameKa : member.nameEn}
                   </p>
-                  <p className="text-secondary text-xs mt-1 font-light tracking-wide">
+                  <p className="text-secondary text-sm mt-1 font-light tracking-wide">
                     {locale === 'ka' ? member.titleKa : member.titleEn}
                   </p>
                 </div>

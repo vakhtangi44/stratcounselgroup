@@ -49,8 +49,8 @@ export default async function TeamPage() {
             {members.map((member, i) => (
               <ScrollReveal key={member.id} delay={i * 100}>
                 <Link href={`${prefix}/team/${member.slug}`} className="group block w-full h-full">
-                  <div className="bg-white overflow-hidden flex flex-col h-full shadow-md hover:shadow-xl transition-shadow duration-500">
-                    <div className="relative aspect-[10/9] bg-bg-alt overflow-hidden flex-shrink-0">
+                  <div className="flex flex-col h-full">
+                    <div className="relative aspect-[10/9] overflow-hidden flex-shrink-0 mb-4">
                       {member.photo ? (
                         <Image
                           src={member.photo}
@@ -66,11 +66,11 @@ export default async function TeamPage() {
                         </div>
                       )}
                     </div>
-                    <div className="pt-4 px-4 pb-5 flex flex-col flex-1 min-h-[110px]">
-                      <h2 className="font-heading text-[22px] text-dark group-hover:text-gold transition-colors duration-300 leading-snug line-clamp-2">
+                    <div className="text-center">
+                      <h2 className="font-heading text-[22px] text-dark group-hover:text-gold transition-colors duration-300 leading-snug">
                         {isKa ? member.nameKa : member.nameEn}
                       </h2>
-                      <p className="text-secondary text-[17px] mt-1 font-light tracking-wide leading-snug line-clamp-2">
+                      <p className="text-secondary text-[17px] mt-1 font-light tracking-wide leading-snug">
                         {isKa ? member.titleKa : member.titleEn}
                       </p>
                       {member.gbaNumber && (

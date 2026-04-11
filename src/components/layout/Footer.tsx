@@ -128,18 +128,10 @@ export default async function Footer({ locale }: { locale: string }) {
 
       {/* Bottom bar */}
       <div className="border-t border-gold/10">
-        <div className="container mx-auto px-4 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="container mx-auto px-4 lg:px-8 py-6 text-center">
           <p className="text-white/50 text-xs tracking-wide font-light">
             &copy; {new Date().getFullYear()}{' '}<RichText html={s(settings, 'footer.copyright', locale)} />
           </p>
-          <div className="flex items-center gap-6 text-white/50 text-xs">
-            <Link href={`${prefix}/faq`} className="hover:text-gold transition-colors duration-300">
-              FAQ
-            </Link>
-            <Link href={`${prefix}/glossary`} className="hover:text-gold transition-colors duration-300">
-              {isKa ? 'ტერმინოლოგია' : 'Glossary'}
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

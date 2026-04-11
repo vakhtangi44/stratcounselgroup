@@ -86,24 +86,16 @@ export default function ContactPageClient({ locale, strings }: Props) {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                     </svg>
                   </div>
-                  <div className="space-y-1.5">
+                  <div>
                     <RichText html={strings.addressLabel} as="p" className="text-dark font-heading text-[17px] mb-2" />
-                    <p className="text-navy text-[17px] font-medium leading-snug">{strings.companyName}</p>
-                    <p className="text-navy text-[17px] leading-snug">{strings.companyId}</p>
-                    <p className="text-navy text-[17px] leading-snug">
-                      {strings.legalAddressLabel}: {strings.legalAddress}
-                    </p>
-                    <p className="text-navy text-[17px] leading-snug">
-                      {strings.officeAddressLabel}:{' '}
-                      <a
-                        href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-gold transition-colors duration-300"
-                      >
-                        {strings.officeAddress}
-                      </a>
-                    </p>
+                    <a
+                      href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-navy text-[17px] leading-snug hover:text-gold transition-colors duration-300"
+                    >
+                      {strings.officeAddress}
+                    </a>
                   </div>
                 </div>
 

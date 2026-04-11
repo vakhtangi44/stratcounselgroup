@@ -155,25 +155,12 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
 
             {/* Services Dropdown */}
             <DropdownMenu label={t('services')} isTransparent={isTransparent}>
-              <div className="w-[280px] p-4">
+              <div className="w-[240px] p-4">
                 <Link
                   href={`${prefix}/services`}
-                  className="block px-3 py-2 text-[12px] text-dark hover:text-gold hover:bg-cream rounded transition-colors duration-200"
+                  className="block px-3 py-2 text-[13px] text-dark hover:text-gold hover:bg-cream rounded transition-colors duration-200"
                 >
                   {isKa ? 'ყველა სერვისი' : 'All Services'}
-                </Link>
-                <div className="my-2 border-t border-gray-100" />
-                <Link
-                  href={`${prefix}/faq`}
-                  className="block px-3 py-2 text-[12px] text-dark hover:text-gold hover:bg-cream rounded transition-colors duration-200"
-                >
-                  {isKa ? 'ხშირი კითხვები' : 'FAQ'}
-                </Link>
-                <Link
-                  href={`${prefix}/glossary`}
-                  className="block px-3 py-2 text-[12px] text-dark hover:text-gold hover:bg-cream rounded transition-colors duration-200"
-                >
-                  {isKa ? 'იურიდიული გლოსარი' : 'Legal Glossary'}
                 </Link>
               </div>
             </DropdownMenu>
@@ -197,7 +184,7 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
             </Link>
 
             <Link
-              href={`${prefix}/#clients`}
+              href={`${prefix}/clients`}
               className={`text-[14px] uppercase tracking-[0.12em] font-medium transition-colors duration-300 whitespace-nowrap ${
                 'text-white hover:text-gold'
               }`}
@@ -233,9 +220,7 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
               { href: `${prefix}/services`, label: t('services') },
               { href: `${prefix}/blog`, label: t('blog') },
               { href: `${prefix}/team`, label: t('team') },
-              { href: `${prefix}/faq`, label: isKa ? 'ხშირი კითხვები' : 'FAQ' },
-              { href: `${prefix}/glossary`, label: isKa ? 'გლოსარი' : 'Glossary' },
-              { href: `${prefix}/#clients`, label: t('clients') },
+              { href: `${prefix}/clients`, label: t('clients') },
               { href: `${prefix}/contact`, label: t('contact') },
             ]} />
           </div>

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import GoldDivider from '@/components/ui/GoldDivider'
 
 interface SectorItem {
   slug: string
@@ -17,14 +18,23 @@ interface Props {
 
 export default function TargetSectors({ locale, sectors, enabled }: Props) {
   const prefix = locale === 'en' ? '/en' : ''
+  const isKa = locale === 'ka'
 
   if (sectors.length === 0) return null
 
   return (
-    <section className="py-20 md:py-28 bg-navy text-white">
+    <section className="py-20 md:py-28 bg-dark text-white">
       <div className="container mx-auto px-4 lg:px-8">
+        <ScrollReveal className="text-center mb-16">
+          <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
+          <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">
+            {isKa ? 'სამიზნე სექტორები' : 'Target Sectors'}
+          </h2>
+          <GoldDivider className="mt-8" />
+        </ScrollReveal>
+
         {/* Adaptive grid: if 5 sectors use 3+2 layout, else centered */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 max-w-[1075px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 max-w-[1075px] mx-auto">
           {sectors.map((sector, i) => {
             const cardContent = (
               <div className="relative overflow-hidden group h-64 md:h-72">

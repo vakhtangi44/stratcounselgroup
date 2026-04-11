@@ -5,6 +5,7 @@ import { unstable_noStore as noStore } from 'next/cache'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import GoldDivider from '@/components/ui/GoldDivider'
 import RichText from '@/components/ui/RichText'
+import SuccessfulCases from '@/components/sections/SuccessfulCases'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -57,41 +58,35 @@ export default async function ClientsPage() {
   return (
     <div className="pt-[170px]">
       {/* Page Hero */}
-      <section className="relative bg-navy text-white py-24 md:py-32 text-center px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-dark-pattern" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-gold/5 rounded-full" />
+      <section className="relative bg-white text-dark py-24 md:py-32 text-center px-4 overflow-hidden">
         <div className="relative z-10">
           <RichText html={subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
           <div className="gold-divider mx-auto mb-8" />
-          <RichText html={title} as="h1" className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]" />
-          <RichText html={description} as="p" className="text-white/50 max-w-2xl mx-auto text-lg leading-relaxed font-light" />
+          <RichText html={title} as="h1" className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em] text-dark" />
+          <RichText html={description} as="p" className="text-secondary max-w-2xl mx-auto text-lg leading-relaxed font-light" />
         </div>
       </section>
 
       {/* All Client Logos */}
-      <section className="py-20 md:py-28 bg-navy text-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+      <section className="py-12 md:py-16 bg-dark text-white">
+        <div className="px-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-w-[75%] mx-auto">
             {allClients.map((client, idx) => {
               const logo = isKa ? (client.logoKa || client.logoEn) : (client.logoEn || client.logoKa)
               const name = isKa ? (client.nameKa || client.name) : (client.nameEn || client.name)
 
-              const hasWhiteBg = logo
-                ? ['redix', 'gig-energy', 'liderfood'].some((n) => logo.toLowerCase().includes(n))
-                : false
-
               return (
                 <ScrollReveal key={client.id} delay={idx * 40}>
-                  <div className="group flex items-center justify-center min-h-[280px] p-4">
+                  <div className="group flex items-center justify-center h-52 md:h-56 overflow-visible relative">
                     {logo ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={logo}
                         alt={name}
-                        className={`object-contain h-[320px] w-full opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105${hasWhiteBg ? ' mix-blend-multiply' : ''}`}
+                        className="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-[2] group-hover:z-20 relative"
                       />
                     ) : (
-                      <span className="text-white/70 group-hover:text-white text-sm font-medium text-center leading-snug transition-colors duration-300">
+                      <span className="text-white/70 group-hover:text-white text-xs font-medium text-center leading-snug transition-colors duration-300">
                         {name}
                       </span>
                     )}
@@ -100,32 +95,11 @@ export default async function ClientsPage() {
               )
             })}
           </div>
-
-          {/* Trust Indicators */}
-          <ScrollReveal>
-            <div className="mt-20 pt-12 border-t border-white/10">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                  <p className="font-heading text-4xl md:text-5xl text-gold mb-2">50+</p>
-                  <RichText html={clientsLabel} as="p" className="text-white/60 text-sm uppercase tracking-wider" />
-                </div>
-                <div>
-                  <p className="font-heading text-4xl md:text-5xl text-gold mb-2">10+</p>
-                  <RichText html={sectorsLabel} as="p" className="text-white/60 text-sm uppercase tracking-wider" />
-                </div>
-                <div>
-                  <p className="font-heading text-4xl md:text-5xl text-gold mb-2">20+</p>
-                  <RichText html={experienceLabel} as="p" className="text-white/60 text-sm uppercase tracking-wider" />
-                </div>
-                <div>
-                  <p className="font-heading text-4xl md:text-5xl text-gold mb-2">100%</p>
-                  <RichText html={confidentialityLabel} as="p" className="text-white/60 text-sm uppercase tracking-wider" />
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
+
+      {/* Successful Cases */}
+      <SuccessfulCases locale={locale} />
 
       {/* CTA */}
       <section className="relative bg-dark py-16 text-center text-white px-4 overflow-hidden">
@@ -134,7 +108,7 @@ export default async function ClientsPage() {
           <ScrollReveal>
             <GoldDivider className="mx-auto mb-8" />
             <p className="font-heading text-2xl md:text-3xl mb-6">
-              {isKa ? 'გამოიყენეთ ჩვენი გამოცდილება' : 'Put Our Experience to Work'}
+              {isKa ? 'დაგვიკავშირდით' : 'Contact Us'}
             </p>
             <a
               href={locale === 'en' ? '/en/contact' : '/contact'}

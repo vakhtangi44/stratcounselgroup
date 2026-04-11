@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap');
 
 @import "tailwindcss";
 
@@ -12,8 +12,8 @@
   --color-bg-alt: #f8f7f4;
   --color-cream: #faf8f5;
 
-  --font-family-heading: 'Source Serif Pro', Georgia, serif;
-  --font-family-body: Roboto, Arial, sans-serif;
+  --font-family-heading: 'Noto Sans Georgian', 'Source Serif Pro', Georgia, serif;
+  --font-family-body: 'Noto Sans Georgian', Roboto, Arial, sans-serif;
 }
 
 @layer base {
@@ -208,13 +208,12 @@
   }
 
   @keyframes logo-drop-in {
-    0%   { opacity: 0; transform: translateY(-30px) scale(0.95); }
-    60%  { opacity: 1; transform: translateY(6px) scale(1.02); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
+    0%   { opacity: 0; transform: translateY(-40px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 
   .animate-logo-drop {
-    animation: logo-drop-in 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: logo-drop-in 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
 
   .animate-scroll-hint {
