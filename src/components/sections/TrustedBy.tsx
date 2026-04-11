@@ -84,7 +84,7 @@ export default function TrustedBy({ locale, categories, preview = false, strings
       <div className="bg-navy py-16 md:py-24">
         <div className="container mx-auto px-4">
           {displayClients.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14 max-w-6xl mx-auto">
               {displayClients.map((client, idx) => {
                 const logo = isKa
                   ? client.logoKa || client.logoEn
@@ -96,7 +96,7 @@ export default function TrustedBy({ locale, categories, preview = false, strings
                 return (
                   <div
                     key={client.id}
-                    className="bg-white shadow-2xl shadow-black/40 rounded-sm p-6 md:p-8 flex items-center justify-center aspect-square animate-logo-drop hover:scale-105 transition-transform duration-500"
+                    className="flex items-center justify-center aspect-square animate-logo-drop hover:scale-105 transition-transform duration-500"
                     style={{ animationDelay: `${idx * 120}ms` }}
                   >
                     {logo ? (
@@ -105,9 +105,10 @@ export default function TrustedBy({ locale, categories, preview = false, strings
                         src={logo}
                         alt={name}
                         className="max-w-full max-h-full object-contain"
+                        style={{ filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5))' }}
                       />
                     ) : (
-                      <span className="text-dark text-sm font-medium text-center leading-snug">
+                      <span className="text-white/70 text-sm font-medium text-center leading-snug">
                         {name}
                       </span>
                     )}
