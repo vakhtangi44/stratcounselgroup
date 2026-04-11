@@ -207,6 +207,16 @@
     to   { stroke-dashoffset: 0; }
   }
 
+  @keyframes logo-drop-in {
+    0%   { opacity: 0; transform: translateY(-30px) scale(0.95); }
+    60%  { opacity: 1; transform: translateY(6px) scale(1.02); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .animate-logo-drop {
+    animation: logo-drop-in 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
   .animate-scroll-hint {
     animation: scroll-hint 2s ease-in-out infinite;
   }

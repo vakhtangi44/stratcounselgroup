@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 interface Client {
   id: number
@@ -14,120 +14,70 @@ interface Client {
   active: boolean
 }
 
-interface Category {
-  id: number
-  icon: string
-  labelKa: string
-  labelEn: string
-  order: number
-  active: boolean
-  clients: Client[]
-}
-
 interface Props {
-  initialCategories: Category[]
+  initialClients: Client[]
 }
 
-export default function ClientsManager({ initialCategories }: Props) {
-  const [categories, setCategories] = useState<Category[]>(initialCategories)
-  const [expandedId, setExpandedId] = useState<number | null>(null)
-  const [editingCategory, setEditingCategory] = useState<Category | null>(null)
-  const [editingClient, setEditingClient] = useState<Client | null>(null)
-  const [showNewCategory, setShowNewCategory] = useState(false)
-  const [addingClientToCategoryId, setAddingClientToCategoryId] = useState<number | null>(null)
+export default function ClientsManager({ initialClients }: Props) {
+  const [clients, setClients] = useState<Client[]>(initialClients)
   const [loading, setLoading] = useState(false)
+  const [savingOrder, setSavingOrder] = useState(false)
+  const [savedOrder, setSavedOrder] = useState(false)
+  const [error, setError] = useState('')
+  const [uploadingId, setUploadingId] = useState<number | null>(null)
+  const [showNew, setShowNew] = useState(false)
+  const [newNameEn, setNewNameEn] = useState('')
+  const [newNameKa, setNewNameKa] = useState('')
+  const [newLogoFile, setNewLogoFile] = useState<File | null>(null)
+  const [newUploading, setNewUploading] = useState(false)
 
-  // New category form state
-  const [newCat, setNewCat] = useState({ icon: '🏢', labelKa: '', labelEn: '', order: 0, active: true })
-  // New client form state
-  const [newClient, setNewClient] = useState({ name: '', nameKa: '', nameEn: '', logoKa: '', logoEn: '', order: 0, active: true })
+  const dragIndex = useRef<number | null>(null)
+  const fileInputs = useRef<Record<number, HTMLInputElement | null>>({})
 
   async function reload() {
     const res = await fetch('/api/admin/clients')
     if (res.ok) {
-      const data = await res.json()
-      setCategories(data)
+      const cats = await res.json()
+      const flat: Client[] = cats
+        .flatMap((c: { clients: Client[] }) => c.clients)
+        .sort((a: Client, b: Client) => a.order - b.order)
+      setClients(flat)
     }
   }
 
-  async function handleCreateCategory() {
-    setLoading(true)
-    const res = await fetch('/api/admin/clients', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newCat),
-    })
-    if (res.ok) {
-      setShowNewCategory(false)
-      setNewCat({ icon: '🏢', labelKa: '', labelEn: '', order: 0, active: true })
+  async function uploadLogoForClient(clientId: number, file: File) {
+    setUploadingId(clientId)
+    setError('')
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+      const uploadRes = await fetch('/api/admin/upload', { method: 'POST', body: formData })
+      if (!uploadRes.ok) throw new Error('Upload failed')
+      const { url } = await uploadRes.json()
+
+      const client = clients.find((c) => c.id === clientId)
+      if (!client) return
+
+      const saveRes = await fetch(`/api/admin/clients/client/${clientId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: client.name,
+          nameKa: client.nameKa,
+          nameEn: client.nameEn,
+          logoKa: url,
+          logoEn: url,
+          order: client.order,
+          active: client.active,
+        }),
+      })
+      if (!saveRes.ok) throw new Error('Failed to save logo')
       await reload()
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Upload failed')
+    } finally {
+      setUploadingId(null)
     }
-    setLoading(false)
-  }
-
-  async function handleUpdateCategory() {
-    if (!editingCategory) return
-    setLoading(true)
-    const res = await fetch(`/api/admin/clients/${editingCategory.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        icon: editingCategory.icon,
-        labelKa: editingCategory.labelKa,
-        labelEn: editingCategory.labelEn,
-        order: editingCategory.order,
-        active: editingCategory.active,
-      }),
-    })
-    if (res.ok) {
-      setEditingCategory(null)
-      await reload()
-    }
-    setLoading(false)
-  }
-
-  async function handleDeleteCategory(id: number) {
-    if (!confirm('Delete this category and all its clients?')) return
-    setLoading(true)
-    await fetch(`/api/admin/clients/${id}`, { method: 'DELETE' })
-    await reload()
-    setLoading(false)
-  }
-
-  async function handleCreateClient(categoryId: number) {
-    setLoading(true)
-    const res = await fetch(`/api/admin/clients/${categoryId}/clients`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newClient),
-    })
-    if (res.ok) {
-      setAddingClientToCategoryId(null)
-      setNewClient({ name: '', nameKa: '', nameEn: '', logoKa: '', logoEn: '', order: 0, active: true })
-      await reload()
-    }
-    setLoading(false)
-  }
-
-  async function handleUpdateClient() {
-    if (!editingClient) return
-    setLoading(true)
-    const res = await fetch(`/api/admin/clients/client/${editingClient.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: editingClient.name,
-        nameKa: editingClient.nameKa,
-        nameEn: editingClient.nameEn,
-        order: editingClient.order,
-        active: editingClient.active,
-      }),
-    })
-    if (res.ok) {
-      setEditingClient(null)
-      await reload()
-    }
-    setLoading(false)
   }
 
   async function handleDeleteClient(id: number) {
@@ -138,75 +88,166 @@ export default function ClientsManager({ initialCategories }: Props) {
     setLoading(false)
   }
 
+  async function handleCreateClient() {
+    if (!newNameEn) return
+    setNewUploading(true)
+    setError('')
+    try {
+      let logoUrl: string | null = null
+      if (newLogoFile) {
+        const fd = new FormData()
+        fd.append('file', newLogoFile)
+        const up = await fetch('/api/admin/upload', { method: 'POST', body: fd })
+        if (!up.ok) throw new Error('Upload failed')
+        const r = await up.json()
+        logoUrl = r.url
+      }
+
+      const res = await fetch('/api/admin/clients/client', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: newNameEn,
+          nameEn: newNameEn,
+          nameKa: newNameKa || newNameEn,
+          logoEn: logoUrl,
+          logoKa: logoUrl,
+        }),
+      })
+      if (!res.ok) throw new Error('Failed to create client')
+
+      setShowNew(false)
+      setNewNameEn('')
+      setNewNameKa('')
+      setNewLogoFile(null)
+      await reload()
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Create failed')
+    } finally {
+      setNewUploading(false)
+    }
+  }
+
+  // Drag & drop reorder
+  function onDragStart(index: number) {
+    dragIndex.current = index
+  }
+
+  function onDragOver(e: React.DragEvent, index: number) {
+    e.preventDefault()
+    const from = dragIndex.current
+    if (from === null || from === index) return
+    const updated = [...clients]
+    const [moved] = updated.splice(from, 1)
+    updated.splice(index, 0, moved)
+    dragIndex.current = index
+    setClients(updated)
+  }
+
+  function onDrop(e: React.DragEvent) {
+    e.preventDefault()
+    dragIndex.current = null
+  }
+
+  async function saveOrder() {
+    setSavingOrder(true)
+    await fetch('/api/admin/clients/reorder', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(clients.map((c, i) => ({ id: c.id, order: i }))),
+    })
+    setSavingOrder(false)
+    setSavedOrder(true)
+    setTimeout(() => setSavedOrder(false), 2500)
+  }
+
   return (
-    <div className="space-y-4">
-      {/* Add Category Button */}
-      <div className="flex justify-end">
-        <button
-          onClick={() => setShowNewCategory(true)}
-          className="bg-gold text-white px-4 py-2 rounded text-sm hover:bg-gold-dark"
-        >
-          + New Category
-        </button>
+    <div className="space-y-6">
+      {/* Header controls */}
+      <div className="flex justify-between items-center">
+        <p className="text-xs text-secondary">
+          Drag rows to reorder, then click Save Order. Click the logo area to upload a new logo.
+        </p>
+        <div className="flex gap-3">
+          <button
+            onClick={saveOrder}
+            disabled={savingOrder}
+            className={`px-4 py-2 rounded text-sm transition-all ${
+              savedOrder
+                ? 'bg-green-100 text-green-700'
+                : 'bg-dark text-white hover:bg-navy disabled:opacity-50'
+            }`}
+          >
+            {savingOrder ? 'Saving…' : savedOrder ? '✓ Order Saved' : 'Save Order'}
+          </button>
+          <button
+            onClick={() => setShowNew(true)}
+            className="bg-gold text-white px-4 py-2 rounded text-sm hover:bg-gold-dark"
+          >
+            + New Client
+          </button>
+        </div>
       </div>
 
-      {/* New Category Form */}
-      {showNewCategory && (
+      {/* New client form */}
+      {showNew && (
         <div className="bg-white rounded-lg shadow-sm p-6 border border-gold/30">
-          <h3 className="font-heading text-lg text-dark mb-4">New Category</h3>
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <h3 className="font-heading text-lg text-dark mb-4">New Client</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
-              <label className="block text-xs text-secondary mb-1">Icon (emoji)</label>
+              <label className="block text-xs text-secondary mb-1 uppercase tracking-wider">
+                Name (English)
+              </label>
               <input
-                value={newCat.icon}
-                onChange={(e) => setNewCat({ ...newCat, icon: e.target.value })}
-                className="w-full border rounded px-3 py-2 text-sm"
+                value={newNameEn}
+                onChange={(e) => setNewNameEn(e.target.value)}
+                placeholder="Rico Group"
+                className="w-full border border-gray-200 rounded px-3 py-2 text-sm"
               />
             </div>
             <div>
-              <label className="block text-xs text-secondary mb-1">Order</label>
+              <label className="block text-xs text-secondary mb-1 uppercase tracking-wider">
+                Name (Georgian)
+              </label>
               <input
-                type="number"
-                value={newCat.order}
-                onChange={(e) => setNewCat({ ...newCat, order: parseInt(e.target.value) || 0 })}
-                className="w-full border rounded px-3 py-2 text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-xs text-secondary mb-1">Label (KA)</label>
-              <input
-                value={newCat.labelKa}
-                onChange={(e) => setNewCat({ ...newCat, labelKa: e.target.value })}
-                className="w-full border rounded px-3 py-2 text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-xs text-secondary mb-1">Label (EN)</label>
-              <input
-                value={newCat.labelEn}
-                onChange={(e) => setNewCat({ ...newCat, labelEn: e.target.value })}
-                className="w-full border rounded px-3 py-2 text-sm"
+                value={newNameKa}
+                onChange={(e) => setNewNameKa(e.target.value)}
+                placeholder="რიკო ჯგუფი"
+                className="w-full border border-gray-200 rounded px-3 py-2 text-sm"
               />
             </div>
           </div>
-          <label className="flex items-center gap-2 text-sm mb-4">
+
+          <div className="mb-4">
+            <label className="block text-xs text-secondary mb-1 uppercase tracking-wider">
+              Logo Image
+            </label>
             <input
-              type="checkbox"
-              checked={newCat.active}
-              onChange={(e) => setNewCat({ ...newCat, active: e.target.checked })}
+              type="file"
+              accept="image/*"
+              onChange={(e) => setNewLogoFile(e.target.files?.[0] || null)}
+              className="w-full border border-gray-200 rounded px-3 py-2 text-sm"
             />
-            Active
-          </label>
+            {newLogoFile && (
+              <p className="text-xs text-secondary mt-1">Selected: {newLogoFile.name}</p>
+            )}
+          </div>
+
           <div className="flex gap-2">
             <button
-              onClick={handleCreateCategory}
-              disabled={loading || !newCat.labelKa || !newCat.labelEn}
+              onClick={handleCreateClient}
+              disabled={newUploading || !newNameEn}
               className="bg-gold text-white px-4 py-2 rounded text-sm hover:bg-gold-dark disabled:opacity-50"
             >
-              Create
+              {newUploading ? 'Creating…' : 'Create Client'}
             </button>
             <button
-              onClick={() => setShowNewCategory(false)}
+              onClick={() => {
+                setShowNew(false)
+                setNewNameEn('')
+                setNewNameKa('')
+                setNewLogoFile(null)
+              }}
               className="border px-4 py-2 rounded text-sm hover:bg-gray-50"
             >
               Cancel
@@ -215,328 +256,94 @@ export default function ClientsManager({ initialCategories }: Props) {
         </div>
       )}
 
-      {/* Categories List */}
-      {categories.map((cat) => (
-        <div key={cat.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
-          {/* Category Header */}
-          <div
-            className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-bg-alt/50"
-            onClick={() => setExpandedId(expandedId === cat.id ? null : cat.id)}
-          >
-            <div className="flex items-center gap-3">
-              <span className="text-xl">{cat.icon}</span>
-              <div>
-                <p className="font-medium text-sm text-dark">{cat.labelEn}</p>
-                <p className="text-xs text-secondary">{cat.labelKa}</p>
-              </div>
-              <span className="text-xs text-secondary ml-2">Order: {cat.order}</span>
-              <span className={`px-2 py-0.5 rounded text-xs ml-2 ${cat.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
-                {cat.active ? 'Active' : 'Inactive'}
-              </span>
-              <span className="text-xs text-secondary ml-2">({cat.clients.length} clients)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={(e) => { e.stopPropagation(); setEditingCategory({ ...cat }); }}
-                className="text-gold hover:underline text-sm"
-              >
-                Edit
-              </button>
-              <button
-                onClick={(e) => { e.stopPropagation(); handleDeleteCategory(cat.id); }}
-                className="text-red-500 hover:underline text-sm"
-              >
-                Delete
-              </button>
-              <span className="text-secondary text-sm ml-2">{expandedId === cat.id ? '▲' : '▼'}</span>
-            </div>
-          </div>
-
-          {/* Expanded: Clients List */}
-          {expandedId === cat.id && (
-            <div className="border-t border-gray-100 px-4 py-3">
-              <div className="flex justify-between items-center mb-3">
-                <p className="text-xs text-secondary font-medium uppercase tracking-wider">Clients</p>
-                <button
-                  onClick={() => { setAddingClientToCategoryId(cat.id); setNewClient({ name: '', nameKa: '', nameEn: '', logoKa: '', logoEn: '', order: 0, active: true }); }}
-                  className="text-gold hover:underline text-xs"
+      {/* Clients list */}
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        {clients.length === 0 ? (
+          <p className="text-center text-secondary py-12 text-sm">
+            No clients yet. Click "+ New Client" to add one.
+          </p>
+        ) : (
+          <div className="divide-y divide-gray-100">
+            {clients.map((client, i) => {
+              const logoUrl = client.logoEn || client.logoKa
+              const isUploading = uploadingId === client.id
+              return (
+                <div
+                  key={client.id}
+                  draggable
+                  onDragStart={() => onDragStart(i)}
+                  onDragOver={(e) => onDragOver(e, i)}
+                  onDrop={onDrop}
+                  className="flex items-center gap-4 px-4 py-3 hover:bg-bg-alt/50 cursor-grab active:cursor-grabbing"
                 >
-                  + Add Client
-                </button>
-              </div>
+                  <span className="text-secondary text-lg select-none">⠿</span>
 
-              {/* Add Client Form */}
-              {addingClientToCategoryId === cat.id && (
-                <div className="bg-bg-alt rounded p-4 mb-3">
-                  <div className="grid grid-cols-2 gap-3 mb-3">
-                    <div>
-                      <label className="block text-xs text-secondary mb-1">Name (EN)</label>
-                      <input
-                        value={newClient.nameEn}
-                        onChange={(e) => setNewClient({ ...newClient, nameEn: e.target.value, name: e.target.value })}
-                        className="w-full border rounded px-3 py-2 text-sm"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs text-secondary mb-1">Name (KA)</label>
-                      <input
-                        value={newClient.nameKa}
-                        onChange={(e) => setNewClient({ ...newClient, nameKa: e.target.value })}
-                        className="w-full border rounded px-3 py-2 text-sm"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs text-secondary mb-1">Logo EN (path or URL)</label>
-                      <input
-                        value={newClient.logoEn}
-                        onChange={(e) => setNewClient({ ...newClient, logoEn: e.target.value })}
-                        placeholder="/logos/clients/name-en.png"
-                        className="w-full border rounded px-3 py-2 text-sm"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs text-secondary mb-1">Logo KA (path or URL)</label>
-                      <input
-                        value={newClient.logoKa}
-                        onChange={(e) => setNewClient({ ...newClient, logoKa: e.target.value })}
-                        placeholder="/logos/clients/name-ka.png"
-                        className="w-full border rounded px-3 py-2 text-sm"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs text-secondary mb-1">Order</label>
-                      <input
-                        type="number"
-                        value={newClient.order}
-                        onChange={(e) => setNewClient({ ...newClient, order: parseInt(e.target.value) || 0 })}
-                        className="w-full border rounded px-3 py-2 text-sm"
-                      />
-                    </div>
-                  </div>
-                  <label className="flex items-center gap-2 text-sm mb-3">
+                  {/* Logo preview / upload zone */}
+                  <div
+                    onClick={() => fileInputs.current[client.id]?.click()}
+                    className="relative w-20 h-20 border border-gray-200 rounded bg-bg-alt flex items-center justify-center flex-shrink-0 cursor-pointer hover:border-gold transition-colors overflow-hidden"
+                    title="Click to upload new logo"
+                  >
                     <input
-                      type="checkbox"
-                      checked={newClient.active}
-                      onChange={(e) => setNewClient({ ...newClient, active: e.target.checked })}
+                      ref={(el) => {
+                        fileInputs.current[client.id] = el
+                      }}
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0]
+                        if (file) uploadLogoForClient(client.id, file)
+                      }}
                     />
-                    Active
-                  </label>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => handleCreateClient(cat.id)}
-                      disabled={loading || !newClient.name}
-                      className="bg-gold text-white px-3 py-1.5 rounded text-xs hover:bg-gold-dark disabled:opacity-50"
-                    >
-                      Add
-                    </button>
-                    <button
-                      onClick={() => setAddingClientToCategoryId(null)}
-                      className="border px-3 py-1.5 rounded text-xs hover:bg-gray-50"
-                    >
-                      Cancel
-                    </button>
+                    {isUploading ? (
+                      <div className="w-6 h-6 border-2 border-gold border-t-transparent rounded-full animate-spin" />
+                    ) : logoUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={logoUrl} alt={client.nameEn} className="max-w-full max-h-full object-contain" />
+                    ) : (
+                      <span className="text-[10px] text-secondary text-center px-1">
+                        Click to
+                        <br />
+                        upload
+                      </span>
+                    )}
                   </div>
+
+                  {/* Name */}
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-sm text-dark truncate">{client.nameEn}</p>
+                    <p className="text-xs text-secondary truncate">{client.nameKa}</p>
+                  </div>
+
+                  {/* Order badge */}
+                  <span className="text-xs text-secondary">#{i + 1}</span>
+
+                  {/* Active badge */}
+                  <span
+                    className={`px-2 py-0.5 rounded text-xs ${
+                      client.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'
+                    }`}
+                  >
+                    {client.active ? 'Active' : 'Inactive'}
+                  </span>
+
+                  {/* Delete button */}
+                  <button
+                    onClick={() => handleDeleteClient(client.id)}
+                    disabled={loading}
+                    className="text-red-500 hover:underline text-xs"
+                  >
+                    Delete
+                  </button>
                 </div>
-              )}
-
-              {/* Clients Table */}
-              {cat.clients.length > 0 ? (
-                <table className="w-full text-sm">
-                  <thead className="bg-bg-alt text-secondary">
-                    <tr>
-                      <th className="text-left px-3 py-2">Name (EN)</th>
-                      <th className="text-left px-3 py-2">Name (KA)</th>
-                      <th className="text-left px-3 py-2">Order</th>
-                      <th className="text-left px-3 py-2">Active</th>
-                      <th className="px-3 py-2"></th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100">
-                    {cat.clients.map((client) => (
-                      <tr key={client.id} className="hover:bg-bg-alt/50">
-                        <td className="px-3 py-2">{client.nameEn || client.name}</td>
-                        <td className="px-3 py-2 text-secondary">{client.nameKa || client.name}</td>
-                        <td className="px-3 py-2 text-secondary">{client.order}</td>
-                        <td className="px-3 py-2">
-                          <span className={`px-2 py-0.5 rounded text-xs ${client.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
-                            {client.active ? 'Active' : 'Inactive'}
-                          </span>
-                        </td>
-                        <td className="px-3 py-2 text-right">
-                          <button
-                            onClick={() => setEditingClient({ ...client })}
-                            className="text-gold hover:underline text-xs mr-2"
-                          >
-                            Edit
-                          </button>
-                          <button
-                            onClick={() => handleDeleteClient(client.id)}
-                            className="text-red-500 hover:underline text-xs"
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              ) : (
-                <p className="text-center text-secondary py-4 text-sm">No clients in this category.</p>
-              )}
-            </div>
-          )}
-        </div>
-      ))}
-
-      {categories.length === 0 && (
-        <div className="bg-white rounded-lg shadow-sm p-8 text-center">
-          <p className="text-secondary">No client categories yet.</p>
-        </div>
-      )}
-
-      {/* Edit Category Modal */}
-      {editingCategory && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-            <h3 className="font-heading text-lg text-dark mb-4">Edit Category</h3>
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              <div>
-                <label className="block text-xs text-secondary mb-1">Icon (emoji)</label>
-                <input
-                  value={editingCategory.icon}
-                  onChange={(e) => setEditingCategory({ ...editingCategory, icon: e.target.value })}
-                  className="w-full border rounded px-3 py-2 text-sm"
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-secondary mb-1">Order</label>
-                <input
-                  type="number"
-                  value={editingCategory.order}
-                  onChange={(e) => setEditingCategory({ ...editingCategory, order: parseInt(e.target.value) || 0 })}
-                  className="w-full border rounded px-3 py-2 text-sm"
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-secondary mb-1">Label (KA)</label>
-                <input
-                  value={editingCategory.labelKa}
-                  onChange={(e) => setEditingCategory({ ...editingCategory, labelKa: e.target.value })}
-                  className="w-full border rounded px-3 py-2 text-sm"
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-secondary mb-1">Label (EN)</label>
-                <input
-                  value={editingCategory.labelEn}
-                  onChange={(e) => setEditingCategory({ ...editingCategory, labelEn: e.target.value })}
-                  className="w-full border rounded px-3 py-2 text-sm"
-                />
-              </div>
-            </div>
-            <label className="flex items-center gap-2 text-sm mb-4">
-              <input
-                type="checkbox"
-                checked={editingCategory.active}
-                onChange={(e) => setEditingCategory({ ...editingCategory, active: e.target.checked })}
-              />
-              Active
-            </label>
-            <div className="flex gap-2">
-              <button
-                onClick={handleUpdateCategory}
-                disabled={loading}
-                className="bg-gold text-white px-4 py-2 rounded text-sm hover:bg-gold-dark disabled:opacity-50"
-              >
-                Save
-              </button>
-              <button
-                onClick={() => setEditingCategory(null)}
-                className="border px-4 py-2 rounded text-sm hover:bg-gray-50"
-              >
-                Cancel
-              </button>
-            </div>
+              )
+            })}
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
-      {/* Edit Client Modal */}
-      {editingClient && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-            <h3 className="font-heading text-lg text-dark mb-4">Edit Client</h3>
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              <div>
-                <label className="block text-xs text-secondary mb-1">Name (EN)</label>
-                <input
-                  value={editingClient.nameEn}
-                  onChange={(e) => setEditingClient({ ...editingClient, nameEn: e.target.value, name: e.target.value })}
-                  className="w-full border rounded px-3 py-2 text-sm"
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-secondary mb-1">Name (KA)</label>
-                <input
-                  value={editingClient.nameKa}
-                  onChange={(e) => setEditingClient({ ...editingClient, nameKa: e.target.value })}
-                  className="w-full border rounded px-3 py-2 text-sm"
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-secondary mb-1">Logo EN (path or URL)</label>
-                <input
-                  value={editingClient.logoEn || ''}
-                  onChange={(e) => setEditingClient({ ...editingClient, logoEn: e.target.value })}
-                  placeholder="/logos/clients/name-en.png"
-                  className="w-full border rounded px-3 py-2 text-sm"
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-secondary mb-1">Logo KA (path or URL)</label>
-                <input
-                  value={editingClient.logoKa || ''}
-                  onChange={(e) => setEditingClient({ ...editingClient, logoKa: e.target.value })}
-                  placeholder="/logos/clients/name-ka.png"
-                  className="w-full border rounded px-3 py-2 text-sm"
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-secondary mb-1">Order</label>
-                <input
-                  type="number"
-                  value={editingClient.order}
-                  onChange={(e) => setEditingClient({ ...editingClient, order: parseInt(e.target.value) || 0 })}
-                  className="w-full border rounded px-3 py-2 text-sm"
-                />
-              </div>
-            </div>
-            <label className="flex items-center gap-2 text-sm mb-4">
-              <input
-                type="checkbox"
-                checked={editingClient.active}
-                onChange={(e) => setEditingClient({ ...editingClient, active: e.target.checked })}
-              />
-              Active
-            </label>
-            <div className="flex gap-2">
-              <button
-                onClick={handleUpdateClient}
-                disabled={loading}
-                className="bg-gold text-white px-4 py-2 rounded text-sm hover:bg-gold-dark disabled:opacity-50"
-              >
-                Save
-              </button>
-              <button
-                onClick={() => setEditingClient(null)}
-                className="border px-4 py-2 rounded text-sm hover:bg-gray-50"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {error && <p className="text-red-500 text-sm">{error}</p>}
     </div>
   )
 }

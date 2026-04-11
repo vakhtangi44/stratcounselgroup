@@ -29,7 +29,7 @@ export interface CategoryData {
 interface Props {
   locale: string
   categories: CategoryData[]
-  /** When true: show 4 logos + "View All" CTA. When false/omitted: show all logos + stats. */
+  /** When true: show preview (limited logos + View All CTA, no trust indicators). */
   preview?: boolean
   strings: {
     subtitle: string
@@ -48,56 +48,82 @@ export default function TrustedBy({ locale, categories, preview = false, strings
   const prefix = locale === 'en' ? '/en' : ''
 
   const allClients = categories.flatMap((cat) => cat.clients)
-  const displayClients = preview ? allClients.slice(0, 4) : allClients
+  // Preview mode: show first 8 (2 rows of 4). Full mode: all.
+  const displayClients = preview ? allClients.slice(0, 8) : allClients
 
   return (
-    <section id="clients" className="py-20 md:py-28 bg-navy text-white">
-      <div className="container mx-auto px-4">
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
-            <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
-            <RichText html={strings.title} as="h2" className="font-heading text-3xl md:text-4xl text-white mb-4" />
-            <RichText html={strings.description} as="p" className="text-white/70 font-light max-w-2xl mx-auto text-lg" />
-            <GoldDivider className="mt-8" />
-          </div>
-        </ScrollReveal>
-
-        {/* Logo Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
-          {displayClients.map((client, idx) => {
-            const logo = isKa ? (client.logoKa || client.logoEn) : (client.logoEn || client.logoKa)
-            const name = isKa ? (client.nameKa || client.name) : (client.nameEn || client.name)
-
-            const hasWhiteBg = logo
-              ? ['redix', 'gig-energy', 'liderfood'].some((n) => logo.toLowerCase().includes(n))
-              : false
-
-            return (
-              <ScrollReveal key={client.id} delay={idx * 40}>
-                <div className="group flex items-center justify-center min-h-[280px] p-4">
-                  {logo ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={logo}
-                      alt={name}
-                      className={`object-contain h-[320px] w-full opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105${hasWhiteBg ? ' mix-blend-multiply' : ''}`}
-                    />
-                  ) : (
-                    <span className="text-white/70 group-hover:text-white text-sm font-medium text-center leading-snug transition-colors duration-300">
-                      {name}
-                    </span>
-                  )}
-                </div>
-              </ScrollReveal>
-            )
-          })}
-        </div>
-
-        {/* Preview mode: "View All Clients" button */}
-        {preview && (
+    <section id="clients">
+      {/* White header — title + description */}
+      <div className="bg-white py-20 md:py-28">
+        <div className="container mx-auto px-4">
           <ScrollReveal>
-            <div className="mt-12 text-center">
+            <div className="text-center">
+              <RichText
+                html={strings.subtitle}
+                as="p"
+                className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4"
+              />
+              <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
+              <RichText
+                html={strings.title}
+                as="h2"
+                className="font-heading text-3xl md:text-4xl text-dark mb-4"
+              />
+              <RichText
+                html={strings.description}
+                as="p"
+                className="text-secondary font-light max-w-2xl mx-auto text-lg"
+              />
+              <GoldDivider className="mt-8" />
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+
+      {/* Navy logos grid */}
+      <div className="bg-navy py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          {displayClients.length > 0 ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+              {displayClients.map((client, idx) => {
+                const logo = isKa
+                  ? client.logoKa || client.logoEn
+                  : client.logoEn || client.logoKa
+                const name = isKa
+                  ? client.nameKa || client.name
+                  : client.nameEn || client.name
+
+                return (
+                  <div
+                    key={client.id}
+                    className="bg-white shadow-2xl shadow-black/40 rounded-sm p-6 md:p-8 flex items-center justify-center aspect-square animate-logo-drop hover:scale-105 transition-transform duration-500"
+                    style={{ animationDelay: `${idx * 120}ms` }}
+                  >
+                    {logo ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={logo}
+                        alt={name}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    ) : (
+                      <span className="text-dark text-sm font-medium text-center leading-snug">
+                        {name}
+                      </span>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          ) : (
+            <p className="text-center text-white/50 font-light">
+              {isKa ? 'კლიენტები მალე დაემატება.' : 'Clients will be added soon.'}
+            </p>
+          )}
+
+          {/* Preview mode: "View All Clients" button */}
+          {preview && displayClients.length > 0 && (
+            <div className="mt-16 text-center">
               <Link
                 href={`${prefix}/clients`}
                 className="inline-block border border-gold text-gold px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold hover:text-white transition-all duration-300"
@@ -105,14 +131,12 @@ export default function TrustedBy({ locale, categories, preview = false, strings
                 {strings.viewAll || (isKa ? 'ყველა კლიენტი' : 'View All Clients')}
               </Link>
             </div>
-          </ScrollReveal>
-        )}
+          )}
 
-        {/* Full mode: trust indicators */}
-        {!preview && (
-          <ScrollReveal>
-            <div className="mt-20 pt-12 border-t border-white/10">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {/* Full mode: trust indicators */}
+          {!preview && (
+            <div className="mt-20 pt-12 border-t border-white/10 max-w-6xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
                 <div>
                   <p className="font-heading text-4xl md:text-5xl text-gold mb-2">50+</p>
                   <RichText html={strings.clients} as="p" className="text-white/60 text-sm uppercase tracking-wider" />
@@ -131,8 +155,8 @@ export default function TrustedBy({ locale, categories, preview = false, strings
                 </div>
               </div>
             </div>
-          </ScrollReveal>
-        )}
+          )}
+        </div>
       </div>
     </section>
   )
