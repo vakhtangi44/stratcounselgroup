@@ -43,6 +43,40 @@ interface Props {
   }
 }
 
+/**
+ * Returns CSS to blend each logo into the navy background based on its known styling.
+ * - 'multiply' removes WHITE/LIGHT backgrounds (keeps dark content visible)
+ * - 'screen' removes BLACK/DARK backgrounds (keeps light content visible)
+ * - default (no blend) for truly transparent PNGs with colored content
+ */
+function getLogoStyle(logoUrl: string | null): React.CSSProperties {
+  const baseShadow = 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5))'
+  if (!logoUrl) return { filter: baseShadow }
+
+  const name = logoUrl.toLowerCase()
+
+  // DARK bg (white/light text on black/dark): screen blend removes the dark square
+  if (/(m-capital|ken-walker)/.test(name)) {
+    return {
+      filter: baseShadow,
+      mixBlendMode: 'screen' as React.CSSProperties['mixBlendMode'],
+    }
+  }
+
+  // LIGHT/WHITE bg with dark content: multiply blend removes the light square
+  if (
+    /(radius|studio9|redix|caucasus|crp|dagi|zreps|georgia-railway|belas-cakes)/.test(name)
+  ) {
+    return {
+      filter: baseShadow,
+      mixBlendMode: 'multiply' as React.CSSProperties['mixBlendMode'],
+    }
+  }
+
+  // Truly transparent PNGs with colored content — no blend needed
+  return { filter: baseShadow }
+}
+
 export default function TrustedBy({ locale, categories, preview = false, strings }: Props) {
   const isKa = locale === 'ka'
   const prefix = locale === 'en' ? '/en' : ''
@@ -105,7 +139,7 @@ export default function TrustedBy({ locale, categories, preview = false, strings
                         src={logo}
                         alt={name}
                         className="max-w-full max-h-full object-contain"
-                        style={{ filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5))' }}
+                        style={getLogoStyle(logo)}
                       />
                     ) : (
                       <span className="text-white/70 text-sm font-medium text-center leading-snug">
