@@ -6,6 +6,9 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import GoldDivider from '@/components/ui/GoldDivider'
 import RichText from '@/components/ui/RichText'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   return {

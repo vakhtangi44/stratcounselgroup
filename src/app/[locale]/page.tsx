@@ -3,6 +3,9 @@ import { getLocale } from 'next-intl/server'
 import { unstable_noStore as noStore } from 'next/cache'
 import { getSettings, s } from '@/lib/settings'
 import { getSectorsData } from '@/lib/sectors'
+
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 import Hero from '@/components/sections/Hero'
 import AboutPreview from '@/components/sections/AboutPreview'
 import StatsSection from '@/components/sections/StatsSection'
