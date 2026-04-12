@@ -75,7 +75,7 @@ export default function ServicesPreview({ services, locale }: Props) {
                 <ul className="space-y-2 mb-4">
                   {service.items.slice(0, 3).map((item) => (
                     <li key={item.id} className="flex items-start gap-2 text-xs text-secondary">
-                      <svg className="w-3 h-3 text-gold mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                      <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" stroke="#A8853A" viewBox="0 0 24 24" strokeWidth={3.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       <span>{locale === 'ka' ? item.textKa : item.textEn}</span>

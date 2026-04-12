@@ -5,6 +5,7 @@ import { db } from '@/lib/db'
 import { getSettings, s } from '@/lib/settings'
 import { formatDate, readTime } from '@/lib/utils'
 import RichText from '@/components/ui/RichText'
+import LogoMarquee from '@/components/sections/LogoMarquee'
 
 interface BlogPost {
   id: number
@@ -31,7 +32,7 @@ export default async function BlogPage({ searchParams }: Props) {
   const currentPage = parseInt(page || '1') || 1
   const PAGE_SIZE = 9
 
-  const [posts, settings]: [BlogPost[], Awaited<ReturnType<typeof getSettings>>] = await Promise.all([
+  const [posts, settings, clientCategories] = await Promise.all([
     db.blogPost.findMany({
       where: {
         status: 'published',
@@ -47,9 +48,16 @@ export default async function BlogPage({ searchParams }: Props) {
       orderBy: { publishedAt: 'desc' },
       skip: (currentPage - 1) * PAGE_SIZE,
       take: PAGE_SIZE + 1,
-    }),
+    }) as Promise<BlogPost[]>,
     getSettings(),
+    db.clientCategory.findMany({
+      where: { active: true },
+      orderBy: { order: 'asc' },
+      include: { clients: { where: { active: true }, orderBy: { order: 'asc' } } },
+    }),
   ])
+
+  const allClients = clientCategories.flatMap((cat) => cat.clients)
 
   const hasMore = posts.length > PAGE_SIZE
   const displayPosts = hasMore ? posts.slice(0, PAGE_SIZE) : posts
@@ -120,6 +128,8 @@ export default async function BlogPage({ searchParams }: Props) {
           </div>
         </div>
       </section>
+
+      <LogoMarquee locale={locale} clients={allClients} />
     </div>
   )
 }

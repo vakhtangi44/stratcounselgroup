@@ -12,7 +12,7 @@ export default async function Footer({ locale }: { locale: string }) {
   const phone = s(settings, 'contact.phone', locale)
 
   // Unified body text style — same color, weight, size everywhere in the footer
-  const bodyText = 'text-white/70 text-[15px] font-light'
+  const bodyText = 'text-white/70 text-[14.5px] font-light tracking-tight'
 
   return (
     <footer className="bg-navy text-white relative">

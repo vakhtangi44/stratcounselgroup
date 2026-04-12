@@ -69,16 +69,11 @@ export default function ContactPageClient({ locale, strings }: Props) {
       </section>
 
       {/* Split layout */}
-      <section className="relative">
-        {/* Background split: dark left, white right */}
-        <div className="absolute inset-0 hidden lg:flex">
-          <div className="w-1/2 bg-dark" />
-          <div className="w-1/2 bg-white" />
-        </div>
-        <div className="relative container mx-auto max-w-7xl px-4 py-20 md:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+      <section className="bg-gray-100 py-20 md:py-28 px-4">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 rounded-2xl overflow-hidden shadow-2xl">
             {/* Left: Contact Info */}
-            <div className="bg-dark p-8 md:p-10 md:pr-12">
+            <div className="bg-dark p-10 md:p-14">
               <RichText html={strings.infoSubtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
               <RichText html={strings.info} as="h2" className="font-heading text-2xl md:text-3xl lg:text-4xl text-white mb-8 whitespace-nowrap" />
 
@@ -207,7 +202,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
             </div>
 
             {/* Right: Form */}
-            <div className="bg-white lg:pl-12 lg:py-4">
+            <div className="bg-white p-10 md:p-14">
               {status === 'success' ? (
                 <div className="text-center py-20 bg-white border border-gray-100">
                   <div className="w-16 h-16 mx-auto mb-6 border border-gold/20 flex items-center justify-center">

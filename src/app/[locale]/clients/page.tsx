@@ -77,7 +77,7 @@ export default async function ClientsPage() {
 
               return (
                 <ScrollReveal key={client.id} delay={idx * 40}>
-                  <div className="group flex items-center justify-center h-52 md:h-56 overflow-visible relative">
+                  <div className="group flex items-center justify-center h-[18.2rem] md:h-[19.6rem] overflow-visible relative">
                     {logo ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img

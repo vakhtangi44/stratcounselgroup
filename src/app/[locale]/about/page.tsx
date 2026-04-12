@@ -58,7 +58,7 @@ export default async function AboutPage() {
               <ScrollReveal key={v.id} delay={i * 100}>
                 <div className="flex items-start gap-4 p-6 bg-cream border border-gray-100 hover:border-gold/30 transition-all duration-500 group">
                   <div className="flex-shrink-0 w-8 h-8 bg-gold/10 flex items-center justify-center mt-0.5">
-                    <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                    <svg className="w-5 h-5" fill="none" stroke="#A8853A" viewBox="0 0 24 24" strokeWidth={3.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>

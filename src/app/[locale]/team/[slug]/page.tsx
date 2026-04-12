@@ -98,13 +98,7 @@ export default async function TeamMemberPage({
         <section className="py-16 md:py-20 px-4 bg-white">
           <div className="container mx-auto max-w-4xl">
             <div
-              className="prose prose-lg max-w-none text-secondary
-                prose-headings:font-heading prose-headings:text-dark prose-headings:mt-10 prose-headings:mb-4
-                prose-h2:text-2xl prose-h2:border-b prose-h2:border-gray-100 prose-h2:pb-3
-                prose-p:leading-relaxed prose-p:font-light prose-p:text-[15px]
-                prose-ul:mt-3 prose-ul:space-y-1
-                prose-li:text-[15px] prose-li:font-light prose-li:text-secondary
-                prose-a:text-gold prose-a:no-underline hover:prose-a:underline"
+              className="max-w-none bio-content"
               dangerouslySetInnerHTML={{ __html: fullBio }}
             />
           </div>

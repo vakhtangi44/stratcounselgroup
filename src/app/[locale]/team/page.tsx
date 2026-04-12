@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import RichText from '@/components/ui/RichText'
+import LogoMarquee from '@/components/sections/LogoMarquee'
 
 export default async function TeamPage() {
   noStore()
@@ -13,13 +14,20 @@ export default async function TeamPage() {
   const prefix = locale === 'en' ? '/en' : ''
   const isKa = locale === 'ka'
 
-  const [members, settings] = await Promise.all([
+  const [members, settings, clientCategories] = await Promise.all([
     db.teamMember.findMany({
       where: { active: true },
       orderBy: { order: 'asc' },
     }),
     getSettings(),
+    db.clientCategory.findMany({
+      where: { active: true },
+      orderBy: { order: 'asc' },
+      include: { clients: { where: { active: true }, orderBy: { order: 'asc' } } },
+    }),
   ])
+
+  const allClients = clientCategories.flatMap((cat) => cat.clients)
 
   return (
     <div className="pt-[170px]">
@@ -73,6 +81,9 @@ export default async function TeamPage() {
           </div>
         </div>
       </section>
+
+      {/* Logo Marquee */}
+      <LogoMarquee locale={locale} clients={allClients} />
     </div>
   )
 }

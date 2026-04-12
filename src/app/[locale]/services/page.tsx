@@ -91,7 +91,7 @@ export default async function ServicesPage() {
                           <ScrollReveal key={item.id} delay={idx * 150 + itemIdx * 80}>
                             <div className="flex items-start gap-3 p-4 bg-cream border border-gray-100 hover:border-gold/30 transition-all duration-500 group/item">
                               <div className="flex-shrink-0 w-6 h-6 bg-gold/10 flex items-center justify-center mt-0.5">
-                                <svg className="w-3 h-3 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                                <svg className="w-5 h-5" fill="none" stroke="#A8853A" viewBox="0 0 24 24" strokeWidth={3.5}>
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                               </div>
