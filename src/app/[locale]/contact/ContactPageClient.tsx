@@ -86,29 +86,18 @@ export default function ContactPageClient({ locale, strings }: Props) {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                     </svg>
                   </div>
-                  <div className="space-y-1.5 text-[15px] leading-snug">
-                    <p className="text-dark font-heading text-[17px] mb-1">
-                      {isKa ? 'შპს „სტრატეგიულ მრჩეველთა ჯგუფი"' : 'Strategic Counsel Group LLC'}
-                    </p>
-                    <p className="text-navy">{isKa ? 'ს/ნ: 405847213' : 'ID: 405847213'}</p>
-                    <p className="text-navy">
+                  <div className="text-[13px] leading-snug">
+                    <RichText html={strings.addressLabel} as="p" className="text-dark font-heading text-[14px] mb-2" />
+                    <a
+                      href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-navy hover:text-gold transition-colors duration-300"
+                    >
                       {isKa
-                        ? 'იურ. მის.: საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ბინა N7'
-                        : 'Legal addr.: Georgia, Tbilisi, Vake, Irakli Abashidze St. N3, Apt. N7'}
-                    </p>
-                    <p className="text-navy">
-                      {isKa ? 'ფაქტ. მის.: ' : 'Office addr.: '}
-                      <a
-                        href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-gold transition-colors duration-300"
-                      >
-                        {isKa
-                          ? 'საქართველო, თბილისი, დ. არაყიშვილის ქ. N3, ოფისი 71'
-                          : 'Georgia, Tbilisi, D. Arakishvili St. N3, Office 71'}
-                      </a>
-                    </p>
+                        ? 'საქართველო, თბილისი, დ. არაყიშვილის ქ. N3, ოფისი 71'
+                        : 'Georgia, Tbilisi, D. Arakishvili St. N3, Office 71'}
+                    </a>
                   </div>
                 </div>
 
@@ -120,8 +109,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-dark font-heading text-[17px] mb-2">{isKa ? 'ტელეფონი' : 'Phone'}</p>
-                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-navy text-[17px] hover:text-gold transition-colors duration-300">
+                    <p className="text-dark font-heading text-[14px] mb-2">{isKa ? 'ტელეფონი' : 'Phone'}</p>
+                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-navy text-[13px] hover:text-gold transition-colors duration-300">
                       {strings.phone}
                     </a>
                   </div>
@@ -135,8 +124,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-dark font-heading text-[17px] mb-2">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
-                    <a href={`mailto:${strings.email}`} className="text-navy text-[17px] hover:text-gold transition-colors duration-300">
+                    <p className="text-dark font-heading text-[14px] mb-2">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
+                    <a href={`mailto:${strings.email}`} className="text-navy text-[13px] hover:text-gold transition-colors duration-300">
                       {strings.email}
                     </a>
                   </div>
