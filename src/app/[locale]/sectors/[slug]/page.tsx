@@ -117,8 +117,8 @@ export default async function SectorDetailPage({
             </h2>
             <p className="text-white/40 mb-10 max-w-lg mx-auto font-light">
               {isKa
-                ? 'დაგვიკავშირდით და ჩვენი გუნდი მოგიყვანთ საუკეთესო შედეგამდე.'
-                : 'Contact us and our team will guide you to the best outcome.'}
+                ? 'დაგვიკავშირდით.'
+                : 'Contact us.'}
             </p>
             <Link
               href={`${prefix}/contact`}
