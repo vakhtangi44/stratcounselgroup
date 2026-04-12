@@ -43,9 +43,9 @@ export default async function TeamPage() {
       </section>
 
       {/* Team Grid */}
-      <section className="pt-[16rem] pb-[16rem] px-4 bg-cream bg-subtle-pattern">
+      <section className="pt-[8rem] pb-[8rem] px-4 bg-cream bg-subtle-pattern">
         <div className="container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-[5rem]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
             {members.map((member, i) => (
               <ScrollReveal key={member.id} delay={i * 100}>
                 <Link href={`${prefix}/team/${member.slug}`} className="group block w-full h-full">

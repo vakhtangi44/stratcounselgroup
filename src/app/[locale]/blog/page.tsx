@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { db } from '@/lib/db'
 import { getSettings, s } from '@/lib/settings'
-import { PRACTICE_AREAS } from '@/lib/practice-areas'
 import { formatDate, readTime } from '@/lib/utils'
 import RichText from '@/components/ui/RichText'
 
@@ -21,11 +20,11 @@ interface BlogPost {
 }
 
 interface Props {
-  searchParams: Promise<{ q?: string; area?: string; page?: string }>
+  searchParams: Promise<{ q?: string; page?: string }>
 }
 
 export default async function BlogPage({ searchParams }: Props) {
-  const { q, area, page } = await searchParams
+  const { q, page } = await searchParams
   const locale = await getLocale()
   const prefix = locale === 'en' ? '/en' : ''
   const isKa = locale === 'ka'
@@ -36,7 +35,6 @@ export default async function BlogPage({ searchParams }: Props) {
     db.blogPost.findMany({
       where: {
         status: 'published',
-        ...(area ? { tags: { some: { practiceArea: area } } } : {}),
         ...(q ? {
           OR: [
             { titleKa: { contains: q, mode: 'insensitive' } },
@@ -64,29 +62,17 @@ export default async function BlogPage({ searchParams }: Props) {
 
       <section className="py-8 px-4 bg-bg-alt border-b border-gray-100">
         <div className="container mx-auto flex flex-wrap gap-3 items-center">
-          <form method="GET" action={`${prefix}/blog`} className="flex gap-2 flex-1 min-w-48">
+          <form method="GET" action={`${prefix}/blog`} className="flex gap-2 w-full max-w-md">
             <input
               name="q"
               defaultValue={q}
               placeholder={isKa ? 'ძიება...' : 'Search...'}
               className="flex-1 border border-gray-200 rounded px-3 py-2 text-sm"
             />
-            {area && <input type="hidden" name="area" value={area} />}
             <button type="submit" className="bg-gold text-white px-4 py-2 rounded text-sm">
               {isKa ? 'ძიება' : 'Search'}
             </button>
           </form>
-          <div className="flex flex-wrap gap-2">
-            <Link href={`${prefix}/blog${q ? `?q=${q}` : ''}`} className={`text-xs px-3 py-1.5 rounded border transition-colors ${!area ? 'bg-gold text-white border-gold' : 'border-gray-200 text-secondary hover:border-gold'}`}>
-              {isKa ? 'ყველა' : 'All'}
-            </Link>
-            {PRACTICE_AREAS.map((pa) => (
-              <Link key={pa.slug} href={`${prefix}/blog?area=${pa.slug}${q ? `&q=${q}` : ''}`}
-                className={`text-xs px-3 py-1.5 rounded border transition-colors ${area === pa.slug ? 'bg-gold text-white border-gold' : 'border-gray-200 text-secondary hover:border-gold'}`}>
-                {isKa ? pa.nameKa : pa.nameEn}
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -120,13 +106,13 @@ export default async function BlogPage({ searchParams }: Props) {
 
           <div className="flex justify-center gap-4 mt-12">
             {currentPage > 1 && (
-              <Link href={`${prefix}/blog?page=${currentPage - 1}${q ? `&q=${q}` : ''}${area ? `&area=${area}` : ''}`}
+              <Link href={`${prefix}/blog?page=${currentPage - 1}${q ? `&q=${q}` : ''}`}
                 className="px-6 py-2 border border-gold text-gold rounded hover:bg-gold hover:text-white transition-colors text-sm">
                 ← {isKa ? 'წინა' : 'Previous'}
               </Link>
             )}
             {hasMore && (
-              <Link href={`${prefix}/blog?page=${currentPage + 1}${q ? `&q=${q}` : ''}${area ? `&area=${area}` : ''}`}
+              <Link href={`${prefix}/blog?page=${currentPage + 1}${q ? `&q=${q}` : ''}`}
                 className="px-6 py-2 bg-gold text-white rounded hover:bg-gold-dark transition-colors text-sm">
                 {isKa ? 'შემდეგი' : 'Next'} →
               </Link>
