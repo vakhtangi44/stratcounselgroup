@@ -78,24 +78,37 @@ export default function ContactPageClient({ locale, strings }: Props) {
               <RichText html={strings.info} as="h2" className="font-heading text-2xl md:text-3xl text-dark mb-8" />
 
               <div className="space-y-8">
-                {/* Company + Address */}
+                {/* Company Info + Addresses */}
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 border border-gold/20 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 border border-gold/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <svg className="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                     </svg>
                   </div>
-                  <div>
-                    <RichText html={strings.addressLabel} as="p" className="text-dark font-heading text-[17px] mb-2" />
-                    <a
-                      href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-navy text-[17px] leading-snug hover:text-gold transition-colors duration-300"
-                    >
-                      {strings.officeAddress}
-                    </a>
+                  <div className="space-y-1.5 text-[15px] leading-snug">
+                    <p className="text-dark font-heading text-[17px] mb-1">
+                      {isKa ? 'შპს „სტრატეგიულ მრჩეველთა ჯგუფი"' : 'Strategic Counsel Group LLC'}
+                    </p>
+                    <p className="text-navy">{isKa ? 'ს/ნ: 405847213' : 'ID: 405847213'}</p>
+                    <p className="text-navy">
+                      {isKa
+                        ? 'იურ. მის.: საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ბინა N7'
+                        : 'Legal addr.: Georgia, Tbilisi, Vake, Irakli Abashidze St. N3, Apt. N7'}
+                    </p>
+                    <p className="text-navy">
+                      {isKa ? 'ფაქტ. მის.: ' : 'Office addr.: '}
+                      <a
+                        href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gold transition-colors duration-300"
+                      >
+                        {isKa
+                          ? 'საქართველო, თბილისი, დ. არაყიშვილის ქ. N3, ოფისი 71'
+                          : 'Georgia, Tbilisi, D. Arakishvili St. N3, Office 71'}
+                      </a>
+                    </p>
                   </div>
                 </div>
 

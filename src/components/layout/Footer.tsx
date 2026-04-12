@@ -73,19 +73,19 @@ export default async function Footer({ locale }: { locale: string }) {
               as="div"
               className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]"
             />
-            <div className={`space-y-3 ${bodyText}`}>
-              <p className="leading-snug text-justify">
+            <div className={`space-y-2 ${bodyText}`}>
+              <p className="leading-snug">
                 {isKa ? 'შპს „სტრატეგიულ მრჩეველთა ჯგუფი"' : 'Strategic Counsel Group LLC'}
               </p>
-              <p className="leading-snug text-justify">
+              <p className="leading-snug">
                 {isKa ? 'ს/ნ: 405847213' : 'ID: 405847213'}
               </p>
-              <p className="leading-snug text-justify">
+              <p className="leading-snug">
                 {isKa
                   ? 'იურ. მის.: საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ბინა N7'
                   : 'Legal addr.: Georgia, Tbilisi, Vake, Irakli Abashidze St. N3, Apt. N7'}
               </p>
-              <p className="leading-snug text-justify">
+              <p className="leading-snug">
                 {isKa ? 'ფაქტ. მის.: ' : 'Office addr.: '}
                 <a
                   href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
@@ -98,7 +98,7 @@ export default async function Footer({ locale }: { locale: string }) {
                     : 'Georgia, Tbilisi, D. Arakishvili St. N3, Office 71'}
                 </a>
               </p>
-              <p className="leading-snug text-justify">
+              <p className="leading-snug">
                 {isKa ? 'მობ.: ' : 'Phone: '}
                 <a
                   href={`tel:${phone.replace(/\s/g, '')}`}
