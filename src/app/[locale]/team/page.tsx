@@ -7,15 +7,6 @@ import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import RichText from '@/components/ui/RichText'
 
-function getInitials(name: string): string {
-  return name
-    .split(' ')
-    .map((w) => w[0])
-    .join('')
-    .slice(0, 2)
-    .toUpperCase()
-}
-
 export default async function TeamPage() {
   noStore()
   const locale = await getLocale()
@@ -59,11 +50,7 @@ export default async function TeamPage() {
                           className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                         />
                       ) : (
-                        <div className="flex items-center justify-center h-full bg-gradient-to-br from-dark to-navy">
-                          <span className="font-heading text-5xl text-gold/30 tracking-wider">
-                            {getInitials(member.nameEn)}
-                          </span>
-                        </div>
+                        <div className="h-full bg-gradient-to-br from-dark to-navy" />
                       )}
                     </div>
                     <div className="text-center">
