@@ -22,9 +22,9 @@ export default function StatsSection({ stats, locale }: Props) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.key} delay={i * 150} className="text-center relative group">
-              <div className="relative p-6 border border-transparent hover:border-gold/30 transition-all duration-700 hover:shadow-lg hover:shadow-gold/10 cursor-default">
-                {/* Gold top border on hover */}
-                <div className="absolute left-0 top-0 right-0 h-[2px] bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
+              <div className="relative p-6 border border-transparent hover:border-gold/30 active:border-gold/30 transition-all duration-700 hover:shadow-lg hover:shadow-gold/10 active:shadow-lg active:shadow-gold/10 cursor-default">
+                {/* Gold top border on hover/tap */}
+                <div className="absolute left-0 top-0 right-0 h-[2px] bg-gold scale-x-0 group-hover:scale-x-100 group-active:scale-x-100 transition-transform duration-700 origin-left" />
 
                 {/* Animated gold line above stat */}
                 <div className="flex justify-center mb-6">
@@ -38,7 +38,7 @@ export default function StatsSection({ stats, locale }: Props) {
                 </p>
                 {/* Gold divider */}
                 <GoldDivider className="mb-4" />
-                <p className="text-white/50 text-sm uppercase tracking-[0.15em] font-light group-hover:text-white/70 transition-colors duration-500">
+                <p className="text-white/50 text-sm uppercase tracking-[0.15em] font-light group-hover:text-white/70 group-active:text-white/70 transition-colors duration-500">
                   {locale === 'ka' ? stat.labelKa : stat.labelEn}
                 </p>
               </div>
