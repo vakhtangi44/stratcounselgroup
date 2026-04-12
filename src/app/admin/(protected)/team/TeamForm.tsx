@@ -14,6 +14,7 @@ interface TeamMember {
   titleKa: string
   titleEn: string
   gbaNumber: string | null
+  linkedinUrl: string | null
   photo: string | null
   shortBioKa: string
   shortBioEn: string
@@ -34,6 +35,7 @@ export default function TeamForm({ member }: { member?: TeamMember }) {
     titleKa: member?.titleKa || '',
     titleEn: member?.titleEn || '',
     gbaNumber: member?.gbaNumber || '',
+    linkedinUrl: member?.linkedinUrl || '',
     photo: member?.photo || '',
     shortBioKa: member?.shortBioKa || '',
     shortBioEn: member?.shortBioEn || '',
@@ -110,6 +112,16 @@ export default function TeamForm({ member }: { member?: TeamMember }) {
           onChange={(e) => setForm((f) => ({ ...f, gbaNumber: e.target.value }))}
           className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-gold"
           placeholder="e.g. 1234"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm text-secondary mb-1">LinkedIn URL</label>
+        <input
+          value={form.linkedinUrl}
+          onChange={(e) => setForm((f) => ({ ...f, linkedinUrl: e.target.value }))}
+          className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-gold"
+          placeholder="https://linkedin.com/in/username"
         />
       </div>
 

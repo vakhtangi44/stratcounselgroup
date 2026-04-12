@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   const body = await req.json()
   const {
-    slug, nameKa, nameEn, titleKa, titleEn, gbaNumber, photo,
+    slug, nameKa, nameEn, titleKa, titleEn, gbaNumber, linkedinUrl, photo,
     shortBioKa, shortBioEn, fullBioKa, fullBioEn,
     practiceAreas, isFeatured, order, active,
   } = body
@@ -26,6 +26,7 @@ export async function POST(req: NextRequest) {
       slug, nameKa, nameEn,
       titleKa: titleKa || '', titleEn: titleEn || '',
       gbaNumber: gbaNumber || null,
+      linkedinUrl: linkedinUrl || null,
       photo: photo || null,
       shortBioKa: shortBioKa || '', shortBioEn: shortBioEn || '',
       fullBioKa: fullBioKa || '', fullBioEn: fullBioEn || '',
