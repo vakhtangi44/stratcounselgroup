@@ -69,9 +69,14 @@ export default function ContactPageClient({ locale, strings }: Props) {
       </section>
 
       {/* Split layout */}
-      <section className="py-20 md:py-28 px-4 bg-cream bg-subtle-pattern">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+      <section className="relative">
+        {/* Background split: dark left, white right */}
+        <div className="absolute inset-0 hidden lg:flex">
+          <div className="w-2/5 bg-dark" />
+          <div className="w-3/5 bg-white" />
+        </div>
+        <div className="relative container mx-auto max-w-6xl px-4 py-20 md:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
             {/* Left: Contact Info */}
             <div className="lg:col-span-2 bg-dark p-8 md:p-10">
               <RichText html={strings.infoSubtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
@@ -86,8 +91,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                     </svg>
                   </div>
-                  <div className="text-[13px] leading-snug">
-                    <RichText html={strings.addressLabel} as="p" className="text-white font-heading text-[14px] mb-2" />
+                  <div className="text-[15px] leading-snug">
+                    <RichText html={strings.addressLabel} as="p" className="text-white font-heading text-[16px] mb-2" />
                     <a
                       href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
                       target="_blank"
@@ -109,8 +114,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white font-heading text-[14px] mb-2">{isKa ? 'ტელეფონი' : 'Phone'}</p>
-                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-white/70 text-[13px] hover:text-gold transition-colors duration-300">
+                    <p className="text-white font-heading text-[16px] mb-2">{isKa ? 'ტელეფონი' : 'Phone'}</p>
+                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-white/70 text-[15px] hover:text-gold transition-colors duration-300">
                       {strings.phone}
                     </a>
                   </div>
@@ -124,8 +129,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white font-heading text-[14px] mb-2">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
-                    <a href={`mailto:${strings.email}`} className="text-white/70 text-[13px] hover:text-gold transition-colors duration-300">
+                    <p className="text-white font-heading text-[16px] mb-2">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
+                    <a href={`mailto:${strings.email}`} className="text-white/70 text-[15px] hover:text-gold transition-colors duration-300">
                       {strings.email}
                     </a>
                   </div>
@@ -134,7 +139,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
 
               {/* Connect with Us */}
               <div className="mt-10 pt-8 border-t border-white/10">
-                <p className="text-white font-heading text-[17px] mb-4">
+                <p className="text-white font-heading text-[18px] mb-4">
                   {isKa ? 'დაგვიკავშირდით' : 'Connect with Us'}
                 </p>
                 <div className="flex items-center gap-3">
@@ -196,13 +201,13 @@ export default function ContactPageClient({ locale, strings }: Props) {
 
               {/* Working hours */}
               <div className="mt-10 pt-8 border-t border-white/10">
-                <RichText html={strings.workingHoursLabel} as="p" className="text-white font-heading text-[17px] mb-3" />
-                <RichText html={strings.workingHours} as="p" className="text-white/70 text-[17px]" />
+                <RichText html={strings.workingHoursLabel} as="p" className="text-white font-heading text-[18px] mb-3" />
+                <RichText html={strings.workingHours} as="p" className="text-white/70 text-[18px]" />
               </div>
             </div>
 
             {/* Right: Form */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-3 bg-white lg:pl-12 lg:py-4">
               {status === 'success' ? (
                 <div className="text-center py-20 bg-white border border-gray-100">
                   <div className="w-16 h-16 mx-auto mb-6 border border-gold/20 flex items-center justify-center">
