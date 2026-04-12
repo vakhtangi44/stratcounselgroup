@@ -9,13 +9,6 @@ export default async function Footer({ locale }: { locale: string }) {
   const isKa = locale === 'ka'
   const settings = await getSettings()
 
-  const companyName = s(settings, 'footer.companyName', locale)
-  const companyId = s(settings, 'footer.companyId', locale)
-  const legalAddressLabel = s(settings, 'footer.legalAddressLabel', locale)
-  const legalAddress = s(settings, 'footer.legalAddress', locale)
-  const officeAddressLabel = s(settings, 'footer.officeAddressLabel', locale)
-  const officeAddress = s(settings, 'footer.address', locale)
-  const phoneLabel = s(settings, 'footer.phoneLabel', locale)
   const phone = s(settings, 'contact.phone', locale)
 
   // Unified body text style — same color, weight, size everywhere in the footer
@@ -81,24 +74,32 @@ export default async function Footer({ locale }: { locale: string }) {
               className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]"
             />
             <div className={`space-y-3 ${bodyText}`}>
-              <p className="leading-snug text-justify">{companyName}</p>
-              <p className="leading-snug text-justify">{companyId}</p>
               <p className="leading-snug text-justify">
-                {legalAddressLabel}: {legalAddress}
+                {isKa ? 'შპს „სტრატეგიულ მრჩეველთა ჯგუფი"' : 'Strategic Counsel Group LLC'}
               </p>
               <p className="leading-snug text-justify">
-                {officeAddressLabel}:{' '}
+                {isKa ? 'ს/ნ: 405847213' : 'ID: 405847213'}
+              </p>
+              <p className="leading-snug text-justify">
+                {isKa
+                  ? 'იურ. მის.: საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ბინა N7'
+                  : 'Legal addr.: Georgia, Tbilisi, Vake, Irakli Abashidze St. N3, Apt. N7'}
+              </p>
+              <p className="leading-snug text-justify">
+                {isKa ? 'ფაქტ. მის.: ' : 'Office addr.: '}
                 <a
                   href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-gold transition-colors duration-300"
                 >
-                  {officeAddress}
+                  {isKa
+                    ? 'საქართველო, თბილისი, დ. არაყიშვილის ქ. N3, ოფისი 71'
+                    : 'Georgia, Tbilisi, D. Arakishvili St. N3, Office 71'}
                 </a>
               </p>
               <p className="leading-snug text-justify">
-                {phoneLabel}:{' '}
+                {isKa ? 'მობ.: ' : 'Phone: '}
                 <a
                   href={`tel:${phone.replace(/\s/g, '')}`}
                   className="hover:text-gold transition-colors duration-300"
