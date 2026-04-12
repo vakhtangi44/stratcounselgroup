@@ -216,13 +216,16 @@ export default function SuccessfulCases({ locale }: Props) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {cases.map((text, i) => (
             <ScrollReveal key={i} delay={(i % 6) * 100}>
-              <div className="relative h-full p-8 bg-white border border-gray-100 hover:border-gold/30 transition-all duration-500 group hover:shadow-xl hover:shadow-gold/20 hover:scale-[1.2] text-center">
+              <div className="relative h-full p-8 bg-white border border-gray-100 hover:border-gold/40 transition-all duration-700 group hover:shadow-lg hover:shadow-gold/5 text-center">
+                {/* Gold left border on hover */}
+                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gold scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-top" />
+
                 {/* Gold-bordered square with semantically-matched icon */}
-                <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-gold border border-gold/20 group-hover:bg-gold/5 transition-all duration-500">
+                <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-gold border border-gold/20 group-hover:bg-gold group-hover:text-white group-hover:border-gold transition-all duration-500">
                   {ICON[CASE_ICONS[i]] ?? ICON.scale}
                 </div>
 
-                <p className="text-navy text-[14px] md:text-[15px] leading-relaxed font-light text-justify">
+                <p className="text-navy text-[14px] md:text-[15px] leading-relaxed font-light text-justify group-hover:text-dark transition-colors duration-500">
                   {text}
                 </p>
               </div>
