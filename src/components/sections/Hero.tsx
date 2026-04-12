@@ -47,7 +47,7 @@ export default async function Hero({ locale, strings }: { locale: string; string
           <div className="h-[1px] w-12 bg-gold opacity-0 animate-draw-line" style={{ animationDelay: '600ms', animationFillMode: 'forwards' }} />
         </div>
 
-        <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] tracking-[-0.02em]">
+        <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] tracking-[-0.02em] whitespace-nowrap">
           {hasHtml ? (
             <RichText
               html={headline}
