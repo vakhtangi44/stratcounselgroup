@@ -128,6 +128,20 @@ export default function ClientsManager({ initialClients }: Props) {
     }
   }
 
+  function moveUp(index: number) {
+    if (index === 0) return
+    const updated = [...clients]
+    ;[updated[index - 1], updated[index]] = [updated[index], updated[index - 1]]
+    setClients(updated)
+  }
+
+  function moveDown(index: number) {
+    if (index >= clients.length - 1) return
+    const updated = [...clients]
+    ;[updated[index], updated[index + 1]] = [updated[index + 1], updated[index]]
+    setClients(updated)
+  }
+
   // Drag & drop reorder
   function onDragStart(index: number) {
     dragIndex.current = index
@@ -276,6 +290,28 @@ export default function ClientsManager({ initialClients }: Props) {
                   onDrop={onDrop}
                   className="flex items-center gap-4 px-4 py-3 hover:bg-bg-alt/50 cursor-grab active:cursor-grabbing"
                 >
+                  <div className="flex flex-col gap-0.5">
+                    <button
+                      onClick={() => moveUp(i)}
+                      disabled={i === 0}
+                      className="text-secondary hover:text-gold disabled:opacity-20 transition-colors"
+                      title="Move up"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={() => moveDown(i)}
+                      disabled={i === clients.length - 1}
+                      className="text-secondary hover:text-gold disabled:opacity-20 transition-colors"
+                      title="Move down"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </button>
+                  </div>
                   <span className="text-secondary text-lg select-none">⠿</span>
 
                   {/* Logo preview / upload zone */}
