@@ -1,9 +1,11 @@
 import { getLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { db } from '@/lib/db'
 import { getSectorData, getSectorsData } from '@/lib/sectors'
 import { getSettings } from '@/lib/settings'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import LogoMarquee from '@/components/sections/LogoMarquee'
 import { unstable_noStore as noStore } from 'next/cache'
 
 export async function generateMetadata({
@@ -31,7 +33,15 @@ export default async function SectorDetailPage({
   const locale = await getLocale()
   const prefix = locale === 'en' ? '/en' : ''
   const isKa = locale === 'ka'
-  const settings = await getSettings()
+  const [settings, clientCategories] = await Promise.all([
+    getSettings(),
+    db.clientCategory.findMany({
+      where: { active: true },
+      orderBy: { order: 'asc' },
+      include: { clients: { where: { active: true }, orderBy: { order: 'asc' } } },
+    }),
+  ])
+  const allClients = clientCategories.flatMap((cat) => cat.clients)
 
   const sector = getSectorData(slug, settings, locale)
   if (!sector) notFound()
@@ -129,6 +139,8 @@ export default async function SectorDetailPage({
           </ScrollReveal>
         </div>
       </section>
+
+      <LogoMarquee locale={locale} clients={allClients} />
     </div>
   )
 }

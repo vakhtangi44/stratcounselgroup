@@ -52,9 +52,17 @@ export default async function SectorsPage() {
 
       <section className="py-20 md:py-28 bg-navy text-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sectors.map((sector, i) => (
-              <ScrollReveal key={sector.slug} delay={i * 100}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
+            {sectors.map((sector, i) => {
+              const total = sectors.length
+              const lastRowCount = total % 3
+              const isLastRow = i >= total - lastRowCount
+              let colClass = 'lg:col-span-2'
+              if (lastRowCount === 2 && isLastRow) {
+                colClass = i === total - 2 ? 'lg:col-span-2 lg:col-start-2' : 'lg:col-span-2 lg:col-start-4'
+              }
+              return (
+              <ScrollReveal key={sector.slug} delay={i * 100} className={colClass}>
                 <Link
                   href={`${prefix}/sectors/${sector.slug}`}
                   className="relative overflow-hidden group h-72 block"
@@ -74,7 +82,8 @@ export default async function SectorsPage() {
                   </div>
                 </Link>
               </ScrollReveal>
-            ))}
+              )
+            })}
           </div>
           {!isKa && null}
         </div>
