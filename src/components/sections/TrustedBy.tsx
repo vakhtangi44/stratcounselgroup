@@ -134,7 +134,7 @@ export default function TrustedBy({ locale, categories, preview = false, strings
 
                 return (
                   <ScrollReveal key={client.id} delay={idx * 150}>
-                    <div className="flex items-center justify-center h-20 md:h-24 hover:scale-105 active:scale-105 transition-transform duration-500 overflow-hidden">
+                    <div tabIndex={0} className="flex items-center justify-center h-20 md:h-24 hover:scale-110 active:scale-110 focus:scale-110 transition-transform duration-500 overflow-hidden outline-none">
                       {logo ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
