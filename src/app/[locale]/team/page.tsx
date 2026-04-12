@@ -62,10 +62,10 @@ export default async function TeamPage() {
                       )}
                     </div>
                     <div className="text-center">
-                      <h2 className="font-heading text-[26px] text-gold-dark group-hover:text-gold transition-colors duration-300 leading-snug">
+                      <h2 className="font-heading text-[21px] text-gold-dark group-hover:text-gold transition-colors duration-300 leading-snug font-semibold">
                         {isKa ? member.nameKa : member.nameEn}
                       </h2>
-                      <p className="text-gold text-[20px] mt-1 font-normal tracking-wide leading-snug">
+                      <p className="text-gold text-[16px] mt-1 font-medium tracking-wide leading-snug">
                         {isKa ? member.titleKa : member.titleEn}
                       </p>
                       {member.gbaNumber && (
