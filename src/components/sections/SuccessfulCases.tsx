@@ -216,7 +216,7 @@ export default function SuccessfulCases({ locale }: Props) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {cases.map((text, i) => (
             <ScrollReveal key={i} delay={(i % 6) * 100}>
-              <div className="relative h-full p-8 bg-white border border-gray-100 hover:border-gold/40 transition-all duration-700 group hover:shadow-lg hover:shadow-gold/5 hover:scale-[1.05] text-center">
+              <div className="relative h-full p-8 bg-white border border-gray-100 hover:border-gold/40 transition-all duration-700 group hover:shadow-lg hover:shadow-gold/5 hover:scale-[1.2] text-center">
                 {/* Gold left border on hover */}
                 <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gold scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-top" />
 
