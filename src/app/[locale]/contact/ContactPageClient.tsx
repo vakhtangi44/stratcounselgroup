@@ -72,15 +72,15 @@ export default function ContactPageClient({ locale, strings }: Props) {
       <section className="relative">
         {/* Background split: dark left, white right */}
         <div className="absolute inset-0 hidden lg:flex">
-          <div className="w-2/5 bg-dark" />
-          <div className="w-3/5 bg-white" />
+          <div className="w-1/2 bg-dark" />
+          <div className="w-1/2 bg-white" />
         </div>
-        <div className="relative container mx-auto max-w-6xl px-4 py-20 md:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
+        <div className="relative container mx-auto max-w-7xl px-4 py-20 md:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             {/* Left: Contact Info */}
-            <div className="lg:col-span-2 bg-dark p-8 md:p-10">
+            <div className="bg-dark p-8 md:p-10 md:pr-12">
               <RichText html={strings.infoSubtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
-              <RichText html={strings.info} as="h2" className="font-heading text-2xl md:text-3xl text-white mb-8" />
+              <RichText html={strings.info} as="h2" className="font-heading text-2xl md:text-3xl lg:text-4xl text-white mb-8 whitespace-nowrap" />
 
               <div className="space-y-8">
                 {/* Company Info + Addresses */}
@@ -207,7 +207,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
             </div>
 
             {/* Right: Form */}
-            <div className="lg:col-span-3 bg-white lg:pl-12 lg:py-4">
+            <div className="bg-white lg:pl-12 lg:py-4">
               {status === 'success' ? (
                 <div className="text-center py-20 bg-white border border-gray-100">
                   <div className="w-16 h-16 mx-auto mb-6 border border-gold/20 flex items-center justify-center">
