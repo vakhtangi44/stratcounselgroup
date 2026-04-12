@@ -68,7 +68,7 @@ export default async function ClientsPage() {
       </section>
 
       {/* All Client Logos */}
-      <section className="py-12 md:py-16 bg-dark text-white">
+      <section className="py-12 md:py-16 bg-navy text-white">
         <div className="px-4">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-w-[75%] mx-auto">
             {allClients.map((client, idx) => {
