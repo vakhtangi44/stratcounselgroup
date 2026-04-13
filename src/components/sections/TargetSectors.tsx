@@ -47,7 +47,7 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
                   />
                   <div className="absolute inset-0 bg-navy/30 group-hover:bg-navy/10 transition-colors duration-500" />
                 </div>
-                <p className="text-white/80 group-hover:text-gold font-medium text-sm md:text-base uppercase tracking-[0.15em] transition-colors duration-300 px-2">
+                <p className="text-white/80 group-hover:text-gold font-semibold text-sm md:text-base uppercase tracking-[0.06em] transition-colors duration-300 px-2">
                   {sector.name}
                 </p>
               </div>
