@@ -13,8 +13,8 @@ export default function MobileMenu({ links }: Props) {
 
   return (
     <div className="md:hidden">
-      <button onClick={() => setOpen(!open)} className="text-dark p-1" aria-label="Menu">
-        <span className="text-xl">{open ? '✕' : '☰'}</span>
+      <button onClick={() => setOpen(!open)} className="text-gold p-1" aria-label="Menu">
+        <span className="text-2xl">{open ? '✕' : '☰'}</span>
       </button>
       {open && (
         <div className="absolute top-16 left-0 right-0 bg-white shadow-lg border-t border-gray-100 z-50">
