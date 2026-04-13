@@ -37,14 +37,14 @@ export default function TeamPreview({ members, locale, strings }: Props) {
           <GoldDivider className="mt-8" />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-3xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {members.map((member, i) => (
             <ScrollReveal key={member.id} delay={i * 150}>
               <Link
                 href={`${prefix}/team/${member.slug}`}
                 className="group block"
               >
-                <div className="relative aspect-[10/9] overflow-hidden mb-4">
+                <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-gradient-to-br from-gray-700 to-dark">
                   {member.photo ? (
                     <Image
                       src={member.photo}
@@ -53,18 +53,14 @@ export default function TeamPreview({ members, locale, strings }: Props) {
                       className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-dark to-navy">
-                      <span className="font-heading text-4xl text-gold/40 tracking-wider">
-                        {getInitials(member.nameEn)}
-                      </span>
-                    </div>
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-dark to-navy" />
                   )}
                 </div>
-                <div className="text-center">
-                  <p className="font-heading text-lg text-dark group-hover:text-gold transition-colors duration-500">
+                <div>
+                  <h2 className="font-heading text-[19.9px] text-dark group-hover:text-gold transition-colors duration-300 leading-snug font-bold tracking-tight">
                     {locale === 'ka' ? member.nameKa : member.nameEn}
-                  </p>
-                  <p className="text-secondary text-sm mt-1 font-light tracking-wide">
+                  </h2>
+                  <p className="text-secondary text-[14.4px] mt-1 font-medium uppercase tracking-[0.02em] leading-snug">
                     {locale === 'ka' ? member.titleKa : member.titleEn}
                   </p>
                 </div>
