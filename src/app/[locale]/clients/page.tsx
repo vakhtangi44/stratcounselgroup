@@ -78,7 +78,7 @@ export default async function ClientsPage() {
               return (
                 <div
                   key={client.id}
-                  className="group flex items-center justify-center h-[23.7rem] md:h-[25.5rem] overflow-visible relative opacity-0 client-logo-fall"
+                  className="group flex items-center justify-center h-[16.6rem] md:h-[17.8rem] overflow-visible relative opacity-0 client-logo-fall"
                   style={{ animationDelay: `${idx * 200}ms` }}
                 >
                   {logo ? (
