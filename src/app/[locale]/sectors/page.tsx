@@ -52,7 +52,7 @@ export default async function SectorsPage() {
 
       <section className="py-20 md:py-28 bg-navy text-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 mx-auto">
             {sectors.map((sector, i) => {
               return (
               <ScrollReveal key={sector.slug} delay={i * 100}>
