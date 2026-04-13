@@ -42,38 +42,36 @@ export default async function TeamPage() {
       </section>
 
       {/* Team Grid */}
-      <section className="pt-[8rem] pb-[8rem] px-4 bg-cream bg-subtle-pattern">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+      <section className="pt-[8rem] pb-[8rem] px-4 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {members.map((member, i) => (
-              <ScrollReveal key={member.id} delay={i * 100}>
-                <Link href={`${prefix}/team/${member.slug}`} className="group block w-full h-full">
-                  <div className="flex flex-col h-full">
-                    <div className="relative aspect-[10/9] overflow-hidden flex-shrink-0 mb-4">
-                      {member.photo ? (
-                        <Image
-                          src={member.photo}
-                          alt={isKa ? member.nameKa : member.nameEn}
-                          fill
-                          className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="h-full bg-gradient-to-br from-dark to-navy" />
-                      )}
-                    </div>
-                    <div className="text-center">
-                      <h2 className="font-heading text-[21px] text-gold-dark group-hover:text-gold transition-colors duration-300 leading-snug font-semibold">
-                        {isKa ? member.nameKa : member.nameEn}
-                      </h2>
-                      <p className="text-gold text-[18.4px] mt-1 font-medium tracking-wide leading-snug">
-                        {isKa ? member.titleKa : member.titleEn}
+              <ScrollReveal key={member.id} delay={i * 150}>
+                <Link href={`${prefix}/team/${member.slug}`} className="group block">
+                  <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-gradient-to-br from-gray-700 to-dark">
+                    {member.photo ? (
+                      <Image
+                        src={member.photo}
+                        alt={isKa ? member.nameKa : member.nameEn}
+                        fill
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="h-full bg-gradient-to-br from-dark to-navy" />
+                    )}
+                  </div>
+                  <div>
+                    <h2 className="font-heading text-[19.9px] text-dark group-hover:text-gold transition-colors duration-300 leading-snug font-bold tracking-tight">
+                      {isKa ? member.nameKa : member.nameEn}
+                    </h2>
+                    <p className="text-secondary text-[14.4px] mt-1 font-medium uppercase tracking-[0.02em] leading-snug">
+                      {isKa ? member.titleKa : member.titleEn}
+                    </p>
+                    {member.gbaNumber && (
+                      <p className="text-[10px] text-gold/70 mt-2 uppercase tracking-[0.15em]">
+                        GBA #{member.gbaNumber}
                       </p>
-                      {member.gbaNumber && (
-                        <p className="text-[11px] text-gold/70 mt-2 uppercase tracking-[0.15em]">
-                          GBA #{member.gbaNumber}
-                        </p>
-                      )}
-                    </div>
+                    )}
                   </div>
                 </Link>
               </ScrollReveal>

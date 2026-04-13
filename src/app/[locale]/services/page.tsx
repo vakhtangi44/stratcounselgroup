@@ -49,7 +49,7 @@ export default async function ServicesPage() {
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]">
             {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
           </h1>
-          <p className="text-white/50 max-w-2xl mx-auto text-lg leading-relaxed font-light">
+          <p className="text-white/50 mx-auto text-lg leading-relaxed font-[520] whitespace-nowrap">
             {locale === 'ka'
               ? 'სრული სამართლებრივი მხარდაჭერა — მოლაპარაკებიდან სასამართლომდე.'
               : 'Complete legal support — from negotiation to courtroom.'}
@@ -60,7 +60,7 @@ export default async function ServicesPage() {
       {/* Services */}
       <section className="py-20 md:py-28 px-4 bg-white bg-subtle-pattern">
         <div className="container mx-auto max-w-5xl">
-          <div className="space-y-12">
+          <div key={Date.now()} className="space-y-12">
             {services.map((service, idx) => (
               <ScrollReveal key={service.id} delay={idx * 400}>
                 <div className="relative group">
@@ -80,7 +80,7 @@ export default async function ServicesPage() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-secondary text-base md:text-lg leading-relaxed mb-6 font-light italic text-justify">
+                    <p className="text-secondary text-base md:text-lg leading-relaxed mb-6 font-[520] italic text-justify">
                       {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                     </p>
 

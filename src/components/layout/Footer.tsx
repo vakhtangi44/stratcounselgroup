@@ -12,7 +12,7 @@ export default async function Footer({ locale }: { locale: string }) {
   const phone = s(settings, 'contact.phone', locale)
 
   // Unified body text style — same color, weight, size everywhere in the footer
-  const bodyText = 'text-white/70 text-[14.5px] font-light tracking-tight'
+  const bodyText = 'text-white/70 text-[14.5px] font-[520] tracking-tight'
 
   return (
     <footer className="bg-navy text-white relative">
@@ -44,7 +44,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <RichText
               html={s(settings, 'footer.quickLinks', locale)}
               as="div"
-              className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]"
+              className="font-heading text-gold mb-6 text-[15.6px] uppercase tracking-[0.06em] font-bold"
             />
             <ul className="space-y-3">
               {[
@@ -71,7 +71,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <RichText
               html={s(settings, 'footer.contact', locale)}
               as="div"
-              className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]"
+              className="font-heading text-gold mb-6 text-[15.6px] uppercase tracking-[0.06em] font-bold"
             />
             <div className={`space-y-2 ${bodyText}`}>
               <p className="leading-snug">
@@ -115,7 +115,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <RichText
               html={s(settings, 'footer.newsletter', locale)}
               as="div"
-              className="font-heading text-gold mb-6 text-[13px] uppercase tracking-[0.2em]"
+              className="font-heading text-gold mb-6 text-[15.6px] uppercase tracking-[0.06em] font-bold"
             />
             <RichText
               html={s(settings, 'footer.newsletterText', locale)}

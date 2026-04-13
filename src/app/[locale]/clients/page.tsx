@@ -63,14 +63,14 @@ export default async function ClientsPage() {
           <RichText html={subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
           <div className="gold-divider mx-auto mb-8" />
           <RichText html={title} as="h1" className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em] text-dark" />
-          <RichText html={description} as="p" className="text-secondary max-w-2xl mx-auto text-lg leading-relaxed font-light" />
+          <RichText html={description} as="p" className="text-secondary max-w-none mx-auto text-lg leading-relaxed font-[520] whitespace-nowrap" />
         </div>
       </section>
 
       {/* All Client Logos */}
       <section className="py-12 md:py-16 bg-dark text-white">
         <div className="px-4">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-w-[75%] mx-auto">
+          <div key={Date.now()} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-w-[54.6%] mx-auto">
             {allClients.map((client, idx) => {
               const logo = isKa ? (client.logoKa || client.logoEn) : (client.logoEn || client.logoKa)
               const name = isKa ? (client.nameKa || client.name) : (client.nameEn || client.name)
@@ -79,7 +79,7 @@ export default async function ClientsPage() {
                 <div
                   key={client.id}
                   className="group flex items-center justify-center h-[18.2rem] md:h-[19.6rem] overflow-visible relative opacity-0 client-logo-fall"
-                  style={{ animationDelay: `${idx * 390}ms` }}
+                  style={{ animationDelay: `${idx * 200}ms` }}
                 >
                   {logo ? (
                     // eslint-disable-next-line @next/next/no-img-element

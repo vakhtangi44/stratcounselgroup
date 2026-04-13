@@ -225,7 +225,7 @@ export default function SuccessfulCases({ locale }: Props) {
                   {ICON[CASE_ICONS[i]] ?? ICON.scale}
                 </div>
 
-                <p className="text-navy text-[14px] md:text-[15px] leading-relaxed font-light text-justify group-hover:text-dark group-focus:text-dark transition-colors duration-500">
+                <p className="text-navy text-[14px] md:text-[15px] leading-relaxed font-[421] text-justify group-hover:text-dark group-focus:text-dark transition-colors duration-500">
                   {text}
                 </p>
               </div>
