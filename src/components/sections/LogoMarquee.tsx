@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 interface ClientData {
   id: number
   name: string
@@ -12,6 +14,8 @@ interface ClientData {
 interface Props {
   locale: string
   clients: ClientData[]
+  showViewAll?: boolean
+  viewAllText?: string
 }
 
 function getLogoFilter(logoUrl: string | null): React.CSSProperties | undefined {
@@ -24,8 +28,9 @@ function getLogoFilter(logoUrl: string | null): React.CSSProperties | undefined 
   return undefined
 }
 
-export default function LogoMarquee({ locale, clients }: Props) {
+export default function LogoMarquee({ locale, clients, showViewAll = true }: Props) {
   const isKa = locale === 'ka'
+  const prefix = locale === 'en' ? '/en' : ''
 
   if (clients.length === 0) return null
 
@@ -33,7 +38,7 @@ export default function LogoMarquee({ locale, clients }: Props) {
   const logos = [...clients, ...clients]
 
   return (
-    <section className="py-12 bg-white overflow-hidden">
+    <section className="py-12 bg-cream overflow-hidden">
       <div className="flex items-center justify-center gap-6 mb-10">
         <div className="h-[1px] w-16 bg-gold/40" />
         <h2 className="font-heading text-sm md:text-base text-gold uppercase tracking-[0.2em]">
@@ -75,6 +80,17 @@ export default function LogoMarquee({ locale, clients }: Props) {
           )
         })}
       </div>
+
+      {showViewAll && (
+        <div className="mt-10 text-center">
+          <Link
+            href={`${prefix}/clients`}
+            className="inline-block border border-gold text-gold px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold hover:text-white transition-all duration-300"
+          >
+            {isKa ? 'ყველა კლიენტი' : 'View All Clients'}
+          </Link>
+        </div>
+      )}
     </section>
   )
 }

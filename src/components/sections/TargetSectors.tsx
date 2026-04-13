@@ -33,36 +33,28 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
           <GoldDivider className="mt-8" />
         </ScrollReveal>
 
-        {/* Adaptive grid: if 5 sectors use 3+2 layout, else centered */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 max-w-[1075px] mx-auto">
+        {/* All sectors in one row, image on top, text below */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mx-auto">
           {sectors.map((sector, i) => {
             const cardContent = (
-              <div className="relative overflow-hidden group h-64 md:h-72">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={sector.image}
-                  alt={sector.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-navy/55 group-hover:bg-navy/40 transition-colors duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <p className="text-white font-medium text-xl md:text-2xl text-center px-6 drop-shadow-lg tracking-wide">
-                    {sector.name}
-                  </p>
+              <div className="group text-center">
+                <div className="relative overflow-hidden h-48 md:h-64 rounded-sm mb-4">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={sector.image}
+                    alt={sector.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-navy/30 group-hover:bg-navy/10 transition-colors duration-500" />
                 </div>
+                <p className="text-white/80 group-hover:text-gold font-medium text-sm md:text-base uppercase tracking-[0.15em] transition-colors duration-300 px-2">
+                  {sector.name}
+                </p>
               </div>
             )
 
-            const className =
-              i < 3
-                ? 'lg:col-span-2'
-                : i === 3
-                ? 'lg:col-span-2 lg:col-start-2'
-                : 'lg:col-span-2 lg:col-start-4'
-
             return (
-              <ScrollReveal key={sector.slug} delay={i * 100} className={className}>
+              <ScrollReveal key={sector.slug} delay={i * 100}>
                 {enabled ? (
                   <Link href={`${prefix}/sectors/${sector.slug}`} className="block">
                     {cardContent}

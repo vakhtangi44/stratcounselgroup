@@ -14,9 +14,8 @@ import TestimonialsCarousel from '@/components/sections/TestimonialsCarousel'
 import BlogPreview from '@/components/sections/BlogPreview'
 import PressStrip from '@/components/sections/PressStrip'
 import TargetSectors from '@/components/sections/TargetSectors'
-import TrustedBy from '@/components/sections/TrustedBy'
+import LogoMarquee from '@/components/sections/LogoMarquee'
 import ServicesPreview from '@/components/sections/ServicesPreview'
-import type { CategoryData } from '@/components/sections/TrustedBy'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -99,16 +98,6 @@ export default async function HomePage() {
     title: s(settings, 'section.testimonials', locale),
   }
 
-  const trustedByStrings = {
-    subtitle: s(settings, 'section.trustedBy.subtitle', locale),
-    title: s(settings, 'section.trustedBy.title', locale),
-    description: s(settings, 'section.trustedBy.description', locale),
-    clients: s(settings, 'section.trustedBy.clients', locale),
-    sectors: s(settings, 'section.trustedBy.sectors', locale),
-    experience: s(settings, 'section.trustedBy.experience', locale),
-    confidentiality: s(settings, 'section.trustedBy.confidentiality', locale),
-    viewAll: s(settings, 'section.trustedBy.viewAll', locale),
-  }
 
   return (
     <>
@@ -122,7 +111,7 @@ export default async function HomePage() {
         title: s(settings, 'section.ourTeam', locale),
         meetFullTeam: s(settings, 'section.meetFullTeam', locale),
       }} />
-      <TrustedBy locale={locale} preview categories={clientCategories as unknown as CategoryData[]} strings={trustedByStrings} />
+      <LogoMarquee locale={locale} clients={clientCategories.flatMap((cat: any) => cat.clients)} showViewAll />
       <TestimonialsCarousel testimonials={testimonials} locale={locale} strings={testimonialStrings} />
       <BlogPreview posts={blogPosts} locale={locale} strings={{
         subtitle: s(settings, 'section.latestArticles.subtitle', locale),

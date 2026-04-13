@@ -76,22 +76,24 @@ export default async function ClientsPage() {
               const name = isKa ? (client.nameKa || client.name) : (client.nameEn || client.name)
 
               return (
-                <ScrollReveal key={client.id} delay={idx * 40}>
-                  <div className="group flex items-center justify-center h-[18.2rem] md:h-[19.6rem] overflow-visible relative">
-                    {logo ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={logo}
-                        alt={name}
-                        className="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-[2] group-hover:z-20 relative"
-                      />
-                    ) : (
-                      <span className="text-white/70 group-hover:text-white text-xs font-medium text-center leading-snug transition-colors duration-300">
-                        {name}
-                      </span>
-                    )}
-                  </div>
-                </ScrollReveal>
+                <div
+                  key={client.id}
+                  className="group flex items-center justify-center h-[18.2rem] md:h-[19.6rem] overflow-visible relative opacity-0 client-logo-fall"
+                  style={{ animationDelay: `${idx * 390}ms` }}
+                >
+                  {logo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={logo}
+                      alt={name}
+                      className="max-w-full max-h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-[2] group-hover:z-20 relative"
+                    />
+                  ) : (
+                    <span className="text-white/70 group-hover:text-white text-xs font-medium text-center leading-snug transition-colors duration-300">
+                      {name}
+                    </span>
+                  )}
+                </div>
               )
             })}
           </div>
