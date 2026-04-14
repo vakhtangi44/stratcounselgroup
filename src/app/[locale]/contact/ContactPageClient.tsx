@@ -92,7 +92,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
                       href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gold font-bold tracking-tight hover:text-gold-dark transition-colors duration-300"
+                      className="text-navy/80 font-bold tracking-tight hover:text-gold transition-colors duration-300"
                     >
                       {isKa
                         ? 'საქართველო, თბილისი, დ. არაყიშვილის ქ. N3, ოფისი 71'
@@ -110,7 +110,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
                   </div>
                   <div>
                     <p className="text-navy font-heading text-[16px] font-black tracking-[0.06em] mb-2">{isKa ? 'ტელეფონი' : 'Phone'}</p>
-                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-gold text-[15px] font-bold tracking-tight hover:text-gold-dark transition-colors duration-300">
+                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-navy/80 text-[15px] font-bold tracking-tight hover:text-gold transition-colors duration-300">
                       {strings.phone}
                     </a>
                   </div>
@@ -125,7 +125,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
                   </div>
                   <div>
                     <p className="text-navy font-heading text-[16px] font-black tracking-[0.06em] mb-2">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
-                    <a href={`mailto:${strings.email}`} className="text-gold text-[15px] font-bold tracking-tight hover:text-gold-dark transition-colors duration-300">
+                    <a href={`mailto:${strings.email}`} className="text-navy/80 text-[15px] font-bold tracking-tight hover:text-gold transition-colors duration-300">
                       {strings.email}
                     </a>
                   </div>

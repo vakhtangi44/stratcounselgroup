@@ -19,7 +19,7 @@ export default function StatsSection({ stats, locale }: Props) {
       <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-gold/10 to-transparent" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {stats.map((stat, i) => (
             <ScrollReveal key={stat.key} delay={i * 150} className="text-center relative group">
               <div className="relative p-6 border border-transparent hover:border-gold/30 active:border-gold/30 transition-all duration-700 hover:shadow-lg hover:shadow-gold/10 active:shadow-lg active:shadow-gold/10 cursor-default">

@@ -152,26 +152,6 @@ export default function TeamForm({ member }: { member?: TeamMember }) {
         rows={6}
       />
 
-      <div>
-        <p className="text-sm text-secondary mb-2">Practice Areas</p>
-        <div className="flex flex-wrap gap-2">
-          {PRACTICE_AREAS.map((area) => (
-            <button
-              key={area.slug}
-              type="button"
-              onClick={() => toggleArea(area.slug)}
-              className={`px-3 py-1 rounded text-xs border transition-colors ${
-                form.practiceAreas.includes(area.slug)
-                  ? 'bg-gold text-white border-gold'
-                  : 'bg-white text-secondary border-gray-200 hover:border-gold'
-              }`}
-            >
-              {area.nameEn}
-            </button>
-          ))}
-        </div>
-      </div>
-
       <div className="grid grid-cols-3 gap-4">
         <div>
           <label className="block text-sm text-secondary mb-1">Order</label>
