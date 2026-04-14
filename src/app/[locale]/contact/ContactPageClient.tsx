@@ -280,6 +280,12 @@ export default function ContactPageClient({ locale, strings }: Props) {
                     />
                   </div>
 
+                  <p className="text-secondary text-[13px] leading-relaxed font-medium">
+                    {isKa
+                      ? 'შეტყობინების გამოგზავნამდე, გთხოვთ, გაეცნოთ პერსონალურ მონაცემთა დაცვის პოლიტიკას.'
+                      : 'Before sending a message, please review our personal data protection policy.'}
+                  </p>
+
                   <Turnstile
                     sitekey={process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'}
                     onVerify={setToken}
