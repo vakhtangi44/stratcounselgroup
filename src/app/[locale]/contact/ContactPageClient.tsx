@@ -281,9 +281,35 @@ export default function ContactPageClient({ locale, strings }: Props) {
                   </div>
 
                   <p className="text-secondary text-[13px] leading-relaxed font-medium">
-                    {isKa
-                      ? 'შეტყობინების გამოგზავნამდე, გთხოვთ, გაეცნოთ პერსონალურ მონაცემთა დაცვის პოლიტიკას.'
-                      : 'Before sending a message, please review our personal data protection policy.'}
+                    {isKa ? (
+                      <>
+                        შეტყობინების გამოგზავნამდე, გთხოვთ, გაეცნოთ{' '}
+                        <a
+                          href="/privacy-policy"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setPolicyOpened(true)}
+                          className="text-gold underline hover:text-gold-dark transition-colors"
+                        >
+                          პერსონალურ მონაცემთა დამუშავების პოლიტიკას
+                        </a>
+                        .
+                      </>
+                    ) : (
+                      <>
+                        Before sending a message, please review our{' '}
+                        <a
+                          href="/en/privacy-policy"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setPolicyOpened(true)}
+                          className="text-gold underline hover:text-gold-dark transition-colors"
+                        >
+                          Personal Data Processing Policy
+                        </a>
+                        .
+                      </>
+                    )}
                   </p>
 
                   <Turnstile
