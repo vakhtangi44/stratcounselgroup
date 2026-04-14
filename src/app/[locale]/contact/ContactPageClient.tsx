@@ -280,7 +280,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
                     />
                   </div>
 
-                  <p className="text-secondary text-[13px] leading-relaxed font-medium">
+                  <p className="text-secondary text-[13px] leading-relaxed">
                     {isKa ? (
                       <>
                         შეტყობინების გამოგზავნამდე, გთხოვთ, გაეცნოთ{' '}
