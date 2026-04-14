@@ -52,10 +52,14 @@ export default async function SectorsPage() {
 
       <section className="py-20 md:py-28 bg-section-gradient text-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 mx-auto">
+          <div className="flex flex-wrap justify-center gap-6 max-w-[88rem] mx-auto">
             {sectors.map((sector, i) => {
               return (
-              <ScrollReveal key={sector.slug} delay={i * 100}>
+              <ScrollReveal
+                key={sector.slug}
+                delay={i * 100}
+                className="w-[calc(50%-0.75rem)] sm:w-[calc(33.333%-1rem)] lg:w-[calc(20%-1.2rem)]"
+              >
                 <Link
                   href={`${prefix}/sectors/${sector.slug}`}
                   className="group block"

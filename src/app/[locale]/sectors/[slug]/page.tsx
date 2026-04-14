@@ -81,12 +81,12 @@ export default async function SectorDetailPage({
             <p className="text-center text-secondary mb-10">
               {isKa ? 'სხვა სექტორები' : 'Other Sectors'}
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="flex flex-wrap justify-center gap-4">
               {otherSectors.map((s) => (
                 <Link
                   key={s.slug}
                   href={`${prefix}/sectors/${s.slug}`}
-                  className="relative overflow-hidden group h-40 block"
+                  className="relative overflow-hidden group h-40 block w-[calc(50%-0.5rem)] md:w-[calc(25%-0.75rem)]"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img

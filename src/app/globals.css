@@ -329,7 +329,7 @@
   }
 
   .bg-section-gradient {
-    background-image: linear-gradient(to bottom, #220b1e 0%, #1b112a 50%, var(--color-dark) 100%);
+    background-image: linear-gradient(to bottom, #1b0b24 0%, #161132 30%, var(--color-dark) 100%);
   }
 
   .bg-dark-pattern {
