@@ -98,17 +98,17 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
         className={`fixed top-[2px] left-0 right-0 z-40 transition-all duration-500 ${
           isTransparent
             ? 'bg-transparent'
-            : 'bg-navy/98 shadow-lg backdrop-blur-md'
+            : 'bg-section-gradient shadow-lg backdrop-blur-md'
         }`}
       >
-        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[168px]">
+        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[218px]">
           <Link href={prefix || '/'} className="relative z-10">
             <Image
               src="/logo-v2.png"
               alt="Strategic Counsel Group"
-              width={340}
-              height={340}
-              className="h-[136px] w-auto transition-all duration-500"
+              width={442}
+              height={442}
+              className="h-[177px] w-auto transition-all duration-500"
               priority
             />
           </Link>

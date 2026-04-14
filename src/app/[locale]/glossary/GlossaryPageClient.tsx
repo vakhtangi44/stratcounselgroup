@@ -39,7 +39,7 @@ export default function GlossaryPageClient({ locale, pageTitle }: Props) {
 
   return (
     <div className="pt-16">
-      <section className="bg-dark text-white py-24 text-center px-4">
+      <section className="bg-section-gradient text-white py-24 text-center px-4">
         <RichText html={pageTitle} as="h1" className="font-heading text-4xl mb-4" />
       </section>
 

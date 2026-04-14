@@ -57,9 +57,9 @@ export default function ContactPageClient({ locale, strings }: Props) {
     'w-full border border-gray-200 px-5 py-3.5 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/20 transition-all duration-300 bg-white font-light'
 
   return (
-    <div className="pt-[170px]">
+    <div className="pt-[221px]">
       {/* Hero */}
-      <section className="relative bg-navy text-white py-24 md:py-32 text-center px-4 overflow-hidden">
+      <section className="relative bg-section-gradient text-white py-24 md:py-32 text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
         <div className="relative z-10">
           <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
@@ -74,7 +74,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
         <div className="container mx-auto max-w-[90rem]">
           <div className="grid grid-cols-1 lg:grid-cols-2 rounded-2xl overflow-hidden shadow-2xl">
             {/* Left: Contact Info */}
-            <div className="bg-dark p-10 md:p-14">
+            <div className="bg-section-gradient p-10 md:p-14">
               <RichText html={strings.infoSubtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.06em] font-bold mb-4" />
               <RichText html={strings.info} as="h2" className="font-heading text-2xl md:text-3xl lg:text-4xl text-white mb-8 whitespace-nowrap" />
 

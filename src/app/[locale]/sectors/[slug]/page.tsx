@@ -48,9 +48,9 @@ export default async function SectorDetailPage({
   const otherSectors = getSectorsData(settings, locale).filter((s) => s.slug !== slug)
 
   return (
-    <div className="pt-[170px]">
+    <div className="pt-[221px]">
       {/* Hero with sector photo */}
-      <section className="relative bg-navy text-white py-32 md:py-40 text-center px-4 overflow-hidden">
+      <section className="relative bg-section-gradient text-white py-32 md:py-40 text-center px-4 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={sector.image}
@@ -117,7 +117,7 @@ export default async function SectorDetailPage({
       </section>
 
       {/* CTA */}
-      <section className="relative bg-dark py-20 md:py-28 text-center text-white px-4 overflow-hidden">
+      <section className="relative bg-section-gradient py-20 md:py-28 text-center text-white px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
         <div className="relative z-10">
           <ScrollReveal>

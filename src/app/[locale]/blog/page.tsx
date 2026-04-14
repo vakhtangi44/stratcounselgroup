@@ -64,7 +64,7 @@ export default async function BlogPage({ searchParams }: Props) {
 
   return (
     <div className="pt-16">
-      <section className="bg-dark text-white py-24 text-center px-4">
+      <section className="bg-section-gradient text-white py-24 text-center px-4">
         <RichText html={s(settings, 'page.blog', locale)} as="h1" className="font-heading text-4xl mb-4" />
       </section>
 

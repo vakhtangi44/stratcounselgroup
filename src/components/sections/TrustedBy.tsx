@@ -86,7 +86,7 @@ export default function TrustedBy({ locale, categories, preview = false, strings
   const displayClients = preview ? allClients.slice(0, 8) : allClients
 
   // Homepage preview: fully navy. /clients page (preview=false): white header + navy logos.
-  const headerBg = preview ? 'bg-dark' : 'bg-white'
+  const headerBg = preview ? 'bg-section-gradient' : 'bg-white'
   const headerTitleColor = preview ? 'text-white' : 'text-dark'
   const headerDescColor = preview ? 'text-white/70' : 'text-secondary'
 
@@ -120,7 +120,7 @@ export default function TrustedBy({ locale, categories, preview = false, strings
       </div>
 
       {/* Navy logos grid */}
-      <div className={`bg-dark ${preview ? 'pt-8 md:pt-10 pb-16 md:pb-20' : 'py-8 md:py-12'}`}>
+      <div className={`bg-section-gradient ${preview ? 'pt-8 md:pt-10 pb-16 md:pb-20' : 'py-8 md:py-12'}`}>
         <div className="container mx-auto px-4">
           {displayClients.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-0 max-w-[44rem] mx-auto">

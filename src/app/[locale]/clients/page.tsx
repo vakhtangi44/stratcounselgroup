@@ -57,7 +57,7 @@ export default async function ClientsPage() {
   const confidentialityLabel = s(settings, 'section.trustedBy.confidentiality', locale)
 
   return (
-    <div className="pt-[170px]">
+    <div className="pt-[221px]">
       {/* Page Hero */}
       <section className="relative bg-white text-dark py-24 md:py-32 text-center px-4 overflow-hidden">
         <div className="relative z-10">
@@ -69,7 +69,7 @@ export default async function ClientsPage() {
       </section>
 
       {/* All Client Logos */}
-      <section className="py-12 md:py-16 bg-dark text-white">
+      <section className="py-12 md:py-16 bg-section-gradient text-white">
         <div className="px-4">
           <div key={Date.now()} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-[80%] mx-auto">
             {allClients.map((client, idx) => {
@@ -105,7 +105,7 @@ export default async function ClientsPage() {
       <SuccessfulCases locale={locale} cases={cases} />
 
       {/* CTA */}
-      <section className="relative bg-dark py-16 text-center text-white px-4 overflow-hidden">
+      <section className="relative bg-section-gradient py-16 text-center text-white px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
         <div className="relative z-10">
           <ScrollReveal>

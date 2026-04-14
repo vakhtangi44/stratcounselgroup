@@ -34,9 +34,9 @@ export default async function ServicesPage() {
   ])
 
   return (
-    <div className="pt-[170px]">
+    <div className="pt-[221px]">
       {/* Hero */}
-      <section className="relative bg-navy text-white py-24 md:py-32 text-center px-4 overflow-hidden">
+      <section className="relative bg-section-gradient text-white py-24 md:py-32 text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-gold/5 rounded-full" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-gold/3 rounded-full" />
@@ -119,7 +119,7 @@ export default async function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative bg-dark py-20 md:py-28 text-center text-white px-4 overflow-hidden">
+      <section className="relative bg-section-gradient py-20 md:py-28 text-center text-white px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
         <div className="relative z-10">
           <ScrollReveal>

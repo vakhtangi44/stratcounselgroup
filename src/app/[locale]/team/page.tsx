@@ -30,9 +30,9 @@ export default async function TeamPage() {
   const allClients = clientCategories.flatMap((cat) => cat.clients)
 
   return (
-    <div className="pt-[170px]">
+    <div className="pt-[221px]">
       {/* Compact Hero */}
-      <section className="relative bg-navy text-white py-[3.9rem] md:py-[5.46rem] text-center px-4 overflow-hidden">
+      <section className="relative bg-section-gradient text-white py-[3.9rem] md:py-[5.46rem] text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
         <div className="relative z-10">
           <RichText html={s(settings, 'page.team.subtitle', locale)} as="p" className="text-gold text-[16.5px] uppercase tracking-[0.3em] mb-3" />

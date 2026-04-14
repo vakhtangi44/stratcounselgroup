@@ -19,7 +19,7 @@ export default async function PressPage() {
 
   return (
     <div className="pt-16">
-      <section className="bg-dark text-white py-24 text-center px-4">
+      <section className="bg-section-gradient text-white py-24 text-center px-4">
         <RichText html={s(settings, 'page.press', locale)} as="h1" className="font-heading text-4xl mb-4" />
       </section>
       <section className="py-16 px-4">

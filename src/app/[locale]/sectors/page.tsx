@@ -36,8 +36,8 @@ export default async function SectorsPage() {
   const allClients = clientCategories.flatMap((cat) => cat.clients)
 
   return (
-    <div className="pt-[170px]">
-      <section className="relative bg-navy text-white py-24 md:py-32 text-center px-4 overflow-hidden">
+    <div className="pt-[221px]">
+      <section className="relative bg-section-gradient text-white py-24 md:py-32 text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
         <div className="relative z-10">
           <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
@@ -50,7 +50,7 @@ export default async function SectorsPage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 bg-navy text-white">
+      <section className="py-20 md:py-28 bg-section-gradient text-white">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 mx-auto">
             {sectors.map((sector, i) => {

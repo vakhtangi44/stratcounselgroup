@@ -23,7 +23,7 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
   if (sectors.length === 0) return null
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-[#220b1e] via-[#1b112a] to-dark text-white">
+    <section className="py-20 md:py-28 bg-section-gradient text-white">
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-16">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
@@ -33,8 +33,8 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
           <GoldDivider className="mt-8" />
         </ScrollReveal>
 
-        {/* All sectors in one row, image on top, text below */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mx-auto">
+        {/* All sectors — centered, wrap to new row when needed */}
+        <div className="flex flex-wrap justify-center gap-4 max-w-[88rem] mx-auto">
           {sectors.map((sector, i) => {
             const cardContent = (
               <div className="group text-center">
@@ -54,7 +54,11 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
             )
 
             return (
-              <ScrollReveal key={sector.slug} delay={i * 100}>
+              <ScrollReveal
+                key={sector.slug}
+                delay={i * 100}
+                className="w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] lg:w-[calc(20%-0.8rem)]"
+              >
                 {enabled ? (
                   <Link href={`${prefix}/sectors/${sector.slug}`} className="block">
                     {cardContent}
