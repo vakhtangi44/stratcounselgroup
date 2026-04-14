@@ -33,7 +33,7 @@ export default async function TeamMemberPage({
   const fullBio = isKa ? member.fullBioKa : member.fullBioEn
 
   return (
-    <div className="pt-16">
+    <div className="pt-[253px]">
       {/* Hero Section */}
       <section className="bg-section-gradient text-white py-20 px-4">
         <div className="container mx-auto max-w-5xl">
@@ -101,27 +101,6 @@ export default async function TeamMemberPage({
               className="max-w-none bio-content"
               dangerouslySetInnerHTML={{ __html: fullBio }}
             />
-          </div>
-        </section>
-      )}
-
-      {/* Practice Areas */}
-      {member.practiceAreas && member.practiceAreas.length > 0 && (
-        <section className="py-12 px-4 bg-gray-50">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="font-heading text-2xl text-dark mb-6">
-              {isKa ? 'პრაქტიკის სფეროები' : 'Practice Areas'}
-            </h2>
-            <div className="flex flex-wrap gap-3">
-              {member.practiceAreas.map((area: string) => (
-                <span
-                  key={area}
-                  className="px-4 py-2 bg-white border border-gray-200 text-secondary text-sm"
-                >
-                  {area.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
-                </span>
-              ))}
-            </div>
           </div>
         </section>
       )}
