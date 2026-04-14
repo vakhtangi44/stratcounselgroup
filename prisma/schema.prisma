@@ -161,6 +161,16 @@ model AboutValue {
   active        Boolean @default(true)
 }
 
+model SuccessfulCase {
+  id       Int     @id @default(autoincrement())
+  textKa   String  @db.Text
+  textEn   String  @db.Text
+  icon     String  @default("scale")
+  featured Boolean @default(false)
+  order    Int     @default(0)
+  active   Boolean @default(true)
+}
+
 model ClientCategory {
   id       Int      @id @default(autoincrement())
   icon     String   @default("🏢")

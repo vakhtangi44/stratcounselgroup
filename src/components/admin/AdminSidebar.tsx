@@ -27,6 +27,7 @@ const sections = [
       { href: '/admin/about-values', label: 'Our Values' },
       { href: '/admin/sectors', label: 'Sectors' },
       { href: '/admin/clients', label: 'Our Clients' },
+      { href: '/admin/cases', label: 'Cases & Experience' },
       { href: '/admin/services', label: 'Services' },
       { href: '/admin/settings', label: 'Site Strings' },
     ],

@@ -36,12 +36,13 @@ export default async function ClientsPage() {
   const locale = await getLocale()
   const isKa = locale === 'ka'
 
-  const [categories, settings] = await Promise.all([
+  const [categories, cases, settings] = await Promise.all([
     db.clientCategory.findMany({
       where: { active: true },
       orderBy: { order: 'asc' },
       include: { clients: { where: { active: true }, orderBy: { order: 'asc' } } },
     }),
+    db.successfulCase.findMany({ where: { active: true }, orderBy: { order: 'asc' } }),
     getSettings(),
   ])
 
@@ -101,7 +102,7 @@ export default async function ClientsPage() {
       </section>
 
       {/* Successful Cases */}
-      <SuccessfulCases locale={locale} />
+      <SuccessfulCases locale={locale} cases={cases} />
 
       {/* CTA */}
       <section className="relative bg-dark py-16 text-center text-white px-4 overflow-hidden">
