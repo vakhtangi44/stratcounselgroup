@@ -36,7 +36,7 @@ export default async function SectorsPage() {
   const allClients = clientCategories.flatMap((cat) => cat.clients)
 
   return (
-    <div className="pt-[221px]">
+    <div className="pt-[220px]">
       <section className="relative bg-section-gradient text-white py-24 md:py-32 text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
         <div className="relative z-10">

@@ -30,7 +30,7 @@ export default async function TeamPage() {
   const allClients = clientCategories.flatMap((cat) => cat.clients)
 
   return (
-    <div className="pt-[221px]">
+    <div className="pt-[220px]">
       {/* Compact Hero */}
       <section className="relative bg-section-gradient text-white py-[3.9rem] md:py-[5.46rem] text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />

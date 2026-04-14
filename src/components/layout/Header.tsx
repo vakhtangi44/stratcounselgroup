@@ -98,7 +98,7 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
         className={`fixed top-[2px] left-0 right-0 z-40 transition-all duration-500 ${
           isTransparent
             ? 'bg-transparent'
-            : 'bg-section-gradient shadow-lg backdrop-blur-md'
+            : 'bg-[#1b0b24] backdrop-blur-md'
         }`}
       >
         <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[218px]">

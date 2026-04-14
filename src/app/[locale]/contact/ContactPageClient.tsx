@@ -57,7 +57,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
     'w-full border border-gray-200 px-5 py-3.5 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/20 transition-all duration-300 bg-white font-light'
 
   return (
-    <div className="pt-[221px]">
+    <div className="pt-[220px]">
       {/* Hero */}
       <section className="relative bg-section-gradient text-white py-24 md:py-32 text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
@@ -71,12 +71,11 @@ export default function ContactPageClient({ locale, strings }: Props) {
 
       {/* Split layout */}
       <section className="bg-white py-20 md:py-28 px-4">
-        <div className="container mx-auto max-w-[90rem]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 rounded-2xl overflow-hidden shadow-2xl">
+        <div className="container mx-auto max-w-[72rem]">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] rounded-2xl overflow-hidden shadow-2xl">
             {/* Left: Contact Info */}
-            <div className="bg-section-gradient p-10 md:p-14">
-              <RichText html={strings.infoSubtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.06em] font-bold mb-4" />
-              <RichText html={strings.info} as="h2" className="font-heading text-2xl md:text-3xl lg:text-4xl text-white mb-8 whitespace-nowrap" />
+            <div className="bg-white p-10 md:p-14 text-navy">
+              <RichText html={strings.info} as="h2" className="font-heading text-lg md:text-xl lg:text-2xl text-navy font-extrabold mb-8 whitespace-nowrap" />
 
               <div className="space-y-8">
                 {/* Company Info + Addresses */}
@@ -88,12 +87,12 @@ export default function ContactPageClient({ locale, strings }: Props) {
                     </svg>
                   </div>
                   <div className="text-[15px] leading-snug font-[520] tracking-tight">
-                    <RichText html={strings.addressLabel} as="p" className="text-white font-heading text-[16px] font-bold tracking-[0.06em] mb-2" />
+                    <RichText html={strings.addressLabel} as="p" className="text-navy font-heading text-[16px] font-black tracking-[0.06em] mb-2" />
                     <a
                       href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white/70 font-[520] tracking-tight hover:text-gold transition-colors duration-300"
+                      className="text-navy/80 font-bold tracking-tight hover:text-gold transition-colors duration-300"
                     >
                       {isKa
                         ? 'საქართველო, თბილისი, დ. არაყიშვილის ქ. N3, ოფისი 71'
@@ -110,8 +109,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white font-heading text-[16px] font-bold tracking-[0.06em] mb-2">{isKa ? 'ტელეფონი' : 'Phone'}</p>
-                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-white/70 text-[15px] font-[520] tracking-tight hover:text-gold transition-colors duration-300">
+                    <p className="text-navy font-heading text-[16px] font-black tracking-[0.06em] mb-2">{isKa ? 'ტელეფონი' : 'Phone'}</p>
+                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-navy/80 text-[15px] font-bold tracking-tight hover:text-gold transition-colors duration-300">
                       {strings.phone}
                     </a>
                   </div>
@@ -125,8 +124,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white font-heading text-[16px] font-bold tracking-[0.06em] mb-2">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
-                    <a href={`mailto:${strings.email}`} className="text-white/70 text-[15px] font-[520] tracking-tight hover:text-gold transition-colors duration-300">
+                    <p className="text-navy font-heading text-[16px] font-black tracking-[0.06em] mb-2">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
+                    <a href={`mailto:${strings.email}`} className="text-navy/80 text-[15px] font-bold tracking-tight hover:text-gold transition-colors duration-300">
                       {strings.email}
                     </a>
                   </div>
@@ -134,8 +133,8 @@ export default function ContactPageClient({ locale, strings }: Props) {
               </div>
 
               {/* Connect with Us */}
-              <div className="mt-10 pt-8 border-t border-white/10">
-                <p className="text-white font-heading text-[18px] font-bold tracking-[0.06em] mb-4">
+              <div className="mt-10 pt-8 border-t border-navy/10">
+                <p className="text-navy font-heading text-[18px] font-black tracking-[0.06em] mb-4">
                   {isKa ? 'დაგვიკავშირდით' : 'Connect with Us'}
                 </p>
                 <div className="flex items-center gap-3">
@@ -196,9 +195,9 @@ export default function ContactPageClient({ locale, strings }: Props) {
               </div>
 
               {/* Working hours */}
-              <div className="mt-10 pt-8 border-t border-white/10">
-                <RichText html={strings.workingHoursLabel} as="p" className="text-white font-heading text-[18px] font-bold tracking-[0.06em] mb-3" />
-                <RichText html={strings.workingHours} as="p" className="text-white/70 text-[18px] font-[520] tracking-tight" />
+              <div className="mt-10 pt-8 border-t border-navy/10">
+                <RichText html={strings.workingHoursLabel} as="p" className="text-navy font-heading text-[18px] font-black tracking-[0.06em] mb-3" />
+                <RichText html={strings.workingHours} as="p" className="text-navy/80 text-[18px] font-bold tracking-tight" />
               </div>
             </div>
 
@@ -296,7 +295,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
                             onClick={() => setPolicyOpened(true)}
                             className="text-gold underline hover:text-gold-dark transition-colors"
                           >
-                            პერსონალურ მონაცემთა დაცვის პოლიტიკას
+                            პერსონალურ მონაცემთა დამუშავების პოლიტიკას
                           </a>.</>
                       : <>By sending this message you confirm that you have read and agree to the{' '}
                           <a
@@ -306,7 +305,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
                             onClick={() => setPolicyOpened(true)}
                             className="text-gold underline hover:text-gold-dark transition-colors"
                           >
-                            Privacy Policy
+                            Personal Data Processing Policy
                           </a>.</>
                     }
                   </p>

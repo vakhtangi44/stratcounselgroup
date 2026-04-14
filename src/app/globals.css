@@ -29,7 +29,7 @@
   body {
     font-family: var(--font-family-body);
     color: var(--color-dark);
-    background: white;
+    background: #1b0b24;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 370;

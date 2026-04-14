@@ -41,9 +41,6 @@ export default function SuccessfulCases({ locale, cases }: Props) {
         <section className="py-20 md:py-28 bg-white">
           <div className="container mx-auto px-4 lg:px-8">
             <ScrollReveal className="text-center mb-16">
-              <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-                {isKa ? 'ჩვენი გამოცდილება' : 'Our Track Record'}
-              </p>
               <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
               <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4">
                 {isKa ? 'წარმატებული აქტივობები' : 'Successful Cases'}
@@ -66,9 +63,6 @@ export default function SuccessfulCases({ locale, cases }: Props) {
         <section className="py-20 md:py-28 bg-cream">
           <div className="container mx-auto px-4 lg:px-8">
             <ScrollReveal className="text-center mb-16">
-              <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-                {isKa ? 'დამატებითი პროექტები' : 'Additional Projects'}
-              </p>
               <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
               <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4">
                 {isKa ? 'ჩვენი გამოცდილება' : 'Our Experience'}

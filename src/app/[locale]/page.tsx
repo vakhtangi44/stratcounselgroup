@@ -9,7 +9,6 @@ export const revalidate = 0
 import Hero from '@/components/sections/Hero'
 import AboutPreview from '@/components/sections/AboutPreview'
 import StatsSection from '@/components/sections/StatsSection'
-import TeamPreview from '@/components/sections/TeamPreview'
 import TestimonialsCarousel from '@/components/sections/TestimonialsCarousel'
 import BlogPreview from '@/components/sections/BlogPreview'
 import PressStrip from '@/components/sections/PressStrip'
@@ -47,13 +46,8 @@ export default async function HomePage() {
   const sectorsEnabled = s(settings, 'sectors.enabled', locale) !== 'false'
   const sectorsData = getSectorsData(settings, locale)
 
-  const [stats, teamMembers, testimonials, blogPosts, pressItems, clientCategories, services] = await Promise.all([
+  const [stats, testimonials, blogPosts, pressItems, clientCategories, services] = await Promise.all([
     db.statistic.findMany(),
-    db.teamMember.findMany({
-      where: { active: true, isFeatured: true },
-      orderBy: { order: 'asc' },
-      take: 3,
-    }),
     db.testimonial.findMany({ where: { active: true }, orderBy: { date: 'desc' } }),
     db.blogPost.findMany({
       where: { status: 'published' },
@@ -106,11 +100,6 @@ export default async function HomePage() {
       <TargetSectors locale={locale} sectors={sectorsData} enabled={sectorsEnabled} />
       {services.length > 0 && <ServicesPreview services={services} locale={locale} />}
       <StatsSection stats={stats} locale={locale} />
-      <TeamPreview members={teamMembers} locale={locale} strings={{
-        subtitle: s(settings, 'section.ourTeam.subtitle', locale),
-        title: s(settings, 'section.ourTeam', locale),
-        meetFullTeam: s(settings, 'section.meetFullTeam', locale),
-      }} />
       <LogoMarquee locale={locale} clients={clientCategories.flatMap((cat: any) => cat.clients)} showViewAll />
       <TestimonialsCarousel testimonials={testimonials} locale={locale} strings={testimonialStrings} />
       <BlogPreview posts={blogPosts} locale={locale} strings={{

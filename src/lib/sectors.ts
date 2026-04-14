@@ -24,8 +24,8 @@ export const SECTORS = [
   },
   {
     slug: 'infrastructure',
-    nameKa: 'ინფრასტრუქტურა',
-    nameEn: 'Infrastructure',
+    nameKa: 'მშენებლობა და ინფრასტრუქტურა',
+    nameEn: 'Construction & Infrastructure',
     image: '/images/sectors/infrastructure.jpg',
     descriptionKa:
       'ინფრასტრუქტურული პროექტები მოითხოვს მრავალფეროვან სამართლებრივ ექსპერტიზას. ჩვენ ვეხმარებით კლიენტებს ხელშეკრულებების შედგენაში, რისკების შეფასებაში და დავების გადაწყვეტაში.',
