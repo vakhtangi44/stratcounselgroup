@@ -71,7 +71,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
 
       {/* Split layout */}
       <section className="bg-white py-20 md:py-28 px-4">
-        <div className="container mx-auto max-w-7xl">
+        <div className="container mx-auto max-w-[90rem]">
           <div className="grid grid-cols-1 lg:grid-cols-2 rounded-2xl overflow-hidden shadow-2xl">
             {/* Left: Contact Info */}
             <div className="bg-dark p-10 md:p-14">
