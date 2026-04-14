@@ -150,6 +150,17 @@ model Advantage {
   active        Boolean @default(true)
 }
 
+model AboutValue {
+  id            Int     @id @default(autoincrement())
+  titleKa       String
+  titleEn       String
+  descriptionKa String  @db.Text
+  descriptionEn String  @db.Text
+  icon          String  @default("scales")
+  order         Int     @default(0)
+  active        Boolean @default(true)
+}
+
 model ClientCategory {
   id       Int      @id @default(autoincrement())
   icon     String   @default("🏢")

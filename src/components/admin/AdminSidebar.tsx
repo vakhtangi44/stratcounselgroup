@@ -24,6 +24,7 @@ const sections = [
     links: [
       { href: '/admin/about', label: 'About Photo' },
       { href: '/admin/advantages', label: 'Why Us' },
+      { href: '/admin/about-values', label: 'Our Values' },
       { href: '/admin/sectors', label: 'Sectors' },
       { href: '/admin/clients', label: 'Our Clients' },
       { href: '/admin/services', label: 'Services' },
