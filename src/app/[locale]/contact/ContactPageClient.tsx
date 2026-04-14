@@ -319,7 +319,7 @@ export default function ContactPageClient({ locale, strings }: Props) {
                   <button
                     type="submit"
                     disabled={status === 'loading' || !token || !policyOpened}
-                    className="w-full bg-gold text-white py-4 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold-dark disabled:opacity-50 transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
+                    className="w-full bg-gold-dark text-white py-4 text-sm uppercase tracking-[0.15em] font-bold hover:bg-gold disabled:opacity-70 transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
                   >
                     {status === 'loading'
                       ? (isKa ? 'იგზავნება...' : 'Sending...')
