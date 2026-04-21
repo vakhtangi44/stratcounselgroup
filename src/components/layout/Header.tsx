@@ -100,14 +100,14 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
           background: 'linear-gradient(to bottom, #1b0b24 0%, #1b0b24 40%, rgba(27,11,36,0) 100%)',
         }}
       >
-        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[218px]">
+        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[120px] md:h-[218px]">
           <Link href={prefix || '/'} className="relative z-10">
             <Image
               src="/logo-v2.png"
               alt="Strategic Counsel Group"
               width={670}
               height={670}
-              className="h-[268px] w-auto transition-all duration-500"
+              className="h-[120px] md:h-[268px] w-auto transition-all duration-500"
               priority
             />
           </Link>
