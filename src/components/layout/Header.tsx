@@ -105,9 +105,9 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
             <Image
               src="/logo-v2.png"
               alt="Strategic Counsel Group"
-              width={744}
-              height={744}
-              className="h-[298px] w-auto transition-all duration-500"
+              width={670}
+              height={670}
+              className="h-[268px] w-auto transition-all duration-500"
               priority
             />
           </Link>
