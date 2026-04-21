@@ -79,7 +79,7 @@ export default async function ClientsPage() {
               return (
                 <div
                   key={client.id}
-                  className="group flex items-center justify-center h-[10rem] md:h-[12rem] p-4 overflow-visible relative opacity-0 client-logo-fall"
+                  className="group flex items-center justify-center h-[10rem] md:h-[12rem] p-4 overflow-visible relative opacity-0 client-logo-fall hover:z-30"
                   style={{ animationDelay: `${idx * 200}ms` }}
                 >
                   {logo ? (
@@ -87,7 +87,7 @@ export default async function ClientsPage() {
                     <img
                       src={logo}
                       alt={name}
-                      className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-[2.5] group-hover:z-20 relative"
+                      className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-[2.5]"
                     />
                   ) : (
                     <span className="text-white/70 group-hover:text-white text-xs font-medium text-center leading-snug transition-colors duration-300">
