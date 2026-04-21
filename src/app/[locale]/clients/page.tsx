@@ -69,9 +69,9 @@ export default async function ClientsPage() {
       </section>
 
       {/* All Client Logos */}
-      <section className="py-12 md:py-16 bg-section-gradient text-white">
-        <div className="px-4">
-          <div key={Date.now()} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-[80%] mx-auto">
+      <section className="py-12 md:py-16 bg-section-gradient text-white overflow-visible">
+        <div className="px-4 overflow-visible">
+          <div key={Date.now()} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-[80%] mx-auto overflow-visible">
             {allClients.map((client, idx) => {
               const logo = isKa ? (client.logoKa || client.logoEn) : (client.logoEn || client.logoKa)
               const name = isKa ? (client.nameKa || client.name) : (client.nameEn || client.name)
@@ -79,7 +79,7 @@ export default async function ClientsPage() {
               return (
                 <div
                   key={client.id}
-                  className="group flex items-center justify-center h-[10rem] md:h-[12rem] p-4 overflow-visible relative opacity-0 client-logo-fall hover:z-30"
+                  className="group flex items-center justify-center h-[10rem] md:h-[12rem] p-4 overflow-visible relative opacity-0 client-logo-fall hover:z-50"
                   style={{ animationDelay: `${idx * 200}ms` }}
                 >
                   {logo ? (
@@ -87,7 +87,7 @@ export default async function ClientsPage() {
                     <img
                       src={logo}
                       alt={name}
-                      className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-[2.5]"
+                      className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-[2] relative"
                     />
                   ) : (
                     <span className="text-white/70 group-hover:text-white text-xs font-medium text-center leading-snug transition-colors duration-300">
