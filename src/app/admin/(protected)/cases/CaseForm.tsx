@@ -15,13 +15,13 @@ interface Case {
   active: boolean
 }
 
-export default function CaseForm({ caseItem }: { caseItem?: Case }) {
+export default function CaseForm({ caseItem, defaultFeatured }: { caseItem?: Case; defaultFeatured?: boolean }) {
   const router = useRouter()
   const [form, setForm] = useState({
     textKa: caseItem?.textKa || '',
     textEn: caseItem?.textEn || '',
     icon: caseItem?.icon || 'scale',
-    featured: caseItem?.featured ?? false,
+    featured: caseItem?.featured ?? defaultFeatured ?? true,
     order: caseItem?.order ?? 0,
     active: caseItem?.active ?? true,
   })
@@ -95,16 +95,32 @@ export default function CaseForm({ caseItem }: { caseItem?: Case }) {
         </div>
       </div>
 
-      <div className="flex items-center gap-6">
-        <label className="flex items-center gap-2 text-sm">
-          <input
-            type="checkbox"
-            checked={form.featured}
-            onChange={(e) => setForm((f) => ({ ...f, featured: e.target.checked }))}
-            className="accent-gold"
-          />
-          <span className="text-secondary">Featured (shows in "Successful Cases" section)</span>
-        </label>
+      <div>
+        <label className="block text-sm text-secondary mb-2">Section *</label>
+        <div className="flex gap-3">
+          <button
+            type="button"
+            onClick={() => setForm((f) => ({ ...f, featured: true }))}
+            className={`px-5 py-2.5 rounded text-sm font-medium transition-all ${
+              form.featured
+                ? 'bg-gold text-white shadow-md'
+                : 'bg-gray-100 text-secondary hover:bg-gold/10'
+            }`}
+          >
+            Successful Cases
+          </button>
+          <button
+            type="button"
+            onClick={() => setForm((f) => ({ ...f, featured: false }))}
+            className={`px-5 py-2.5 rounded text-sm font-medium transition-all ${
+              !form.featured
+                ? 'bg-dark text-white shadow-md'
+                : 'bg-gray-100 text-secondary hover:bg-gray-200'
+            }`}
+          >
+            Our Experience
+          </button>
+        </div>
       </div>
 
       <div>

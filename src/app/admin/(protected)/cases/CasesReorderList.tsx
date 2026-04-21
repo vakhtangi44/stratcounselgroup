@@ -73,8 +73,11 @@ export default function CasesReorderList({ initialItems }: { initialItems: Case[
           >
             {saving ? 'Saving…' : saved ? 'Order Saved!' : 'Save Order'}
           </button>
-          <Link href="/admin/cases/new" className="bg-gold text-white px-4 py-2 rounded text-sm hover:bg-gold-dark">
-            + New Case
+          <Link href="/admin/cases/new?section=featured" className="bg-gold text-white px-4 py-2 rounded text-sm hover:bg-gold-dark">
+            + Successful Case
+          </Link>
+          <Link href="/admin/cases/new?section=experience" className="bg-dark text-white px-4 py-2 rounded text-sm hover:bg-navy">
+            + Experience
           </Link>
         </div>
       </div>
