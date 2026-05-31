@@ -60,7 +60,7 @@ const settings = [
   { key: 'contact.info.subtitle', valueKa: 'ინფორმაცია', valueEn: 'Information', category: 'contact' },
   { key: 'contact.info', valueKa: 'საკონტაქტო ინფორმაცია', valueEn: 'Contact Information', category: 'contact' },
   { key: 'contact.address.label', valueKa: 'მისამართი', valueEn: 'Address', category: 'contact' },
-  { key: 'contact.address', valueKa: 'თბილისი, დ.არაყიშვილის N3, ოფისი 71', valueEn: 'D. Arakishvili St. N3, Office 71, Tbilisi, Georgia', category: 'contact' },
+  { key: 'contact.address', valueKa: 'საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ოფისი N7', valueEn: 'Georgia, Tbilisi, Vake District, Irakli Abashidze St. N3, Office N7', category: 'contact' },
   { key: 'contact.workingHours.label', valueKa: 'სამუშაო საათები', valueEn: 'Working Hours', category: 'contact' },
   { key: 'contact.workingHours', valueKa: 'ორშაბათი - პარასკევი: 10:00 - 19:00', valueEn: 'Monday - Friday: 10:00 - 19:00', category: 'contact' },
   { key: 'contact.phone', valueKa: '+995 551 55 39 54', valueEn: '+995 551 55 39 54', category: 'contact' },
@@ -73,8 +73,14 @@ const settings = [
   { key: 'footer.contact', valueKa: 'კონტაქტი', valueEn: 'Contact', category: 'footer' },
   { key: 'footer.newsletter', valueKa: 'განახლებები', valueEn: 'Newsletter', category: 'footer' },
   { key: 'footer.newsletterText', valueKa: 'გამოიწერეთ სიახლეები', valueEn: 'Stay informed with our latest insights', category: 'footer' },
-  { key: 'footer.address', valueKa: 'დ.არაყიშვილის N3, ოფისი 71, თბილისი', valueEn: 'D. Arakishvili St. N3, Office 71, Tbilisi', category: 'footer' },
+  { key: 'footer.address', valueKa: 'საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ოფისი N7', valueEn: 'Georgia, Tbilisi, Vake District, Irakli Abashidze St. N3, Office N7', category: 'footer' },
   { key: 'footer.copyright', valueKa: 'Strategic Counsel Group. ყველა უფლება დაცულია.', valueEn: 'Strategic Counsel Group. All rights reserved.', category: 'footer' },
+
+  // Location (managed from /admin/location — drives footer, contact page, and the map pin)
+  { key: 'location.address', valueKa: 'საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ოფისი N7', valueEn: 'Georgia, Tbilisi, Vake District, Irakli Abashidze St. N3, Office N7', category: 'location' },
+  { key: 'location.mapLink', valueKa: 'https://maps.app.goo.gl/u8enJWpSmMdmJFhY7', valueEn: 'https://maps.app.goo.gl/u8enJWpSmMdmJFhY7', category: 'location' },
+  { key: 'location.lat', valueKa: '41.71511', valueEn: '41.71511', category: 'location' },
+  { key: 'location.lng', valueKa: '44.78269', valueEn: '44.78269', category: 'location' },
 
   // Pages
   { key: 'page.team.subtitle', valueKa: 'პროფესიონალები', valueEn: 'Professionals', category: 'pages' },

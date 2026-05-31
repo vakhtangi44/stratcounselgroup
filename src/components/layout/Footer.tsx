@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import NewsletterForm from './NewsletterForm'
 import { getSettings, s } from '@/lib/settings'
+import { getLocation, localizedAddress } from '@/lib/location'
 import RichText from '@/components/ui/RichText'
 
 export default async function Footer({ locale }: { locale: string }) {
@@ -10,6 +11,8 @@ export default async function Footer({ locale }: { locale: string }) {
   const settings = await getSettings()
 
   const phone = s(settings, 'contact.phone', locale)
+  const location = getLocation(settings)
+  const address = localizedAddress(location, locale)
 
   // Unified body text style — same color, weight, size everywhere in the footer
   const bodyText = 'text-white/70 text-[14.5px] font-[520] tracking-tight'
@@ -81,21 +84,13 @@ export default async function Footer({ locale }: { locale: string }) {
                 {isKa ? 'ს/ნ: 405847213' : 'ID: 405847213'}
               </p>
               <p className="leading-snug">
-                {isKa
-                  ? 'იურ. მის.: საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ბინა N7'
-                  : 'Legal addr.: Georgia, Tbilisi, Vake, Irakli Abashidze St. N3, Apt. N7'}
-              </p>
-              <p className="leading-snug">
-                {isKa ? 'ფაქტ. მის.: ' : 'Office addr.: '}
                 <a
-                  href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
+                  href={location.mapLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-gold transition-colors duration-300"
                 >
-                  {isKa
-                    ? 'საქართველო, თბილისი, დ. არაყიშვილის ქ. N3, ოფისი 71'
-                    : 'Georgia, Tbilisi, D. Arakishvili St. N3, Office 71'}
+                  {address}
                 </a>
               </p>
               <p className="leading-snug">

@@ -6,6 +6,8 @@ export default async function AdminSettingsPage() {
 
   const grouped: Record<string, typeof settings> = {}
   for (const s of settings) {
+    // Address & map have their own dedicated panel at /admin/location.
+    if (s.category === 'location') continue
     if (!grouped[s.category]) grouped[s.category] = []
     grouped[s.category].push(s)
   }

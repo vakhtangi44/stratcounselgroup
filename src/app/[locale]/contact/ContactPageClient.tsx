@@ -3,9 +3,16 @@
 import { useState } from 'react'
 import Turnstile from 'react-turnstile'
 import RichText from '@/components/ui/RichText'
+import LocationMap from '@/components/sections/LocationMap'
 
 interface Props {
   locale: string
+  location: {
+    address: string
+    lat: number
+    lng: number
+    mapLink: string
+  }
   strings: {
     subtitle: string
     heading: string
@@ -31,7 +38,7 @@ interface Props {
   }
 }
 
-export default function ContactPageClient({ locale, strings }: Props) {
+export default function ContactPageClient({ locale, strings, location }: Props) {
   const isKa = locale === 'ka'
 
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
@@ -89,14 +96,12 @@ export default function ContactPageClient({ locale, strings }: Props) {
                   <div className="text-[15px] leading-snug font-[520] tracking-tight">
                     <RichText html={strings.addressLabel} as="p" className="text-navy font-heading text-[16px] font-black tracking-[0.06em] mb-2" />
                     <a
-                      href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
+                      href={location.mapLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-navy/80 font-bold tracking-tight hover:text-gold transition-colors duration-300"
                     >
-                      {isKa
-                        ? 'საქართველო, თბილისი, დ. არაყიშვილის ქ. N3, ოფისი 71'
-                        : 'Georgia, Tbilisi, D. Arakishvili St. N3, Office 71'}
+                      {location.address}
                     </a>
                   </div>
                 </div>
@@ -366,39 +371,14 @@ export default function ContactPageClient({ locale, strings }: Props) {
 
       {/* Map Section */}
       <section className="relative">
-        <a
-          href="https://maps.app.goo.gl/u8enJWpSmMdmJFhY7"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block relative group"
-        >
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.5!2d44.7827!3d41.7151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQyJzU0LjQiTiA0NMKwNDYnNTcuNyJF!5e0!3m2!1sen!2sge!4v1"
-            width="100%"
-            height="450"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="w-full pointer-events-none"
-            title="Strategic Counsel Group Office Location"
-          />
-          <div className="absolute inset-0 bg-dark/5 group-hover:bg-dark/0 transition-all duration-300" />
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark/80 to-transparent p-8">
-            <div className="container mx-auto max-w-6xl flex items-center justify-between">
-              <div className="text-white">
-                <p className="font-heading text-lg mb-1">Strategic Counsel Group</p>
-                <RichText html={strings.address} as="p" className="text-white/70 text-sm font-light" />
-              </div>
-              <div className="hidden md:flex items-center gap-2 text-gold text-sm font-medium group-hover:gap-3 transition-all duration-300">
-                {isKa ? 'რუკაზე ნახვა' : 'View on Map'}
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </a>
+        <LocationMap
+          lat={location.lat}
+          lng={location.lng}
+          address={location.address}
+          mapLink={location.mapLink}
+          viewLabel={isKa ? 'რუკაზე ნახვა' : 'View on Map'}
+          title="Strategic Counsel Group"
+        />
       </section>
     </div>
   )

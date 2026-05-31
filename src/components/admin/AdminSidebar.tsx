@@ -29,6 +29,7 @@ const sections = [
       { href: '/admin/clients', label: 'Our Clients' },
       { href: '/admin/cases', label: 'Cases & Experience' },
       { href: '/admin/services', label: 'Services' },
+      { href: '/admin/location', label: 'Address & Map' },
       { href: '/admin/settings', label: 'Site Strings' },
     ],
   },
