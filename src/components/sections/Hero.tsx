@@ -17,6 +17,14 @@ export default async function Hero({ locale, strings }: { locale: string; string
   const hasHtml = /<[a-z][\s\S]*>/i.test(headline)
   const words = hasHtml ? [] : headline.split(' ')
 
+  // English is longer than the (space-less) Georgian motto and would wrap onto a
+  // second line. Keep it on one line like the Georgian, shrinking it a step so it
+  // always fits the container.
+  const headingSize =
+    locale === 'en'
+      ? 'text-xl sm:text-3xl md:text-5xl lg:text-6xl whitespace-nowrap'
+      : 'text-2xl sm:text-4xl md:text-6xl lg:text-7xl'
+
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center bg-section-gradient overflow-hidden pt-20 pb-20">
       <div className="absolute inset-0 bg-dark-pattern" />
@@ -44,7 +52,7 @@ export default async function Hero({ locale, strings }: { locale: string; string
           <div className="h-[1px] w-12 bg-gold opacity-0 animate-draw-line" style={{ animationDelay: '600ms', animationFillMode: 'forwards' }} />
         </div>
 
-        <h1 className="font-heading text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] tracking-[-0.02em]">
+        <h1 className={`font-heading ${headingSize} font-bold mb-8 leading-[1.1] tracking-[-0.02em]`}>
           {hasHtml ? (
             <RichText
               html={headline}
