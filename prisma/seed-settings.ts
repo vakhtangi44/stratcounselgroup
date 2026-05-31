@@ -68,7 +68,7 @@ const settings = [
   { key: 'contact.whatsapp', valueKa: '995551553954', valueEn: '995551553954', category: 'contact' },
 
   // Footer
-  { key: 'footer.tagline', valueKa: 'ხედვა. სტრატეგია. გავლენა.', valueEn: 'Insight. Strategy. Impact.', category: 'footer' },
+  { key: 'footer.tagline', valueKa: 'ხედვა. სტრატეგია. გავლენა', valueEn: 'Insight. Strategy. Impact', category: 'footer' },
   { key: 'footer.quickLinks', valueKa: 'ბმულები', valueEn: 'Quick Links', category: 'footer' },
   { key: 'footer.contact', valueKa: 'კონტაქტი', valueEn: 'Contact', category: 'footer' },
   { key: 'footer.newsletter', valueKa: 'განახლებები', valueEn: 'Newsletter', category: 'footer' },
@@ -77,7 +77,8 @@ const settings = [
   { key: 'footer.copyright', valueKa: 'Strategic Counsel Group. ყველა უფლება დაცულია.', valueEn: 'Strategic Counsel Group. All rights reserved.', category: 'footer' },
 
   // Location (managed from /admin/location — drives footer, contact page, and the map)
-  { key: 'location.address', valueKa: 'საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ოფისი N7', valueEn: 'Georgia, Tbilisi, Vake District, Irakli Abashidze St. N3, Office N7', category: 'location' },
+  { key: 'location.footerAddress', valueKa: 'საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ოფისი N7', valueEn: 'Georgia, Tbilisi, Vake District, Irakli Abashidze St. N3, Office N7', category: 'location' },
+  { key: 'location.contactAddress', valueKa: 'საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ოფისი N7', valueEn: 'Georgia, Tbilisi, Vake District, Irakli Abashidze St. N3, Office N7', category: 'location' },
   { key: 'location.mapLink', valueKa: 'https://maps.app.goo.gl/u8enJWpSmMdmJFhY7', valueEn: 'https://maps.app.goo.gl/u8enJWpSmMdmJFhY7', category: 'location' },
   { key: 'location.mapEmbed', valueKa: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.5!2d44.7827!3d41.7151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQyJzU0LjQiTiA0NMKwNDYnNTcuNyJF!5e0!3m2!1sen!2sge!4v1', valueEn: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.5!2d44.7827!3d41.7151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQyJzU0LjQiTiA0NMKwNDYnNTcuNyJF!5e0!3m2!1sen!2sge!4v1', category: 'location' },
 

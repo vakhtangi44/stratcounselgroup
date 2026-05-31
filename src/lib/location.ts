@@ -4,19 +4,24 @@ import type { Settings } from './settings'
  * Single source of truth for the firm's office location.
  *
  * Stored in the `SiteSetting` table under the `location.*` keys and edited from
- * the `/admin/location` panel. The footer, contact page, and contact map all
- * read from here, so one save updates every place the address/map appears.
+ * the `/admin/location` panel. The footer and contact page each have their own
+ * address field (so they can differ), while the map link/embed are shared.
  *
  * The map comes straight from Google Maps (no manual pin placement): either a
  * pasted Google "Embed a map" URL, or — when that's left blank — an automatic
- * embed generated from the address itself.
+ * embed generated from the contact address itself.
  *
  * Defaults below mirror the original hard-coded values so the site keeps working
  * even before the settings rows exist (e.g. a fresh database that hasn't been seeded).
  */
+const ADDRESS_KA = 'საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ოფისი N7'
+const ADDRESS_EN = 'Georgia, Tbilisi, Vake District, Irakli Abashidze St. N3, Office N7'
+
 export const LOCATION_DEFAULTS = {
-  addressKa: 'საქართველო, თბილისი, ვაკის რაიონი, ირაკლი აბაშიძის ქ. N3, ოფისი N7',
-  addressEn: 'Georgia, Tbilisi, Vake District, Irakli Abashidze St. N3, Office N7',
+  footerAddressKa: ADDRESS_KA,
+  footerAddressEn: ADDRESS_EN,
+  contactAddressKa: ADDRESS_KA,
+  contactAddressEn: ADDRESS_EN,
   /** External "open in maps" link (Google Maps share URL) used by the clickable address. */
   mapLink: 'https://maps.app.goo.gl/u8enJWpSmMdmJFhY7',
   /** Google Maps embed URL (the `src` from Google's "Share → Embed a map"). */
@@ -25,30 +30,40 @@ export const LOCATION_DEFAULTS = {
 } as const
 
 export interface SiteLocation {
-  addressKa: string
-  addressEn: string
+  footerAddressKa: string
+  footerAddressEn: string
+  contactAddressKa: string
+  contactAddressEn: string
   mapLink: string
-  /** When empty, the map is auto-generated from the address (see {@link mapEmbedSrc}). */
+  /** When empty, the map is auto-generated from the contact address (see {@link mapEmbedSrc}). */
   mapEmbed: string
 }
 
 /** Read the office location out of an already-loaded settings map. */
 export function getLocation(settings: Settings): SiteLocation {
-  const address = settings.get('location.address')
+  const footer = settings.get('location.footerAddress')
+  const contact = settings.get('location.contactAddress')
   const mapLink = settings.get('location.mapLink')
   const mapEmbed = settings.get('location.mapEmbed')
 
   return {
-    addressKa: address?.ka || LOCATION_DEFAULTS.addressKa,
-    addressEn: address?.en || LOCATION_DEFAULTS.addressEn,
+    footerAddressKa: footer?.ka || LOCATION_DEFAULTS.footerAddressKa,
+    footerAddressEn: footer?.en || LOCATION_DEFAULTS.footerAddressEn,
+    contactAddressKa: contact?.ka || LOCATION_DEFAULTS.contactAddressKa,
+    contactAddressEn: contact?.en || LOCATION_DEFAULTS.contactAddressEn,
     mapLink: mapLink?.en || mapLink?.ka || LOCATION_DEFAULTS.mapLink,
     mapEmbed: mapEmbed?.en || mapEmbed?.ka || LOCATION_DEFAULTS.mapEmbed,
   }
 }
 
-/** Localized address string for the given locale. */
-export function localizedAddress(location: SiteLocation, locale: string): string {
-  return locale === 'ka' ? location.addressKa : location.addressEn
+/** Localized footer address. */
+export function footerAddress(location: SiteLocation, locale: string): string {
+  return locale === 'ka' ? location.footerAddressKa : location.footerAddressEn
+}
+
+/** Localized contact-page address. */
+export function contactAddress(location: SiteLocation, locale: string): string {
+  return locale === 'ka' ? location.contactAddressKa : location.contactAddressEn
 }
 
 /**

@@ -50,13 +50,18 @@ export async function PUT(req: Request) {
 
   const body = (await req.json()) as Partial<SiteLocation>
 
-  const addressKa = (body.addressKa ?? '').trim()
-  const addressEn = (body.addressEn ?? '').trim()
+  const footerAddressKa = (body.footerAddressKa ?? '').trim()
+  const footerAddressEn = (body.footerAddressEn ?? '').trim()
+  const contactAddressKa = (body.contactAddressKa ?? '').trim()
+  const contactAddressEn = (body.contactAddressEn ?? '').trim()
   const mapLink = (body.mapLink ?? '').trim()
   const mapEmbed = extractEmbedSrc(body.mapEmbed ?? '')
 
-  if (!addressKa || !addressEn) {
-    return NextResponse.json({ error: 'Address is required in both languages.' }, { status: 400 })
+  if (!footerAddressKa || !footerAddressEn || !contactAddressKa || !contactAddressEn) {
+    return NextResponse.json(
+      { error: 'Footer and contact addresses are required in both languages.' },
+      { status: 400 },
+    )
   }
   if (mapEmbed && !isGoogleMapsUrl(mapEmbed)) {
     return NextResponse.json(
@@ -65,7 +70,8 @@ export async function PUT(req: Request) {
     )
   }
 
-  await upsertSetting('location.address', addressKa, addressEn)
+  await upsertSetting('location.footerAddress', footerAddressKa, footerAddressEn)
+  await upsertSetting('location.contactAddress', contactAddressKa, contactAddressEn)
   await upsertSetting('location.mapLink', mapLink, mapLink)
   await upsertSetting('location.mapEmbed', mapEmbed, mapEmbed)
 

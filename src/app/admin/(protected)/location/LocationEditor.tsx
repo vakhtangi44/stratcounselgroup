@@ -12,8 +12,10 @@ function previewSrc(mapEmbed: string, address: string): string {
 }
 
 export default function LocationEditor({ initial }: { initial: SiteLocation }) {
-  const [addressKa, setAddressKa] = useState(initial.addressKa)
-  const [addressEn, setAddressEn] = useState(initial.addressEn)
+  const [footerAddressKa, setFooterAddressKa] = useState(initial.footerAddressKa)
+  const [footerAddressEn, setFooterAddressEn] = useState(initial.footerAddressEn)
+  const [contactAddressKa, setContactAddressKa] = useState(initial.contactAddressKa)
+  const [contactAddressEn, setContactAddressEn] = useState(initial.contactAddressEn)
   const [mapLink, setMapLink] = useState(initial.mapLink)
   const [mapEmbed, setMapEmbed] = useState(initial.mapEmbed)
 
@@ -28,7 +30,14 @@ export default function LocationEditor({ initial }: { initial: SiteLocation }) {
       const res = await fetch('/api/admin/location', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ addressKa, addressEn, mapLink, mapEmbed }),
+        body: JSON.stringify({
+          footerAddressKa,
+          footerAddressEn,
+          contactAddressKa,
+          contactAddressEn,
+          mapLink,
+          mapEmbed,
+        }),
       })
       if (!res.ok) {
         const data = await res.json().catch(() => null)
@@ -52,21 +61,49 @@ export default function LocationEditor({ initial }: { initial: SiteLocation }) {
 
   return (
     <div className="space-y-6">
-      {/* Address */}
+      {/* Footer address */}
       <div className="bg-white rounded-lg shadow-sm overflow-hidden">
         <div className="bg-dark px-6 py-3">
-          <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Office Address</h2>
+          <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Footer Address</h2>
         </div>
         <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className={labelClass}>Address — Georgian (KA)</label>
-            <input type="text" value={addressKa} onChange={(e) => setAddressKa(e.target.value)} className={inputClass} />
+            <label className={labelClass}>Georgian (KA)</label>
+            <input type="text" value={footerAddressKa} onChange={(e) => setFooterAddressKa(e.target.value)} className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>Address — English (EN)</label>
-            <input type="text" value={addressEn} onChange={(e) => setAddressEn(e.target.value)} className={inputClass} />
+            <label className={labelClass}>English (EN)</label>
+            <input type="text" value={footerAddressEn} onChange={(e) => setFooterAddressEn(e.target.value)} className={inputClass} />
           </div>
-          <div className="md:col-span-2">
+          <p className="md:col-span-2 text-xs text-secondary">Shown in the site footer, under the logo column.</p>
+        </div>
+      </div>
+
+      {/* Contact address */}
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-dark px-6 py-3">
+          <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Contact Page Address</h2>
+        </div>
+        <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className={labelClass}>Georgian (KA)</label>
+            <input type="text" value={contactAddressKa} onChange={(e) => setContactAddressKa(e.target.value)} className={inputClass} />
+          </div>
+          <div>
+            <label className={labelClass}>English (EN)</label>
+            <input type="text" value={contactAddressEn} onChange={(e) => setContactAddressEn(e.target.value)} className={inputClass} />
+          </div>
+          <p className="md:col-span-2 text-xs text-secondary">Shown on the contact page (under the &ldquo;Address&rdquo; heading) and on the map overlay.</p>
+        </div>
+      </div>
+
+      {/* Shared map */}
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-dark px-6 py-3">
+          <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Map (from Google)</h2>
+        </div>
+        <div className="p-6 space-y-3">
+          <div>
             <label className={labelClass}>&ldquo;View on Map&rdquo; link (Google Maps URL)</label>
             <input
               type="url"
@@ -75,40 +112,30 @@ export default function LocationEditor({ initial }: { initial: SiteLocation }) {
               placeholder="https://maps.app.goo.gl/..."
               className={inputClass}
             />
-            <p className="text-xs text-secondary mt-1">
-              Opens when a visitor clicks the address or &ldquo;View on Map&rdquo;.
-            </p>
+            <p className="text-xs text-secondary mt-1">Opens when a visitor clicks the address or &ldquo;View on Map&rdquo;.</p>
           </div>
-        </div>
-      </div>
 
-      {/* Map */}
-      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-        <div className="bg-dark px-6 py-3">
-          <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Map (from Google)</h2>
-        </div>
-        <div className="p-6 space-y-3">
           <div>
             <label className={labelClass}>Google Maps embed link (optional)</label>
             <input
               type="text"
               value={mapEmbed}
               onChange={(e) => setMapEmbed(e.target.value)}
-              placeholder="Leave blank to show the map automatically from the address"
+              placeholder="Leave blank to show the map automatically from the contact address"
               className={inputClass}
             />
             <p className="text-xs text-secondary mt-1">
               For an exact spot: open Google Maps → <strong>Share</strong> → <strong>Embed a map</strong> → copy the
               HTML and paste it here (the link is extracted automatically). Leave blank to generate the map from the
-              address — no manual pin needed.
+              contact address — no manual pin needed.
             </p>
           </div>
 
           <div>
             <p className={labelClass}>Preview</p>
             <iframe
-              key={previewSrc(mapEmbed, addressEn)}
-              src={previewSrc(mapEmbed, addressEn)}
+              key={previewSrc(mapEmbed, contactAddressEn)}
+              src={previewSrc(mapEmbed, contactAddressEn)}
               className="w-full h-[320px] rounded-lg border border-gray-200"
               style={{ border: 0 }}
               loading="lazy"

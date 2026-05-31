@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import NewsletterForm from './NewsletterForm'
 import { getSettings, s } from '@/lib/settings'
-import { getLocation, localizedAddress } from '@/lib/location'
+import { getLocation, footerAddress } from '@/lib/location'
 import RichText from '@/components/ui/RichText'
 
 export default async function Footer({ locale }: { locale: string }) {
@@ -12,7 +12,7 @@ export default async function Footer({ locale }: { locale: string }) {
 
   const phone = s(settings, 'contact.phone', locale)
   const location = getLocation(settings)
-  const address = localizedAddress(location, locale)
+  const address = footerAddress(location, locale)
 
   // Unified body text style — same color, weight, size everywhere in the footer
   const bodyText = 'text-white/70 text-[14.5px] font-[520] tracking-tight'
