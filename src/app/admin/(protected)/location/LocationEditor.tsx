@@ -1,15 +1,21 @@
 'use client'
 
 import { useState } from 'react'
-import LocationMapPicker from '@/components/admin/LocationMapPicker'
 import type { SiteLocation } from '@/lib/location'
+
+/** Mirror of the server's embed handling so the preview matches what will be saved. */
+function previewSrc(mapEmbed: string, address: string): string {
+  const match = mapEmbed.trim().match(/src=["']([^"']+)["']/i)
+  const embed = (match ? match[1] : mapEmbed).trim()
+  if (embed) return embed
+  return `https://www.google.com/maps?q=${encodeURIComponent(address)}&z=16&output=embed`
+}
 
 export default function LocationEditor({ initial }: { initial: SiteLocation }) {
   const [addressKa, setAddressKa] = useState(initial.addressKa)
   const [addressEn, setAddressEn] = useState(initial.addressEn)
   const [mapLink, setMapLink] = useState(initial.mapLink)
-  const [lat, setLat] = useState(initial.lat)
-  const [lng, setLng] = useState(initial.lng)
+  const [mapEmbed, setMapEmbed] = useState(initial.mapEmbed)
 
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
@@ -22,12 +28,15 @@ export default function LocationEditor({ initial }: { initial: SiteLocation }) {
       const res = await fetch('/api/admin/location', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ addressKa, addressEn, mapLink, lat, lng }),
+        body: JSON.stringify({ addressKa, addressEn, mapLink, mapEmbed }),
       })
       if (!res.ok) {
         const data = await res.json().catch(() => null)
         throw new Error(data?.error || 'Failed to save')
       }
+      const data = await res.json().catch(() => null)
+      // Reflect the normalized embed (e.g. src pulled out of a pasted iframe).
+      if (data && typeof data.mapEmbed === 'string') setMapEmbed(data.mapEmbed)
       setSaved(true)
       setTimeout(() => setSaved(false), 2500)
     } catch (e) {
@@ -51,21 +60,11 @@ export default function LocationEditor({ initial }: { initial: SiteLocation }) {
         <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className={labelClass}>Address — Georgian (KA)</label>
-            <input
-              type="text"
-              value={addressKa}
-              onChange={(e) => setAddressKa(e.target.value)}
-              className={inputClass}
-            />
+            <input type="text" value={addressKa} onChange={(e) => setAddressKa(e.target.value)} className={inputClass} />
           </div>
           <div>
             <label className={labelClass}>Address — English (EN)</label>
-            <input
-              type="text"
-              value={addressEn}
-              onChange={(e) => setAddressEn(e.target.value)}
-              className={inputClass}
-            />
+            <input type="text" value={addressEn} onChange={(e) => setAddressEn(e.target.value)} className={inputClass} />
           </div>
           <div className="md:col-span-2">
             <label className={labelClass}>&ldquo;View on Map&rdquo; link (Google Maps URL)</label>
@@ -77,30 +76,45 @@ export default function LocationEditor({ initial }: { initial: SiteLocation }) {
               className={inputClass}
             />
             <p className="text-xs text-secondary mt-1">
-              Opens when a visitor clicks &ldquo;View on Map&rdquo;. The pin shown on the site comes from the map below.
+              Opens when a visitor clicks the address or &ldquo;View on Map&rdquo;.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Map pin */}
+      {/* Map */}
       <div className="bg-white rounded-lg shadow-sm overflow-hidden">
         <div className="bg-dark px-6 py-3">
-          <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Map Pin</h2>
+          <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Map (from Google)</h2>
         </div>
         <div className="p-6 space-y-3">
-          <p className="text-sm text-secondary">Click anywhere on the map or drag the pin to set the office location.</p>
-          <LocationMapPicker
-            lat={lat}
-            lng={lng}
-            onChange={(la, ln) => {
-              setLat(la)
-              setLng(ln)
-            }}
-          />
-          <div className="flex flex-wrap gap-x-8 gap-y-1 text-sm text-dark font-mono">
-            <span>Latitude: <strong>{lat.toFixed(6)}</strong></span>
-            <span>Longitude: <strong>{lng.toFixed(6)}</strong></span>
+          <div>
+            <label className={labelClass}>Google Maps embed link (optional)</label>
+            <input
+              type="text"
+              value={mapEmbed}
+              onChange={(e) => setMapEmbed(e.target.value)}
+              placeholder="Leave blank to show the map automatically from the address"
+              className={inputClass}
+            />
+            <p className="text-xs text-secondary mt-1">
+              For an exact spot: open Google Maps → <strong>Share</strong> → <strong>Embed a map</strong> → copy the
+              HTML and paste it here (the link is extracted automatically). Leave blank to generate the map from the
+              address — no manual pin needed.
+            </p>
+          </div>
+
+          <div>
+            <p className={labelClass}>Preview</p>
+            <iframe
+              key={previewSrc(mapEmbed, addressEn)}
+              src={previewSrc(mapEmbed, addressEn)}
+              className="w-full h-[320px] rounded-lg border border-gray-200"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Map preview"
+            />
           </div>
         </div>
       </div>

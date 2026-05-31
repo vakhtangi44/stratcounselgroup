@@ -1,7 +1,7 @@
 import { getLocale } from 'next-intl/server'
 import { unstable_noStore as noStore } from 'next/cache'
 import { getSettings, s } from '@/lib/settings'
-import { getLocation, localizedAddress } from '@/lib/location'
+import { getLocation, localizedAddress, mapEmbedSrc } from '@/lib/location'
 import ContactPageClient from './ContactPageClient'
 
 export default async function ContactPage() {
@@ -34,10 +34,10 @@ export default async function ContactPage() {
     officeAddress: s(settings, 'footer.address', locale),
   }
 
+  const localeAddress = localizedAddress(location, locale)
   const mapLocation = {
-    address: localizedAddress(location, locale),
-    lat: location.lat,
-    lng: location.lng,
+    address: localeAddress,
+    embedSrc: mapEmbedSrc(location, localeAddress),
     mapLink: location.mapLink,
   }
 

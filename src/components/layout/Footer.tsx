@@ -84,6 +84,7 @@ export default async function Footer({ locale }: { locale: string }) {
                 {isKa ? 'ს/ნ: 405847213' : 'ID: 405847213'}
               </p>
               <p className="leading-snug">
+                {isKa ? 'მის.: ' : 'Address: '}
                 <a
                   href={location.mapLink}
                   target="_blank"
