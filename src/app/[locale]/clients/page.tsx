@@ -48,6 +48,9 @@ export default async function ClientsPage() {
 
   const allClients = categories.flatMap((cat) => cat.clients)
 
+  // Admin toggle (/admin/clients): enlarge logos on hover. On by default.
+  const logoZoom = s(settings, 'clients.logoZoom', locale) !== 'false'
+
   const title = s(settings, 'section.trustedBy.title', locale)
   const subtitle = s(settings, 'section.trustedBy.subtitle', locale)
   const description = s(settings, 'section.trustedBy.description', locale)
@@ -79,7 +82,7 @@ export default async function ClientsPage() {
               return (
                 <div
                   key={client.id}
-                  className="group flex items-center justify-center h-[10rem] md:h-[12rem] p-4 overflow-visible relative opacity-0 client-logo-fall hover:z-50"
+                  className={`group flex items-center justify-center h-[10rem] md:h-[12rem] p-4 overflow-visible relative opacity-0 client-logo-fall ${logoZoom ? 'hover:z-50' : ''}`}
                   style={{ animationDelay: `${idx * 200}ms` }}
                 >
                   {logo ? (
@@ -87,7 +90,7 @@ export default async function ClientsPage() {
                     <img
                       src={logo}
                       alt={name}
-                      className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-[2] relative"
+                      className={`w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 relative ${logoZoom ? 'group-hover:scale-[2]' : ''}`}
                     />
                   ) : (
                     <span className="text-white/70 group-hover:text-white text-xs font-medium text-center leading-snug transition-colors duration-300">

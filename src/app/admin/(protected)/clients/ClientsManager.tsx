@@ -16,9 +16,10 @@ interface Client {
 
 interface Props {
   initialClients: Client[]
+  initialLogoZoom: boolean
 }
 
-export default function ClientsManager({ initialClients }: Props) {
+export default function ClientsManager({ initialClients, initialLogoZoom }: Props) {
   const [clients, setClients] = useState<Client[]>(initialClients)
   const [loading, setLoading] = useState(false)
   const [savingOrder, setSavingOrder] = useState(false)
@@ -26,6 +27,27 @@ export default function ClientsManager({ initialClients }: Props) {
   const [error, setError] = useState('')
   const [uploadingId, setUploadingId] = useState<number | null>(null)
   const [showNew, setShowNew] = useState(false)
+  const [logoZoom, setLogoZoom] = useState(initialLogoZoom)
+  const [savingZoom, setSavingZoom] = useState(false)
+
+  async function toggleLogoZoom() {
+    const next = !logoZoom
+    setLogoZoom(next)
+    setSavingZoom(true)
+    try {
+      const res = await fetch('/api/admin/clients/logo-zoom', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ enabled: next }),
+      })
+      if (!res.ok) throw new Error('Failed to save')
+    } catch {
+      setLogoZoom(!next) // revert on failure
+      setError('Could not save the logo zoom setting.')
+    } finally {
+      setSavingZoom(false)
+    }
+  }
   const [newNameEn, setNewNameEn] = useState('')
   const [newNameKa, setNewNameKa] = useState('')
   const [newLogoFile, setNewLogoFile] = useState<File | null>(null)
@@ -177,6 +199,33 @@ export default function ClientsManager({ initialClients }: Props) {
 
   return (
     <div className="space-y-6">
+      {/* Logo display settings */}
+      <div className="bg-white rounded-lg shadow-sm p-5 flex items-center justify-between">
+        <div>
+          <p className="text-sm font-medium text-dark">Enlarge logos on hover</p>
+          <p className="text-xs text-secondary mt-0.5">
+            When on, client logos on the public Clients page zoom in when a visitor hovers over them.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={toggleLogoZoom}
+          disabled={savingZoom}
+          role="switch"
+          aria-checked={logoZoom}
+          title={logoZoom ? 'On — click to turn off' : 'Off — click to turn on'}
+          className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors disabled:opacity-50 ${
+            logoZoom ? 'bg-gold' : 'bg-gray-300'
+          }`}
+        >
+          <span
+            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+              logoZoom ? 'translate-x-6' : 'translate-x-1'
+            }`}
+          />
+        </button>
+      </div>
+
       {/* Header controls */}
       <div className="flex justify-between items-center">
         <p className="text-xs text-secondary">

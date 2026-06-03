@@ -82,6 +82,9 @@ const settings = [
   { key: 'location.mapLink', valueKa: 'https://maps.app.goo.gl/u8enJWpSmMdmJFhY7', valueEn: 'https://maps.app.goo.gl/u8enJWpSmMdmJFhY7', category: 'location' },
   { key: 'location.mapEmbed', valueKa: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.5!2d44.7827!3d41.7151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQyJzU0LjQiTiA0NMKwNDYnNTcuNyJF!5e0!3m2!1sen!2sge!4v1', valueEn: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.5!2d44.7827!3d41.7151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQyJzU0LjQiTiA0NMKwNDYnNTcuNyJF!5e0!3m2!1sen!2sge!4v1', category: 'location' },
 
+  // Clients (display toggles managed from /admin/clients)
+  { key: 'clients.logoZoom', valueKa: 'true', valueEn: 'true', category: 'clients' },
+
   // Pages
   { key: 'page.team.subtitle', valueKa: 'პროფესიონალები', valueEn: 'Professionals', category: 'pages' },
   { key: 'page.team', valueKa: 'ჩვენი გუნდი', valueEn: 'Our Team', category: 'pages' },
