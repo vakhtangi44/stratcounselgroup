@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import BilingualField from '@/components/admin/BilingualField'
 import RichTextEditor from '@/components/admin/RichTextEditor'
 import ImageUpload from '@/components/admin/ImageUpload'
+import VideoInput from '@/components/admin/VideoInput'
 import { PRACTICE_AREAS } from '@/lib/practice-areas'
 import { slugify } from '@/lib/utils'
 
@@ -18,6 +19,7 @@ interface Post {
   excerptKa: string
   excerptEn: string
   coverImage: string | null
+  videoUrl: string | null
   status: string
   tags: { practiceArea: string }[]
   authorId?: number | null
@@ -34,6 +36,7 @@ export default function BlogForm({ post }: { post?: Post }) {
     excerptKa: post?.excerptKa || '',
     excerptEn: post?.excerptEn || '',
     coverImage: post?.coverImage || '',
+    videoUrl: post?.videoUrl || '',
     status: post?.status || 'draft',
     tags: post?.tags.map((t) => t.practiceArea) || [],
   })
@@ -128,6 +131,12 @@ export default function BlogForm({ post }: { post?: Post }) {
         value={form.coverImage}
         onChange={(url) => setForm((f) => ({ ...f, coverImage: url }))}
         label="Cover Image"
+      />
+
+      <VideoInput
+        value={form.videoUrl}
+        onChange={(url) => setForm((f) => ({ ...f, videoUrl: url }))}
+        label="Video (link or upload)"
       />
 
       <div>

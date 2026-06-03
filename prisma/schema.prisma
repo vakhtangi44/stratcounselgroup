@@ -16,6 +16,7 @@ model BlogPost {
   excerptKa   String
   excerptEn   String
   coverImage  String?
+  videoUrl    String?
   status      String        @default("draft")
   publishedAt DateTime?
   createdAt   DateTime      @default(now())

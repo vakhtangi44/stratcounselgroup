@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
   const body = await req.json()
   const {
     slug, titleKa, titleEn, contentKa, contentEn,
-    excerptKa, excerptEn, coverImage, status, authorId, tags,
+    excerptKa, excerptEn, coverImage, videoUrl, status, authorId, tags,
   } = body
 
   if (!slug || !titleKa || !titleEn) {
@@ -38,6 +38,7 @@ export async function POST(req: NextRequest) {
       excerptKa: excerptKa || '',
       excerptEn: excerptEn || '',
       coverImage: coverImage || null,
+      videoUrl: videoUrl || null,
       status: status || 'draft',
       authorId: authorId ? Number(authorId) : null,
       publishedAt: status === 'published' ? new Date() : null,

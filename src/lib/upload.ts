@@ -47,3 +47,33 @@ export async function saveUploadedFile(
 
   return blob.url
 }
+
+const ALLOWED_VIDEO_TYPES: Record<string, string> = {
+  'video/mp4': 'mp4',
+  'video/webm': 'webm',
+  'video/ogg': 'ogv',
+  'video/quicktime': 'mov',
+}
+const MAX_VIDEO_SIZE = 100 * 1024 * 1024 // 100MB — larger videos should be linked (YouTube/Vimeo)
+
+/** Upload a blog video file to Vercel Blob. Admin-only; very large videos should be linked instead. */
+export async function saveUploadedVideo(file: File): Promise<string> {
+  const ext = ALLOWED_VIDEO_TYPES[file.type]
+  if (!ext) {
+    throw new Error('Invalid video type. Allowed: MP4, WebM, OGG, MOV. For large videos, paste a YouTube/Vimeo link instead.')
+  }
+  if (file.size > MAX_VIDEO_SIZE) {
+    throw new Error('Video too large. Max 100MB. For larger videos, paste a YouTube/Vimeo link instead.')
+  }
+  const buffer = Buffer.from(await file.arrayBuffer())
+  const filename = `blog-video/${uuidv4()}.${ext}`
+
+  const blob = await put(filename, buffer, {
+    access: 'public',
+    addRandomSuffix: false,
+    contentType: file.type,
+    token: process.env.BLOB_READ_WRITE_TOKEN,
+  })
+
+  return blob.url
+}

@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { sanitizeHtml } from '@/lib/sanitize'
 import { formatDate, readTime } from '@/lib/utils'
 import { unstable_noStore as noStore } from 'next/cache'
+import VideoEmbed from '@/components/ui/VideoEmbed'
 
 export default async function BlogPostPage({
   params,
@@ -56,6 +57,12 @@ export default async function BlogPostPage({
             <span>{readTime(content)} {isKa ? 'წუთი' : 'min read'}</span>
           </div>
         </header>
+
+        {post.videoUrl && (
+          <div className="mb-10">
+            <VideoEmbed url={post.videoUrl} title={title} />
+          </div>
+        )}
 
         {/* sanitized via DOMPurify in @/lib/sanitize */}
         <div
