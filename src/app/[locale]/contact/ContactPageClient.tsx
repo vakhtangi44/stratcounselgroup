@@ -197,11 +197,6 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                 </div>
               </div>
 
-              {/* Working hours */}
-              <div className="mt-10 pt-8 border-t border-navy/10">
-                <RichText html={strings.workingHoursLabel} as="p" className="text-navy font-heading text-[18px] font-black tracking-[0.06em] mb-3" />
-                <RichText html={strings.workingHours} as="p" className="text-navy/80 text-[18px] font-bold tracking-tight" />
-              </div>
             </div>
 
             {/* Right: Form */}
