@@ -107,24 +107,6 @@ export default async function ClientsPage() {
       {/* Successful Cases */}
       <SuccessfulCases locale={locale} cases={cases} />
 
-      {/* CTA */}
-      <section className="relative bg-section-gradient py-16 text-center text-white px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-dark-pattern" />
-        <div className="relative z-10">
-          <ScrollReveal>
-            <GoldDivider className="mx-auto mb-8" />
-            <p className="font-heading text-2xl md:text-3xl mb-6">
-              {isKa ? 'დაგვიკავშირდით' : 'Contact Us'}
-            </p>
-            <a
-              href={locale === 'en' ? '/en/contact' : '/contact'}
-              className="inline-block bg-gold text-white px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold-dark transition-all duration-300"
-            >
-              {isKa ? 'კონტაქტი' : 'Get in Touch'}
-            </a>
-          </ScrollReveal>
-        </div>
-      </section>
     </div>
   )
 }
