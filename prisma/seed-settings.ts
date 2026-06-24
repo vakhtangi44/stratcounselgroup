@@ -27,7 +27,7 @@ const settings = [
   { key: 'section.asSeenIn', valueKa: 'As Seen In', valueEn: 'As Seen In', category: 'sections' },
 
   // TrustedBy
-  { key: 'section.trustedBy.subtitle', valueKa: 'ვინც ჩვენ გვენდობა', valueEn: 'Who Trusts Us', category: 'sections' },
+  { key: 'section.trustedBy.subtitle', valueKa: 'ჩვენი კლიენტები', valueEn: 'Our Clients', category: 'sections' },
   { key: 'section.trustedBy.title', valueKa: 'ჩვენი კლიენტები', valueEn: 'Our Clients', category: 'sections' },
   { key: 'section.trustedBy.description', valueKa: 'ჩვენ წარმატებით ვთანამშრომლობთ წამყვან კომპანიებთან სხვადასხვა სექტორში', valueEn: 'We successfully collaborate with leading companies across various sectors', category: 'sections' },
   { key: 'section.trustedBy.clients', valueKa: 'კლიენტი', valueEn: 'Clients', category: 'sections' },

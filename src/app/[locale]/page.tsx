@@ -99,7 +99,6 @@ export default async function HomePage() {
       <AboutPreview locale={locale} strings={aboutStrings} />
       <TargetSectors locale={locale} sectors={sectorsData} enabled={sectorsEnabled} />
       {services.length > 0 && <ServicesPreview services={services} locale={locale} />}
-      <StatsSection stats={stats} locale={locale} />
       <LogoMarquee locale={locale} clients={clientCategories.flatMap((cat: any) => cat.clients)} showViewAll />
       <TestimonialsCarousel testimonials={testimonials} locale={locale} strings={testimonialStrings} />
       <BlogPreview posts={blogPosts} locale={locale} strings={{
