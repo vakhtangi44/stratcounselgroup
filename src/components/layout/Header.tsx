@@ -105,7 +105,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
               alt="Strategic Counsel Group"
               width={670}
               height={670}
-              className="h-[84px] md:h-[186px] w-auto scale-x-[1.03] origin-left transition-all duration-500"
+              className="h-[92px] md:h-[205px] w-auto scale-x-[0.88] origin-left transition-all duration-500"
               priority
             />
           </Link>
