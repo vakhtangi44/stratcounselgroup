@@ -33,7 +33,7 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
         </ScrollReveal>
 
         {/* All sectors — centered, wrap to new row when needed */}
-        <div className="flex flex-wrap justify-center gap-6 max-w-[88rem] mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-[88rem] mx-auto">
           {sectors.map((sector, i) => {
             const cardContent = (
               <div className="group text-center">
@@ -56,7 +56,7 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
               <ScrollReveal
                 key={sector.slug}
                 delay={i * 100}
-                className="w-[calc(50%-0.75rem)] lg:w-[calc(25%-0.9rem)]"
+                className=""
               >
                 {enabled ? (
                   <Link href={`${prefix}/sectors/${sector.slug}`} className="block">
