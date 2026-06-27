@@ -37,7 +37,7 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
           {sectors.map((sector, i) => {
             const cardContent = (
               <div className="group text-center">
-                <div className="relative overflow-hidden h-56 md:h-72 rounded-sm mb-4">
+                <div className="relative overflow-hidden h-56 md:h-72 rounded-sm mb-[3.47rem]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={sector.image}
