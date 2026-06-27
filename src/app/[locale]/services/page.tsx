@@ -38,6 +38,7 @@ export default async function ServicesPage() {
       <section className="py-20 md:py-28 px-4" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
+            <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
             <h1 className="font-heading text-3xl md:text-4xl text-dark mb-4">
               {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
             </h1>
