@@ -121,7 +121,7 @@ export default function CasesReorderList({ initialItems }: { initialItems: Case[
                   className="hover:bg-bg-alt/50 cursor-grab active:cursor-grabbing active:bg-gold/5 transition-colors"
                 >
                   <td className="px-4 py-3 text-secondary text-lg select-none">⠿</td>
-                  <td className="px-4 py-3 text-gold"><CaseIcon icon={item.icon} className="w-6 h-6" /></td>
+                  <td className="px-4 py-3 text-[#d88551]"><CaseIcon icon={item.icon} className="w-6 h-6" /></td>
                   <td className="px-4 py-3 max-w-md">
                     <p className="line-clamp-2 text-dark">{item.textKa}</p>
                   </td>

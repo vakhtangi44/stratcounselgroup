@@ -29,7 +29,7 @@ export default async function Footer({ locale }: { locale: string }) {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Image
-              src="/logo-v2.png"
+              src="/scg-logo.png"
               alt="Strategic Counsel Group"
               width={280}
               height={280}

@@ -59,19 +59,13 @@ export default async function ClientsPage() {
   const confidentialityLabel = s(settings, 'section.trustedBy.confidentiality', locale)
 
   return (
-    <div className="pt-[220px]">
-      {/* Page Hero */}
-      <section className="relative bg-white text-dark py-24 md:py-32 text-center px-4 overflow-hidden">
-        <div className="relative z-10">
-          <RichText html={subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
-          <div className="gold-divider mx-auto mb-8" />
-          <RichText html={title} as="h1" className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em] text-dark" />
-          <RichText html={description} as="p" className="text-secondary max-w-none mx-auto text-lg leading-relaxed font-[520] whitespace-nowrap" />
+    <div className="pt-[255px]">
+      {/* Page Hero + Client Logos */}
+      <section className="py-12 md:py-16 text-white overflow-visible" style={{ background: '#1C122C' }}>
+        <div className="text-center px-4 mb-[4.6rem]">
+          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em] text-gold">{title}</h1>
+          <RichText html={description} as="p" className="text-white max-w-none mx-auto text-lg leading-relaxed font-[520] whitespace-nowrap" />
         </div>
-      </section>
-
-      {/* All Client Logos */}
-      <section className="py-12 md:py-16 bg-section-gradient text-white overflow-visible">
         <div className="px-4 overflow-visible">
           <div key={Date.now()} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-[80%] mx-auto overflow-visible">
             {allClients.map((client, idx) => {
@@ -81,15 +75,14 @@ export default async function ClientsPage() {
               return (
                 <div
                   key={client.id}
-                  className={`group flex items-center justify-center h-[10rem] md:h-[12rem] p-4 overflow-visible relative opacity-0 client-logo-fall ${logoZoom ? 'hover:z-50' : ''}`}
-                  style={{ animationDelay: `${idx * 200}ms` }}
+                  className="group flex items-center justify-center h-[10rem] md:h-[12rem] p-4 relative border border-white/10 hover:border-gold/50 transition-all duration-500 hover:scale-[1.06]"
                 >
                   {logo ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={logo}
                       alt={name}
-                      className={`w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 relative ${logoZoom ? 'group-hover:scale-[2]' : ''}`}
+                      className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500"
                     />
                   ) : (
                     <span className="text-white/70 group-hover:text-white text-xs font-medium text-center leading-snug transition-colors duration-300">

@@ -48,7 +48,7 @@ export default async function SectorDetailPage({
   const otherSectors = getSectorsData(settings, locale).filter((s) => s.slug !== slug)
 
   return (
-    <div className="pt-[220px]">
+    <div className="pt-[255px]">
       {/* Hero with sector photo */}
       <section className="relative bg-section-gradient text-white py-32 md:py-40 text-center px-4 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -61,10 +61,10 @@ export default async function SectorDetailPage({
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent" />
 
         <div className="relative z-10">
+          <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
           <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
             {isKa ? 'სექტორი' : 'Sector'}
           </p>
-          <div className="gold-divider mx-auto mb-8" />
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]">
             {sector.name}
           </h1>
@@ -116,29 +116,6 @@ export default async function SectorDetailPage({
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative bg-section-gradient py-20 md:py-28 text-center text-white px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-dark-pattern" />
-        <div className="relative z-10">
-          <ScrollReveal>
-            <div className="gold-divider mx-auto mb-8" />
-            <h2 className="font-heading text-3xl md:text-4xl mb-6 tracking-[-0.01em]">
-              {isKa ? 'გჭირდებათ სამართლებრივი კონსულტაცია?' : 'Need Legal Consultation?'}
-            </h2>
-            <p className="text-white/40 mb-10 max-w-lg mx-auto font-light">
-              {isKa
-                ? 'დაგვიკავშირდით.'
-                : 'Contact us.'}
-            </p>
-            <Link
-              href={`${prefix}/contact`}
-              className="inline-block bg-gold text-white px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold-dark transition-all duration-300"
-            >
-              {isKa ? 'კონსულტაციის დაჯავშნა' : 'Book Consultation'}
-            </Link>
-          </ScrollReveal>
-        </div>
-      </section>
 
       <LogoMarquee locale={locale} clients={allClients} />
     </div>

@@ -17,9 +17,9 @@ interface Props {
 
 function CaseCard({ text, icon }: { text: string; icon: string }) {
   return (
-    <div tabIndex={0} className="relative h-full p-8 bg-white border border-gray-100 hover:border-gold/40 focus:border-gold/40 transition-all duration-700 group hover:shadow-lg hover:shadow-gold/5 focus:shadow-lg focus:shadow-gold/5 hover:scale-[1.2] focus:scale-[1.2] text-center outline-none">
-      <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gold scale-y-0 group-hover:scale-y-100 group-focus:scale-y-100 transition-transform duration-700 origin-top" />
-      <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-gold border border-gold/20 group-hover:bg-gold group-hover:text-white group-hover:border-gold group-focus:bg-gold group-focus:text-white group-focus:border-gold transition-all duration-500">
+    <div tabIndex={0} className="relative h-full p-8 bg-white border border-gray-100 hover:border-[#d88551]/40 focus:border-[#d88551]/40 transition-all duration-700 group hover:shadow-lg hover:shadow-[#d88551]/5 focus:shadow-lg focus:shadow-[#d88551]/5 hover:scale-[1.2] focus:scale-[1.2] text-center outline-none">
+      <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#d88551] scale-y-0 group-hover:scale-y-100 group-focus:scale-y-100 transition-transform duration-700 origin-top" />
+      <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-[#d88551] border border-[#d88551]/20 group-hover:bg-[#d88551] group-hover:text-white group-hover:border-[#d88551] group-focus:bg-[#d88551] group-focus:text-white group-focus:border-[#d88551] transition-all duration-500">
         <CaseIcon icon={icon} />
       </div>
       <p className="text-navy text-[14px] md:text-[15px] leading-relaxed font-[316] text-justify group-hover:text-dark group-focus:text-dark transition-colors duration-500">

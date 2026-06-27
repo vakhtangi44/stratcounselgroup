@@ -23,9 +23,9 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
   if (sectors.length === 0) return null
 
   return (
-    <section className="py-20 md:py-28 bg-section-gradient text-white">
+    <section className="py-20 md:py-28" style={{ background: '#1C122C' }}>
       <div className="container mx-auto px-4 lg:px-8">
-        <ScrollReveal className="text-center mb-16">
+        <ScrollReveal className="text-center mb-[3.4rem]">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
           <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">
             {isKa ? 'სამიზნე სექტორები' : 'Target Sectors'}

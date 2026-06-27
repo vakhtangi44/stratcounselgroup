@@ -91,7 +91,7 @@ function MiniToolbar({ editorRef, onContentChange }: { editorRef: React.RefObjec
   }, [saveSelection])
 
   const colorInputRef = useRef<HTMLInputElement>(null)
-  const [pickedColor, setPickedColor] = useState('#C4A35A')
+  const [pickedColor, setPickedColor] = useState('#668CCE')
 
   const syncColor = useCallback(() => {
     const color = getSelectionColor()

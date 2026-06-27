@@ -97,22 +97,22 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
       <header
         className="fixed top-[2px] left-0 right-0 z-40 transition-all duration-500"
         style={{
-          background: 'linear-gradient(to bottom, #1b0b24 0%, #1b0b24 40%, rgba(27,11,36,0) 100%)',
+          background: '#1C122C',
         }}
       >
-        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[120px] md:h-[218px]">
+        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[118px] md:h-[240px]">
           <Link href={prefix || '/'} className="relative z-10">
             <Image
-              src="/logo-v2.png"
+              src="/scg-logo.png"
               alt="Strategic Counsel Group"
               width={670}
               height={670}
-              className="h-[120px] md:h-[268px] w-auto transition-all duration-500"
+              className="h-[105px] md:h-[232px] w-auto scale-x-[1.42] transition-all duration-500"
               priority
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
+          <nav className="hidden lg:flex items-center gap-7 xl:gap-10">
             <Link
               href={`${prefix}/about`}
               className={`text-[14px] uppercase tracking-[0.048em] font-semibold transition-colors duration-300 whitespace-nowrap ${
@@ -201,7 +201,7 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
             </Link>
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6 ml-10">
             <Link
               href={`${prefix}/contact`}
               className={`hidden xl:inline-flex items-center px-5 py-2 text-[12px] uppercase tracking-[0.15em] font-medium transition-all duration-500 ${

@@ -96,7 +96,7 @@ export default function AboutValuesReorderList({ initialItems }: { initialItems:
                 className="hover:bg-bg-alt/50 cursor-grab active:cursor-grabbing active:bg-gold/5 transition-colors"
               >
                 <td className="px-4 py-3 text-secondary text-lg select-none">⠿</td>
-                <td className="px-4 py-3 text-gold"><AboutValueIcon icon={item.icon} className="w-6 h-6" /></td>
+                <td className="px-4 py-3 text-[#d88551]"><AboutValueIcon icon={item.icon} className="w-6 h-6" /></td>
                 <td className="px-4 py-3 font-medium max-w-xs truncate">{item.titleKa}</td>
                 <td className="px-4 py-3 text-secondary max-w-xs truncate">{item.titleEn}</td>
                 <td className="px-4 py-3">

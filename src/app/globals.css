@@ -3,14 +3,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold: #C4A35A;
-  --color-gold-dark: #A8853A;
-  --color-gold-light: #D4BC80;
-  --color-dark: #1c2f54;
-  --color-navy: #1c2f54;
+  --color-gold: #668CCE;
+  --color-gold-dark: #5478B8;
+  --color-gold-light: #8AAAE0;
+  --color-dark: #1C122C;
+  --color-navy: #1C122C;
   --color-secondary: #5a5a6e;
   --color-bg-alt: #f8f7f4;
   --color-cream: #faf8f5;
+  --color-accent-orange: #d88551;
 
   --font-family-heading: 'Mark GEO', 'Noto Sans Georgian', 'Source Serif Pro', Georgia, serif;
   --font-family-body: 'Mark GEO', 'Noto Sans Georgian', Roboto, Arial, sans-serif;
@@ -29,7 +30,7 @@
   body {
     font-family: var(--font-family-body);
     color: var(--color-dark);
-    background: #1b0b24;
+    background: #1C122C;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 370;
@@ -133,13 +134,13 @@
 
   .gold-underline {
     position: relative;
-    padding-bottom: 0.75rem;
+    padding-top: 1rem;
   }
 
-  .gold-underline::after {
+  .gold-underline::before {
     content: '';
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
     height: 2px;
@@ -180,7 +181,7 @@
     transform: perspective(900px) rotateX(7deg) rotateY(-7deg) scale(1.03);
     box-shadow:
       8px 16px 40px rgba(12, 18, 32, 0.25),
-      0 0 20px rgba(196, 163, 90, 0.2);
+      0 0 20px rgba(139, 157, 192, 0.2);
   }
 
   /* ─── Old-money animation keyframes ─── */
@@ -323,19 +324,15 @@
 
   /* Subtle background pattern */
   .bg-subtle-pattern {
-    background-image:
-      radial-gradient(circle at 25% 25%, rgba(177, 151, 107, 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba(177, 151, 107, 0.03) 0%, transparent 50%);
+    background: transparent;
   }
 
   .bg-section-gradient {
-    background-image: linear-gradient(to bottom, #1b0b24 0%, #161132 30%, var(--color-dark) 100%);
+    background: #1C122C;
   }
 
   .bg-dark-pattern {
-    background-image:
-      radial-gradient(circle at 20% 50%, rgba(177, 151, 107, 0.06) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(177, 151, 107, 0.04) 0%, transparent 50%);
+    background: transparent;
   }
 
   /* Linen / paper texture overlay */
@@ -438,6 +435,6 @@
 
   /* Client card subtle glow */
   .client-glow:hover {
-    box-shadow: 0 0 20px rgba(177, 151, 107, 0.08), 0 4px 12px rgba(0,0,0,0.04);
+    box-shadow: 0 0 20px rgba(139, 157, 192, 0.08), 0 4px 12px rgba(0,0,0,0.04);
   }
 }

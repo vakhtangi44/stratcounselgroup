@@ -52,16 +52,16 @@ export default function ServicesPreview({ services, locale }: Props) {
                 : 'lg:col-span-2 lg:col-start-4'
             return (
             <ScrollReveal key={service.id} delay={i * 150} className={colClass}>
-              <div className="relative h-full p-8 bg-white border border-gray-100 hover:border-gold/40 active:border-gold/40 transition-all duration-700 group hover:shadow-lg hover:shadow-gold/5 active:shadow-lg active:shadow-gold/5">
+              <div className="relative h-full p-8 bg-white border border-gray-100 hover:border-[#d88551]/40 active:border-[#d88551]/40 transition-all duration-700 group hover:shadow-lg hover:shadow-[#d88551]/5 active:shadow-lg active:shadow-[#d88551]/5">
                 {/* Gold left border on hover/tap */}
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gold scale-y-0 group-hover:scale-y-100 group-active:scale-y-100 transition-transform duration-700 origin-top" />
+                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#d88551] scale-y-0 group-hover:scale-y-100 group-active:scale-y-100 transition-transform duration-700 origin-top" />
 
                 {/* Roman numeral */}
-                <div className="text-gold/20 font-heading text-5xl mb-4 leading-none">
+                <div className="text-[#d88551] font-heading text-5xl mb-4 leading-none">
                   {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                 </div>
 
-                <h3 className="font-heading text-lg text-dark mb-3 leading-snug group-hover:text-gold group-active:text-gold transition-colors duration-500">
+                <h3 className="font-heading text-lg text-dark mb-3 leading-snug group-hover:text-[#d88551] group-active:text-[#d88551] transition-colors duration-500">
                   {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
                 </h3>
 
@@ -73,14 +73,14 @@ export default function ServicesPreview({ services, locale }: Props) {
                 <ul className="space-y-2 mb-4">
                   {service.items.slice(0, 3).map((item) => (
                     <li key={item.id} className="flex items-start gap-2 text-xs text-secondary">
-                      <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" stroke="#A8853A" viewBox="0 0 24 24" strokeWidth={3.5}>
+                      <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" stroke="#d88551" viewBox="0 0 24 24" strokeWidth={3.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       <span>{locale === 'ka' ? item.textKa : item.textEn}</span>
                     </li>
                   ))}
                   {service.items.length > 3 && (
-                    <li className="text-xs text-gold/60 pl-5">
+                    <li className="text-xs text-[#d88551]/60 pl-5">
                       +{service.items.length - 3} {locale === 'ka' ? 'სხვა' : 'more'}
                     </li>
                   )}

@@ -22,15 +22,11 @@ export default async function Hero({ locale, strings }: { locale: string; string
   // always fits the container.
   const headingSize =
     locale === 'en'
-      ? 'text-xl sm:text-3xl md:text-5xl lg:text-6xl whitespace-nowrap'
-      : 'text-2xl sm:text-4xl md:text-6xl lg:text-7xl'
+      ? 'text-[1.06rem] sm:text-[1.59rem] md:text-[2.55rem] lg:text-[3.19rem] whitespace-nowrap'
+      : 'text-[1.28rem] sm:text-[1.91rem] md:text-[3.19rem] lg:text-[3.83rem]'
 
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center bg-section-gradient overflow-hidden pt-20 pb-20">
-      <div className="absolute inset-0 bg-dark-pattern" />
-
-      {/* Breathing background element */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-gold/3 animate-breathe" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-[260px] pb-20" style={{ background: '#1C122C' }}>
 
       {/* Subtle geometric accent */}
       <div className="absolute top-1/4 right-0 w-96 h-96 border border-gold/5 rounded-full -translate-y-1/2 translate-x-1/2" />
@@ -42,10 +38,10 @@ export default async function Hero({ locale, strings }: { locale: string; string
       <div className="absolute bottom-8 left-8 w-16 h-16 border-b border-l border-gold/15 hidden md:block" />
       <div className="absolute bottom-8 right-8 w-16 h-16 border-b border-r border-gold/15 hidden md:block" />
 
-      <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-        <p className="text-gold font-heading text-sm md:text-base mb-6 tracking-[0.35em] uppercase opacity-0 animate-slide-up-elegant" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
+      <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto">
+        <h2 className="text-gold font-heading text-[1.53rem] sm:text-[2.3rem] md:text-[3.8rem] lg:text-[4.6rem] font-bold mb-4 tracking-[-0.02em] leading-[1.1] opacity-0 animate-slide-up-elegant" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
           Strategic Counsel Group
-        </p>
+        </h2>
 
         {/* Animated gold divider */}
         <div className="flex justify-center mb-8">
