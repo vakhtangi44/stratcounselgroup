@@ -32,7 +32,7 @@ export default async function TeamPage() {
   return (
     <div className="pt-[255px]">
       {/* Compact Hero */}
-      <section className="relative bg-white py-[2.18rem] md:py-[3.06rem] text-center px-4 overflow-hidden">
+      <section className="relative bg-white py-[1.85rem] md:py-[2.6rem] text-center px-4 overflow-hidden">
         <div className="relative z-10">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
           <RichText html={s(settings, 'page.team.subtitle', locale)} as="p" className="text-gold text-[16.5px] uppercase tracking-[0.3em] mb-3" />
@@ -41,7 +41,7 @@ export default async function TeamPage() {
       </section>
 
       {/* Team Grid */}
-      <section className="pt-[3.81rem] pb-[5.44rem] px-4 bg-white">
+      <section className="pt-[3.24rem] pb-[5.44rem] px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {members.map((member, i) => (
