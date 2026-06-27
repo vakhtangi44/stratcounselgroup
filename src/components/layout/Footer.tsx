@@ -31,7 +31,7 @@ export default async function Footer({ locale }: { locale: string }) {
             alt="Strategic Counsel Group"
             width={280}
             height={280}
-            className="h-[70px] w-auto scale-x-[0.88] origin-left"
+            className="h-[70px] w-auto "
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8">
@@ -41,7 +41,7 @@ export default async function Footer({ locale }: { locale: string }) {
               alt="Strategic Counsel Group"
               width={280}
               height={280}
-              className="h-[106px] w-auto scale-x-[0.88] origin-left"
+              className="h-[106px] w-auto "
             />
           </div>
 
