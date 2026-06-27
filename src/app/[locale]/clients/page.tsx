@@ -62,7 +62,7 @@ export default async function ClientsPage() {
     <div className="pt-[255px]">
       {/* Page Hero + Client Logos */}
       <section className="py-12 md:py-16 text-white overflow-visible" style={{ background: '#1C122C' }}>
-        <div className="text-center px-4 mb-[4.6rem]">
+        <div className="text-center px-4 mb-[3.91rem]">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em] text-white">{title}</h1>
           <RichText html={description} as="p" className="text-gold max-w-none mx-auto text-lg leading-relaxed font-[520] whitespace-nowrap" />
