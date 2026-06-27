@@ -36,11 +36,13 @@ export default async function AboutPage() {
       />
 
       {/* Advantages */}
-      <section className="py-20 md:py-28 px-4 bg-white bg-subtle-pattern">
+      <section className="py-20 md:py-28 px-4" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-5xl">
           <ScrollReveal className="text-center mb-16">
-            <RichText html={s(settings, 'about.whyUs.subtitle', locale)} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
-            <RichText html={s(settings, 'about.whyUs', locale)} as="h2" className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block" />
+            <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
+            <h2 className="font-heading text-3xl md:text-4xl text-dark">
+              {locale === 'ka' ? 'ჩვენი უპირატესობები' : 'Our Advantages'}
+            </h2>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

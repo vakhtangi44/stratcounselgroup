@@ -41,7 +41,7 @@ export default async function TeamPage() {
       </section>
 
       {/* Team Grid */}
-      <section className="pt-[8rem] pb-[8rem] px-4 bg-white">
+      <section className="pt-[6.8rem] pb-[6.8rem] px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {members.map((member, i) => (

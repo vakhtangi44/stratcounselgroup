@@ -26,7 +26,7 @@ export default async function Hero({ locale, strings }: { locale: string; string
       : 'text-[1.28rem] sm:text-[1.91rem] md:text-[3.19rem] lg:text-[3.83rem]'
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-[260px] pb-20" style={{ background: '#1C122C' }}>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-[234px] pb-20" style={{ background: '#1C122C' }}>
 
       {/* Subtle geometric accent */}
       <div className="absolute top-1/4 right-0 w-96 h-96 border border-gold/5 rounded-full -translate-y-1/2 translate-x-1/2" />
