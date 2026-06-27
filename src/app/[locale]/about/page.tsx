@@ -84,14 +84,14 @@ export default async function AboutPage() {
               }
               return (
                 <ScrollReveal key={v.id} delay={i * 150} className={colClass}>
-                  <div className="text-center p-8 bg-white border border-gray-100 hover:border-[#668CCE] hover:bg-[#668CCE] transition-all duration-500 group hover:shadow-xl hover:shadow-[#668CCE]/30 hover:scale-[1.2] h-full cursor-pointer">
-                    <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-[#668CCE] border border-[#668CCE]/20 group-hover:text-white group-hover:border-white transition-all duration-500">
+                  <div className="text-center p-8 bg-white border border-gray-100 group hover:scale-[1.15] hover:shadow-lg h-full cursor-pointer" style={{ transition: 'transform 0.5s, box-shadow 0.5s' }}>
+                    <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-[#668CCE] border border-[#668CCE]/20">
                       <AboutValueIcon icon={v.icon} />
                     </div>
-                    <h3 className="font-heading text-xl text-dark group-hover:text-white mb-3 transition-colors duration-500">
+                    <h3 className="font-heading text-xl text-dark mb-3">
                       {locale === 'ka' ? v.titleKa : v.titleEn}
                     </h3>
-                    <p className="text-secondary text-sm font-light leading-relaxed text-justify group-hover:text-white/90 transition-colors duration-500">
+                    <p className="text-secondary text-sm font-light leading-relaxed text-justify">
                       {locale === 'ka' ? v.descriptionKa : v.descriptionEn}
                     </p>
                   </div>
