@@ -42,10 +42,10 @@ export default async function ServicesPage() {
             <h1 className="font-heading text-3xl md:text-4xl text-dark mb-4">
               {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
             </h1>
-            <p className="text-secondary text-lg font-light">
+            <p className="text-secondary text-[1.35rem] font-light">
               {locale === 'ka'
-                ? 'სრული სამართლებრივი მხარდაჭერა — მოლაპარაკებიდან სასამართლომდე.'
-                : 'Complete legal support — from negotiation to courtroom.'}
+                ? 'სრული სამართლებრივი მხარდაჭერა — მოლაპარაკებიდან სასამართლომდე'
+                : 'Complete legal support — from negotiation to courtroom'}
             </p>
           </div>
           <div key={Date.now()} className="space-y-12">
