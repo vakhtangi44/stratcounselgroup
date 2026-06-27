@@ -84,8 +84,8 @@ export default async function AboutPage() {
               }
               return (
                 <ScrollReveal key={v.id} delay={i * 150} className={colClass}>
-                  <div className="text-center p-8 bg-white border border-gray-100 hover:border-gold hover:bg-gold transition-all duration-500 group hover:shadow-xl hover:shadow-gold/30 hover:scale-[1.2] h-full cursor-pointer">
-                    <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-gold border border-gold/20 group-hover:text-white group-hover:border-white transition-all duration-500">
+                  <div className="text-center p-8 bg-white border border-gray-100 hover:border-[#d88551] hover:bg-[#d88551] transition-all duration-500 group hover:shadow-xl hover:shadow-[#d88551]/30 hover:scale-[1.2] h-full cursor-pointer">
+                    <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-[#d88551] border border-[#d88551]/20 group-hover:text-white group-hover:border-white transition-all duration-500">
                       <AboutValueIcon icon={v.icon} />
                     </div>
                     <h3 className="font-heading text-xl text-dark group-hover:text-white mb-3 transition-colors duration-500">
