@@ -84,7 +84,7 @@ export default async function AboutPage() {
               }
               return (
                 <ScrollReveal key={v.id} delay={i * 150} className={colClass}>
-                  <div className="text-center p-8 bg-white border border-gray-100 group hover:scale-[1.15] hover:shadow-lg h-full cursor-pointer" style={{ transition: 'transform 0.5s, box-shadow 0.5s' }}>
+                  <div className="text-center p-8 bg-white border border-gray-100 group hover:scale-[1.38] hover:shadow-lg h-full cursor-pointer" style={{ transition: 'transform 0.5s, box-shadow 0.5s' }}>
                     <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-[#668CCE] border border-[#668CCE]/20">
                       <AboutValueIcon icon={v.icon} />
                     </div>

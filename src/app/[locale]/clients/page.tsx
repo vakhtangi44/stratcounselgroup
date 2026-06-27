@@ -76,7 +76,7 @@ export default async function ClientsPage() {
               return (
                 <div
                   key={client.id}
-                  className="group flex items-center justify-center h-[10rem] md:h-[12rem] p-4 relative border border-white/10 hover:border-gold/50 transition-all duration-500 hover:scale-[1.06]"
+                  className="group flex items-center justify-center h-[10rem] md:h-[12rem] p-4 relative border border-white/10 hover:border-gold/50 transition-all duration-500 hover:scale-[1.27]"
                 >
                   {logo ? (
                     // eslint-disable-next-line @next/next/no-img-element
