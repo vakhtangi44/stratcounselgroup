@@ -63,17 +63,6 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
 
   return (
     <div className="pt-[220px]">
-      {/* Hero */}
-      <section className="relative bg-section-gradient text-white py-24 md:py-32 text-center px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-dark-pattern" />
-        <div className="relative z-10">
-          <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
-          <div className="w-12 h-[2px] bg-gold mx-auto mb-8" />
-          <RichText html={strings.heading} as="h1" className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]" />
-          <RichText html={strings.heroSubtitle} as="p" className="text-white/50 text-lg font-light" />
-        </div>
-      </section>
-
       {/* Split layout */}
       <section className="bg-white py-20 md:py-28 px-4">
         <div className="container mx-auto max-w-[72rem]">
