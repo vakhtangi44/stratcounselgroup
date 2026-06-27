@@ -98,19 +98,19 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
         className="fixed top-[2px] left-0 right-0 z-40 transition-all duration-500 overflow-hidden"
         style={{ background: '#1C122C' }}
       >
-        <div className="px-4 xl:px-8 2xl:px-12 flex items-center justify-between h-[118px] md:h-[240px]">
-          <Link href={prefix || '/'} className="relative z-10 flex-shrink-0">
+        <div className="px-4 xl:px-8 2xl:px-12 flex items-center h-[118px] md:h-[200px]">
+          <Link href={prefix || '/'} className="relative z-10 flex-shrink-0 mr-6">
             <Image
               src={logoUrl || '/scg-logo.png'}
               alt="Strategic Counsel Group"
               width={670}
               height={670}
-              className="h-[105px] md:h-[232px] w-auto scale-x-[1.21] origin-left transition-all duration-500"
+              className="h-[84px] md:h-[186px] w-auto scale-x-[1.21] origin-left transition-all duration-500"
               priority
             />
           </Link>
 
-          <nav className="hidden xl:flex items-center gap-2 2xl:gap-4">
+          <nav className="hidden xl:flex items-center gap-2 2xl:gap-4 ml-auto">
             <Link
               href={`${prefix}/about`}
               className={`text-[12px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
@@ -197,12 +197,10 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
             >
               {t('contact')}
             </Link>
-          </nav>
 
-          <div className="flex items-center gap-2 ml-2 flex-shrink-0">
             <Link
               href={`${prefix}/contact`}
-              className={`hidden 2xl:inline-flex items-center px-4 py-2 text-[11px] uppercase tracking-[0.1em] font-medium transition-all duration-500 ${
+              className={`hidden 2xl:inline-flex items-center px-4 py-2 text-[11px] uppercase tracking-[0.1em] font-medium transition-all duration-500 ml-2 ${
                 isTransparent
                   ? 'border border-gold text-gold hover:bg-gold hover:text-white'
                   : 'bg-gold text-white hover:bg-gold-dark'
@@ -211,6 +209,9 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
               {isKa ? 'კონსულტაცია' : 'Consultation'}
             </Link>
             <LanguageToggle locale={locale} />
+          </nav>
+
+          <div className="flex items-center gap-2 ml-2 flex-shrink-0 xl:hidden">
             <MobileMenu locale={locale} links={[
               { href: `${prefix}/about`, label: t('about') },
               ...(sectorsEnabled ? [{ href: `${prefix}/sectors`, label: isKa ? 'სექტორები' : 'Sectors' }] : []),
