@@ -1,6 +1,6 @@
 import AnimatedCounter from '@/components/ui/AnimatedCounter'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import GoldDivider from '@/components/ui/GoldDivider'
+
 import type { Statistic } from '@prisma/client'
 
 interface Props {
@@ -37,7 +37,6 @@ export default function StatsSection({ stats, locale }: Props) {
                   <AnimatedCounter target={parseInt(stat.value)} suffix={stat.suffix ?? ''} />
                 </p>
                 {/* Gold divider */}
-                <GoldDivider className="mb-4" />
                 <p className="text-white/50 text-sm uppercase tracking-[0.15em] font-light group-hover:text-white/70 group-active:text-white/70 transition-colors duration-500">
                   {locale === 'ka' ? stat.labelKa : stat.labelEn}
                 </p>

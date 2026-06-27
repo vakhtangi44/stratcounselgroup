@@ -1,5 +1,5 @@
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import GoldDivider from '@/components/ui/GoldDivider'
+
 import { CaseIcon } from '@/lib/case-icons'
 
 interface Case {
@@ -45,7 +45,6 @@ export default function SuccessfulCases({ locale, cases }: Props) {
               <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4">
                 {isKa ? 'წარმატებული აქტივობები' : 'Successful Cases'}
               </h2>
-              <GoldDivider className="mt-8" />
             </ScrollReveal>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -67,7 +66,6 @@ export default function SuccessfulCases({ locale, cases }: Props) {
               <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4">
                 {isKa ? 'ჩვენი გამოცდილება' : 'Our Experience'}
               </h2>
-              <GoldDivider className="mt-8" />
             </ScrollReveal>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">

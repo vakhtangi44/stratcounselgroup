@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import GoldDivider from '@/components/ui/GoldDivider'
 
 interface ServiceItem {
   id: number
@@ -41,7 +40,6 @@ export default function ServicesPreview({ services, locale }: Props) {
               ? 'სრული სამართლებრივი მხარდაჭერა ყველა ეტაპზე.'
               : 'Complete legal support at every stage.'}
           </p>
-          <GoldDivider className="mt-8" />
         </ScrollReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 max-w-[120rem] mx-auto">

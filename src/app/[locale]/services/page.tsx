@@ -1,7 +1,6 @@
 import { getLocale } from 'next-intl/server'
 import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import GoldDivider from '@/components/ui/GoldDivider'
 import RichText from '@/components/ui/RichText'
 import { db } from '@/lib/db'
 import { getSettings, s } from '@/lib/settings'
@@ -35,31 +34,19 @@ export default async function ServicesPage() {
 
   return (
     <div className="pt-[220px]">
-      {/* Hero */}
-      <section className="relative bg-section-gradient text-white py-24 md:py-32 text-center px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-dark-pattern" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-gold/5 rounded-full" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-gold/3 rounded-full" />
-
-        <div className="relative z-10">
-          <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
-            {locale === 'ka' ? 'რას გთავაზობთ' : 'What We Offer'}
-          </p>
-          <div className="gold-divider mx-auto mb-8" />
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]">
-            {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
-          </h1>
-          <p className="text-white/50 mx-auto text-lg leading-relaxed font-[520] whitespace-nowrap">
-            {locale === 'ka'
-              ? 'სრული სამართლებრივი მხარდაჭერა — მოლაპარაკებიდან სასამართლომდე.'
-              : 'Complete legal support — from negotiation to courtroom.'}
-          </p>
-        </div>
-      </section>
-
       {/* Services */}
       <section className="py-20 md:py-28 px-4 bg-white bg-subtle-pattern">
         <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-16">
+            <h1 className="font-heading text-3xl md:text-4xl text-dark mb-4">
+              {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
+            </h1>
+            <p className="text-secondary text-lg font-light">
+              {locale === 'ka'
+                ? 'სრული სამართლებრივი მხარდაჭერა — მოლაპარაკებიდან სასამართლომდე.'
+                : 'Complete legal support — from negotiation to courtroom.'}
+            </p>
+          </div>
           <div key={Date.now()} className="space-y-12">
             {services.map((service, idx) => (
               <ScrollReveal key={service.id} delay={idx * 400}>
@@ -106,11 +93,6 @@ export default async function ServicesPage() {
                   </div>
 
                   {/* Bottom separator */}
-                  {idx < services.length - 1 && (
-                    <div className="mt-12">
-                      <GoldDivider />
-                    </div>
-                  )}
                 </div>
               </ScrollReveal>
             ))}

@@ -3,7 +3,6 @@ import { getLocale } from 'next-intl/server'
 import { getSettings, s } from '@/lib/settings'
 import { unstable_noStore as noStore } from 'next/cache'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import GoldDivider from '@/components/ui/GoldDivider'
 import RichText from '@/components/ui/RichText'
 import SuccessfulCases from '@/components/sections/SuccessfulCases'
 

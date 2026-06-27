@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import GoldDivider from '@/components/ui/GoldDivider'
+
 import RichText from '@/components/ui/RichText'
 
 export interface ClientData {
@@ -113,7 +113,6 @@ export default function TrustedBy({ locale, categories, preview = false, strings
                 as="p"
                 className={`${headerDescColor} font-light max-w-2xl mx-auto text-lg`}
               />
-              <GoldDivider className="mt-8" />
             </div>
           </ScrollReveal>
         </div>

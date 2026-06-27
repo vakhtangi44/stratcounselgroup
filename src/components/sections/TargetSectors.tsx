@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import GoldDivider from '@/components/ui/GoldDivider'
+
 
 interface SectorItem {
   slug: string
@@ -30,7 +30,6 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
           <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">
             {isKa ? 'სამიზნე სექტორები' : 'Target Sectors'}
           </h2>
-          <GoldDivider className="mt-8" />
         </ScrollReveal>
 
         {/* All sectors — centered, wrap to new row when needed */}

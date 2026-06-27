@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { TeamMember } from '@prisma/client'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import GoldDivider from '@/components/ui/GoldDivider'
+
 import RichText from '@/components/ui/RichText'
 
 interface Props {
@@ -34,7 +34,6 @@ export default function TeamPreview({ members, locale, strings }: Props) {
         <ScrollReveal className="text-center mb-16">
           <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
           <RichText html={strings.title} as="h2" className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block" />
-          <GoldDivider className="mt-8" />
         </ScrollReveal>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -69,8 +68,6 @@ export default function TeamPreview({ members, locale, strings }: Props) {
           ))}
         </div>
 
-        {/* Elegant divider */}
-        <GoldDivider className="my-14" />
 
         <ScrollReveal className="text-center">
           <Link
