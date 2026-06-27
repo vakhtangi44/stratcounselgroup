@@ -56,7 +56,7 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
               <ScrollReveal
                 key={sector.slug}
                 delay={i * 100}
-                className="w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] lg:w-[calc(20%-0.8rem)]"
+                className="w-[calc(50%-0.75rem)] lg:w-[calc(25%-0.9rem)]"
               >
                 {enabled ? (
                   <Link href={`${prefix}/sectors/${sector.slug}`} className="block">
