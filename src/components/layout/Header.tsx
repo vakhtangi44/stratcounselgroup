@@ -105,7 +105,7 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
         style={{ background: '#1C122C' }}
       >
         <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[118px] md:h-[240px]">
-          <Link href={prefix || '/'} className="relative z-10">
+          <Link href={prefix || '/'} className="relative z-10 flex-shrink-0">
             <Image
               src="/scg-logo.png"
               alt="Strategic Counsel Group"
