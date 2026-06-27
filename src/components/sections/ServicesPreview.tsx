@@ -54,7 +54,7 @@ export default function ServicesPreview({ services, locale }: Props) {
             <ScrollReveal key={service.id} delay={i * 150} className={colClass}>
               <div className="relative h-full p-8 bg-white border border-gray-100 transition-all duration-700 group">
                 {/* Roman numeral */}
-                <div className="text-[#d88551] font-heading text-5xl mb-4 leading-none">
+                <div className="text-[#668CCE] font-heading text-5xl mb-4 leading-none">
                   {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                 </div>
 
@@ -70,14 +70,14 @@ export default function ServicesPreview({ services, locale }: Props) {
                 <ul className="space-y-2 mb-4">
                   {service.items.slice(0, 3).map((item) => (
                     <li key={item.id} className="flex items-start gap-2 text-xs text-secondary">
-                      <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" stroke="#d88551" viewBox="0 0 24 24" strokeWidth={3.5}>
+                      <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="none" stroke="#668CCE" viewBox="0 0 24 24" strokeWidth={3.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       <span>{locale === 'ka' ? item.textKa : item.textEn}</span>
                     </li>
                   ))}
                   {service.items.length > 3 && (
-                    <li className="text-xs text-[#d88551]/60 pl-5">
+                    <li className="text-xs text-[#668CCE]/60 pl-5">
                       +{service.items.length - 3} {locale === 'ka' ? 'სხვა' : 'more'}
                     </li>
                   )}
