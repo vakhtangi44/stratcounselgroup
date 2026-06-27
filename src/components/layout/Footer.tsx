@@ -33,7 +33,7 @@ export default async function Footer({ locale }: { locale: string }) {
               alt="Strategic Counsel Group"
               width={280}
               height={280}
-              className="h-24 w-auto mb-4"
+              className="h-24 w-auto mb-4 scale-x-[1.21] origin-left"
             />
           </div>
 
