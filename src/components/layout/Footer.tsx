@@ -25,17 +25,14 @@ export default async function Footer({ locale }: { locale: string }) {
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <Image
-              src={s(settings, 'appearance.logo.url', locale).startsWith('/') || s(settings, 'appearance.logo.url', locale).startsWith('http') ? s(settings, 'appearance.logo.url', locale) : '/scg-logo.png'}
-              alt="Strategic Counsel Group"
-              width={280}
-              height={280}
-              className="h-[106px] w-auto scale-x-[0.88] origin-left"
-            />
-          </div>
+        <Image
+          src={s(settings, 'appearance.logo.url', locale).startsWith('/') || s(settings, 'appearance.logo.url', locale).startsWith('http') ? s(settings, 'appearance.logo.url', locale) : '/scg-logo.png'}
+          alt="Strategic Counsel Group"
+          width={280}
+          height={280}
+          className="h-[70px] md:h-[106px] w-auto scale-x-[0.88] origin-left mb-10"
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-8">
 
           {/* Quick Links */}
           <div>
