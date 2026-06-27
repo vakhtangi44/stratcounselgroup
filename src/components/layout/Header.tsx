@@ -95,10 +95,10 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
       <div className="fixed top-0 left-0 right-0 h-[2px] bg-gold z-50" />
 
       <header
-        className="fixed top-[2px] left-0 right-0 z-40 transition-all duration-500"
+        className="fixed top-[2px] left-0 right-0 z-40 transition-all duration-500 overflow-hidden"
         style={{ background: '#1C122C' }}
       >
-        <div className="mx-auto px-6 lg:px-10 max-w-[1440px] flex items-center justify-between h-[118px] md:h-[240px]">
+        <div className="px-4 xl:px-8 2xl:px-12 flex items-center justify-between h-[118px] md:h-[240px]">
           <Link href={prefix || '/'} className="relative z-10 flex-shrink-0">
             <Image
               src={logoUrl || '/scg-logo.png'}
@@ -110,7 +110,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
             />
           </Link>
 
-          <nav className="hidden xl:flex items-center gap-3 2xl:gap-5">
+          <nav className="hidden xl:flex items-center gap-2 2xl:gap-4">
             <Link
               href={`${prefix}/about`}
               className={`text-[12px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
