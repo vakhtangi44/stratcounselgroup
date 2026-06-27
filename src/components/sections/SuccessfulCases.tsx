@@ -17,7 +17,7 @@ interface Props {
 
 function CaseCard({ text, icon }: { text: string; icon: string }) {
   return (
-    <div tabIndex={0} className="relative h-full p-8 bg-white border border-gray-100 transition-all duration-700 group text-center outline-none hover:scale-[1.06] focus:scale-[1.05]">
+    <div tabIndex={0} className="relative h-full p-8 bg-white border border-gray-100 transition-all duration-700 group text-center outline-none hover:scale-[1.15] focus:scale-[1.05]">
       <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-[#668CCE] border border-[#668CCE]/20 transition-all duration-500">
         <CaseIcon icon={icon} />
       </div>

@@ -52,7 +52,7 @@ export default function ServicesPreview({ services, locale }: Props) {
                 : 'lg:col-span-2 lg:col-start-4'
             return (
             <ScrollReveal key={service.id} delay={i * 150} className={colClass}>
-              <div className="relative h-full p-8 bg-white hover:bg-white border border-gray-100 transition-all duration-700 group hover:scale-[1.06] hover:shadow-lg">
+              <div className="relative h-full p-8 bg-white hover:bg-white border border-gray-100 transition-all duration-700 group hover:scale-[1.15] hover:shadow-lg">
                 {/* Roman numeral */}
                 <div className="text-[#668CCE] font-heading text-5xl mb-4 leading-none">
                   {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
