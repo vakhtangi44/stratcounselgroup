@@ -68,7 +68,7 @@ export default async function ClientsPage() {
           <RichText html={description} as="p" className="text-gold max-w-none mx-auto text-lg leading-relaxed font-[520] whitespace-nowrap" />
         </div>
         <div className="px-4 overflow-visible">
-          <div key={Date.now()} className="grid grid-cols-4 gap-2 sm:gap-4 max-w-[95%] sm:max-w-[80%] mx-auto overflow-visible">
+          <div key={Date.now()} className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4 max-w-[95%] sm:max-w-[80%] mx-auto overflow-visible">
             {allClients.map((client, idx) => {
               const logo = isKa ? (client.logoKa || client.logoEn) : (client.logoEn || client.logoKa)
               const name = isKa ? (client.nameKa || client.name) : (client.nameEn || client.name)
