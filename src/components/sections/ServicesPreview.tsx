@@ -35,10 +35,10 @@ export default function ServicesPreview({ services, locale }: Props) {
           <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4 gold-underline inline-block">
             {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
           </h2>
-          <p className="text-secondary mt-6 max-w-2xl mx-auto text-base leading-relaxed">
+          <p className="text-secondary mt-6 max-w-2xl mx-auto text-[1.15rem] leading-relaxed">
             {locale === 'ka'
-              ? 'სრული სამართლებრივი მხარდაჭერა ყველა ეტაპზე.'
-              : 'Complete legal support at every stage.'}
+              ? 'სრული სამართლებრივი მხარდაჭერა ყველა ეტაპზე'
+              : 'Complete legal support at every stage'}
           </p>
         </ScrollReveal>
 
