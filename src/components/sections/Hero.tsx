@@ -29,7 +29,7 @@ export default async function Hero({ locale, strings }: { locale: string; string
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-[200px] pb-[200px]" style={{ background: '#1C122C' }}>
 
       <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto">
-        <h2 className="text-gold font-heading text-[1.53rem] sm:text-[2.3rem] md:text-[3.8rem] lg:text-[4.6rem] font-bold mb-4 tracking-[-0.02em] leading-[1.1] opacity-0 animate-slide-up-elegant" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
+        <h2 className="text-white font-heading text-[1.53rem] sm:text-[2.3rem] md:text-[3.8rem] lg:text-[4.6rem] font-bold mb-4 tracking-[-0.02em] leading-[1.1] opacity-0 animate-slide-up-elegant" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
           Strategic Counsel Group
         </h2>
 
