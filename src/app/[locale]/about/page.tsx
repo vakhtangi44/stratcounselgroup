@@ -20,17 +20,6 @@ export default async function AboutPage() {
 
   return (
     <div className="pt-[220px]">
-      {/* Hero */}
-      <section className="relative bg-section-gradient text-white py-24 md:py-32 text-center px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-dark-pattern" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-gold/5 rounded-full" />
-
-        <div className="relative z-10">
-          <div className="gold-divider mx-auto mb-8" />
-          <RichText html={s(settings, 'about.heading', locale)} as="h1" className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em] text-gold" />
-        </div>
-      </section>
-
       {/* About body — white section, same style as homepage AboutPreview */}
       <AboutPreview
         locale={locale}
