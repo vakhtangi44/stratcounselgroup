@@ -200,7 +200,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
 
             <Link
               href={`${prefix}/contact`}
-              className={`hidden 2xl:inline-flex items-center px-4 py-2 text-[11px] uppercase tracking-[0.1em] font-medium transition-all duration-500 ml-2 ${
+              className={`inline-flex items-center px-4 py-2 text-[11px] uppercase tracking-[0.1em] font-medium transition-all duration-500 ${
                 isTransparent
                   ? 'border border-gold text-gold hover:bg-gold hover:text-white'
                   : 'bg-gold text-white hover:bg-gold-dark'
