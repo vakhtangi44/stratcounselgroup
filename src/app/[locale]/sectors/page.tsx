@@ -27,7 +27,7 @@ export default async function SectorsPage() {
 
   return (
     <div className="pt-[255px]">
-      <section className="relative bg-section-gradient text-white py-24 md:py-32 text-center px-4 overflow-hidden">
+      <section className="relative bg-section-gradient text-white py-[5.1rem] md:py-[6.8rem] text-center px-4 overflow-hidden">
         <div className="absolute inset-0 bg-dark-pattern" />
         <div className="relative z-10">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
@@ -37,7 +37,7 @@ export default async function SectorsPage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 bg-section-gradient text-white">
+      <section className="py-[4.25rem] md:py-[5.95rem] bg-section-gradient text-white">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-wrap justify-center gap-6 max-w-[88rem] mx-auto">
             {sectors.map((sector, i) => {
