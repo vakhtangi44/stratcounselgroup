@@ -150,17 +150,14 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
               </DropdownMenu>
             )}
 
-            {/* Services Dropdown */}
-            <DropdownMenu label={t('services')} isTransparent={isTransparent}>
-              <div className="w-[240px] p-4">
-                <Link
-                  href={`${prefix}/services`}
-                  className="block px-3 py-2 text-[13px] text-dark hover:text-gold hover:bg-cream rounded transition-colors duration-200"
-                >
-                  {isKa ? 'ყველა სერვისი' : 'All Services'}
-                </Link>
-              </div>
-            </DropdownMenu>
+            <Link
+              href={`${prefix}/services`}
+              className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
+                'text-white hover:text-gold'
+              }`}
+            >
+              {t('services')}
+            </Link>
 
             <Link
               href={`${prefix}/blog`}
