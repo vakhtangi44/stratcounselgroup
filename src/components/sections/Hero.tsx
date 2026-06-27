@@ -12,9 +12,10 @@ interface HeroStrings {
 export default async function Hero({ locale, strings }: { locale: string; strings: HeroStrings }) {
   const prefix = locale === 'en' ? '/en' : ''
 
-  const headline = strings.heading
-  const hasHtml = /<[a-z][\s\S]*>/i.test(headline)
-  const words = hasHtml ? [] : headline.split(' ')
+  const rawHeadline = strings.heading
+  const headline = rawHeadline.replace(/\./g, '<span style="color:#d88551">.</span>')
+  const hasHtml = true
+  const words: string[] = []
 
   // English is longer than the (space-less) Georgian motto and would wrap onto a
   // second line. Keep it on one line like the Georgian, shrinking it a step so it
