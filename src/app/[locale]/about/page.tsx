@@ -48,7 +48,7 @@ export default async function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {advantages.map((v, i) => (
               <ScrollReveal key={v.id} delay={i * 100}>
-                <div className="flex items-start gap-4 p-6 bg-cream border border-gray-100 hover:border-[#d88551]/30 transition-all duration-500 group">
+                <div className="flex items-start gap-4 p-6 bg-cream border border-gray-100 transition-all duration-500 group">
                   <div className="flex-shrink-0 w-8 h-8 bg-gold/10 flex items-center justify-center mt-0.5">
                     <svg className="w-5 h-5" fill="none" stroke="#d88551" viewBox="0 0 24 24" strokeWidth={3.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />

@@ -51,10 +51,7 @@ export default async function ServicesPage() {
             {services.map((service, idx) => (
               <ScrollReveal key={service.id} delay={idx * 400}>
                 <div className="relative group">
-                  {/* Gold left accent */}
-                  <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#d88551] via-[#d88551]/60 to-transparent" />
-
-                  <div className="pl-8 md:pl-10">
+                  <div>
                     {/* Service Photo */}
                     {service.image && (
                       <div className="relative overflow-hidden rounded-sm mb-6 h-48 md:h-64">
@@ -88,7 +85,7 @@ export default async function ServicesPage() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {service.items.map((item, itemIdx) => (
                           <ScrollReveal key={item.id} delay={idx * 400 + itemIdx * 150}>
-                            <div className="flex items-start gap-3 p-4 bg-cream border border-gray-100 hover:border-[#d88551]/30 transition-all duration-500 group/item">
+                            <div className="flex items-start gap-3 p-4 bg-cream border border-gray-100  transition-all duration-500 group/item">
                               <div className="flex-shrink-0 w-6 h-6 bg-gold/10 flex items-center justify-center mt-0.5">
                                 <svg className="w-5 h-5" fill="none" stroke="#d88551" viewBox="0 0 24 24" strokeWidth={3.5}>
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
