@@ -25,15 +25,6 @@ export default async function Footer({ locale }: { locale: string }) {
       </div>
 
       <div className="px-4 lg:px-8 max-w-[1400px] mx-auto py-10 md:py-20">
-        <div className="mb-6 lg:hidden">
-          <Image
-            src={s(settings, 'appearance.logo.url', locale).startsWith('/') || s(settings, 'appearance.logo.url', locale).startsWith('http') ? s(settings, 'appearance.logo.url', locale) : '/scg-logo.png'}
-            alt="Strategic Counsel Group"
-            width={280}
-            height={280}
-            className="h-[70px] w-auto "
-          />
-        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8">
           <div className="hidden lg:block">
             <Image
