@@ -68,8 +68,8 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
         <div className="container mx-auto max-w-[72rem]">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] rounded-2xl overflow-hidden shadow-2xl">
             {/* Left: Contact Info */}
-            <div className="p-10 md:p-14" style={{ background: '#1C122C' }}>
-              <RichText html={strings.info} as="h2" className="font-heading text-lg md:text-xl lg:text-2xl text-white font-extrabold mb-8 whitespace-nowrap" />
+            <div className="bg-white p-10 md:p-14">
+              <RichText html={strings.info} as="h2" className="font-heading text-lg md:text-xl lg:text-2xl text-navy font-extrabold mb-8 whitespace-nowrap" />
 
               <div className="space-y-8">
                 {/* Company Info + Addresses */}
@@ -81,12 +81,12 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                     </svg>
                   </div>
                   <div className="text-[15px] leading-snug font-[520] tracking-tight">
-                    <RichText html={strings.addressLabel} as="p" className="text-white font-heading text-[16px] font-black tracking-[0.06em] mb-2" />
+                    <RichText html={strings.addressLabel} as="p" className="text-navy font-heading text-[16px] font-black tracking-[0.06em] mb-2" />
                     <a
                       href={location.mapLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white/80 font-bold tracking-tight hover:text-gold transition-colors duration-300"
+                      className="text-navy/80 font-bold tracking-tight hover:text-gold transition-colors duration-300"
                     >
                       {location.address}
                     </a>
@@ -101,8 +101,8 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white font-heading text-[16px] font-black tracking-[0.06em] mb-2">{isKa ? 'ტელეფონი' : 'Phone'}</p>
-                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-white/80 text-[15px] font-bold tracking-tight hover:text-gold transition-colors duration-300">
+                    <p className="text-navy font-heading text-[16px] font-black tracking-[0.06em] mb-2">{isKa ? 'ტელეფონი' : 'Phone'}</p>
+                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-navy/80 text-[15px] font-bold tracking-tight hover:text-gold transition-colors duration-300">
                       {strings.phone}
                     </a>
                   </div>
@@ -116,8 +116,8 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white font-heading text-[16px] font-black tracking-[0.06em] mb-2">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
-                    <a href={`mailto:${strings.email}`} className="text-white/80 text-[15px] font-bold tracking-tight hover:text-gold transition-colors duration-300">
+                    <p className="text-navy font-heading text-[16px] font-black tracking-[0.06em] mb-2">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
+                    <a href={`mailto:${strings.email}`} className="text-navy/80 text-[15px] font-bold tracking-tight hover:text-gold transition-colors duration-300">
                       {strings.email}
                     </a>
                   </div>
@@ -125,8 +125,8 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
               </div>
 
               {/* Connect with Us */}
-              <div className="mt-10 pt-8 border-t border-white/10">
-                <p className="text-white font-heading text-[18px] font-black tracking-[0.06em] mb-4">
+              <div className="mt-10 pt-8 border-t border-navy/10">
+                <p className="text-navy font-heading text-[18px] font-black tracking-[0.06em] mb-4">
                   {isKa ? 'დაგვიკავშირდით' : 'Connect with Us'}
                 </p>
                 <div className="flex items-center gap-3">
