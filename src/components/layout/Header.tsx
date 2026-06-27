@@ -78,7 +78,7 @@ function DropdownMenu({
   )
 }
 
-export default function Header({ locale, sectorsEnabled, sectors, logoSettings }: Props) {
+export default function Header({ locale, sectorsEnabled, sectors }: Props) {
   const t = useTranslations('nav')
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
@@ -96,35 +96,22 @@ export default function Header({ locale, sectorsEnabled, sectors, logoSettings }
 
   const prefix = locale === 'en' ? '/en' : ''
 
-  const logoH = logoSettings?.height ?? 232
-  const logoHMobile = logoSettings?.heightMobile ?? 105
-  const logoScale = logoSettings?.widthScale ?? 1.42
-
-
   return (
     <>
-      <style>{`
-        .scg-header-bar { height: ${logoHMobile + 13}px; }
-        .scg-header-logo { height: ${logoHMobile}px; transform: scaleX(${logoScale}); }
-        @media (min-width: 768px) {
-          .scg-header-bar { height: ${logoH + 8}px; }
-          .scg-header-logo { height: ${logoH}px; }
-        }
-      `}</style>
       <div className="fixed top-0 left-0 right-0 h-[2px] bg-gold z-50" />
 
       <header
         className="fixed top-[2px] left-0 right-0 z-40 transition-all duration-500"
         style={{ background: '#1C122C' }}
       >
-        <div className="scg-header-bar container mx-auto px-4 lg:px-8 flex items-center justify-between">
+        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[118px] md:h-[240px]">
           <Link href={prefix || '/'} className="relative z-10">
             <Image
               src="/scg-logo.png"
               alt="Strategic Counsel Group"
               width={670}
               height={670}
-              className="scg-header-logo w-auto transition-all duration-500"
+              className="h-[105px] md:h-[232px] w-auto scale-x-[1.42] transition-all duration-500"
               priority
             />
           </Link>
