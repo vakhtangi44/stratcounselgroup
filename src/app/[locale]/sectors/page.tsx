@@ -28,7 +28,7 @@ export default async function SectorsPage() {
   return (
     <div className="pt-[255px]">
       <section className="pt-[2.4rem] md:pt-[3.2rem] pb-[3.34rem] md:pb-[4.66rem] bg-section-gradient text-white">
-        <div className="text-center px-4 mb-4">
+        <div className="text-center px-4 mb-[3.47rem]">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl tracking-[-0.02em]">
             {isKa ? 'სამიზნე სექტორები' : 'Target Sectors'}
@@ -47,7 +47,7 @@ export default async function SectorsPage() {
                   href={`${prefix}/sectors/${sector.slug}`}
                   className="group block"
                 >
-                  <div className="relative overflow-hidden h-48 md:h-64 rounded-sm mb-4">
+                  <div className="relative overflow-hidden h-56 md:h-72 rounded-sm mb-[3.47rem]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={sector.image}
