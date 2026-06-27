@@ -42,7 +42,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <RichText
               html={s(settings, 'footer.quickLinks', locale)}
               as="div"
-              className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.01em] font-bold"
+              className="font-heading text-gold mb-6 text-[14.4px] uppercase tracking-[0.01em] font-bold"
             />
             <ul className="space-y-3">
               {[
@@ -69,7 +69,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <RichText
               html={s(settings, 'footer.contact', locale)}
               as="div"
-              className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.01em] font-bold"
+              className="font-heading text-gold mb-6 text-[14.4px] uppercase tracking-[0.01em] font-bold"
             />
             <div className={`space-y-2 ${bodyText}`}>
               <p className="leading-snug">
@@ -106,7 +106,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <RichText
               html={s(settings, 'footer.newsletter', locale)}
               as="div"
-              className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.01em] font-bold"
+              className="font-heading text-gold mb-6 text-[14.4px] uppercase tracking-[0.01em] font-bold"
             />
             <RichText
               html={s(settings, 'footer.newsletterText', locale)}

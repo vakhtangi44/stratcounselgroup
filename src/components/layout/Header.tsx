@@ -45,7 +45,7 @@ function DropdownMenu({
   return (
     <div ref={ref} className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <button
-        className={`text-[12px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap flex items-center gap-1 ${
+        className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap flex items-center gap-1 ${
           'text-white hover:text-gold'
         }`}
       >
@@ -113,7 +113,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
           <nav className="hidden xl:flex items-center gap-2 2xl:gap-4 ml-auto">
             <Link
               href={`${prefix}/about`}
-              className={`text-[12px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
+              className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
                 'text-white hover:text-gold'
               }`}
             >
@@ -164,7 +164,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
 
             <Link
               href={`${prefix}/blog`}
-              className={`text-[12px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
+              className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
                 'text-white hover:text-gold'
               }`}
             >
@@ -173,7 +173,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
 
             <Link
               href={`${prefix}/team`}
-              className={`text-[12px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
+              className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
                 'text-white hover:text-gold'
               }`}
             >
@@ -182,7 +182,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
 
             <Link
               href={`${prefix}/clients`}
-              className={`text-[12px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
+              className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
                 'text-white hover:text-gold'
               }`}
             >
@@ -191,7 +191,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
 
             <Link
               href={`${prefix}/contact`}
-              className={`text-[12px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
+              className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
                 'text-white hover:text-gold'
               }`}
             >
