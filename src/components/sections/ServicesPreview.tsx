@@ -52,16 +52,13 @@ export default function ServicesPreview({ services, locale }: Props) {
                 : 'lg:col-span-2 lg:col-start-4'
             return (
             <ScrollReveal key={service.id} delay={i * 150} className={colClass}>
-              <div className="relative h-full p-8 bg-white border border-gray-100 hover:border-[#d88551]/40 active:border-[#d88551]/40 transition-all duration-700 group hover:shadow-lg hover:shadow-[#d88551]/5 active:shadow-lg active:shadow-[#d88551]/5">
-                {/* Gold left border on hover/tap */}
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#d88551] scale-y-0 group-hover:scale-y-100 group-active:scale-y-100 transition-transform duration-700 origin-top" />
-
+              <div className="relative h-full p-8 bg-white border border-gray-100 transition-all duration-700 group">
                 {/* Roman numeral */}
                 <div className="text-[#d88551] font-heading text-5xl mb-4 leading-none">
                   {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                 </div>
 
-                <h3 className="font-heading text-lg text-dark mb-3 leading-snug group-hover:text-[#d88551] group-active:text-[#d88551] transition-colors duration-500">
+                <h3 className="font-heading text-lg text-dark mb-3 leading-snug">
                   {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
                 </h3>
 
