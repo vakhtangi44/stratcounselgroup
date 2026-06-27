@@ -24,7 +24,7 @@ export default async function Footer({ locale }: { locale: string }) {
         <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
       </div>
 
-      <div className="mx-auto px-6 lg:px-10 max-w-[1440px] py-16 md:py-20">
+      <div className="px-4 xl:px-8 2xl:px-12 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
@@ -42,7 +42,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <RichText
               html={s(settings, 'footer.quickLinks', locale)}
               as="div"
-              className="font-heading text-gold mb-6 text-[15.6px] uppercase tracking-[0.06em] font-bold"
+              className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.01em] font-bold"
             />
             <ul className="space-y-3">
               {[
@@ -69,7 +69,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <RichText
               html={s(settings, 'footer.contact', locale)}
               as="div"
-              className="font-heading text-gold mb-6 text-[15.6px] uppercase tracking-[0.06em] font-bold"
+              className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.01em] font-bold"
             />
             <div className={`space-y-2 ${bodyText}`}>
               <p className="leading-snug">
@@ -106,7 +106,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <RichText
               html={s(settings, 'footer.newsletter', locale)}
               as="div"
-              className="font-heading text-gold mb-6 text-[15.6px] uppercase tracking-[0.06em] font-bold"
+              className="font-heading text-gold mb-6 text-[12px] uppercase tracking-[0.01em] font-bold"
             />
             <RichText
               html={s(settings, 'footer.newsletterText', locale)}
@@ -120,7 +120,7 @@ export default async function Footer({ locale }: { locale: string }) {
 
       {/* Bottom bar */}
       <div className="border-t border-gold/10">
-        <div className="mx-auto px-6 lg:px-10 max-w-[1440px] py-6 text-center">
+        <div className="px-4 xl:px-8 2xl:px-12 py-6 text-center">
           <p className="text-white/50 text-xs tracking-wide font-light">
             &copy; {new Date().getFullYear()}{' '}<RichText html={s(settings, 'footer.copyright', locale)} />
           </p>
