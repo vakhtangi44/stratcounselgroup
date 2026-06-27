@@ -59,16 +59,16 @@ export default async function ClientsPage() {
   const confidentialityLabel = s(settings, 'section.trustedBy.confidentiality', locale)
 
   return (
-    <div className="pt-[255px]">
+    <div className="pt-[140px] md:pt-[255px]">
       {/* Page Hero + Client Logos */}
       <section className="py-12 md:py-16 text-white overflow-visible" style={{ background: '#1C122C' }}>
-        <div className="text-center px-4 mb-[3.91rem]">
+        <div className="text-center px-4 mb-6 sm:mb-[3.91rem]">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em] text-white">{title}</h1>
           <RichText html={description} as="p" className="text-gold max-w-none mx-auto text-lg leading-relaxed font-[520] whitespace-nowrap" />
         </div>
         <div className="px-4 overflow-visible">
-          <div key={Date.now()} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-[80%] mx-auto overflow-visible">
+          <div key={Date.now()} className="grid grid-cols-4 gap-2 sm:gap-4 max-w-[95%] sm:max-w-[80%] mx-auto overflow-visible">
             {allClients.map((client, idx) => {
               const logo = isKa ? (client.logoKa || client.logoEn) : (client.logoEn || client.logoKa)
               const name = isKa ? (client.nameKa || client.name) : (client.nameEn || client.name)
@@ -76,7 +76,7 @@ export default async function ClientsPage() {
               return (
                 <div
                   key={client.id}
-                  className="group flex items-center justify-center h-[10rem] md:h-[12rem] p-4 relative border border-white/10 hover:border-gold/50 transition-all duration-500 hover:scale-[1.27]"
+                  className="group flex items-center justify-center h-[6rem] sm:h-[10rem] md:h-[12rem] p-2 sm:p-4 relative border border-white/10 hover:border-gold/50 transition-all duration-500 hover:scale-[1.27]"
                 >
                   {logo ? (
                     // eslint-disable-next-line @next/next/no-img-element

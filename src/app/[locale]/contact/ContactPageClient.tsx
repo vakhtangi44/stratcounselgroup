@@ -62,7 +62,7 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
     'w-full border border-gray-200 px-5 py-3.5 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/20 transition-all duration-300 bg-white font-light'
 
   return (
-    <div className="pt-[255px]">
+    <div className="pt-[140px] md:pt-[255px]">
       {/* Split layout */}
       <section className="bg-white py-20 md:py-28 px-4">
         <div className="container mx-auto max-w-[72rem]">

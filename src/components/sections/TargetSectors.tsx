@@ -23,9 +23,9 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
   if (sectors.length === 0) return null
 
   return (
-    <section className="py-20 md:py-28" style={{ background: '#1C122C' }}>
+    <section className="py-10 md:py-28" style={{ background: '#1C122C' }}>
       <div className="container mx-auto px-4 lg:px-8">
-        <ScrollReveal className="text-center mb-[3.47rem]">
+        <ScrollReveal className="text-center mb-4 md:mb-[3.47rem]">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
           <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">
             {isKa ? 'სამიზნე სექტორები' : 'Target Sectors'}
@@ -37,7 +37,7 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
           {sectors.map((sector, i) => {
             const cardContent = (
               <div className="group text-center">
-                <div className="relative overflow-hidden h-56 md:h-72 rounded-sm mb-[3.47rem]">
+                <div className="relative overflow-hidden h-32 sm:h-56 md:h-72 rounded-sm mb-2 md:mb-[3.47rem]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={sector.image}

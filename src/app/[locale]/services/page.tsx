@@ -33,7 +33,7 @@ export default async function ServicesPage() {
   ])
 
   return (
-    <div className="pt-[255px]" style={{ background: 'white' }}>
+    <div className="pt-[140px] md:pt-[255px]" style={{ background: 'white' }}>
       {/* Services */}
       <section className="py-20 md:py-28 px-4" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-5xl">
