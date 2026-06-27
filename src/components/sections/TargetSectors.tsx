@@ -33,11 +33,11 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
         </ScrollReveal>
 
         {/* All sectors — centered, wrap to new row when needed */}
-        <div className="flex flex-wrap justify-center gap-4 max-w-[88rem] mx-auto">
+        <div className="flex flex-wrap justify-center gap-6 max-w-[88rem] mx-auto">
           {sectors.map((sector, i) => {
             const cardContent = (
               <div className="group text-center">
-                <div className="relative overflow-hidden h-48 md:h-64 rounded-sm mb-4">
+                <div className="relative overflow-hidden h-56 md:h-72 rounded-sm mb-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={sector.image}
