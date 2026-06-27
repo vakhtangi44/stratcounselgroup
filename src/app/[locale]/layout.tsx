@@ -30,11 +30,8 @@ export default async function LocaleLayout({
     name: sector.name,
   }))
 
-  const logoSettings = {
-    height: Number(s(settings, 'appearance.logo.height', locale)) || 232,
-    heightMobile: Number(s(settings, 'appearance.logo.heightMobile', locale)) || 105,
-    widthScale: Number(s(settings, 'appearance.logo.widthScale', locale)) || 1.42,
-  }
+  const logoUrlRaw = s(settings, 'appearance.logo.url', locale)
+  const logoUrl = logoUrlRaw.startsWith('/') || logoUrlRaw.startsWith('http') ? logoUrlRaw : '/scg-logo.png'
 
   const themeColors = {
     primary: s(settings, 'appearance.color.primary', locale),
@@ -61,7 +58,7 @@ export default async function LocaleLayout({
           .bg-section-gradient { background: ${themeColors.background}; }
         `}</style>
       )}
-      <Header locale={locale} sectorsEnabled={sectorsEnabled} sectors={sectorLinks} logoSettings={logoSettings} />
+      <Header locale={locale} sectorsEnabled={sectorsEnabled} sectors={sectorLinks} logoUrl={logoUrl} />
       <main>{children}</main>
       <Footer locale={locale} />
       {/* Tawk.to live chat */}

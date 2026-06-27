@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 
 interface SettingEntry {
   id: number
@@ -51,7 +52,52 @@ export default function AppearanceEditor({ settings }: Props) {
 
   return (
     <div className="space-y-8">
-      {/* Logo Settings */}
+      {/* Logo Upload */}
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-dark px-6 py-3">
+          <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Logo</h2>
+        </div>
+        <div className="p-6">
+          <div className="flex items-center gap-6">
+            <div className="w-40 h-40 bg-dark rounded flex items-center justify-center overflow-hidden">
+              {values['appearance.logo.url'] && (
+                <Image
+                  src={values['appearance.logo.url']}
+                  alt="Current logo"
+                  width={160}
+                  height={160}
+                  className="w-full h-full object-contain"
+                />
+              )}
+            </div>
+            <div>
+              <p className="text-sm text-dark font-medium mb-2">Upload New Logo</p>
+              <input
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                onChange={async (e) => {
+                  const file = e.target.files?.[0]
+                  if (!file) return
+                  const formData = new FormData()
+                  formData.append('file', file)
+                  formData.append('folder', 'logo')
+                  const res = await fetch('/api/upload', { method: 'POST', body: formData })
+                  if (res.ok) {
+                    const data = await res.json()
+                    update('appearance.logo.url', data.url)
+                  } else {
+                    alert('Upload failed')
+                  }
+                }}
+                className="text-sm"
+              />
+              <p className="text-xs text-secondary mt-2">PNG, JPG, or WebP. Max 5MB.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Logo Size */}
       <div className="bg-white rounded-lg shadow-sm overflow-hidden">
         <div className="bg-dark px-6 py-3">
           <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Logo Size</h2>

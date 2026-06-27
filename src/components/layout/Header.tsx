@@ -13,17 +13,11 @@ interface SectorLink {
   name: string
 }
 
-interface LogoSettings {
-  height: number
-  heightMobile: number
-  widthScale: number
-}
-
 interface Props {
   locale: string
   sectorsEnabled: boolean
   sectors: SectorLink[]
-  logoSettings?: LogoSettings
+  logoUrl?: string
 }
 
 function DropdownMenu({
@@ -78,7 +72,7 @@ function DropdownMenu({
   )
 }
 
-export default function Header({ locale, sectorsEnabled, sectors }: Props) {
+export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Props) {
   const t = useTranslations('nav')
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
@@ -107,7 +101,7 @@ export default function Header({ locale, sectorsEnabled, sectors }: Props) {
         <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-[118px] md:h-[240px]">
           <Link href={prefix || '/'} className="relative z-10 flex-shrink-0">
             <Image
-              src="/scg-logo.png"
+              src={logoUrl || '/scg-logo.png'}
               alt="Strategic Counsel Group"
               width={670}
               height={670}

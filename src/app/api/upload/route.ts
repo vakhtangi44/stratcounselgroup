@@ -8,13 +8,13 @@ export async function POST(req: NextRequest) {
 
   const formData = await req.formData()
   const file = formData.get('file') as File | null
-  const folder = formData.get('folder') as 'blog' | 'team' | 'press' | 'services' | null
+  const folder = formData.get('folder') as 'blog' | 'team' | 'press' | 'services' | 'logo' | null
 
   if (!file || !folder) {
     return NextResponse.json({ error: 'Missing file or folder' }, { status: 400 })
   }
 
-  if (!['blog', 'team', 'press', 'services'].includes(folder)) {
+  if (!['blog', 'team', 'press', 'services', 'logo'].includes(folder)) {
     return NextResponse.json({ error: 'Invalid folder' }, { status: 400 })
   }
 

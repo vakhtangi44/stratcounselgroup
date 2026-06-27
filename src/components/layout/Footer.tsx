@@ -29,16 +29,11 @@ export default async function Footer({ locale }: { locale: string }) {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Image
-              src="/scg-logo.png"
+              src={s(settings, 'appearance.logo.url', locale).startsWith('/') || s(settings, 'appearance.logo.url', locale).startsWith('http') ? s(settings, 'appearance.logo.url', locale) : '/scg-logo.png'}
               alt="Strategic Counsel Group"
               width={280}
               height={280}
               className="h-24 w-auto mb-4"
-            />
-            <RichText
-              html={s(settings, 'footer.tagline', locale)}
-              as="p"
-              className={`${bodyText} leading-relaxed mb-6 text-justify`}
             />
           </div>
 

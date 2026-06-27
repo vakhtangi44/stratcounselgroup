@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 interface Props {
-  folder: 'blog' | 'team' | 'press' | 'services'
+  folder: 'blog' | 'team' | 'press' | 'services' | 'logo'
   value?: string
   onChange: (url: string) => void
   label?: string
