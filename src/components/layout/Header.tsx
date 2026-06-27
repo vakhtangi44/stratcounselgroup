@@ -208,7 +208,8 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
             <LanguageToggle locale={locale} />
           </nav>
 
-          <div className="flex items-center gap-2 ml-2 flex-shrink-0 xl:hidden">
+          <div className="flex items-center gap-2 ml-auto flex-shrink-0 xl:hidden">
+            <LanguageToggle locale={locale} />
             <MobileMenu locale={locale} links={[
               { href: `${prefix}/about`, label: t('about') },
               ...(sectorsEnabled ? [{ href: `${prefix}/sectors`, label: isKa ? 'სექტორები' : 'Sectors' }] : []),
@@ -217,6 +218,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
               { href: `${prefix}/team`, label: t('team') },
               { href: `${prefix}/clients`, label: t('clients') },
               { href: `${prefix}/contact`, label: t('contact') },
+              { href: `${prefix}/contact`, label: isKa ? 'კონსულტაცია' : 'Consultation' },
             ]} />
           </div>
         </div>
