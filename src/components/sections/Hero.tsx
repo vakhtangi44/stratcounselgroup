@@ -23,7 +23,7 @@ export default async function Hero({ locale, strings }: { locale: string; string
   const headingSize =
     locale === 'en'
       ? 'text-[1.06rem] sm:text-[1.59rem] md:text-[2.55rem] lg:text-[3.19rem] whitespace-nowrap'
-      : 'text-[1.28rem] sm:text-[1.91rem] md:text-[3.19rem] lg:text-[3.83rem]'
+      : 'text-[1.09rem] sm:text-[1.62rem] md:text-[2.71rem] lg:text-[3.26rem]'
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-[234px] pb-20" style={{ background: '#1C122C' }}>
