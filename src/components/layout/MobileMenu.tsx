@@ -12,7 +12,7 @@ export default function MobileMenu({ links }: Props) {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="md:hidden">
+    <div className="xl:hidden">
       <button onClick={() => setOpen(!open)} className="text-gold p-1" aria-label="Menu">
         <span className="text-2xl">{open ? '✕' : '☰'}</span>
       </button>
