@@ -33,9 +33,6 @@ export default async function Hero({ locale, strings }: { locale: string; string
           Strategic Counsel Group
         </h2>
 
-        <div className="flex justify-center mb-8">
-          <div className="h-[1px] w-12 bg-gold" />
-        </div>
 
         <h1 className={`font-heading ${headingSize} font-bold mb-8 leading-[1.1] tracking-[-0.02em]`}>
           <RichText html={headline} />
