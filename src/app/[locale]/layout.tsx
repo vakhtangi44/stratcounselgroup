@@ -30,9 +30,38 @@ export default async function LocaleLayout({
     name: sector.name,
   }))
 
+  const logoSettings = {
+    height: Number(s(settings, 'appearance.logo.height', locale)) || 232,
+    heightMobile: Number(s(settings, 'appearance.logo.heightMobile', locale)) || 105,
+    widthScale: Number(s(settings, 'appearance.logo.widthScale', locale)) || 1.42,
+  }
+
+  const themeColors = {
+    primary: s(settings, 'appearance.color.primary', locale),
+    primaryDark: s(settings, 'appearance.color.primaryDark', locale),
+    primaryLight: s(settings, 'appearance.color.primaryLight', locale),
+    accent: s(settings, 'appearance.color.accent', locale),
+    background: s(settings, 'appearance.color.background', locale),
+  }
+  const hasTheme = !themeColors.primary.startsWith('appearance.')
+
   return (
     <NextIntlClientProvider messages={messages}>
-      <Header locale={locale} sectorsEnabled={sectorsEnabled} sectors={sectorLinks} />
+      {hasTheme && (
+        <style>{`
+          :root {
+            --color-gold: ${themeColors.primary};
+            --color-gold-dark: ${themeColors.primaryDark};
+            --color-gold-light: ${themeColors.primaryLight};
+            --color-accent-orange: ${themeColors.accent};
+            --color-dark: ${themeColors.background};
+            --color-navy: ${themeColors.background};
+          }
+          body { background: ${themeColors.background}; }
+          .bg-section-gradient { background: ${themeColors.background}; }
+        `}</style>
+      )}
+      <Header locale={locale} sectorsEnabled={sectorsEnabled} sectors={sectorLinks} logoSettings={logoSettings} />
       <main>{children}</main>
       <Footer locale={locale} />
       {/* Tawk.to live chat */}

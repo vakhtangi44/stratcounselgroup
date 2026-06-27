@@ -21,7 +21,7 @@ function detectMimeType(buffer: Buffer): string | null {
 
 export async function saveUploadedFile(
   file: File,
-  folder: 'blog' | 'team' | 'press'
+  folder: 'blog' | 'team' | 'press' | 'services'
 ): Promise<string> {
   if (!ALLOWED_MIME_TYPES.includes(file.type)) {
     throw new Error('Invalid file type. Only JPEG, PNG, WebP allowed.')

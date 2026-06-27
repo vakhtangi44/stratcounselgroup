@@ -55,6 +55,18 @@ export default async function ServicesPage() {
                   <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#d88551] via-[#d88551]/60 to-transparent" />
 
                   <div className="pl-8 md:pl-10">
+                    {/* Service Photo */}
+                    {service.image && (
+                      <div className="relative overflow-hidden rounded-sm mb-6 h-48 md:h-64">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={service.image}
+                          alt={locale === 'ka' ? service.titleKa : service.titleEn}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+
                     {/* Title */}
                     <h2 className="font-heading text-2xl md:text-3xl text-dark mb-4 leading-tight">
                       {locale === 'ka' ? service.titleKa : service.titleEn}

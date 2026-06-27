@@ -14,7 +14,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
   const numericId = parseId(id)
   if (!numericId) return NextResponse.json({ error: 'Bad request' }, { status: 400 })
   const body = await req.json()
-  const { titleKa, titleEn, descriptionKa, descriptionEn, order, active } = body
+  const { titleKa, titleEn, descriptionKa, descriptionEn, order, active, image } = body
   if (!titleKa || !titleEn || !descriptionKa || !descriptionEn) {
     return NextResponse.json({ error: 'All title and description fields required' }, { status: 400 })
   }
@@ -25,6 +25,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
       titleEn,
       descriptionKa,
       descriptionEn,
+      image: image !== undefined ? (image || null) : undefined,
       order: order ?? 0,
       active: active !== false,
     },

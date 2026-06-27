@@ -30,6 +30,7 @@ const sections = [
       { href: '/admin/cases', label: 'Cases & Experience' },
       { href: '/admin/services', label: 'Services' },
       { href: '/admin/location', label: 'Address & Map' },
+      { href: '/admin/appearance', label: 'Appearance' },
       { href: '/admin/settings', label: 'Site Strings' },
     ],
   },

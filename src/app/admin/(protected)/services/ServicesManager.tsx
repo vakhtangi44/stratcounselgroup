@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import ImageUpload from '@/components/admin/ImageUpload'
 
 interface ServiceItem {
   id: number
@@ -16,6 +17,7 @@ interface Service {
   titleEn: string
   descriptionKa: string
   descriptionEn: string
+  image: string | null
   order: number
   active: boolean
   items: ServiceItem[]
@@ -70,7 +72,7 @@ export default function ServicesManager({ initialServices }: Props) {
   }
 
   const [newService, setNewService] = useState({
-    titleKa: '', titleEn: '', descriptionKa: '', descriptionEn: '', order: 0, active: true,
+    titleKa: '', titleEn: '', descriptionKa: '', descriptionEn: '', image: '', order: 0, active: true,
   })
   const [newItem, setNewItem] = useState({ textKa: '', textEn: '', order: 0 })
 
@@ -91,7 +93,7 @@ export default function ServicesManager({ initialServices }: Props) {
     })
     if (res.ok) {
       setShowNewService(false)
-      setNewService({ titleKa: '', titleEn: '', descriptionKa: '', descriptionEn: '', order: 0, active: true })
+      setNewService({ titleKa: '', titleEn: '', descriptionKa: '', descriptionEn: '', image: '', order: 0, active: true })
       await reload()
     }
     setLoading(false)
@@ -108,6 +110,7 @@ export default function ServicesManager({ initialServices }: Props) {
         titleEn: editingService.titleEn,
         descriptionKa: editingService.descriptionKa,
         descriptionEn: editingService.descriptionEn,
+        image: editingService.image,
         order: editingService.order,
         active: editingService.active,
       }),
@@ -240,6 +243,14 @@ export default function ServicesManager({ initialServices }: Props) {
                 className="w-full border rounded px-3 py-2 text-sm"
               />
             </div>
+          </div>
+          <div className="mb-4">
+            <ImageUpload
+              folder="services"
+              value={newService.image || undefined}
+              onChange={(url) => setNewService({ ...newService, image: url })}
+              label="Service Photo"
+            />
           </div>
           <label className="flex items-center gap-2 text-sm mb-4">
             <input
@@ -474,6 +485,23 @@ export default function ServicesManager({ initialServices }: Props) {
                   className="w-full border rounded px-3 py-2 text-sm"
                 />
               </div>
+            </div>
+            <div className="mb-4">
+              <ImageUpload
+                folder="services"
+                value={editingService.image || undefined}
+                onChange={(url) => setEditingService({ ...editingService, image: url })}
+                label="Service Photo"
+              />
+              {editingService.image && (
+                <button
+                  type="button"
+                  onClick={() => setEditingService({ ...editingService, image: null })}
+                  className="text-red-500 text-xs mt-1 hover:underline"
+                >
+                  Remove photo
+                </button>
+              )}
             </div>
             <label className="flex items-center gap-2 text-sm mb-4">
               <input
