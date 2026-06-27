@@ -64,12 +64,12 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
   return (
     <div className="pt-[140px] md:pt-[255px]">
       {/* Split layout */}
-      <section className="bg-white py-20 md:py-28 px-4">
+      <section className="bg-white py-10 md:py-28 px-4">
         <div className="container mx-auto max-w-[72rem]">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] rounded-2xl overflow-hidden shadow-2xl">
             {/* Left: Contact Info */}
-            <div className="bg-white p-10 md:p-14">
-              <RichText html={strings.info} as="h2" className="font-heading text-lg md:text-xl lg:text-2xl text-navy font-extrabold mb-8 whitespace-nowrap" />
+            <div className="bg-white p-6 md:p-14">
+              <RichText html={strings.info} as="h2" className="font-heading text-lg md:text-xl lg:text-2xl text-navy font-extrabold mb-8" />
 
               <div className="space-y-8">
                 {/* Company Info + Addresses */}

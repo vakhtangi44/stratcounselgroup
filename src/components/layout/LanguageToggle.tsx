@@ -34,14 +34,14 @@ export default function LanguageToggle({ locale }: Props) {
     <div className="flex items-center gap-1">
       <button
         onClick={() => switchTo('ka')}
-        className={`text-xs font-medium px-2 py-1 rounded transition-colors ${locale === 'ka' ? 'text-gold font-bold' : 'text-secondary hover:text-gold'}`}
+        className={`text-xs font-medium px-2 py-1 rounded transition-colors ${locale === 'ka' ? 'text-gold font-bold' : 'text-white/60 hover:text-gold'}`}
       >
         KA
       </button>
-      <span className="text-secondary">|</span>
+      <span className="text-white/40">|</span>
       <button
         onClick={() => switchTo('en')}
-        className={`text-xs font-medium px-2 py-1 rounded transition-colors ${locale === 'en' ? 'text-gold font-bold' : 'text-secondary hover:text-gold'}`}
+        className={`text-xs font-medium px-2 py-1 rounded transition-colors ${locale === 'en' ? 'text-gold font-bold' : 'text-white/60 hover:text-gold'}`}
       >
         EN
       </button>
