@@ -24,7 +24,7 @@ export default async function Footer({ locale }: { locale: string }) {
         <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 py-10 md:py-20">
+      <div className="px-4 lg:px-8 max-w-[1400px] mx-auto py-10 md:py-20">
         <div className="mb-6 lg:hidden">
           <Image
             src={s(settings, 'appearance.logo.url', locale).startsWith('/') || s(settings, 'appearance.logo.url', locale).startsWith('http') ? s(settings, 'appearance.logo.url', locale) : '/scg-logo.png'}
@@ -128,7 +128,7 @@ export default async function Footer({ locale }: { locale: string }) {
 
       {/* Bottom bar */}
       <div className="border-t border-gold/10">
-        <div className="container mx-auto px-4 lg:px-8 py-6 text-center">
+        <div className="px-4 lg:px-8 max-w-[1400px] mx-auto py-6 text-center">
           <p className="text-white/50 text-xs tracking-wide font-light">
             &copy; {new Date().getFullYear()}{' '}<RichText html={s(settings, 'footer.copyright', locale)} />
           </p>

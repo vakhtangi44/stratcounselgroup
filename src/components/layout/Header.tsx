@@ -98,7 +98,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
         className="fixed top-[2px] left-0 right-0 z-40 transition-all duration-500 overflow-hidden"
         style={{ background: '#1C122C' }}
       >
-        <div className="container mx-auto px-4 lg:px-8 flex items-center h-[118px] md:h-[200px]">
+        <div className="px-4 lg:px-8 max-w-[1400px] mx-auto flex items-center h-[118px] md:h-[200px]">
           <Link href={prefix || '/'} className="relative z-10 flex-shrink-0 mr-6">
             <Image
               src={logoUrl || '/scg-logo.png'}
