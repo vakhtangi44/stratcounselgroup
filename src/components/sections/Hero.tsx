@@ -29,7 +29,7 @@ export default async function Hero({ locale, strings }: { locale: string; string
 
       <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto">
         <h2 className="text-gold font-heading text-[1.53rem] sm:text-[2.3rem] md:text-[3.8rem] lg:text-[4.6rem] font-bold mb-4 tracking-[-0.02em] leading-[1.1] opacity-0 animate-slide-up-elegant" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
-          Strategic Counsel Group
+          {locale === 'ka' ? 'სტრატეგიულ მრჩეველთა ჯგუფი' : 'Strategic Counsel Group'}
         </h2>
 
         {/* Animated gold divider */}
@@ -45,15 +45,19 @@ export default async function Hero({ locale, strings }: { locale: string; string
               style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}
             />
           ) : (
-            words.map((word, i) => (
-              <span
-                key={i}
-                className="inline-block opacity-0 animate-slide-up-elegant mr-[0.3em]"
-                style={{ animationDelay: `${800 + i * 200}ms`, animationFillMode: 'forwards' }}
-              >
-                {word}
-              </span>
-            ))
+            words.map((word, i) => {
+              const endsWithDot = word.endsWith('.')
+              const text = endsWithDot ? word.slice(0, -1) : word
+              return (
+                <span
+                  key={i}
+                  className="inline-block opacity-0 animate-slide-up-elegant mr-[0.3em]"
+                  style={{ animationDelay: `${800 + i * 200}ms`, animationFillMode: 'forwards' }}
+                >
+                  {text}{endsWithDot && <span style={{ color: '#d88551' }}>.</span>}
+                </span>
+              )
+            })
           )}
         </h1>
 
