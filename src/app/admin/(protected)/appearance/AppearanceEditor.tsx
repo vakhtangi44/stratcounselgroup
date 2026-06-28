@@ -325,6 +325,37 @@ export default function AppearanceEditor({ settings }: Props) {
         </div>
       </div>
 
+      {/* Card Hover Scale */}
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-dark px-6 py-3">
+          <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Card Hover Effect</h2>
+        </div>
+        <div className="p-6">
+          <label className="block text-sm text-dark font-medium mb-2">
+            Scale on Hover ({((Number(values['appearance.cardScale'] || '1.10') - 1) * 100).toFixed(0)}%)
+          </label>
+          <div className="flex items-center gap-3">
+            <input
+              type="range"
+              min="1.0"
+              max="1.5"
+              step="0.01"
+              value={values['appearance.cardScale'] || '1.10'}
+              onChange={(e) => update('appearance.cardScale', e.target.value)}
+              className="flex-1"
+            />
+            <input
+              type="number"
+              step="0.01"
+              value={values['appearance.cardScale'] || '1.10'}
+              onChange={(e) => update('appearance.cardScale', e.target.value)}
+              className="w-20 border rounded px-2 py-1 text-sm text-center"
+            />
+          </div>
+          <p className="text-xs text-secondary mt-2">1.0 = no effect, 1.1 = 10% bigger, 1.2 = 20% bigger</p>
+        </div>
+      </div>
+
       {/* Color Settings */}
       <div className="bg-white rounded-lg shadow-sm overflow-hidden">
         <div className="bg-dark px-6 py-3">

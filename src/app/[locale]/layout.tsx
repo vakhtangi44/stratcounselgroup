@@ -65,6 +65,7 @@ export default async function LocaleLayout({
           }
           body { background: ${themeColors.background}; }
           .bg-section-gradient { background: ${themeColors.background}; }
+          .card-hover:hover { transform: scale(${Number(s(settings, 'appearance.cardScale', locale)) || 1.10}); }
         `}</style>
       )}
       <Header locale={locale} sectorsEnabled={sectorsEnabled} sectors={sectorLinks} logoUrl={logoUrl} logoPosition={headerLogoPos} logoVisible={headerLogoVisible} logoOffsetX={headerOffsetX} logoOffsetY={headerOffsetY} mobileLogoHeight={mobileLogoHeight} mobileOffsetX={mobileOffsetX} mobileOffsetY={mobileOffsetY} mobileLogoVisible={mobileLogoVisible} />
