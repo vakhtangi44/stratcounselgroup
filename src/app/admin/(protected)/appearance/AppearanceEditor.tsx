@@ -97,6 +97,83 @@ export default function AppearanceEditor({ settings }: Props) {
         </div>
       </div>
 
+      {/* Logo Position & Visibility */}
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-dark px-6 py-3">
+          <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Logo Position & Visibility</h2>
+        </div>
+        <div className="p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Header Logo */}
+            <div>
+              <h3 className="text-sm font-medium text-dark mb-3">Header Logo</h3>
+              <div className="space-y-3">
+                <div>
+                  <label className="block text-xs text-secondary mb-1">Position</label>
+                  <div className="flex gap-2">
+                    {['left', 'center', 'right'].map((pos) => (
+                      <button
+                        key={pos}
+                        type="button"
+                        onClick={() => update('appearance.logo.headerPosition', pos)}
+                        className={`px-4 py-2 text-xs rounded capitalize ${
+                          (values['appearance.logo.headerPosition'] || 'left') === pos
+                            ? 'bg-gold text-white'
+                            : 'bg-gray-100 text-secondary hover:bg-gray-200'
+                        }`}
+                      >
+                        {pos}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <label className="flex items-center gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={(values['appearance.logo.headerVisible'] || 'true') === 'true'}
+                    onChange={(e) => update('appearance.logo.headerVisible', e.target.checked ? 'true' : 'false')}
+                  />
+                  Show logo in header
+                </label>
+              </div>
+            </div>
+            {/* Footer Logo */}
+            <div>
+              <h3 className="text-sm font-medium text-dark mb-3">Footer Logo</h3>
+              <div className="space-y-3">
+                <div>
+                  <label className="block text-xs text-secondary mb-1">Position</label>
+                  <div className="flex gap-2">
+                    {['left', 'center', 'right'].map((pos) => (
+                      <button
+                        key={pos}
+                        type="button"
+                        onClick={() => update('appearance.logo.footerPosition', pos)}
+                        className={`px-4 py-2 text-xs rounded capitalize ${
+                          (values['appearance.logo.footerPosition'] || 'left') === pos
+                            ? 'bg-gold text-white'
+                            : 'bg-gray-100 text-secondary hover:bg-gray-200'
+                        }`}
+                      >
+                        {pos}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <label className="flex items-center gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={(values['appearance.logo.footerVisible'] || 'true') === 'true'}
+                    onChange={(e) => update('appearance.logo.footerVisible', e.target.checked ? 'true' : 'false')}
+                  />
+                  Show logo in footer
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Logo Size */}
       <div className="bg-white rounded-lg shadow-sm overflow-hidden">
         <div className="bg-dark px-6 py-3">

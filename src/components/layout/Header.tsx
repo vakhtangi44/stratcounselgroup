@@ -18,6 +18,8 @@ interface Props {
   sectorsEnabled: boolean
   sectors: SectorLink[]
   logoUrl?: string
+  logoPosition?: string
+  logoVisible?: boolean
 }
 
 function DropdownMenu({
@@ -72,7 +74,7 @@ function DropdownMenu({
   )
 }
 
-export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Props) {
+export default function Header({ locale, sectorsEnabled, sectors, logoUrl, logoPosition = 'left', logoVisible = true }: Props) {
   const t = useTranslations('nav')
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
@@ -99,7 +101,8 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
         style={{ background: '#1C122C' }}
       >
         <div className="px-4 lg:px-8 max-w-[1400px] mx-auto flex items-center h-[118px] md:h-[200px]">
-          <Link href={prefix || '/'} className="relative z-10 flex-shrink-0 mr-6">
+          {logoVisible && (
+          <Link href={prefix || '/'} className={`relative z-10 flex-shrink-0 mr-6 ${logoPosition === 'center' ? 'mx-auto' : logoPosition === 'right' ? 'order-last ml-auto mr-0' : ''}`}>
             <Image
               src={logoUrl || '/scg-logo.png'}
               alt="Strategic Counsel Group"
@@ -109,6 +112,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl }: Pro
               priority
             />
           </Link>
+          )}
 
           <nav className="hidden xl:flex items-center gap-2 2xl:gap-4 ml-auto">
             <Link

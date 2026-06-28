@@ -26,15 +26,17 @@ export default async function Footer({ locale }: { locale: string }) {
 
       <div className="px-4 lg:px-8 max-w-[1400px] mx-auto py-10 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8">
-          <div className="hidden lg:block">
+          {s(settings, 'appearance.logo.footerVisible', locale) !== 'false' && (
+          <div className={`hidden lg:block ${s(settings, 'appearance.logo.footerPosition', locale) === 'center' ? 'text-center' : s(settings, 'appearance.logo.footerPosition', locale) === 'right' ? 'text-right' : ''}`}>
             <Image
               src={s(settings, 'appearance.logo.url', locale).startsWith('/') || s(settings, 'appearance.logo.url', locale).startsWith('http') ? s(settings, 'appearance.logo.url', locale) : '/scg-logo.png'}
               alt="Strategic Counsel Group"
               width={280}
               height={280}
-              className="h-[106px] w-auto "
+              className="h-[106px] w-auto inline-block"
             />
           </div>
+          )}
 
           {/* Quick Links */}
           <div>
