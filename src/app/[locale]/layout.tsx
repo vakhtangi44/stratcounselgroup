@@ -37,6 +37,10 @@ export default async function LocaleLayout({
   const headerLogoVisible = s(settings, 'appearance.logo.headerVisible', locale) !== 'false'
   const headerOffsetX = Number(s(settings, 'appearance.logo.headerOffsetX', locale)) || 0
   const headerOffsetY = Number(s(settings, 'appearance.logo.headerOffsetY', locale)) || 0
+  const mobileLogoHeight = Number(s(settings, 'appearance.logo.mobileHeight', locale)) || 92
+  const mobileOffsetX = Number(s(settings, 'appearance.logo.mobileOffsetX', locale)) || 0
+  const mobileOffsetY = Number(s(settings, 'appearance.logo.mobileOffsetY', locale)) || 0
+  const mobileLogoVisible = s(settings, 'appearance.logo.mobileVisible', locale) !== 'false'
 
   const themeColors = {
     primary: s(settings, 'appearance.color.primary', locale),
@@ -63,7 +67,7 @@ export default async function LocaleLayout({
           .bg-section-gradient { background: ${themeColors.background}; }
         `}</style>
       )}
-      <Header locale={locale} sectorsEnabled={sectorsEnabled} sectors={sectorLinks} logoUrl={logoUrl} logoPosition={headerLogoPos} logoVisible={headerLogoVisible} logoOffsetX={headerOffsetX} logoOffsetY={headerOffsetY} />
+      <Header locale={locale} sectorsEnabled={sectorsEnabled} sectors={sectorLinks} logoUrl={logoUrl} logoPosition={headerLogoPos} logoVisible={headerLogoVisible} logoOffsetX={headerOffsetX} logoOffsetY={headerOffsetY} mobileLogoHeight={mobileLogoHeight} mobileOffsetX={mobileOffsetX} mobileOffsetY={mobileOffsetY} mobileLogoVisible={mobileLogoVisible} />
       <main>{children}</main>
       <Footer locale={locale} />
       {/* Tawk.to live chat */}

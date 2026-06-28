@@ -199,6 +199,42 @@ export default function AppearanceEditor({ settings }: Props) {
               </div>
             </div>
           </div>
+
+          {/* Mobile Logo */}
+          <div className="mt-8 pt-6 border-t border-gray-200">
+            <h3 className="text-sm font-medium text-dark mb-4">Mobile Logo</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <label className="block text-xs text-secondary mb-1">Height (px)</label>
+                <div className="flex items-center gap-2">
+                  <input type="range" min="30" max="150" value={values['appearance.logo.mobileHeight'] || '92'} onChange={(e) => update('appearance.logo.mobileHeight', e.target.value)} className="flex-1" />
+                  <input type="number" value={values['appearance.logo.mobileHeight'] || '92'} onChange={(e) => update('appearance.logo.mobileHeight', e.target.value)} className="w-16 border rounded px-2 py-1 text-sm text-center" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs text-secondary mb-1">Horizontal Offset (px)</label>
+                <div className="flex items-center gap-2">
+                  <input type="range" min="-100" max="100" value={values['appearance.logo.mobileOffsetX'] || '0'} onChange={(e) => update('appearance.logo.mobileOffsetX', e.target.value)} className="flex-1" />
+                  <input type="number" value={values['appearance.logo.mobileOffsetX'] || '0'} onChange={(e) => update('appearance.logo.mobileOffsetX', e.target.value)} className="w-16 border rounded px-2 py-1 text-sm text-center" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs text-secondary mb-1">Vertical Offset (px)</label>
+                <div className="flex items-center gap-2">
+                  <input type="range" min="-50" max="50" value={values['appearance.logo.mobileOffsetY'] || '0'} onChange={(e) => update('appearance.logo.mobileOffsetY', e.target.value)} className="flex-1" />
+                  <input type="number" value={values['appearance.logo.mobileOffsetY'] || '0'} onChange={(e) => update('appearance.logo.mobileOffsetY', e.target.value)} className="w-16 border rounded px-2 py-1 text-sm text-center" />
+                </div>
+              </div>
+            </div>
+            <label className="flex items-center gap-2 text-sm mt-3">
+              <input
+                type="checkbox"
+                checked={(values['appearance.logo.mobileVisible'] || 'true') === 'true'}
+                onChange={(e) => update('appearance.logo.mobileVisible', e.target.checked ? 'true' : 'false')}
+              />
+              Show logo on mobile
+            </label>
+          </div>
         </div>
       </div>
 

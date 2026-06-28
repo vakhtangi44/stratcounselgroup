@@ -22,6 +22,10 @@ interface Props {
   logoVisible?: boolean
   logoOffsetX?: number
   logoOffsetY?: number
+  mobileLogoHeight?: number
+  mobileOffsetX?: number
+  mobileOffsetY?: number
+  mobileLogoVisible?: boolean
 }
 
 function DropdownMenu({
@@ -76,7 +80,7 @@ function DropdownMenu({
   )
 }
 
-export default function Header({ locale, sectorsEnabled, sectors, logoUrl, logoPosition = 'left', logoVisible = true, logoOffsetX = 0, logoOffsetY = 0 }: Props) {
+export default function Header({ locale, sectorsEnabled, sectors, logoUrl, logoPosition = 'left', logoVisible = true, logoOffsetX = 0, logoOffsetY = 0, mobileLogoHeight = 92, mobileOffsetX = 0, mobileOffsetY = 0, mobileLogoVisible = true }: Props) {
   const t = useTranslations('nav')
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
@@ -103,18 +107,24 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl, logoP
         style={{ background: '#1C122C' }}
       >
         <div className="px-4 lg:px-8 max-w-[1400px] mx-auto flex items-center h-[118px] md:h-[200px]">
-          {logoVisible && (
-          <Link href={prefix || '/'} className={`relative z-10 flex-shrink-0 mr-6 ${logoPosition === 'center' ? 'mx-auto' : logoPosition === 'right' ? 'order-last ml-auto mr-0' : ''}`} style={{ transform: `translate(${logoOffsetX}px, ${logoOffsetY}px)` }}>
+          <style>{`
+            .scg-logo-link { transform: translate(${mobileOffsetX}px, ${mobileOffsetY}px); display: ${mobileLogoVisible ? 'block' : 'none'}; }
+            .scg-logo-img { height: ${mobileLogoHeight}px; }
+            @media (min-width: 768px) {
+              .scg-logo-link { transform: translate(${logoOffsetX}px, ${logoOffsetY}px); display: ${logoVisible ? 'block' : 'none'}; }
+              .scg-logo-img { height: 205px; }
+            }
+          `}</style>
+          <Link href={prefix || '/'} className={`scg-logo-link relative z-10 flex-shrink-0 mr-6 ${logoPosition === 'center' ? 'mx-auto' : logoPosition === 'right' ? 'order-last ml-auto mr-0' : ''}`}>
             <Image
               src={logoUrl || '/scg-logo.png'}
               alt="Strategic Counsel Group"
               width={670}
               height={670}
-              className="h-[92px] md:h-[205px] w-auto transition-all duration-500"
+              className="scg-logo-img w-auto transition-all duration-500"
               priority
             />
           </Link>
-          )}
 
           <nav className="hidden xl:flex items-center gap-2 2xl:gap-4 ml-auto">
             <Link
