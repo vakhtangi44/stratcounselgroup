@@ -29,7 +29,7 @@ export default function ServicesPreview({ services, locale }: Props) {
     <section className="py-20 md:py-28 bg-cream">
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-16">
-          <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
+          <p className="text-dark text-[12px] uppercase tracking-[0.3em] mb-4">
             {locale === 'ka' ? 'რას გთავაზობთ' : 'What We Offer'}
           </p>
           <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4 gold-underline inline-block">
@@ -54,7 +54,7 @@ export default function ServicesPreview({ services, locale }: Props) {
             <ScrollReveal key={service.id} delay={i * 150} className={colClass}>
               <div className="relative h-full p-8 bg-white border border-gray-100 group card-hover hover:shadow-lg" style={{ transition: 'transform 0.7s, box-shadow 0.7s' }}>
                 {/* Roman numeral */}
-                <div className="text-gold font-heading text-5xl mb-4 leading-none">
+                <div className="text-dark font-heading text-5xl mb-4 leading-none">
                   {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                 </div>
 
@@ -70,14 +70,14 @@ export default function ServicesPreview({ services, locale }: Props) {
                 <ul className="space-y-2 mb-4">
                   {service.items.slice(0, 3).map((item) => (
                     <li key={item.id} className="flex items-start gap-2 text-xs text-secondary">
-                      <svg className="w-5 h-5 mt-0.5 flex-shrink-0 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
+                      <svg className="w-5 h-5 mt-0.5 flex-shrink-0 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       <span>{locale === 'ka' ? item.textKa : item.textEn}</span>
                     </li>
                   ))}
                   {service.items.length > 3 && (
-                    <li className="text-xs text-gold/60 pl-5">
+                    <li className="text-xs text-dark/60 pl-5">
                       +{service.items.length - 3} {locale === 'ka' ? 'სხვა' : 'more'}
                     </li>
                   )}
