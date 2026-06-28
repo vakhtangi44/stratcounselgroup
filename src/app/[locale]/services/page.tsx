@@ -70,12 +70,6 @@ export default async function ServicesPage() {
                       {locale === 'ka' ? service.titleKa : service.titleEn}
                     </h2>
 
-                    {/* Decorative divider */}
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="h-[1px] w-12 bg-gradient-to-r from-gold to-transparent" />
-                      <div className="w-1.5 h-1.5 rotate-45 border border-gold/40" />
-                    </div>
-
                     {/* Description */}
                     <p className="text-secondary text-base md:text-lg leading-relaxed mb-6 font-[520] italic text-justify">
                       {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
