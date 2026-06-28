@@ -26,7 +26,7 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
       : 'text-[1.06rem] sm:text-[1.59rem] md:text-[2.55rem] lg:text-[3.19rem]'
 
   return (
-    <section className="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-[130px] md:pt-[230px] pb-[40px] md:pb-[92px]" style={{ background: '#1C122C' }}>
+    <section className="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-[130px] md:pt-[230px] pb-[40px] md:pb-[92px]" style={{ background: 'var(--color-dark)' }}>
 
       <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto">
         <h2 className="text-white font-heading text-[1.53rem] sm:text-[2.3rem] md:text-[3.8rem] lg:text-[4.6rem] font-bold mb-7 tracking-[-0.02em] leading-[1.1]">

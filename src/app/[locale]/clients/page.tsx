@@ -61,7 +61,7 @@ export default async function ClientsPage() {
   return (
     <div className="pt-[140px] md:pt-[255px]">
       {/* Page Hero + Client Logos */}
-      <section className="py-12 md:py-16 text-white overflow-visible" style={{ background: '#1C122C' }}>
+      <section className="py-12 md:py-16 text-white overflow-visible" style={{ background: 'var(--color-dark)' }}>
         <div className="text-center px-4 mb-6 sm:mb-[3.91rem]">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em] text-white">{title}</h1>
