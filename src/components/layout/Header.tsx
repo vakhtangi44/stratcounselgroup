@@ -104,7 +104,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl, logoP
 
       <header
         className="fixed top-[2px] left-0 right-0 z-40 transition-all duration-500 overflow-hidden"
-        style={{ background: 'var(--color-dark)' }}
+        style={{ background: 'var(--color-header, var(--color-dark))' }}
       >
         <div className="px-4 lg:px-8 max-w-[1400px] mx-auto flex items-center h-[118px] md:h-[200px]">
           <style>{`

@@ -18,7 +18,7 @@ export default async function Footer({ locale }: { locale: string }) {
   const bodyText = 'text-white/70 text-[14.5px] font-[520] tracking-tight'
 
   return (
-    <footer className="bg-section-gradient text-white relative">
+    <footer className="text-white relative" style={{ background: 'var(--color-footer, var(--color-dark))' }}>
       {/* Gold line pattern at top */}
       <div className="absolute top-0 left-0 right-0 flex items-center justify-center">
         <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />

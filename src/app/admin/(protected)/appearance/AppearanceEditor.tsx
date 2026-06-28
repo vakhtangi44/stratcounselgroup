@@ -393,6 +393,16 @@ export default function AppearanceEditor({ settings }: Props) {
               value={values['appearance.color.dots'] || '#d88551'}
               onChange={(v) => update('appearance.color.dots', v)}
             />
+            <ColorPicker
+              label="Header"
+              value={values['appearance.color.header'] || '#1C122C'}
+              onChange={(v) => update('appearance.color.header', v)}
+            />
+            <ColorPicker
+              label="Footer"
+              value={values['appearance.color.footer'] || '#1C122C'}
+              onChange={(v) => update('appearance.color.footer', v)}
+            />
           </div>
 
           {/* Color Preview */}

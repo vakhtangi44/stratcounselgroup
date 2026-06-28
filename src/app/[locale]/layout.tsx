@@ -65,6 +65,10 @@ export default async function LocaleLayout({
           }
           body { background: ${themeColors.background}; }
           .bg-section-gradient { background: ${themeColors.background}; }
+          :root {
+            --color-header: ${s(settings, 'appearance.color.header', locale).startsWith('#') ? s(settings, 'appearance.color.header', locale) : themeColors.background};
+            --color-footer: ${s(settings, 'appearance.color.footer', locale).startsWith('#') ? s(settings, 'appearance.color.footer', locale) : themeColors.background};
+          }
           .card-hover:hover { transform: scale(${Number(s(settings, 'appearance.cardScale', locale)) || 1.10}); }
         `}</style>
       )}
