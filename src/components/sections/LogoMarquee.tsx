@@ -38,7 +38,7 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
   const logos = [...clients, ...clients]
 
   return (
-    <section className="py-12 bg-cream overflow-hidden">
+    <section className="py-8 bg-cream overflow-hidden">
       <div className="flex items-center justify-center gap-6 mb-10">
         <div className="h-[1px] w-16 bg-gold/40" />
         <h2 className="font-heading text-sm md:text-base text-gold uppercase tracking-[0.2em]">
@@ -61,7 +61,7 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
           return (
             <div
               key={`${client.id}-${idx}`}
-              className="flex-shrink-0 w-[16.4rem] h-[9.1rem] flex items-center justify-center rounded transition-all duration-500"
+              className="flex-shrink-0 w-[11.5rem] h-[6.4rem] flex items-center justify-center rounded transition-all duration-500"
             >
               {logo ? (
                 // eslint-disable-next-line @next/next/no-img-element
