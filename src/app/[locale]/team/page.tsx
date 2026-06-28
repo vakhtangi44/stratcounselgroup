@@ -47,7 +47,7 @@ export default async function TeamPage() {
             {members.map((member, i) => (
               <ScrollReveal key={member.id} delay={i * 150}>
                 <Link href={`${prefix}/team/${member.slug}`} className="group block">
-                  <div className="relative aspect-[3/4] overflow-hidden mb-4" style={{ background: 'var(--color-header, var(--color-dark))' }}>
+                  <div className="relative aspect-[3/4] overflow-hidden mb-4" style={{ background: 'var(--color-dark)' }}>
                     {member.photo ? (
                       <Image
                         src={member.photo}
