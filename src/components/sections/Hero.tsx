@@ -9,11 +9,11 @@ interface HeroStrings {
   cta2: string
 }
 
-export default async function Hero({ locale, strings }: { locale: string; strings: HeroStrings }) {
+export default async function Hero({ locale, strings, dotsColor = '#d88551' }: { locale: string; strings: HeroStrings; dotsColor?: string }) {
   const prefix = locale === 'en' ? '/en' : ''
 
   const rawHeadline = strings.heading
-  const headline = rawHeadline.replace(/\.\s?/g, '<span style="color:#d88551;font-weight:700;margin:0 0.05em;font-size:0.64em">-</span>')
+  const headline = rawHeadline.replace(/\.\s?/g, `<span style="color:${dotsColor};font-weight:700;margin:0 0.05em;font-size:0.64em">-</span>`)
   const hasHtml = true
   const words: string[] = []
 

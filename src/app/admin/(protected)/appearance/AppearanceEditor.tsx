@@ -388,6 +388,11 @@ export default function AppearanceEditor({ settings }: Props) {
               value={values['appearance.color.background'] || '#1C122C'}
               onChange={(v) => update('appearance.color.background', v)}
             />
+            <ColorPicker
+              label="Dots/Dashes"
+              value={values['appearance.color.dots'] || '#d88551'}
+              onChange={(v) => update('appearance.color.dots', v)}
+            />
           </div>
 
           {/* Color Preview */}

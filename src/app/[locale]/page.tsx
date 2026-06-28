@@ -95,7 +95,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero locale={locale} strings={heroStrings} />
+      <Hero locale={locale} strings={heroStrings} dotsColor={s(settings, 'appearance.color.dots', locale).startsWith('#') ? s(settings, 'appearance.color.dots', locale) : '#d88551'} />
       <AboutPreview locale={locale} strings={aboutStrings} />
       <TargetSectors locale={locale} sectors={sectorsData} enabled={sectorsEnabled} />
       {services.length > 0 && <ServicesPreview services={services} locale={locale} />}
