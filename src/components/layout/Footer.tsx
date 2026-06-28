@@ -34,6 +34,7 @@ export default async function Footer({ locale }: { locale: string }) {
               width={280}
               height={280}
               className="h-[106px] w-auto inline-block"
+              style={{ transform: `translate(${Number(s(settings, 'appearance.logo.footerOffsetX', locale)) || 0}px, ${Number(s(settings, 'appearance.logo.footerOffsetY', locale)) || 0}px)` }}
             />
           </div>
           )}

@@ -20,6 +20,8 @@ interface Props {
   logoUrl?: string
   logoPosition?: string
   logoVisible?: boolean
+  logoOffsetX?: number
+  logoOffsetY?: number
 }
 
 function DropdownMenu({
@@ -74,7 +76,7 @@ function DropdownMenu({
   )
 }
 
-export default function Header({ locale, sectorsEnabled, sectors, logoUrl, logoPosition = 'left', logoVisible = true }: Props) {
+export default function Header({ locale, sectorsEnabled, sectors, logoUrl, logoPosition = 'left', logoVisible = true, logoOffsetX = 0, logoOffsetY = 0 }: Props) {
   const t = useTranslations('nav')
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
@@ -102,7 +104,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl, logoP
       >
         <div className="px-4 lg:px-8 max-w-[1400px] mx-auto flex items-center h-[118px] md:h-[200px]">
           {logoVisible && (
-          <Link href={prefix || '/'} className={`relative z-10 flex-shrink-0 mr-6 ${logoPosition === 'center' ? 'mx-auto' : logoPosition === 'right' ? 'order-last ml-auto mr-0' : ''}`}>
+          <Link href={prefix || '/'} className={`relative z-10 flex-shrink-0 mr-6 ${logoPosition === 'center' ? 'mx-auto' : logoPosition === 'right' ? 'order-last ml-auto mr-0' : ''}`} style={{ transform: `translate(${logoOffsetX}px, ${logoOffsetY}px)` }}>
             <Image
               src={logoUrl || '/scg-logo.png'}
               alt="Strategic Counsel Group"

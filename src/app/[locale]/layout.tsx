@@ -35,6 +35,8 @@ export default async function LocaleLayout({
 
   const headerLogoPos = s(settings, 'appearance.logo.headerPosition', locale)
   const headerLogoVisible = s(settings, 'appearance.logo.headerVisible', locale) !== 'false'
+  const headerOffsetX = Number(s(settings, 'appearance.logo.headerOffsetX', locale)) || 0
+  const headerOffsetY = Number(s(settings, 'appearance.logo.headerOffsetY', locale)) || 0
 
   const themeColors = {
     primary: s(settings, 'appearance.color.primary', locale),
@@ -61,7 +63,7 @@ export default async function LocaleLayout({
           .bg-section-gradient { background: ${themeColors.background}; }
         `}</style>
       )}
-      <Header locale={locale} sectorsEnabled={sectorsEnabled} sectors={sectorLinks} logoUrl={logoUrl} logoPosition={headerLogoPos} logoVisible={headerLogoVisible} />
+      <Header locale={locale} sectorsEnabled={sectorsEnabled} sectors={sectorLinks} logoUrl={logoUrl} logoPosition={headerLogoPos} logoVisible={headerLogoVisible} logoOffsetX={headerOffsetX} logoOffsetY={headerOffsetY} />
       <main>{children}</main>
       <Footer locale={locale} />
       {/* Tawk.to live chat */}

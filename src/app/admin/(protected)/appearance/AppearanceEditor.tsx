@@ -127,6 +127,20 @@ export default function AppearanceEditor({ settings }: Props) {
                     ))}
                   </div>
                 </div>
+                <div>
+                  <label className="block text-xs text-secondary mb-1">Horizontal Offset (px)</label>
+                  <div className="flex items-center gap-2">
+                    <input type="range" min="-200" max="200" value={values['appearance.logo.headerOffsetX'] || '0'} onChange={(e) => update('appearance.logo.headerOffsetX', e.target.value)} className="flex-1" />
+                    <input type="number" value={values['appearance.logo.headerOffsetX'] || '0'} onChange={(e) => update('appearance.logo.headerOffsetX', e.target.value)} className="w-16 border rounded px-2 py-1 text-sm text-center" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs text-secondary mb-1">Vertical Offset (px)</label>
+                  <div className="flex items-center gap-2">
+                    <input type="range" min="-100" max="100" value={values['appearance.logo.headerOffsetY'] || '0'} onChange={(e) => update('appearance.logo.headerOffsetY', e.target.value)} className="flex-1" />
+                    <input type="number" value={values['appearance.logo.headerOffsetY'] || '0'} onChange={(e) => update('appearance.logo.headerOffsetY', e.target.value)} className="w-16 border rounded px-2 py-1 text-sm text-center" />
+                  </div>
+                </div>
                 <label className="flex items-center gap-2 text-sm">
                   <input
                     type="checkbox"
@@ -158,6 +172,20 @@ export default function AppearanceEditor({ settings }: Props) {
                         {pos}
                       </button>
                     ))}
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs text-secondary mb-1">Horizontal Offset (px)</label>
+                  <div className="flex items-center gap-2">
+                    <input type="range" min="-200" max="200" value={values['appearance.logo.footerOffsetX'] || '0'} onChange={(e) => update('appearance.logo.footerOffsetX', e.target.value)} className="flex-1" />
+                    <input type="number" value={values['appearance.logo.footerOffsetX'] || '0'} onChange={(e) => update('appearance.logo.footerOffsetX', e.target.value)} className="w-16 border rounded px-2 py-1 text-sm text-center" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs text-secondary mb-1">Vertical Offset (px)</label>
+                  <div className="flex items-center gap-2">
+                    <input type="range" min="-100" max="100" value={values['appearance.logo.footerOffsetY'] || '0'} onChange={(e) => update('appearance.logo.footerOffsetY', e.target.value)} className="flex-1" />
+                    <input type="number" value={values['appearance.logo.footerOffsetY'] || '0'} onChange={(e) => update('appearance.logo.footerOffsetY', e.target.value)} className="w-16 border rounded px-2 py-1 text-sm text-center" />
                   </div>
                 </div>
                 <label className="flex items-center gap-2 text-sm">
