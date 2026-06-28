@@ -53,9 +53,7 @@ function DropdownMenu({
   return (
     <div ref={ref} className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <button
-        className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap flex items-center gap-1 ${
-          'text-white hover:text-gold'
-        }`}
+        className="nav-btn uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap flex items-center gap-1"
       >
         {label}
         <svg
@@ -129,9 +127,7 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl, logoP
           <nav className="hidden xl:flex items-center gap-2 2xl:gap-4 ml-auto">
             <Link
               href={`${prefix}/about`}
-              className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
-                'text-white hover:text-gold'
-              }`}
+              className="nav-btn uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap"
             >
               {t('about')}
             </Link>
@@ -168,45 +164,35 @@ export default function Header({ locale, sectorsEnabled, sectors, logoUrl, logoP
 
             <Link
               href={`${prefix}/services`}
-              className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
-                'text-white hover:text-gold'
-              }`}
+              className="nav-btn uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap"
             >
               {t('services')}
             </Link>
 
             <Link
               href={`${prefix}/blog`}
-              className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
-                'text-white hover:text-gold'
-              }`}
+              className="nav-btn uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap"
             >
               {t('blog')}
             </Link>
 
             <Link
               href={`${prefix}/team`}
-              className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
-                'text-white hover:text-gold'
-              }`}
+              className="nav-btn uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap"
             >
               {t('team')}
             </Link>
 
             <Link
               href={`${prefix}/clients`}
-              className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
-                'text-white hover:text-gold'
-              }`}
+              className="nav-btn uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap"
             >
               {t('clients')}
             </Link>
 
             <Link
               href={`${prefix}/contact`}
-              className={`text-[14.4px] uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap ${
-                'text-white hover:text-gold'
-              }`}
+              className="nav-btn uppercase tracking-[0.01em] font-semibold transition-colors duration-300 whitespace-nowrap"
             >
               {t('contact')}
             </Link>

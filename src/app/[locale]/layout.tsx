@@ -68,7 +68,12 @@ export default async function LocaleLayout({
           :root {
             --color-header: ${s(settings, 'appearance.color.header', locale).startsWith('#') ? s(settings, 'appearance.color.header', locale) : themeColors.background};
             --color-footer: ${s(settings, 'appearance.color.footer', locale).startsWith('#') ? s(settings, 'appearance.color.footer', locale) : themeColors.background};
+            --nav-color: ${s(settings, 'appearance.nav.color', locale).startsWith('#') ? s(settings, 'appearance.nav.color', locale) : '#FFFFFF'};
+            --nav-hover: ${s(settings, 'appearance.nav.hoverColor', locale).startsWith('#') ? s(settings, 'appearance.nav.hoverColor', locale) : '#668CCE'};
+            --nav-size: ${Number(s(settings, 'appearance.nav.size', locale)) || 14.4}px;
           }
+          .nav-btn { color: var(--nav-color); font-size: var(--nav-size); }
+          .nav-btn:hover { color: var(--nav-hover); }
           .card-hover:hover { transform: scale(${Number(s(settings, 'appearance.cardScale', locale)) || 1.10}); }
         `}</style>
       )}

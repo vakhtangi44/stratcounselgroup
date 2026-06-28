@@ -405,6 +405,30 @@ export default function AppearanceEditor({ settings }: Props) {
             />
           </div>
 
+          {/* Nav Buttons */}
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <h3 className="text-sm font-medium text-dark mb-4">Header Navigation</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <ColorPicker
+                label="Button Color"
+                value={values['appearance.nav.color'] || '#FFFFFF'}
+                onChange={(v) => update('appearance.nav.color', v)}
+              />
+              <ColorPicker
+                label="Hover Color"
+                value={values['appearance.nav.hoverColor'] || '#668CCE'}
+                onChange={(v) => update('appearance.nav.hoverColor', v)}
+              />
+              <div>
+                <label className="block text-sm text-dark font-medium mb-2">Font Size (px)</label>
+                <div className="flex items-center gap-2">
+                  <input type="range" min="10" max="20" step="0.1" value={values['appearance.nav.size'] || '14.4'} onChange={(e) => update('appearance.nav.size', e.target.value)} className="flex-1" />
+                  <input type="number" step="0.1" value={values['appearance.nav.size'] || '14.4'} onChange={(e) => update('appearance.nav.size', e.target.value)} className="w-16 border rounded px-2 py-1 text-sm text-center" />
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Color Preview */}
           <div className="mt-6 rounded overflow-hidden">
             <div
