@@ -58,11 +58,11 @@ export default function ServicesPreview({ services, locale }: Props) {
                   {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                 </div>
 
-                <h3 className="font-heading mb-3 leading-snug" style={{ fontSize: 'var(--typo-cardTitle-size, 1.125rem)', color: 'var(--typo-cardTitle-color, #1C122C)', fontFamily: 'var(--typo-cardTitle-font)' }}>
+                <h3 className="font-heading mb-3 leading-snug" style={{ fontSize: 'var(--typo-serviceTitle-size, 1.125rem)', color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
                   {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
                 </h3>
 
-                <p className="font-light leading-relaxed mb-5 line-clamp-3 text-justify" style={{ fontSize: 'var(--typo-cardBody-size, 0.875rem)', color: 'var(--typo-cardBody-color, #5a5a6e)', fontFamily: 'var(--typo-cardBody-font)' }}>
+                <p className="font-light leading-relaxed mb-5 line-clamp-3 text-justify" style={{ fontSize: 'var(--typo-serviceBody-size, 0.875rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)' }}>
                   {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                 </p>
 

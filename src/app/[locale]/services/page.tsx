@@ -65,12 +65,12 @@ export default async function ServicesPage() {
                     )}
 
                     {/* Title */}
-                    <h2 className="font-heading mb-4 leading-tight" style={{ fontSize: 'var(--typo-cardTitle-size, 1.125rem)', color: 'var(--typo-cardTitle-color, #1C122C)', fontFamily: 'var(--typo-cardTitle-font)' }}>
+                    <h2 className="font-heading mb-4 leading-tight" style={{ fontSize: 'var(--typo-serviceTitle-size, 1.125rem)', color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
                       {locale === 'ka' ? service.titleKa : service.titleEn}
                     </h2>
 
                     {/* Description */}
-                    <p className="leading-relaxed mb-6 font-[520] italic text-justify" style={{ fontSize: 'var(--typo-body-size, 1rem)', color: 'var(--typo-body-color, #5a5a6e)', fontFamily: 'var(--typo-body-font)' }}>
+                    <p className="leading-relaxed mb-6 font-[520] italic text-justify" style={{ fontSize: 'var(--typo-serviceBody-size, 1rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)' }}>
                       {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                     </p>
 
