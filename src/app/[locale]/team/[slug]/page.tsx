@@ -33,7 +33,7 @@ export default async function TeamMemberPage({
   const fullBio = isKa ? member.fullBioKa : member.fullBioEn
 
   return (
-    <div className="pt-[253px]">
+    <div className="pt-[253px] bg-white">
       {/* Hero Section */}
       <section className="bg-white py-20 px-4">
         <div className="container mx-auto max-w-5xl">
