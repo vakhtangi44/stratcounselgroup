@@ -61,13 +61,13 @@ export default async function ClientsPage() {
   return (
     <div className="pt-[140px] md:pt-[255px]">
       {/* Page Hero + Client Logos */}
-      <section className="py-16 md:py-20 overflow-visible bg-cream">
-        <div className="text-center px-4 mb-8 sm:mb-[5.1rem]">
+      <section className="py-[6.5rem] md:py-[9.1rem] overflow-visible bg-cream">
+        <div className="text-center px-4 lg:px-8 mb-8 sm:mb-[5.1rem]">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
           <h1 className="font-heading mb-6 tracking-[-0.02em]" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>{title}</h1>
           <RichText html={description} as="p" className="max-w-none mx-auto text-sm sm:text-lg leading-relaxed font-bold" style={{ color: 'var(--typo-sectionTitle-color, #1C122C)' }} />
         </div>
-        <div className="px-4 overflow-visible">
+        <div className="px-4 lg:px-8 overflow-visible">
           <div key={Date.now()} className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4 max-w-[95%] sm:max-w-[80%] mx-auto overflow-visible">
             {allClients.map((client, idx) => {
               const logo = isKa ? (client.logoKa || client.logoEn) : (client.logoEn || client.logoKa)

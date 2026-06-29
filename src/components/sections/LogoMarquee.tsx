@@ -23,7 +23,7 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
 
   return (
     <section className="py-[6.5rem] md:py-[9.1rem] bg-white">
-      <div className="container mx-auto px-4 max-w-5xl">
+      <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <div className="text-center mb-16">
           <h2
             className="font-heading font-bold"

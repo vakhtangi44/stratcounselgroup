@@ -64,7 +64,7 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
   return (
     <div className="pt-[140px] md:pt-[255px]">
       {/* Split layout */}
-      <section className="bg-white py-10 md:py-28 px-4">
+      <section className="bg-white py-[6.5rem] md:py-[9.1rem] px-4 lg:px-8">
         <div className="container mx-auto max-w-[72rem]">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr]">
             {/* Left: Contact Info */}

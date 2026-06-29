@@ -11,7 +11,7 @@ export default function PressStrip({ items, asSeenIn }: Props) {
   if (items.length === 0) return null
 
   return (
-    <section className="py-[5.2rem] md:py-[6.5rem] bg-cream">
+    <section className="py-[6.5rem] md:py-[9.1rem] bg-cream">
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal>
           <div className="flex items-center gap-4 mb-[3.25rem]">

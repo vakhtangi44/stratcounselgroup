@@ -27,8 +27,8 @@ export default async function SectorsPage() {
 
   return (
     <div className="pt-[140px] md:pt-[255px]">
-      <section className="pt-[3.1rem] md:pt-[4.2rem] pb-[4.3rem] md:pb-[6.1rem] bg-white">
-        <div className="text-center px-4 mb-[4.5rem]">
+      <section className="py-[6.5rem] md:py-[9.1rem] bg-white">
+        <div className="text-center px-4 lg:px-8 mb-[4.5rem]">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl tracking-[-0.02em] text-dark">
             {isKa ? 'სამიზნე სექტორები' : 'Target Sectors'}

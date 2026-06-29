@@ -33,9 +33,9 @@ export default async function TeamMemberPage({
   const fullBio = isKa ? member.fullBioKa : member.fullBioEn
 
   return (
-    <div className="pt-[253px] bg-white">
+    <div className="pt-[140px] md:pt-[255px] bg-white">
       {/* Hero Section */}
-      <section className="bg-white py-16 px-4">
+      <section className="bg-white py-[6.5rem] md:py-[9.1rem] px-4 lg:px-8">
         <div className="container mx-auto max-w-5xl">
           <Link
             href={`${prefix}/team`}
@@ -48,13 +48,13 @@ export default async function TeamMemberPage({
           </Link>
 
           <div className="flex flex-col md:flex-row gap-10 items-start">
-            <div className="relative w-[16.8rem] h-[16.8rem] md:w-[19.2rem] md:h-[19.2rem] rounded-sm overflow-hidden shrink-0 border border-gray-200" style={{ background: '#ffffff' }}>
+            <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-sm overflow-hidden shrink-0 border border-gray-200" style={{ background: '#ffffff' }}>
               {member.photo && (
                 <Image
                   src={member.photo}
                   alt={isKa ? member.nameKa : member.nameEn}
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   priority
                 />
               )}
@@ -103,8 +103,8 @@ export default async function TeamMemberPage({
 
       {/* Articles */}
       {member.posts.length > 0 && (
-        <section className="py-16 px-4 bg-white">
-          <div className="container mx-auto max-w-4xl">
+        <section className="py-[6.5rem] md:py-[9.1rem] px-4 lg:px-8 bg-white">
+          <div className="container mx-auto max-w-5xl">
             <h2 className="font-heading text-2xl text-dark mb-8">
               {isKa ? 'სტატიები' : 'Articles'}
             </h2>

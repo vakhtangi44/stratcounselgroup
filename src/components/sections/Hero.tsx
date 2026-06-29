@@ -28,7 +28,7 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
   return (
     <section className="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-[130px] md:pt-[230px] pb-[36px] md:pb-[83px] bg-white">
 
-      <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
+      <div className="relative z-10 text-center px-4 lg:px-8 max-w-6xl mx-auto">
         <h2
           className="font-heading text-[1.53rem] sm:text-[2.3rem] md:text-[3.8rem] font-bold mb-9 tracking-[-0.02em] leading-[1.1]"
           style={{ color: 'var(--typo-heroTitle-color, #1C122C)', fontFamily: 'var(--typo-heroTitle-font)', fontSize: `clamp(1.53rem, 5vw, var(--typo-heroTitle-size, 4.6rem))` }}

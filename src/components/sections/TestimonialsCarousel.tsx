@@ -39,7 +39,7 @@ export default function TestimonialsCarousel({ testimonials, locale, strings }: 
 
   return (
     <section className="py-[6.5rem] md:py-[9.1rem] bg-cream bg-subtle-pattern">
-      <div className="container mx-auto px-4 max-w-3xl text-center">
+      <div className="container mx-auto px-4 lg:px-8 max-w-3xl text-center">
         <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
         <RichText html={strings.title} as="h2" className="font-heading text-3xl md:text-4xl text-dark mb-20 gold-underline inline-block" />
 

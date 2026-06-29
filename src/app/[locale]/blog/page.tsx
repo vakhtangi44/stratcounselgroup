@@ -55,12 +55,12 @@ export default async function BlogPage({ searchParams }: Props) {
   const displayPosts = hasMore ? posts.slice(0, PAGE_SIZE) : posts
 
   return (
-    <div className="pt-16">
-      <section className="bg-section-gradient text-white py-[7.8rem] text-center px-4">
+    <div className="pt-[140px] md:pt-[255px]">
+      <section className="bg-section-gradient text-white py-[6.5rem] md:py-[9.1rem] text-center px-4 lg:px-8">
         <RichText html={s(settings, 'page.blog', locale)} as="h1" className="font-heading text-4xl mb-4" />
       </section>
 
-      <section className="py-8 px-4 bg-bg-alt border-b border-gray-100">
+      <section className="py-8 px-4 lg:px-8 bg-bg-alt border-b border-gray-100">
         <div className="container mx-auto flex flex-wrap gap-3 items-center">
           <form method="GET" action={`${prefix}/blog`} className="flex gap-2 w-full max-w-md">
             <input
@@ -76,7 +76,7 @@ export default async function BlogPage({ searchParams }: Props) {
         </div>
       </section>
 
-      <section className="py-[5.2rem] px-4 bg-white">
+      <section className="py-[6.5rem] md:py-[9.1rem] px-4 lg:px-8 bg-white">
         <div className="container mx-auto">
           {displayPosts.length === 0 ? (
             <p className="text-center text-secondary py-16">{isKa ? 'სტატია ვერ მოიძებნა' : 'No articles found'}</p>

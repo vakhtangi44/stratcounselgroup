@@ -36,7 +36,7 @@ export default async function AboutPage() {
       />
 
       {/* Advantages */}
-      <section className="py-[6.5rem] md:py-[9.1rem] px-4" style={{ background: 'white' }}>
+      <section className="py-[6.5rem] md:py-[9.1rem] px-4 lg:px-8" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-5xl">
           <ScrollReveal className="text-center mb-20">
             <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
@@ -61,7 +61,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-[6.5rem] md:py-[9.1rem] px-4 bg-cream">
+      <section className="py-[6.5rem] md:py-[9.1rem] px-4 lg:px-8 bg-cream">
         <div className="container mx-auto max-w-6xl">
           <ScrollReveal className="text-center mb-20">
             <RichText html={s(settings, 'about.values.subtitle', locale)} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />

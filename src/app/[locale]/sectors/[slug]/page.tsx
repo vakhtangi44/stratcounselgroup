@@ -50,7 +50,7 @@ export default async function SectorDetailPage({
   return (
     <div className="pt-[140px] md:pt-[255px]">
       {/* Hero with sector photo */}
-      <section className="relative bg-section-gradient text-white py-32 md:py-40 text-center px-4 overflow-hidden">
+      <section className="relative bg-section-gradient text-white py-[6.5rem] md:py-[9.1rem] text-center px-4 lg:px-8 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={sector.image}
