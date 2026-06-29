@@ -25,9 +25,9 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
     <section className="py-[6.5rem] md:py-[9.1rem] bg-white">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-16">
-          <p className="text-[11px] uppercase tracking-[0.3em] text-dark/40 font-medium">
-            {isKa ? 'კლიენტები' : 'Clients'}
-          </p>
+          <h2 className="font-heading text-3xl md:text-4xl text-dark font-bold">
+            {isKa ? 'ჩვენი კლიენტები' : 'Our Clients'}
+          </h2>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-12 gap-y-10 max-w-4xl mx-auto items-center justify-items-center">
@@ -42,14 +42,14 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
             return (
               <div
                 key={client.id}
-                className="flex items-center justify-center h-16 w-full"
+                className="flex items-center justify-center h-[6.8rem] w-full"
               >
                 {logo ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={logo}
                     alt={name}
-                    className="max-w-[140px] max-h-full object-contain opacity-80 hover:opacity-100 transition-all duration-500"
+                    className="max-w-[237px] max-h-full object-contain opacity-80 hover:opacity-100 transition-all duration-500"
                   />
                 ) : (
                   <span className="text-dark/40 text-sm font-medium text-center">

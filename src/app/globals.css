@@ -78,8 +78,8 @@
 
   /* Bio content styling */
   .bio-content {
-    color: #1c2f54;
-    font-size: 18px;
+    color: var(--typo-teamBio-color, #1c2f54);
+    font-size: var(--typo-teamBio-size, 1rem);
     font-weight: 370;
     line-height: 2;
     text-shadow: 0 0 1px rgba(0,0,0,0.3);

@@ -33,7 +33,8 @@ const TYPO_GROUPS = [
   { key: 'cardBody', label: 'Card Body Text', defaultSize: '0.875', defaultColor: '#5a5a6e', defaultFont: 'body' },
   { key: 'body', label: 'Body / Description', defaultSize: '1', defaultColor: '#5a5a6e', defaultFont: 'body' },
   { key: 'button', label: 'Buttons', defaultSize: '0.875', defaultColor: '#FFFFFF', defaultFont: 'body' },
-  { key: 'footerHeading', label: 'Footer Headings', defaultSize: '0.9', defaultColor: '#668CCE', defaultFont: 'heading' },
+  { key: 'teamBio', label: 'Team Bio Text', defaultSize: '1', defaultColor: '#5a5a6e', defaultFont: 'body' },
+  { key: 'footerHeading', label: 'Footer Headings', defaultSize: '0.9', defaultColor: '#d88551', defaultFont: 'heading' },
   { key: 'footerBody', label: 'Footer Text', defaultSize: '0.906', defaultColor: '#B0B0B0', defaultFont: 'body' },
 ]
 

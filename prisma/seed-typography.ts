@@ -44,7 +44,7 @@ const settings = [
   { key: 'appearance.typo.button.font', valueKa: 'body', valueEn: 'body', category: 'appearance' },
   // Footer Headings
   { key: 'appearance.typo.footerHeading.size', valueKa: '0.9', valueEn: '0.9', category: 'appearance' },
-  { key: 'appearance.typo.footerHeading.color', valueKa: '#668CCE', valueEn: '#668CCE', category: 'appearance' },
+  { key: 'appearance.typo.footerHeading.color', valueKa: '#d88551', valueEn: '#d88551', category: 'appearance' },
   { key: 'appearance.typo.footerHeading.font', valueKa: 'heading', valueEn: 'heading', category: 'appearance' },
   // Footer Body Text
   { key: 'appearance.typo.footerBody.size', valueKa: '0.906', valueEn: '0.906', category: 'appearance' },

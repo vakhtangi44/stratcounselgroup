@@ -59,7 +59,7 @@ export default async function LocaleLayout({
     georgia: "Georgia, 'Times New Roman', serif",
     noto: "'Noto Sans Georgian', sans-serif",
   }
-  const typoGroups = ['heroTitle', 'heroTagline', 'sectionTitle', 'sectionTitleDark', 'subtitle', 'cardTitle', 'cardBody', 'body', 'button', 'footerHeading', 'footerBody']
+  const typoGroups = ['heroTitle', 'heroTagline', 'sectionTitle', 'sectionTitleDark', 'subtitle', 'cardTitle', 'cardBody', 'body', 'button', 'teamBio', 'footerHeading', 'footerBody']
   const typoVars: string[] = []
   for (const g of typoGroups) {
     const sz = s(settings, `appearance.typo.${g}.size`, locale)
