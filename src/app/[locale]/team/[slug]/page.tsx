@@ -84,26 +84,22 @@ export default async function TeamMemberPage({
                 </a>
               )}
               {member.shortBioKa && (
-                <p className="text-secondary mt-6 text-base font-light leading-relaxed max-w-xl">
+                <p className="text-secondary mt-6 text-[0.85rem] font-bold leading-relaxed max-w-xl">
                   {isKa ? member.shortBioKa : member.shortBioEn}
                 </p>
+              )}
+
+              {/* Bio starts next to photo */}
+              {fullBio && (
+                <div
+                  className="max-w-none bio-content mt-8"
+                  dangerouslySetInnerHTML={{ __html: fullBio }}
+                />
               )}
             </div>
           </div>
         </div>
       </section>
-
-      {/* Bio Section - content is trusted, sourced from admin-controlled database seed */}
-      {fullBio && (
-        <section className="py-16 md:py-20 px-4 bg-white">
-          <div className="container mx-auto max-w-4xl">
-            <div
-              className="max-w-none bio-content"
-              dangerouslySetInnerHTML={{ __html: fullBio }}
-            />
-          </div>
-        </section>
-      )}
 
       {/* Articles */}
       {member.posts.length > 0 && (
