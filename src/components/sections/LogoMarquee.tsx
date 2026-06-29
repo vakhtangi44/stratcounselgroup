@@ -25,7 +25,10 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
     <section className="py-[6.5rem] md:py-[9.1rem] bg-white">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="text-center mb-16">
-          <h2 className="font-heading text-3xl md:text-4xl text-dark font-bold">
+          <h2
+            className="font-heading font-bold"
+            style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}
+          >
             {isKa ? 'ჩვენი კლიენტები' : 'Our Clients'}
           </h2>
         </div>
@@ -42,14 +45,14 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
             return (
               <div
                 key={client.id}
-                className="flex items-center justify-center h-[6.8rem] w-full"
+                className="flex items-center justify-center h-[9.5rem] w-full"
               >
                 {logo ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={logo}
                     alt={name}
-                    className="max-w-[237px] max-h-full object-contain opacity-80 hover:opacity-100 transition-all duration-500"
+                    className="max-w-[332px] max-h-full object-contain opacity-80 hover:opacity-100 transition-all duration-500"
                   />
                 ) : (
                   <span className="text-dark/40 text-sm font-medium text-center">

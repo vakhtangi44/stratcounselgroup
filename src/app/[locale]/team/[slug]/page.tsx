@@ -35,11 +35,11 @@ export default async function TeamMemberPage({
   return (
     <div className="pt-[253px]">
       {/* Hero Section */}
-      <section className="bg-section-gradient text-white py-20 px-4">
+      <section className="bg-white py-20 px-4">
         <div className="container mx-auto max-w-5xl">
           <Link
             href={`${prefix}/team`}
-            className="inline-flex items-center gap-2 text-white/50 hover:text-gold transition-colors text-sm uppercase tracking-wider mb-10"
+            className="inline-flex items-center gap-2 text-secondary hover:text-gold transition-colors text-sm uppercase tracking-wider mb-10"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -48,7 +48,7 @@ export default async function TeamMemberPage({
           </Link>
 
           <div className="flex flex-col md:flex-row gap-10 items-start">
-            <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-sm overflow-hidden shrink-0 border-2 border-gold/20 shadow-2xl" style={{ background: '#ffffff' }}>
+            <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-sm overflow-hidden shrink-0 border border-gray-200" style={{ background: '#ffffff' }}>
               {member.photo && (
                 <Image
                   src={member.photo}
@@ -60,11 +60,11 @@ export default async function TeamMemberPage({
               )}
             </div>
             <div className="flex-1">
-              <h1 className="font-heading text-4xl md:text-5xl mb-3">
+              <h1 className="font-heading text-4xl md:text-5xl text-dark mb-3">
                 {isKa ? member.nameKa : member.nameEn}
               </h1>
               <div className="w-12 h-[2px] bg-gold mb-4" />
-              <p className="text-white/60 text-lg mb-4">
+              <p className="text-secondary text-lg mb-4">
                 {isKa ? member.titleKa : member.titleEn}
               </p>
               {member.gbaNumber && (
@@ -84,7 +84,7 @@ export default async function TeamMemberPage({
                 </a>
               )}
               {member.shortBioKa && (
-                <p className="text-white/70 mt-6 text-base font-light leading-relaxed max-w-xl">
+                <p className="text-secondary mt-6 text-base font-light leading-relaxed max-w-xl">
                   {isKa ? member.shortBioKa : member.shortBioEn}
                 </p>
               )}
