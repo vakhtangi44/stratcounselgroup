@@ -35,7 +35,7 @@ export default async function TeamMemberPage({
   return (
     <div className="pt-[253px] bg-white">
       {/* Hero Section */}
-      <section className="bg-white pt-12 pb-20 px-4">
+      <section className="bg-white py-16 px-4">
         <div className="container mx-auto max-w-5xl">
           <Link
             href={`${prefix}/team`}
@@ -48,7 +48,7 @@ export default async function TeamMemberPage({
           </Link>
 
           <div className="flex flex-col md:flex-row gap-10 items-start">
-            <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-sm overflow-hidden shrink-0 border border-gray-200" style={{ background: '#ffffff' }}>
+            <div className="relative w-[16.8rem] h-[16.8rem] md:w-[19.2rem] md:h-[19.2rem] rounded-sm overflow-hidden shrink-0 border border-gray-200" style={{ background: '#ffffff' }}>
               {member.photo && (
                 <Image
                   src={member.photo}
