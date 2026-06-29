@@ -36,11 +36,11 @@ export default async function AboutPage() {
       />
 
       {/* Advantages */}
-      <section className="py-20 md:py-28 px-4" style={{ background: 'white' }}>
+      <section className="py-[6.5rem] md:py-[9.1rem] px-4" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-5xl">
-          <ScrollReveal className="text-center mb-16">
+          <ScrollReveal className="text-center mb-20">
             <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
-            <h2 className="font-heading text-3xl md:text-4xl text-dark">
+            <h2 className="font-heading" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
               {locale === 'ka' ? 'ჩვენი უპირატესობები' : 'Our Advantages'}
             </h2>
           </ScrollReveal>
@@ -48,12 +48,10 @@ export default async function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {advantages.map((v, i) => (
               <ScrollReveal key={v.id} delay={i * 100}>
-                <div className="flex items-start gap-4 p-6 bg-cream border border-gray-100 transition-all duration-500 group">
-                  <div className="flex-shrink-0 w-8 h-8 bg-gold/10 flex items-center justify-center mt-0.5">
-                    <svg className="w-5 h-5 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
+                <div className="flex items-start gap-4 py-4">
+                  <svg className="w-5 h-5 text-dark flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
                   <p className="text-dark text-base leading-relaxed">{locale === 'ka' ? v.titleKa : v.titleEn}</p>
                 </div>
               </ScrollReveal>
@@ -63,11 +61,11 @@ export default async function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20 md:py-28 px-4 bg-cream">
+      <section className="py-[6.5rem] md:py-[9.1rem] px-4 bg-cream">
         <div className="container mx-auto max-w-6xl">
-          <ScrollReveal className="text-center mb-16">
+          <ScrollReveal className="text-center mb-20">
             <RichText html={s(settings, 'about.values.subtitle', locale)} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
-            <RichText html={s(settings, 'about.values', locale)} as="h2" className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block" />
+            <RichText html={s(settings, 'about.values', locale)} as="h2" className="font-heading gold-underline inline-block" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }} />
           </ScrollReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
@@ -88,10 +86,10 @@ export default async function AboutPage() {
                     <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-gold border border-gold/20">
                       <AboutValueIcon icon={v.icon} />
                     </div>
-                    <h3 className="font-heading text-xl text-dark mb-3">
+                    <h3 className="font-heading mb-3" style={{ fontSize: 'var(--typo-cardTitle-size, 1.125rem)', color: 'var(--typo-cardTitle-color, #1C122C)', fontFamily: 'var(--typo-cardTitle-font)' }}>
                       {locale === 'ka' ? v.titleKa : v.titleEn}
                     </h3>
-                    <p className="text-secondary text-sm font-light leading-relaxed text-justify">
+                    <p className="font-light leading-relaxed text-justify" style={{ fontSize: 'var(--typo-cardBody-size, 0.875rem)', color: 'var(--typo-cardBody-color, #5a5a6e)', fontFamily: 'var(--typo-cardBody-font)' }}>
                       {locale === 'ka' ? v.descriptionKa : v.descriptionEn}
                     </p>
                   </div>

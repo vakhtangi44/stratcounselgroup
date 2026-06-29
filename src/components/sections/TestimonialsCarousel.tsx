@@ -38,16 +38,16 @@ export default function TestimonialsCarousel({ testimonials, locale, strings }: 
   const t = testimonials[idx]
 
   return (
-    <section className="py-20 md:py-28 bg-white bg-subtle-pattern">
+    <section className="py-[6.5rem] md:py-[9.1rem] bg-cream bg-subtle-pattern">
       <div className="container mx-auto px-4 max-w-3xl text-center">
         <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
-        <RichText html={strings.title} as="h2" className="font-heading text-3xl md:text-4xl text-dark mb-16 gold-underline inline-block" />
+        <RichText html={strings.title} as="h2" className="font-heading text-3xl md:text-4xl text-dark mb-20 gold-underline inline-block" />
 
         <div className={`transition-opacity duration-300 ${fade ? 'opacity-100' : 'opacity-0'}`}>
           {/* Large decorative quote marks */}
           <div className="text-gold/20 font-heading text-8xl md:text-9xl leading-none mb-2 select-none">&ldquo;</div>
 
-          <blockquote className="text-dark text-xl md:text-2xl leading-relaxed mb-8 font-heading font-normal -mt-12">
+          <blockquote className="text-dark text-xl md:text-2xl leading-relaxed mb-10 font-heading font-normal -mt-12">
             {locale === 'ka' ? t.quoteKa : t.quoteEn}
           </blockquote>
 
@@ -65,7 +65,7 @@ export default function TestimonialsCarousel({ testimonials, locale, strings }: 
         </div>
 
         {testimonials.length > 1 && (
-          <div className="flex justify-center gap-3 mt-12">
+          <div className="flex justify-center gap-3 mt-16">
             {testimonials.map((_, i) => (
               <button
                 key={i}

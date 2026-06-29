@@ -61,11 +61,11 @@ export default async function ClientsPage() {
   return (
     <div className="pt-[140px] md:pt-[255px]">
       {/* Page Hero + Client Logos */}
-      <section className="py-12 md:py-16 text-white overflow-visible" style={{ background: 'var(--color-dark)' }}>
-        <div className="text-center px-4 mb-6 sm:mb-[3.91rem]">
+      <section className="py-16 md:py-20 overflow-visible bg-cream">
+        <div className="text-center px-4 mb-8 sm:mb-[5.1rem]">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em] text-white">{title}</h1>
-          <RichText html={description} as="p" className="text-white max-w-none mx-auto text-sm sm:text-lg leading-relaxed font-bold" />
+          <h1 className="font-heading mb-6 tracking-[-0.02em]" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>{title}</h1>
+          <RichText html={description} as="p" className="max-w-none mx-auto text-sm sm:text-lg leading-relaxed font-bold" style={{ color: 'var(--typo-sectionTitle-color, #1C122C)' }} />
         </div>
         <div className="px-4 overflow-visible">
           <div key={Date.now()} className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4 max-w-[95%] sm:max-w-[80%] mx-auto overflow-visible">
@@ -76,7 +76,7 @@ export default async function ClientsPage() {
               return (
                 <div
                   key={client.id}
-                  className="group flex items-center justify-center h-[6rem] sm:h-[10rem] md:h-[12rem] p-2 sm:p-4 relative border border-white/10 hover:border-gold/50 transition-all duration-500 card-hover"
+                  className="group flex items-center justify-center h-[6rem] sm:h-[10rem] md:h-[12rem] p-2 sm:p-4 relative border border-dark/10 hover:border-gold/50 transition-all duration-500 card-hover"
                 >
                   {logo ? (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -86,7 +86,7 @@ export default async function ClientsPage() {
                       className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500"
                     />
                   ) : (
-                    <span className="text-white/70 group-hover:text-white text-xs font-medium text-center leading-snug transition-colors duration-300">
+                    <span className="text-dark/70 group-hover:text-dark text-xs font-medium text-center leading-snug transition-colors duration-300">
                       {name}
                     </span>
                   )}

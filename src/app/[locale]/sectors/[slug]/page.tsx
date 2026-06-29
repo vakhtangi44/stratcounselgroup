@@ -75,10 +75,10 @@ export default async function SectorDetailPage({
       </section>
 
       {/* Back to Sectors + other sectors */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-[6.5rem] md:py-[9.1rem] bg-white">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <ScrollReveal>
-            <p className="text-center text-secondary mb-10">
+            <p className="text-center text-secondary mb-[3.25rem]">
               {isKa ? 'სხვა სექტორები' : 'Other Sectors'}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
@@ -105,7 +105,7 @@ export default async function SectorDetailPage({
             </div>
           </ScrollReveal>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-16">
             <Link
               href={`${prefix}/sectors`}
               className="inline-block border border-gold text-gold px-8 py-3.5 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold hover:text-white transition-all duration-300"

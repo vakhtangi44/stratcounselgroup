@@ -15,7 +15,9 @@ export default async function Footer({ locale }: { locale: string }) {
   const address = footerAddress(location, locale)
 
   // Unified body text style — same color, weight, size everywhere in the footer
-  const bodyText = 'text-white/70 text-[14.5px] font-[520] tracking-tight'
+  const bodyTextClass = 'font-[520] tracking-tight'
+  const bodyTextStyle = { fontSize: 'var(--typo-footerBody-size, 0.906rem)', color: 'var(--typo-footerBody-color, #B0B0B0)', fontFamily: 'var(--typo-footerBody-font)' }
+  const footerHeadingStyle = { fontSize: 'var(--typo-footerHeading-size, 0.9rem)', color: 'var(--typo-footerHeading-color, #668CCE)', fontFamily: 'var(--typo-footerHeading-font)' }
 
   return (
     <footer className="text-white relative" style={{ background: 'var(--color-footer, var(--color-dark))' }}>
@@ -44,7 +46,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <RichText
               html={s(settings, 'footer.quickLinks', locale)}
               as="div"
-              className="font-heading text-gold mb-6 text-[14.4px] uppercase tracking-[0.01em] font-bold"
+              className="font-heading mb-6 uppercase tracking-[0.01em] font-bold" style={footerHeadingStyle}
             />
             <ul className="space-y-3">
               {[
@@ -57,7 +59,8 @@ export default async function Footer({ locale }: { locale: string }) {
                 <li key={slug}>
                   <Link
                     href={`${prefix}/${slug}`}
-                    className={`${bodyText} hover:text-gold transition-colors duration-300`}
+                    className={`${bodyTextClass} hover:text-gold transition-colors duration-300`}
+                    style={bodyTextStyle}
                   >
                     {label}
                   </Link>
@@ -71,9 +74,9 @@ export default async function Footer({ locale }: { locale: string }) {
             <RichText
               html={s(settings, 'footer.contact', locale)}
               as="div"
-              className="font-heading text-gold mb-6 text-[14.4px] uppercase tracking-[0.01em] font-bold"
+              className="font-heading mb-6 uppercase tracking-[0.01em] font-bold" style={footerHeadingStyle}
             />
-            <div className={`space-y-2 ${bodyText}`}>
+            <div className={`space-y-2 ${bodyTextClass}`} style={bodyTextStyle}>
               <p className="leading-snug">
                 {isKa ? 'შპს „სტრატეგიულ მრჩეველთა ჯგუფი"' : 'Strategic Counsel Group LLC'}
               </p>
@@ -108,12 +111,13 @@ export default async function Footer({ locale }: { locale: string }) {
             <RichText
               html={s(settings, 'footer.newsletter', locale)}
               as="div"
-              className="font-heading text-gold mb-6 text-[14.4px] uppercase tracking-[0.01em] font-bold"
+              className="font-heading mb-6 uppercase tracking-[0.01em] font-bold" style={footerHeadingStyle}
             />
             <RichText
               html={s(settings, 'footer.newsletterText', locale)}
               as="p"
-              className={`${bodyText} mb-4 text-justify`}
+              className={`${bodyTextClass} mb-4 text-justify`}
+              style={bodyTextStyle}
             />
             <NewsletterForm locale={locale} />
           </div>

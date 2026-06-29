@@ -20,9 +20,9 @@ export default function BlogPreview({ posts, locale, strings }: Props) {
   if (posts.length === 0) return null
 
   return (
-    <section className="py-20 md:py-28 bg-cream">
+    <section className="py-[6.5rem] md:py-[9.1rem] bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <ScrollReveal className="text-center mb-16">
+        <ScrollReveal className="text-center mb-20">
           <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
           <RichText html={strings.title} as="h2" className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block" />
         </ScrollReveal>
@@ -71,7 +71,7 @@ export default function BlogPreview({ posts, locale, strings }: Props) {
           ))}
         </div>
 
-        <ScrollReveal className="text-center mt-14">
+        <ScrollReveal className="text-center mt-[4.5rem]">
           <Link
             href={`${prefix}/blog`}
             className="inline-flex items-center gap-2 text-gold hover:text-gold-dark text-sm font-medium uppercase tracking-[0.15em] transition-colors duration-300"

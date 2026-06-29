@@ -23,11 +23,11 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
   if (sectors.length === 0) return null
 
   return (
-    <section className="py-10 md:py-28" style={{ background: 'var(--color-dark)' }}>
+    <section className="py-[3.25rem] md:py-[9.1rem] bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <ScrollReveal className="text-center mb-4 md:mb-[3.47rem]">
+        <ScrollReveal className="text-center mb-5 md:mb-[4.5rem]">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
-          <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">
+          <h2 className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
             {isKa ? 'სამიზნე სექტორები' : 'Target Sectors'}
           </h2>
         </ScrollReveal>
@@ -37,7 +37,7 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
           {sectors.map((sector, i) => {
             const cardContent = (
               <div className="group text-center">
-                <div className="relative overflow-hidden h-32 sm:h-56 md:h-72 rounded-sm mb-2 md:mb-[3.47rem]">
+                <div className="relative overflow-hidden h-32 sm:h-56 md:h-72 rounded-sm mb-3 md:mb-[4.5rem]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={sector.image}
@@ -46,7 +46,7 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
                   />
                   <div className="absolute inset-0 bg-navy/30 group-hover:bg-navy/10 transition-colors duration-500" />
                 </div>
-                <p className="text-white/80 group-hover:text-gold font-semibold text-sm md:text-base uppercase tracking-[0.06em] transition-colors duration-300 px-2">
+                <p className="text-dark/80 group-hover:text-gold font-semibold text-sm md:text-base uppercase tracking-[0.06em] transition-colors duration-300 px-2">
                   {sector.name}
                 </p>
               </div>

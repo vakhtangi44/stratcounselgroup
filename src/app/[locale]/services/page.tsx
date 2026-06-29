@@ -1,6 +1,6 @@
 import { getLocale } from 'next-intl/server'
 import Link from 'next/link'
-import ScrollReveal from '@/components/ui/ScrollReveal'
+
 import RichText from '@/components/ui/RichText'
 import { db } from '@/lib/db'
 import { getSettings, s } from '@/lib/settings'
@@ -35,23 +35,22 @@ export default async function ServicesPage() {
   return (
     <div className="pt-[140px] md:pt-[255px]" style={{ background: 'white' }}>
       {/* Services */}
-      <section className="py-20 md:py-28 px-4" style={{ background: 'white' }}>
+      <section className="py-[6.5rem] md:py-[9.1rem] px-4" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
-            <h1 className="font-heading text-3xl md:text-4xl text-dark mb-4">
+            <h1 className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
               {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
             </h1>
-            <p className="text-secondary text-[1.49rem] font-bold">
+            <p className="font-bold" style={{ fontSize: 'var(--typo-subtitle-size, 1.15rem)', color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
               {locale === 'ka'
                 ? 'სრული სამართლებრივი მხარდაჭერა — მოლაპარაკებიდან სასამართლომდე'
                 : 'Complete legal support — from negotiation to courtroom'}
             </p>
           </div>
-          <div key={Date.now()} className="space-y-12">
+          <div key={Date.now()} className="space-y-16">
             {services.map((service, idx) => (
-              <ScrollReveal key={service.id} delay={idx * 400}>
-                <div className="relative group">
+                <div key={service.id} className="relative group">
                   <div>
                     {/* Service Photo */}
                     {service.image && (
@@ -66,39 +65,32 @@ export default async function ServicesPage() {
                     )}
 
                     {/* Title */}
-                    <h2 className="font-heading text-2xl md:text-3xl text-dark mb-4 leading-tight">
+                    <h2 className="font-heading mb-4 leading-tight" style={{ fontSize: 'var(--typo-cardTitle-size, 1.125rem)', color: 'var(--typo-cardTitle-color, #1C122C)', fontFamily: 'var(--typo-cardTitle-font)' }}>
                       {locale === 'ka' ? service.titleKa : service.titleEn}
                     </h2>
 
                     {/* Description */}
-                    <p className="text-secondary text-base md:text-lg leading-relaxed mb-6 font-[520] italic text-justify">
+                    <p className="leading-relaxed mb-6 font-[520] italic text-justify" style={{ fontSize: 'var(--typo-body-size, 1rem)', color: 'var(--typo-body-color, #5a5a6e)', fontFamily: 'var(--typo-body-font)' }}>
                       {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                     </p>
 
                     {/* Items */}
                     {service.items.length > 0 && (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {service.items.map((item, itemIdx) => (
-                          <ScrollReveal key={item.id} delay={idx * 400 + itemIdx * 150}>
-                            <div className="flex items-start gap-3 p-4 bg-cream border border-gray-100  transition-all duration-500 group/item">
-                              <div className="flex-shrink-0 w-6 h-6 bg-gold/10 flex items-center justify-center mt-0.5">
-                                <svg className="w-5 h-5 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                </svg>
-                              </div>
-                              <p className="text-dark text-sm leading-relaxed group-hover/item:text-dark transition-colors duration-300 text-justify">
+                        {service.items.map((item) => (
+                            <div key={item.id} className="flex items-start gap-3 py-2">
+                              <svg className="w-5 h-5 text-dark flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                              </svg>
+                              <p className="text-dark text-sm leading-relaxed text-justify">
                                 {locale === 'ka' ? item.textKa : item.textEn}
                               </p>
                             </div>
-                          </ScrollReveal>
                         ))}
                       </div>
                     )}
                   </div>
-
-                  {/* Bottom separator */}
                 </div>
-              </ScrollReveal>
             ))}
           </div>
         </div>

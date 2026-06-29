@@ -21,13 +21,21 @@ export async function PUT(req: Request) {
   const session = await auth()
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const body: { id: number; valueKa: string; valueEn: string }[] = await req.json()
+  const body: { id?: number; key?: string; category?: string; valueKa: string; valueEn: string }[] = await req.json()
 
   for (const item of body) {
-    await db.siteSetting.update({
-      where: { id: item.id },
-      data: { valueKa: item.valueKa, valueEn: item.valueEn },
-    })
+    if (item.id) {
+      await db.siteSetting.update({
+        where: { id: item.id },
+        data: { valueKa: item.valueKa, valueEn: item.valueEn },
+      })
+    } else if (item.key) {
+      await db.siteSetting.upsert({
+        where: { key: item.key },
+        update: { valueKa: item.valueKa, valueEn: item.valueEn },
+        create: { key: item.key, category: item.category || 'general', valueKa: item.valueKa, valueEn: item.valueEn },
+      })
+    }
   }
 
   return NextResponse.json({ ok: true })

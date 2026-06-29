@@ -12,6 +12,7 @@ interface Client {
   categoryId: number
   order: number
   active: boolean
+  featured: boolean
 }
 
 interface Props {
@@ -48,6 +49,18 @@ export default function ClientsManager({ initialClients, initialLogoZoom }: Prop
       setSavingZoom(false)
     }
   }
+  async function toggleFeatured(id: number) {
+    const client = clients.find(c => c.id === id)
+    if (!client) return
+    const next = !client.featured
+    setClients(prev => prev.map(c => c.id === id ? { ...c, featured: next } : c))
+    await fetch(`/api/admin/clients/client/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...client, featured: next }),
+    })
+  }
+
   const [newNameEn, setNewNameEn] = useState('')
   const [newNameKa, setNewNameKa] = useState('')
   const [newLogoFile, setNewLogoFile] = useState<File | null>(null)
@@ -403,6 +416,15 @@ export default function ClientsManager({ initialClients, initialLogoZoom }: Prop
 
                   {/* Order badge */}
                   <span className="text-xs text-secondary">#{i + 1}</span>
+
+                  {/* Featured toggle */}
+                  <button
+                    onClick={() => toggleFeatured(client.id)}
+                    title={client.featured ? 'Remove from homepage' : 'Show on homepage'}
+                    className={`text-lg transition-colors ${client.featured ? 'text-gold' : 'text-gray-300 hover:text-gold/50'}`}
+                  >
+                    ★
+                  </button>
 
                   {/* Active badge */}
                   <span

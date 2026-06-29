@@ -6,7 +6,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import RichText from '@/components/ui/RichText'
-import LogoMarquee from '@/components/sections/LogoMarquee'
 
 export default async function TeamPage() {
   noStore()
@@ -14,34 +13,27 @@ export default async function TeamPage() {
   const prefix = locale === 'en' ? '/en' : ''
   const isKa = locale === 'ka'
 
-  const [members, settings, clientCategories] = await Promise.all([
+  const [members, settings] = await Promise.all([
     db.teamMember.findMany({
       where: { active: true },
       orderBy: { order: 'asc' },
     }),
     getSettings(),
-    db.clientCategory.findMany({
-      where: { active: true },
-      orderBy: { order: 'asc' },
-      include: { clients: { where: { active: true }, orderBy: { order: 'asc' } } },
-    }),
   ])
-
-  const allClients = clientCategories.flatMap((cat) => cat.clients)
 
   return (
     <div className="pt-[140px] md:pt-[255px]">
       {/* Compact Hero */}
-      <section className="relative bg-white py-[1.85rem] md:py-[2.6rem] text-center px-4 overflow-hidden">
+      <section className="relative bg-white py-[2.4rem] md:py-[3.4rem] text-center px-4 overflow-hidden">
         <div className="relative z-10">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
           <RichText html={s(settings, 'page.team.subtitle', locale)} as="p" className="text-gold text-[16.5px] uppercase tracking-[0.3em] mb-3" />
-          <RichText html={s(settings, 'page.team', locale)} as="h1" className="font-heading text-[2.8rem] md:text-[3.4rem] tracking-[-0.02em] text-dark" />
+          <RichText html={s(settings, 'page.team', locale)} as="h1" className="font-heading tracking-[-0.02em]" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }} />
         </div>
       </section>
 
       {/* Team Grid */}
-      <section className="pt-[3.24rem] pb-[5.44rem] px-4 bg-white">
+      <section className="pt-[4.2rem] pb-[7.1rem] px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {members.map((member, i) => (
@@ -79,8 +71,6 @@ export default async function TeamPage() {
         </div>
       </section>
 
-      {/* Logo Marquee */}
-      <LogoMarquee locale={locale} clients={allClients} />
     </div>
   )
 }

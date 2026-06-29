@@ -26,16 +26,16 @@ export default function ServicesPreview({ services, locale }: Props) {
   const prefix = locale === 'en' ? '/en' : ''
 
   return (
-    <section className="py-20 md:py-28 bg-cream">
+    <section className="py-[6.5rem] md:py-[9.1rem] bg-cream">
       <div className="container mx-auto px-4 lg:px-8">
-        <ScrollReveal className="text-center mb-16">
-          <p className="text-dark text-[12px] uppercase tracking-[0.3em] mb-4">
+        <ScrollReveal className="text-center mb-20">
+          <p className="text-[12px] uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--typo-label-color, var(--color-dark))', fontFamily: 'var(--typo-label-font)' }}>
             {locale === 'ka' ? 'რას გთავაზობთ' : 'What We Offer'}
           </p>
-          <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4 gold-underline inline-block">
+          <h2 className="font-heading mb-4 gold-underline inline-block" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
             {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
           </h2>
-          <p className="text-secondary mt-6 max-w-2xl mx-auto text-[1.15rem] leading-relaxed">
+          <p className="mt-6 max-w-2xl mx-auto leading-relaxed" style={{ fontSize: 'var(--typo-subtitle-size, 1.15rem)', color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
             {locale === 'ka'
               ? 'სრული სამართლებრივი მხარდაჭერა ყველა ეტაპზე'
               : 'Complete legal support at every stage'}
@@ -58,11 +58,11 @@ export default function ServicesPreview({ services, locale }: Props) {
                   {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                 </div>
 
-                <h3 className="font-heading text-lg text-dark mb-3 leading-snug">
+                <h3 className="font-heading mb-3 leading-snug" style={{ fontSize: 'var(--typo-cardTitle-size, 1.125rem)', color: 'var(--typo-cardTitle-color, #1C122C)', fontFamily: 'var(--typo-cardTitle-font)' }}>
                   {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
                 </h3>
 
-                <p className="text-secondary text-sm font-light leading-relaxed mb-5 line-clamp-3 text-justify">
+                <p className="font-light leading-relaxed mb-5 line-clamp-3 text-justify" style={{ fontSize: 'var(--typo-cardBody-size, 0.875rem)', color: 'var(--typo-cardBody-color, #5a5a6e)', fontFamily: 'var(--typo-cardBody-font)' }}>
                   {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                 </p>
 
@@ -88,10 +88,11 @@ export default function ServicesPreview({ services, locale }: Props) {
           })}
         </div>
 
-        <ScrollReveal className="text-center mt-12">
+        <ScrollReveal className="text-center mt-16">
           <Link
             href={`${prefix}/services`}
-            className="inline-block bg-gold text-white px-8 py-3.5 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold-dark transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
+            className="inline-block bg-gold px-8 py-3.5 uppercase tracking-[0.15em] font-medium hover:bg-gold-dark transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
+            style={{ color: 'var(--typo-button-color, #fff)', fontSize: 'var(--typo-button-size, 0.875rem)', fontFamily: 'var(--typo-button-font)' }}
           >
             {locale === 'ka' ? 'ყველა სერვისი' : 'View All Services'}
           </Link>

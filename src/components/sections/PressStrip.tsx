@@ -11,10 +11,10 @@ export default function PressStrip({ items, asSeenIn }: Props) {
   if (items.length === 0) return null
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-[5.2rem] md:py-[6.5rem] bg-cream">
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal>
-          <div className="flex items-center gap-4 mb-10">
+          <div className="flex items-center gap-4 mb-[3.25rem]">
             <div className="flex-1 h-px bg-gray-200" />
             <RichText html={asSeenIn} as="p" className="text-[11px] text-secondary uppercase tracking-[0.3em] font-medium" />
             <div className="flex-1 h-px bg-gray-200" />

@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 
 interface ClientData {
@@ -15,17 +13,6 @@ interface Props {
   locale: string
   clients: ClientData[]
   showViewAll?: boolean
-  viewAllText?: string
-}
-
-function getLogoFilter(logoUrl: string | null): React.CSSProperties | undefined {
-  if (!logoUrl) return undefined
-  const name = logoUrl.toLowerCase()
-  // CRP: handled separately with dark bg card
-  if (/crp/.test(name)) return undefined
-  // M Capital, Ken Walker: white text — black outline
-  if (/(m-capital|ken-walker|best-western|dagi)/.test(name)) return { filter: 'drop-shadow(0 0 1px #000) drop-shadow(0 0 1px #000) drop-shadow(0 0 1px #000)' }
-  return undefined
 }
 
 export default function LogoMarquee({ locale, clients, showViewAll = true }: Props) {
@@ -34,63 +21,58 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
 
   if (clients.length === 0) return null
 
-  // Double the list for seamless loop
-  const logos = [...clients, ...clients]
-
   return (
-    <section className="py-8 bg-cream overflow-hidden">
-      <div className="flex items-center justify-center gap-6 mb-10">
-        <div className="h-[1px] w-16 bg-gold/40" />
-        <h2 className="font-heading text-sm md:text-base text-gold uppercase tracking-[0.2em]">
-          {isKa ? 'ჩვენი კლიენტები' : 'Our Clients'}
-        </h2>
-        <div className="h-[1px] w-16 bg-gold/40" />
-      </div>
-      <div
-        className="flex items-center gap-10 animate-marquee"
-        style={{ width: 'max-content' }}
-      >
-        {logos.map((client, idx) => {
-          const logo = isKa
-            ? client.logoKa || client.logoEn
-            : client.logoEn || client.logoKa
-          const name = isKa
-            ? client.nameKa || client.name
-            : client.nameEn || client.name
-
-          return (
-            <div
-              key={`${client.id}-${idx}`}
-              className="flex-shrink-0 w-[11.5rem] h-[6.4rem] flex items-center justify-center rounded transition-all duration-500"
-            >
-              {logo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={logo}
-                  alt={name}
-                  className="max-w-full max-h-full object-contain"
-                  style={getLogoFilter(logo)}
-                />
-              ) : (
-                <span className="text-dark/50 text-xs font-medium text-center">
-                  {name}
-                </span>
-              )}
-            </div>
-          )
-        })}
-      </div>
-
-      {showViewAll && (
-        <div className="mt-10 text-center">
-          <Link
-            href={`${prefix}/clients`}
-            className="inline-block border border-gold text-gold px-10 py-4 text-sm uppercase tracking-[0.15em] font-medium hover:bg-gold hover:text-white transition-all duration-300"
-          >
-            {isKa ? 'ყველა კლიენტი' : 'View All Clients'}
-          </Link>
+    <section className="py-[6.5rem] md:py-[9.1rem] bg-white">
+      <div className="container mx-auto px-4 max-w-5xl">
+        <div className="text-center mb-16">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-dark/40 font-medium">
+            {isKa ? 'კლიენტები' : 'Clients'}
+          </p>
         </div>
-      )}
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-12 gap-y-10 max-w-4xl mx-auto items-center justify-items-center">
+          {clients.map((client) => {
+            const logo = isKa
+              ? client.logoKa || client.logoEn
+              : client.logoEn || client.logoKa
+            const name = isKa
+              ? client.nameKa || client.name
+              : client.nameEn || client.name
+
+            return (
+              <div
+                key={client.id}
+                className="flex items-center justify-center h-16 w-full"
+              >
+                {logo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={logo}
+                    alt={name}
+                    className="max-w-[140px] max-h-full object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                  />
+                ) : (
+                  <span className="text-dark/40 text-sm font-medium text-center">
+                    {name}
+                  </span>
+                )}
+              </div>
+            )
+          })}
+        </div>
+
+        {showViewAll && (
+          <div className="mt-16 text-center">
+            <Link
+              href={`${prefix}/clients`}
+              className="text-dark/40 hover:text-gold text-xs uppercase tracking-[0.2em] font-medium transition-colors duration-300"
+              style={{ fontFamily: 'var(--typo-button-font)' }}
+            >
+              {isKa ? 'ყველა კლიენტი →' : 'View All Clients →'}
+            </Link>
+          </div>
+        )}
+      </div>
     </section>
   )
 }

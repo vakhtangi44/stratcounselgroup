@@ -46,7 +46,7 @@ export default async function HomePage() {
   const sectorsEnabled = s(settings, 'sectors.enabled', locale) !== 'false'
   const sectorsData = getSectorsData(settings, locale)
 
-  const [stats, testimonials, blogPosts, pressItems, clientCategories, services] = await Promise.all([
+  const [stats, testimonials, blogPosts, pressItems, featuredClients, services] = await Promise.all([
     db.statistic.findMany(),
     db.testimonial.findMany({ where: { active: true }, orderBy: { date: 'desc' } }),
     db.blogPost.findMany({
@@ -55,10 +55,9 @@ export default async function HomePage() {
       take: 3,
     }),
     db.pressItem.findMany({ where: { active: true }, orderBy: { date: 'desc' } }),
-    db.clientCategory.findMany({
-      where: { active: true },
+    db.client.findMany({
+      where: { active: true, featured: true },
       orderBy: { order: 'asc' },
-      include: { clients: { where: { active: true }, orderBy: { order: 'asc' } } },
     }),
     db.service.findMany({
       where: { active: true },
@@ -92,21 +91,22 @@ export default async function HomePage() {
     title: s(settings, 'section.testimonials', locale),
   }
 
+  const show = (section: string) => s(settings, `homepage.section.${section}`, locale) !== 'false'
 
   return (
     <>
-      <Hero locale={locale} strings={heroStrings} dotsColor={s(settings, 'appearance.color.dots', locale).startsWith('#') ? s(settings, 'appearance.color.dots', locale) : '#d88551'} />
-      <AboutPreview locale={locale} strings={aboutStrings} />
-      <TargetSectors locale={locale} sectors={sectorsData} enabled={sectorsEnabled} />
-      {services.length > 0 && <ServicesPreview services={services} locale={locale} />}
-      <LogoMarquee locale={locale} clients={clientCategories.flatMap((cat: any) => cat.clients)} showViewAll />
-      <TestimonialsCarousel testimonials={testimonials} locale={locale} strings={testimonialStrings} />
-      <BlogPreview posts={blogPosts} locale={locale} strings={{
+      {show('hero') && <Hero locale={locale} strings={heroStrings} dotsColor={s(settings, 'appearance.color.dots', locale).startsWith('#') ? s(settings, 'appearance.color.dots', locale) : '#d88551'} />}
+      {show('about') && <AboutPreview locale={locale} strings={aboutStrings} />}
+      {show('sectors') && <TargetSectors locale={locale} sectors={sectorsData} enabled={sectorsEnabled} />}
+      {show('services') && services.length > 0 && <ServicesPreview services={services} locale={locale} />}
+      {show('clients') && <LogoMarquee locale={locale} clients={featuredClients} showViewAll />}
+      {show('testimonials') && <TestimonialsCarousel testimonials={testimonials} locale={locale} strings={testimonialStrings} />}
+      {show('blog') && <BlogPreview posts={blogPosts} locale={locale} strings={{
         subtitle: s(settings, 'section.latestArticles.subtitle', locale),
         title: s(settings, 'section.latestArticles', locale),
         allArticles: s(settings, 'section.allArticles', locale),
-      }} />
-      <PressStrip items={pressItems} asSeenIn={s(settings, 'section.asSeenIn', locale)} />
+      }} />}
+      {show('press') && <PressStrip items={pressItems} asSeenIn={s(settings, 'section.asSeenIn', locale)} />}
     </>
   )
 }

@@ -37,27 +37,27 @@ export default function AboutPreview({ locale, strings }: Props) {
   const sizeClass = SIZE_MAP[strings.imageSize] || SIZE_MAP.medium
 
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section className="py-[6.5rem] md:py-[9.1rem] bg-cream">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className={`grid grid-cols-1 gap-12 lg:gap-16 items-stretch max-w-6xl mx-auto${hasImage ? ' lg:grid-cols-2' : ''}`}>
+        <div className={`grid grid-cols-1 gap-16 lg:gap-20 items-stretch max-w-6xl mx-auto${hasImage ? ' lg:grid-cols-2' : ''}`}>
 
           {/* Left: text + stat box */}
           <ScrollReveal className={`flex flex-col justify-center${hasImage && imageOnLeft ? ' lg:order-2' : ''}`}>
-            <div className="w-12 h-[2px] bg-gold mb-8" />
+            <div className="w-12 h-[2px] bg-gold mb-10" />
             <RichText
               html={strings.heading}
               as="h2"
-              className="font-heading text-3xl md:text-4xl text-dark mb-8 leading-tight"
+              className="font-heading text-3xl md:text-4xl text-dark mb-10 leading-tight"
             />
             <RichText
               html={strings.body}
               as="div"
-              className="text-navy text-base md:text-lg leading-relaxed mb-8 [&_p]:mb-4 [&_p]:text-justify [&_p:last-child]:mb-0"
+              className="text-navy text-base md:text-lg leading-relaxed mb-10 [&_p]:mb-4 [&_p]:text-justify [&_p:last-child]:mb-0"
             />
 
             {/* Stat box */}
             {(strings.stat || strings.statLabel) && (
-              <div className="border border-gold/40 p-5 inline-flex items-center gap-5 mb-8">
+              <div className="border border-gold/40 p-5 inline-flex items-center gap-5 mb-10">
                 <span className="font-heading text-4xl md:text-5xl text-gold leading-none">
                   {strings.stat}
                 </span>

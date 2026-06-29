@@ -66,10 +66,10 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
       {/* Split layout */}
       <section className="bg-white py-10 md:py-28 px-4">
         <div className="container mx-auto max-w-[72rem]">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] rounded-2xl overflow-hidden shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr]">
             {/* Left: Contact Info */}
             <div className="bg-white p-6 md:p-14">
-              <RichText html={strings.info} as="h2" className="font-heading text-lg md:text-xl lg:text-2xl text-navy font-extrabold mb-8" />
+              <RichText html={strings.info} as="h2" className="font-heading text-lg md:text-xl lg:text-2xl text-dark font-extrabold mb-8" />
 
               <div className="space-y-8">
                 {/* Company Info + Addresses */}
@@ -81,12 +81,12 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                     </svg>
                   </div>
                   <div className="text-[15px] leading-snug font-[520] tracking-tight">
-                    <RichText html={strings.addressLabel} as="p" className="text-navy font-heading text-[16px] font-black tracking-[0.06em] mb-2" />
+                    <RichText html={strings.addressLabel} as="p" className="text-dark font-heading text-[16px] font-black tracking-[0.06em] mb-2" />
                     <a
                       href={location.mapLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-navy/80 font-bold tracking-tight hover:text-gold transition-colors duration-300"
+                      className="text-dark font-bold tracking-tight hover:text-gold transition-colors duration-300"
                     >
                       {location.address}
                     </a>
@@ -101,8 +101,8 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                     </svg>
                   </div>
                   <div>
-                    <p className="text-navy font-heading text-[16px] font-black tracking-[0.06em] mb-2">{isKa ? 'ტელეფონი' : 'Phone'}</p>
-                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-navy/80 text-[15px] font-bold tracking-tight hover:text-gold transition-colors duration-300">
+                    <p className="text-dark font-heading text-[16px] font-black tracking-[0.06em] mb-2">{isKa ? 'ტელეფონი' : 'Phone'}</p>
+                    <a href={`tel:${strings.phone.replace(/\s/g, '')}`} className="text-dark text-[15px] font-bold tracking-tight hover:text-gold transition-colors duration-300">
                       {strings.phone}
                     </a>
                   </div>
@@ -116,8 +116,8 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                     </svg>
                   </div>
                   <div>
-                    <p className="text-navy font-heading text-[16px] font-black tracking-[0.06em] mb-2">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
-                    <a href={`mailto:${strings.email}`} className="text-navy/80 text-[15px] font-bold tracking-tight hover:text-gold transition-colors duration-300">
+                    <p className="text-dark font-heading text-[16px] font-black tracking-[0.06em] mb-2">{isKa ? 'ელ. ფოსტა' : 'Email'}</p>
+                    <a href={`mailto:${strings.email}`} className="text-dark text-[15px] font-bold tracking-tight hover:text-gold transition-colors duration-300">
                       {strings.email}
                     </a>
                   </div>
@@ -126,7 +126,7 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
 
               {/* Connect with Us */}
               <div className="mt-10 pt-8 border-t border-navy/10">
-                <p className="text-navy font-heading text-[18px] font-black tracking-[0.06em] mb-4">
+                <p className="text-dark font-heading text-[18px] font-black tracking-[0.06em] mb-4">
                   {isKa ? 'დაგვიკავშირდით' : 'Connect with Us'}
                 </p>
                 <div className="flex items-center gap-3">
@@ -189,7 +189,8 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
             </div>
 
             {/* Right: Form */}
-            <div className="bg-white p-10 md:p-14">
+            <div className="bg-white p-6 md:p-14">
+              <RichText html={isKa ? 'გამოგვიგზავნეთ შეტყობინება' : 'Send Us a Message'} as="h2" className="font-heading text-lg md:text-xl lg:text-2xl text-dark font-extrabold mb-8" />
               {status === 'success' ? (
                 <div className="text-center py-20 bg-white border border-gray-100">
                   <div className="w-16 h-16 mx-auto mb-6 border border-gold/20 flex items-center justify-center">
@@ -207,7 +208,7 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="bg-white border border-gray-100 p-8 md:p-10 space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-[12px] text-dark uppercase tracking-[0.1em] mb-2 font-medium">

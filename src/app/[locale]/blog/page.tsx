@@ -5,7 +5,6 @@ import { db } from '@/lib/db'
 import { getSettings, s } from '@/lib/settings'
 import { formatDate, readTime } from '@/lib/utils'
 import RichText from '@/components/ui/RichText'
-import LogoMarquee from '@/components/sections/LogoMarquee'
 
 interface BlogPost {
   id: number
@@ -32,7 +31,7 @@ export default async function BlogPage({ searchParams }: Props) {
   const currentPage = parseInt(page || '1') || 1
   const PAGE_SIZE = 9
 
-  const [posts, settings, clientCategories] = await Promise.all([
+  const [posts, settings] = await Promise.all([
     db.blogPost.findMany({
       where: {
         status: 'published',
@@ -50,21 +49,14 @@ export default async function BlogPage({ searchParams }: Props) {
       take: PAGE_SIZE + 1,
     }) as Promise<BlogPost[]>,
     getSettings(),
-    db.clientCategory.findMany({
-      where: { active: true },
-      orderBy: { order: 'asc' },
-      include: { clients: { where: { active: true }, orderBy: { order: 'asc' } } },
-    }),
   ])
-
-  const allClients = clientCategories.flatMap((cat) => cat.clients)
 
   const hasMore = posts.length > PAGE_SIZE
   const displayPosts = hasMore ? posts.slice(0, PAGE_SIZE) : posts
 
   return (
     <div className="pt-16">
-      <section className="bg-section-gradient text-white py-24 text-center px-4">
+      <section className="bg-section-gradient text-white py-[7.8rem] text-center px-4">
         <RichText html={s(settings, 'page.blog', locale)} as="h1" className="font-heading text-4xl mb-4" />
       </section>
 
@@ -84,7 +76,7 @@ export default async function BlogPage({ searchParams }: Props) {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-white">
+      <section className="py-[5.2rem] px-4 bg-white">
         <div className="container mx-auto">
           {displayPosts.length === 0 ? (
             <p className="text-center text-secondary py-16">{isKa ? 'სტატია ვერ მოიძებნა' : 'No articles found'}</p>
@@ -112,7 +104,7 @@ export default async function BlogPage({ searchParams }: Props) {
             </div>
           )}
 
-          <div className="flex justify-center gap-4 mt-12">
+          <div className="flex justify-center gap-4 mt-16">
             {currentPage > 1 && (
               <Link href={`${prefix}/blog?page=${currentPage - 1}${q ? `&q=${q}` : ''}`}
                 className="px-6 py-2 border border-gold text-gold rounded hover:bg-gold hover:text-white transition-colors text-sm">
@@ -129,7 +121,6 @@ export default async function BlogPage({ searchParams }: Props) {
         </div>
       </section>
 
-      <LogoMarquee locale={locale} clients={allClients} />
     </div>
   )
 }

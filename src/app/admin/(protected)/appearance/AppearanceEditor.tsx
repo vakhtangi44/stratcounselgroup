@@ -12,6 +12,40 @@ interface Props {
   settings: Record<string, SettingEntry>
 }
 
+const HOMEPAGE_SECTIONS = [
+  { key: 'hero', label: 'Hero' },
+  { key: 'about', label: 'About' },
+  { key: 'sectors', label: 'Sectors' },
+  { key: 'services', label: 'Services' },
+  { key: 'clients', label: 'Clients' },
+  { key: 'testimonials', label: 'Testimonials' },
+  { key: 'blog', label: 'Blog / News' },
+  { key: 'press', label: 'Press' },
+]
+
+const TYPO_GROUPS = [
+  { key: 'heroTitle', label: 'Hero — Company Name', defaultSize: '4.6', defaultColor: '#FFFFFF', defaultFont: 'heading' },
+  { key: 'heroTagline', label: 'Hero — Tagline', defaultSize: '3.19', defaultColor: '#FFFFFF', defaultFont: 'heading' },
+  { key: 'sectionTitle', label: 'Section Titles (light bg)', defaultSize: '2.25', defaultColor: '#1C122C', defaultFont: 'heading' },
+  { key: 'sectionTitleDark', label: 'Section Titles (dark bg)', defaultSize: '2.25', defaultColor: '#FFFFFF', defaultFont: 'heading' },
+  { key: 'subtitle', label: 'Subtitles', defaultSize: '1.15', defaultColor: '#5a5a6e', defaultFont: 'body' },
+  { key: 'cardTitle', label: 'Card Titles', defaultSize: '1.125', defaultColor: '#1C122C', defaultFont: 'heading' },
+  { key: 'cardBody', label: 'Card Body Text', defaultSize: '0.875', defaultColor: '#5a5a6e', defaultFont: 'body' },
+  { key: 'body', label: 'Body / Description', defaultSize: '1', defaultColor: '#5a5a6e', defaultFont: 'body' },
+  { key: 'button', label: 'Buttons', defaultSize: '0.875', defaultColor: '#FFFFFF', defaultFont: 'body' },
+  { key: 'footerHeading', label: 'Footer Headings', defaultSize: '0.9', defaultColor: '#668CCE', defaultFont: 'heading' },
+  { key: 'footerBody', label: 'Footer Text', defaultSize: '0.906', defaultColor: '#B0B0B0', defaultFont: 'body' },
+]
+
+const FONT_MAP_PREVIEW: Record<string, string> = {
+  heading: "'Mark GEO', 'Noto Sans Georgian', 'Source Serif Pro', Georgia, serif",
+  body: "'Mark GEO', 'Noto Sans Georgian', Roboto, Arial, sans-serif",
+  serif: "'Source Serif Pro', Georgia, serif",
+  sans: "Roboto, Arial, sans-serif",
+  georgia: "Georgia, 'Times New Roman', serif",
+  noto: "'Noto Sans Georgian', sans-serif",
+}
+
 export default function AppearanceEditor({ settings }: Props) {
   const [values, setValues] = useState<Record<string, string>>(() => {
     const map: Record<string, string> = {}
@@ -29,11 +63,27 @@ export default function AppearanceEditor({ settings }: Props) {
 
   async function handleSave() {
     setSaving(true)
-    const payload = Object.entries(settings).map(([key, entry]) => ({
-      id: entry.id,
-      valueKa: values[key] || entry.value,
-      valueEn: values[key] || entry.value,
-    }))
+    const payload: { id?: number; key?: string; category?: string; valueKa: string; valueEn: string }[] = []
+
+    for (const [key, entry] of Object.entries(settings)) {
+      payload.push({ id: entry.id, valueKa: values[key] || entry.value, valueEn: values[key] || entry.value })
+    }
+
+    for (const group of TYPO_GROUPS) {
+      for (const prop of ['size', 'color', 'font']) {
+        const key = `appearance.typo.${group.key}.${prop}`
+        if (!settings[key] && values[key]) {
+          payload.push({ key, category: 'appearance', valueKa: values[key], valueEn: values[key] })
+        }
+      }
+    }
+
+    for (const sec of HOMEPAGE_SECTIONS) {
+      const key = `homepage.section.${sec.key}`
+      if (!settings[key] && values[key]) {
+        payload.push({ key, category: 'appearance', valueKa: values[key], valueEn: values[key] })
+      }
+    }
 
     const res = await fetch('/api/admin/settings', {
       method: 'PUT',
@@ -356,6 +406,29 @@ export default function AppearanceEditor({ settings }: Props) {
         </div>
       </div>
 
+      {/* Homepage Sections */}
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-dark px-6 py-3">
+          <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Homepage Sections</h2>
+        </div>
+        <div className="p-6">
+          <p className="text-xs text-secondary mb-4">Toggle which sections appear on the homepage</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {HOMEPAGE_SECTIONS.map((sec) => (
+              <label key={sec.key} className="flex items-center gap-2 text-sm cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={(values[`homepage.section.${sec.key}`] || 'true') === 'true'}
+                  onChange={(e) => update(`homepage.section.${sec.key}`, e.target.checked ? 'true' : 'false')}
+                  className="w-4 h-4"
+                />
+                {sec.label}
+              </label>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Color Settings */}
       <div className="bg-white rounded-lg shadow-sm overflow-hidden">
         <div className="bg-dark px-6 py-3">
@@ -444,6 +517,90 @@ export default function AppearanceEditor({ settings }: Props) {
               </span>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Typography */}
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-dark px-6 py-3">
+          <h2 className="font-heading text-gold text-sm uppercase tracking-wider">Typography</h2>
+        </div>
+        <div className="p-6 space-y-6">
+          {TYPO_GROUPS.map((group) => (
+            <div key={group.key} className="border border-gray-100 rounded-lg p-4">
+              <h3 className="text-sm font-bold text-dark mb-3">{group.label}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Size */}
+                <div>
+                  <label className="block text-xs text-secondary mb-1">Size (rem)</label>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="range"
+                      min="0.5"
+                      max="6"
+                      step="0.05"
+                      value={values[`appearance.typo.${group.key}.size`] || group.defaultSize}
+                      onChange={(e) => update(`appearance.typo.${group.key}.size`, e.target.value)}
+                      className="flex-1"
+                    />
+                    <input
+                      type="number"
+                      step="0.05"
+                      value={values[`appearance.typo.${group.key}.size`] || group.defaultSize}
+                      onChange={(e) => update(`appearance.typo.${group.key}.size`, e.target.value)}
+                      className="w-16 border rounded px-2 py-1 text-sm text-center"
+                    />
+                  </div>
+                </div>
+                {/* Color */}
+                <div>
+                  <label className="block text-xs text-secondary mb-1">Color</label>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="color"
+                      value={values[`appearance.typo.${group.key}.color`] || group.defaultColor}
+                      onChange={(e) => update(`appearance.typo.${group.key}.color`, e.target.value)}
+                      className="w-8 h-8 rounded border border-gray-200 cursor-pointer"
+                    />
+                    <input
+                      type="text"
+                      value={values[`appearance.typo.${group.key}.color`] || group.defaultColor}
+                      onChange={(e) => update(`appearance.typo.${group.key}.color`, e.target.value)}
+                      className="w-20 border rounded px-2 py-1 text-xs font-mono"
+                    />
+                  </div>
+                </div>
+                {/* Font */}
+                <div>
+                  <label className="block text-xs text-secondary mb-1">Font</label>
+                  <select
+                    value={values[`appearance.typo.${group.key}.font`] || group.defaultFont}
+                    onChange={(e) => update(`appearance.typo.${group.key}.font`, e.target.value)}
+                    className="w-full border rounded px-2 py-1.5 text-sm"
+                  >
+                    <option value="heading">Heading (Mark GEO / Noto Sans Georgian)</option>
+                    <option value="body">Body (Mark GEO / Roboto)</option>
+                    <option value="serif">Source Serif Pro</option>
+                    <option value="sans">Roboto</option>
+                    <option value="georgia">Georgia</option>
+                    <option value="noto">Noto Sans Georgian</option>
+                  </select>
+                </div>
+              </div>
+              {/* Preview */}
+              <div className="mt-3 p-3 bg-gray-50 rounded">
+                <span
+                  style={{
+                    fontSize: `${Math.min(Number(values[`appearance.typo.${group.key}.size`] || group.defaultSize), 3)}rem`,
+                    color: values[`appearance.typo.${group.key}.color`] || group.defaultColor,
+                    fontFamily: FONT_MAP_PREVIEW[values[`appearance.typo.${group.key}.font`] || group.defaultFont] || 'inherit',
+                  }}
+                >
+                  Sample ტექსტი
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

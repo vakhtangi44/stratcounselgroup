@@ -51,6 +51,25 @@ export default async function LocaleLayout({
   }
   const hasTheme = !themeColors.primary.startsWith('appearance.')
 
+  const FONT_MAP: Record<string, string> = {
+    heading: 'var(--font-family-heading)',
+    body: 'var(--font-family-body)',
+    serif: "'Source Serif Pro', Georgia, serif",
+    sans: "Roboto, Arial, sans-serif",
+    georgia: "Georgia, 'Times New Roman', serif",
+    noto: "'Noto Sans Georgian', sans-serif",
+  }
+  const typoGroups = ['heroTitle', 'heroTagline', 'sectionTitle', 'sectionTitleDark', 'subtitle', 'cardTitle', 'cardBody', 'body', 'button', 'footerHeading', 'footerBody']
+  const typoVars: string[] = []
+  for (const g of typoGroups) {
+    const sz = s(settings, `appearance.typo.${g}.size`, locale)
+    const cl = s(settings, `appearance.typo.${g}.color`, locale)
+    const fn = s(settings, `appearance.typo.${g}.font`, locale)
+    if (!sz.startsWith('appearance.')) typoVars.push(`--typo-${g}-size: ${sz}rem;`)
+    if (!cl.startsWith('appearance.')) typoVars.push(`--typo-${g}-color: ${cl};`)
+    if (!fn.startsWith('appearance.') && FONT_MAP[fn]) typoVars.push(`--typo-${g}-font: ${FONT_MAP[fn]};`)
+  }
+
   return (
     <NextIntlClientProvider messages={messages}>
       {hasTheme && (
@@ -74,7 +93,8 @@ export default async function LocaleLayout({
           }
           .nav-btn { color: var(--nav-color); font-size: var(--nav-size); }
           .nav-btn:hover { color: var(--nav-hover); }
-          .card-hover:hover { transform: scale(${Number(s(settings, 'appearance.cardScale', locale)) || 1.10}); }
+          .card-hover:hover { transform: scale(${Number(s(settings, 'appearance.cardScale', locale)) || 1.30}); }
+          :root { ${typoVars.join(' ')} }
         `}</style>
       )}
       <Header locale={locale} sectorsEnabled={sectorsEnabled} sectors={sectorLinks} logoUrl={logoUrl} logoPosition={headerLogoPos} logoVisible={headerLogoVisible} logoOffsetX={headerOffsetX} logoOffsetY={headerOffsetY} mobileLogoHeight={mobileLogoHeight} mobileOffsetX={mobileOffsetX} mobileOffsetY={mobileOffsetY} mobileLogoVisible={mobileLogoVisible} />

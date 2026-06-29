@@ -21,7 +21,7 @@ function CaseCard({ text, icon }: { text: string; icon: string }) {
       <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-gold border border-gold/20 transition-all duration-500">
         <CaseIcon icon={icon} />
       </div>
-      <p className="text-navy text-[14px] md:text-[15px] leading-relaxed font-[316] text-justify group-hover:text-dark group-focus:text-dark transition-colors duration-500">
+      <p className="leading-relaxed font-[316] text-justify group-hover:text-dark group-focus:text-dark transition-colors duration-500" style={{ fontSize: 'var(--typo-cardBody-size, 0.875rem)', color: 'var(--typo-cardBody-color, #1C122C)', fontFamily: 'var(--typo-cardBody-font)' }}>
         {text}
       </p>
     </div>
@@ -37,11 +37,11 @@ export default function SuccessfulCases({ locale, cases }: Props) {
   return (
     <>
       {featured.length > 0 && (
-        <section className="py-20 md:py-28 bg-white">
+        <section className="py-[6.5rem] md:py-[9.1rem] bg-white">
           <div className="container mx-auto px-4 lg:px-8">
-            <ScrollReveal className="text-center mb-16">
+            <ScrollReveal className="text-center mb-20">
               <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
-              <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4">
+              <h2 className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
                 {isKa ? 'წარმატებული აქტივობები' : 'Successful Cases'}
               </h2>
             </ScrollReveal>
@@ -58,11 +58,11 @@ export default function SuccessfulCases({ locale, cases }: Props) {
       )}
 
       {rest.length > 0 && (
-        <section className="py-20 md:py-28 bg-cream">
+        <section className="py-[6.5rem] md:py-[9.1rem] bg-cream">
           <div className="container mx-auto px-4 lg:px-8">
-            <ScrollReveal className="text-center mb-16">
+            <ScrollReveal className="text-center mb-20">
               <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
-              <h2 className="font-heading text-3xl md:text-4xl text-dark mb-4">
+              <h2 className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
                 {isKa ? 'ჩვენი გამოცდილება' : 'Our Experience'}
               </h2>
             </ScrollReveal>
