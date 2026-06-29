@@ -84,7 +84,7 @@ export default async function TeamMemberPage({
                 </a>
               )}
               {member.shortBioKa && (
-                <p className="text-secondary mt-6 text-[0.85rem] font-bold leading-relaxed max-w-xl">
+                <p className="text-secondary mt-5 text-base font-bold leading-relaxed max-w-xl">
                   {isKa ? member.shortBioKa : member.shortBioEn}
                 </p>
               )}
@@ -92,7 +92,7 @@ export default async function TeamMemberPage({
               {/* Bio starts next to photo */}
               {fullBio && (
                 <div
-                  className="max-w-none bio-content mt-8"
+                  className="max-w-none bio-content mt-5"
                   dangerouslySetInnerHTML={{ __html: fullBio }}
                 />
               )}
