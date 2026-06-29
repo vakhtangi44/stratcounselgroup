@@ -35,7 +35,7 @@ export default async function TeamMemberPage({
   return (
     <div className="pt-[253px] bg-white">
       {/* Hero Section */}
-      <section className="bg-white py-20 px-4">
+      <section className="bg-white pt-12 pb-20 px-4">
         <div className="container mx-auto max-w-5xl">
           <Link
             href={`${prefix}/team`}
