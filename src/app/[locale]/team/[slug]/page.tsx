@@ -64,7 +64,7 @@ export default async function TeamMemberPage({
                 {isKa ? member.nameKa : member.nameEn}
               </h1>
               <div className="w-12 h-[2px] bg-gold mb-4" />
-              <p className="text-secondary text-lg mb-4">
+              <p className="text-secondary text-[1.46rem] font-bold mb-4">
                 {isKa ? member.titleKa : member.titleEn}
               </p>
               {member.gbaNumber && (
@@ -84,20 +84,20 @@ export default async function TeamMemberPage({
                 </a>
               )}
               {member.shortBioKa && (
-                <p className="text-secondary mt-5 text-base font-bold leading-relaxed max-w-xl">
+                <p className="text-secondary mt-5 text-[1.3rem] font-bold leading-relaxed">
                   {isKa ? member.shortBioKa : member.shortBioEn}
                 </p>
               )}
-
-              {/* Bio starts next to photo */}
-              {fullBio && (
-                <div
-                  className="max-w-none bio-content mt-5"
-                  dangerouslySetInnerHTML={{ __html: fullBio }}
-                />
-              )}
             </div>
           </div>
+
+          {/* Bio below photo, full width */}
+          {fullBio && (
+            <div
+              className="max-w-none bio-content mt-10"
+              dangerouslySetInnerHTML={{ __html: fullBio }}
+            />
+          )}
         </div>
       </section>
 
