@@ -49,7 +49,7 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
                   <img
                     src={logo}
                     alt={name}
-                    className="max-w-[140px] max-h-full object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                    className="max-w-[140px] max-h-full object-contain opacity-80 hover:opacity-100 transition-all duration-500"
                   />
                 ) : (
                   <span className="text-dark/40 text-sm font-medium text-center">

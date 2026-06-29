@@ -17,7 +17,7 @@ export default async function Footer({ locale }: { locale: string }) {
   // Unified body text style — same color, weight, size everywhere in the footer
   const bodyTextClass = 'font-[520] tracking-tight'
   const bodyTextStyle = { fontSize: 'var(--typo-footerBody-size, 0.906rem)', color: 'var(--typo-footerBody-color, #B0B0B0)', fontFamily: 'var(--typo-footerBody-font)' }
-  const footerHeadingStyle = { fontSize: 'var(--typo-footerHeading-size, 0.9rem)', color: 'var(--typo-footerHeading-color, #668CCE)', fontFamily: 'var(--typo-footerHeading-font)' }
+  const footerHeadingStyle = { fontSize: 'var(--typo-footerHeading-size, 0.9rem)', color: 'var(--typo-footerHeading-color, #d88551)', fontFamily: 'var(--typo-footerHeading-font)' }
 
   return (
     <footer className="text-white relative" style={{ background: 'var(--color-footer, var(--color-dark))' }}>
