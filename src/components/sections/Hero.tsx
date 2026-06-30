@@ -13,9 +13,15 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
   const prefix = locale === 'en' ? '/en' : ''
 
   const rawHeadline = strings.heading
-  const headline = rawHeadline.replace(/\.\s?/g, `<span style="color:#1C122C;font-weight:700;margin:0 0.05em;font-size:0.64em">.</span>`)
-  const hasHtml = true
-  const words: string[] = []
+  const dotSpan = `<span style="color:#1C122C;font-weight:700;margin:0 0.05em;font-size:0.64em">.</span>`
+  const stripped = rawHeadline.replace(/<[^>]*>/g, '')
+  let headline: string
+  if (stripped.includes('.')) {
+    headline = rawHeadline.replace(/\.\s?/g, dotSpan)
+  } else {
+    const words = stripped.trim().split(/\s+/)
+    headline = words.join(dotSpan + ' ') + dotSpan
+  }
 
   // English is longer than the (space-less) Georgian motto and would wrap onto a
   // second line. Keep it on one line like the Georgian, shrinking it a step so it

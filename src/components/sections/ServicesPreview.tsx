@@ -62,7 +62,7 @@ export default function ServicesPreview({ services, locale }: Props) {
                   {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
                 </h3>
 
-                <p className="font-light leading-relaxed mb-5 line-clamp-3 text-left" style={{ fontSize: 'var(--typo-serviceBody-size, 1.14rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)' }}>
+                <p className="leading-relaxed mb-5 line-clamp-3 text-left" style={{ fontSize: 'var(--typo-serviceBody-size, 1.14rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
                   {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                 </p>
 

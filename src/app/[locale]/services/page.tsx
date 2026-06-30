@@ -70,7 +70,7 @@ export default async function ServicesPage() {
                     </h2>
 
                     {/* Description */}
-                    <p className="leading-relaxed mb-6 font-[520] text-left" style={{ fontSize: 'var(--typo-serviceBody-size, 1.3rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)' }}>
+                    <p className="leading-relaxed mb-6 font-[520] text-left" style={{ fontSize: 'var(--typo-serviceBody-size, 1.3rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
                       {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                     </p>
 
