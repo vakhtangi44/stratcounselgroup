@@ -63,7 +63,7 @@ export default async function ClientsPage() {
       {/* Page Hero + Client Logos */}
       <section className="py-[4rem] md:py-[9.1rem] overflow-visible bg-cream">
         <div className="text-center px-4 lg:px-8 mb-8 sm:mb-[5.1rem]">
-          <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
+          <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
           <h1 className="font-heading mb-6 tracking-[-0.02em]" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>{title}</h1>
           <RichText html={description} as="p" className="max-w-none mx-auto text-sm sm:text-lg leading-relaxed font-bold" style={{ color: 'var(--typo-sectionTitle-color, #1C122C)' }} />
         </div>

@@ -13,14 +13,14 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
   const prefix = locale === 'en' ? '/en' : ''
 
   const rawHeadline = strings.heading
-  const dashSpan = `<span style="color:#1C122C;font-weight:700;margin:0 0.15em">–</span>`
+  const dotSpan = `<span style="color:#1C122C;font-weight:700;margin:0 0.08em;font-size:0.7em">.</span>`
   const stripped = rawHeadline.replace(/<[^>]*>/g, '')
   let headline: string
   if (stripped.includes('.')) {
-    headline = rawHeadline.replace(/\.\s?/g, dashSpan)
+    headline = rawHeadline.replace(/\.\s?/g, dotSpan)
   } else {
     const words = stripped.trim().split(/\s+/)
-    headline = words.join(` ${dashSpan} `)
+    headline = words.join(dotSpan + ' ') + dotSpan
   }
 
   // English is longer than the (space-less) Georgian motto and would wrap onto a
@@ -37,14 +37,14 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
       <div className="relative z-10 text-center px-4 lg:px-8 max-w-6xl mx-auto">
         <h2
           className="font-heading text-[1.3rem] sm:text-[2.3rem] md:text-[3.8rem] font-bold mb-5 sm:mb-9 tracking-[-0.02em] leading-[1.1]"
-          style={{ color: 'var(--typo-heroTitle-color, #1C122C)', fontFamily: 'var(--typo-heroTitle-font)', fontSize: `clamp(1.53rem, 5vw, var(--typo-heroTitle-size, 4.6rem))` }}
+          style={{ color: 'var(--typo-heroTitle-color, #1C122C)', fontFamily: 'var(--typo-heroTitle-font)', fontSize: `clamp(1.6rem, 6vw, var(--typo-heroTitle-size, 4.6rem))` }}
         >
           Strategic Counsel Group
         </h2>
 
         <h1
           className={`font-heading ${headingSize} font-bold mb-5 sm:mb-9 leading-[1.1] tracking-[-0.02em]`}
-          style={{ color: 'var(--typo-heroTagline-color, #1C122C)', fontFamily: 'var(--typo-heroTagline-font)', fontSize: `clamp(1.06rem, 3.5vw, var(--typo-heroTagline-size, 3.19rem))` }}
+          style={{ color: 'var(--typo-heroTagline-color, #1C122C)', fontFamily: 'var(--typo-heroTagline-font)', fontSize: `clamp(1.1rem, 4vw, var(--typo-heroTagline-size, 3.19rem))` }}
         >
           <RichText html={headline} />
         </h1>
@@ -52,14 +52,14 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <Link
             href={`${prefix}/contact`}
-            className="btn-gold-fill bg-gold px-6 sm:px-10 py-3 sm:py-4 text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500 hover:shadow-lg hover:shadow-gold/20"
-            style={{ color: 'var(--typo-button-color, #fff)', fontSize: 'var(--typo-button-size, 0.875rem)', fontFamily: 'var(--typo-button-font)' }}
+            className="border border-accent-orange text-accent-orange bg-white hover:bg-accent-orange hover:text-white px-6 sm:px-10 py-3 sm:py-4 text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500"
+            style={{ fontSize: 'var(--typo-button-size, 0.875rem)', fontFamily: 'var(--typo-button-font)' }}
           >
             <RichText html={strings.cta1} />
           </Link>
           <Link
             href={`${prefix}/services`}
-            className="border border-dark/30 text-dark hover:border-gold hover:text-gold px-6 sm:px-10 py-3 sm:py-4 text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500"
+            className="border border-accent-orange text-accent-orange bg-white hover:bg-accent-orange hover:text-white px-6 sm:px-10 py-3 sm:py-4 text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500"
             style={{ fontSize: 'var(--typo-button-size, 0.875rem)', fontFamily: 'var(--typo-button-font)' }}
           >
             <RichText html={strings.cta2} />

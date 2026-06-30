@@ -43,7 +43,7 @@ export default function AboutPreview({ locale, strings }: Props) {
 
           {/* Left: text + stat box */}
           <ScrollReveal className={`flex flex-col justify-center${hasImage && imageOnLeft ? ' lg:order-2' : ''}`}>
-            <div className="w-12 h-[2px] bg-gold mb-6 lg:mb-10" />
+            <div className="w-6 h-[1px] bg-gold mb-3 lg:mb-6" />
             <RichText
               html={strings.heading}
               as="h2"

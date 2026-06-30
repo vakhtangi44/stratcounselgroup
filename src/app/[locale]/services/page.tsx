@@ -38,7 +38,7 @@ export default async function ServicesPage() {
       <section className="py-[4rem] md:py-[9.1rem] px-4 lg:px-8" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-10 md:mb-20">
-            <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
+            <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
             <h1 className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
               {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
             </h1>

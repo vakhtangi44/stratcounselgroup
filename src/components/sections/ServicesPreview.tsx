@@ -54,30 +54,30 @@ export default function ServicesPreview({ services, locale }: Props) {
             <ScrollReveal key={service.id} delay={i * 150} className={colClass}>
               <div className="relative h-full p-5 sm:p-8 bg-white border border-gray-100 group card-hover hover:shadow-lg" style={{ transition: 'transform 0.7s, box-shadow 0.7s' }}>
                 {/* Roman numeral */}
-                <div className="text-dark font-heading text-3xl sm:text-5xl mb-3 sm:mb-4 leading-none">
+                <div className="text-dark font-heading text-2xl sm:text-4xl mb-2 sm:mb-3 leading-none">
                   {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                 </div>
 
-                <h3 className="font-heading mb-3 leading-snug" style={{ fontSize: 'var(--typo-serviceTitle-size, 1.46rem)', color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
+                <h3 className="font-heading mb-2 leading-snug" style={{ fontSize: 'var(--typo-serviceTitle-size, 1.1rem)', color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
                   {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
                 </h3>
 
-                <p className="leading-relaxed mb-5 line-clamp-3 text-left" style={{ fontSize: 'var(--typo-serviceBody-size, 1.14rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
+                <p className="leading-relaxed mb-4 line-clamp-3 text-left" style={{ fontSize: 'var(--typo-serviceBody-size, 0.9rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
                   {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                 </p>
 
                 {/* Show first 3 items */}
                 <ul className="space-y-2 mb-4">
                   {service.items.slice(0, 3).map((item) => (
-                    <li key={item.id} className="flex items-start gap-2 text-[1rem] text-secondary">
-                      <svg className="w-5 h-5 mt-0.5 flex-shrink-0 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
+                    <li key={item.id} className="flex items-start gap-2 text-[0.8rem] text-secondary">
+                      <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       <span>{locale === 'ka' ? item.textKa : item.textEn}</span>
                     </li>
                   ))}
                   {service.items.length > 3 && (
-                    <li className="text-[1rem] text-dark/60 pl-5">
+                    <li className="text-[0.8rem] text-dark/60 pl-5">
                       +{service.items.length - 3} {locale === 'ka' ? 'სხვა' : 'more'}
                     </li>
                   )}

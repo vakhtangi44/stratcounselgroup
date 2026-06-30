@@ -61,7 +61,7 @@ export default async function SectorDetailPage({
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent" />
 
         <div className="relative z-10">
-          <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
+          <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
           <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
             {isKa ? 'სექტორი' : 'Sector'}
           </p>

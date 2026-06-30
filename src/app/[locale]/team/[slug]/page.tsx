@@ -63,7 +63,7 @@ export default async function TeamMemberPage({
               <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl text-dark mb-3">
                 {isKa ? member.nameKa : member.nameEn}
               </h1>
-              <div className="w-12 h-[2px] bg-gold mb-4" />
+              <div className="w-6 h-[1px] bg-gold mb-2" />
               <p className="text-secondary text-[1.1rem] sm:text-[1.46rem] font-bold mb-4">
                 {isKa ? member.titleKa : member.titleEn}
               </p>

@@ -26,7 +26,7 @@ export default async function TeamPage() {
       {/* Compact Hero */}
       <section className="relative bg-white pt-[2rem] md:pt-[4rem] pb-0 text-center px-4 lg:px-8 overflow-hidden">
         <div className="relative z-10">
-          <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
+          <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
           <RichText html={s(settings, 'page.team.subtitle', locale)} as="p" className="text-gold text-[12px] sm:text-[16.5px] uppercase tracking-[0.3em] mb-3" />
           <RichText html={s(settings, 'page.team', locale)} as="h1" className="font-heading tracking-[-0.02em]" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }} />
         </div>
