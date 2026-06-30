@@ -35,7 +35,7 @@ export default function ServicesPreview({ services, locale }: Props) {
           <h2 className="font-heading mb-4 gold-underline inline-block" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
             {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
           </h2>
-          <p className="mt-6 max-w-2xl mx-auto leading-relaxed" style={{ fontSize: 'var(--typo-subtitle-size, 1.15rem)', color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
+          <p className="mt-6 max-w-2xl mx-auto leading-relaxed" style={{ fontSize: 'var(--typo-subtitle-size, 1.5rem)', color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
             {locale === 'ka'
               ? 'სრული სამართლებრივი მხარდაჭერა ყველა ეტაპზე'
               : 'Complete legal support at every stage'}
@@ -69,7 +69,7 @@ export default function ServicesPreview({ services, locale }: Props) {
                 {/* Show first 3 items */}
                 <ul className="space-y-2 mb-4">
                   {service.items.slice(0, 3).map((item) => (
-                    <li key={item.id} className="flex items-start gap-2 text-xs text-secondary">
+                    <li key={item.id} className="flex items-start gap-2 text-[1rem] text-secondary">
                       <svg className="w-5 h-5 mt-0.5 flex-shrink-0 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
@@ -77,7 +77,7 @@ export default function ServicesPreview({ services, locale }: Props) {
                     </li>
                   ))}
                   {service.items.length > 3 && (
-                    <li className="text-xs text-dark/60 pl-5">
+                    <li className="text-[1rem] text-dark/60 pl-5">
                       +{service.items.length - 3} {locale === 'ka' ? 'სხვა' : 'more'}
                     </li>
                   )}

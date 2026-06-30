@@ -42,7 +42,7 @@ export default async function ServicesPage() {
             <h1 className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
               {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
             </h1>
-            <p className="font-bold" style={{ fontSize: 'var(--typo-subtitle-size, 1.15rem)', color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
+            <p className="font-bold" style={{ fontSize: 'var(--typo-subtitle-size, 1.5rem)', color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
               {locale === 'ka'
                 ? 'სრული სამართლებრივი მხარდაჭერა — მოლაპარაკებიდან სასამართლომდე'
                 : 'Complete legal support — from negotiation to courtroom'}
@@ -82,7 +82,7 @@ export default async function ServicesPage() {
                               <svg className="w-5 h-5 text-dark flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                               </svg>
-                              <p className="text-dark text-sm leading-relaxed text-justify">
+                              <p className="text-dark text-[1.14rem] leading-relaxed text-left">
                                 {locale === 'ka' ? item.textKa : item.textEn}
                               </p>
                             </div>
