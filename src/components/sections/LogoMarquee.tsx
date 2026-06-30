@@ -22,7 +22,7 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
   if (clients.length === 0) return null
 
   return (
-    <section className="py-[6.5rem] md:py-[9.1rem] bg-white">
+    <section className="py-[4rem] md:py-[9.1rem] bg-white">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <div className="text-center mb-16">
           <h2
@@ -33,7 +33,7 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-12 gap-y-10 max-w-4xl mx-auto items-center justify-items-center">
+        <div className="grid grid-cols-3 sm:grid-cols-4 gap-x-6 gap-y-6 sm:gap-x-12 sm:gap-y-10 max-w-4xl mx-auto items-center justify-items-center">
           {clients.map((client) => {
             const logo = isKa
               ? client.logoKa || client.logoEn
@@ -45,14 +45,14 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
             return (
               <div
                 key={client.id}
-                className="flex items-center justify-center h-[9.5rem] w-full"
+                className="flex items-center justify-center h-[5rem] sm:h-[9.5rem] w-full"
               >
                 {logo ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={logo}
                     alt={name}
-                    className="max-w-[332px] max-h-full object-contain opacity-80 hover:opacity-100 transition-all duration-500"
+                    className="max-w-[100px] sm:max-w-[332px] max-h-full object-contain opacity-80 hover:opacity-100 transition-all duration-500"
                   />
                 ) : (
                   <span className="text-dark/40 text-sm font-medium text-center">

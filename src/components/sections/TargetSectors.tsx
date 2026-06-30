@@ -23,7 +23,7 @@ export default function TargetSectors({ locale, sectors, enabled }: Props) {
   if (sectors.length === 0) return null
 
   return (
-    <section className="py-[6.5rem] md:py-[9.1rem] bg-white">
+    <section className="py-[4rem] md:py-[9.1rem] bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-5 md:mb-[4.5rem]">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />

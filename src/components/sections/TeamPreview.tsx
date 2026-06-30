@@ -29,7 +29,7 @@ export default function TeamPreview({ members, locale, strings }: Props) {
   if (members.length === 0) return null
 
   return (
-    <section className="py-[6.5rem] md:py-[9.1rem] bg-cream bg-linen">
+    <section className="py-[4rem] md:py-[9.1rem] bg-cream bg-linen">
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-20">
           <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />

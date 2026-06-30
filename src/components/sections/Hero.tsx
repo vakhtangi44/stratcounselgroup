@@ -13,7 +13,7 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
   const prefix = locale === 'en' ? '/en' : ''
 
   const rawHeadline = strings.heading
-  const headline = rawHeadline.replace(/\.\s?/g, `<span style="color:${dotsColor};font-weight:700;margin:0 0.05em;font-size:0.64em">-</span>`)
+  const headline = rawHeadline.replace(/\.\s?/g, `<span style="color:#1C122C;font-weight:700;margin:0 0.05em;font-size:0.64em">.</span>`)
   const hasHtml = true
   const words: string[] = []
 

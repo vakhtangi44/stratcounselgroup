@@ -35,7 +35,7 @@ export default async function TeamMemberPage({
   return (
     <div className="pt-[140px] md:pt-[255px] bg-white">
       {/* Hero Section */}
-      <section className="bg-white py-[6.5rem] md:py-[9.1rem] px-4 lg:px-8">
+      <section className="bg-white py-[4rem] md:py-[9.1rem] px-4 lg:px-8">
         <div className="container mx-auto max-w-5xl">
           <Link
             href={`${prefix}/team`}
@@ -103,7 +103,7 @@ export default async function TeamMemberPage({
 
       {/* Articles */}
       {member.posts.length > 0 && (
-        <section className="py-[6.5rem] md:py-[9.1rem] px-4 lg:px-8 bg-white">
+        <section className="py-[4rem] md:py-[9.1rem] px-4 lg:px-8 bg-white">
           <div className="container mx-auto max-w-5xl">
             <h2 className="font-heading text-2xl text-dark mb-8">
               {isKa ? 'სტატიები' : 'Articles'}

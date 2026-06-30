@@ -37,7 +37,7 @@ export default function AboutPreview({ locale, strings }: Props) {
   const sizeClass = SIZE_MAP[strings.imageSize] || SIZE_MAP.medium
 
   return (
-    <section className="py-[6.5rem] md:py-[9.1rem] bg-cream">
+    <section className="py-[4rem] md:py-[9.1rem] bg-cream">
       <div className="container mx-auto px-4 lg:px-8">
         <div className={`grid grid-cols-1 gap-16 lg:gap-20 items-stretch max-w-6xl mx-auto${hasImage ? ' lg:grid-cols-2' : ''}`}>
 

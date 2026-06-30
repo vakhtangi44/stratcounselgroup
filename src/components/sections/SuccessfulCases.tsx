@@ -37,7 +37,7 @@ export default function SuccessfulCases({ locale, cases }: Props) {
   return (
     <>
       {featured.length > 0 && (
-        <section className="py-[6.5rem] md:py-[9.1rem] bg-white">
+        <section className="py-[4rem] md:py-[9.1rem] bg-white">
           <div className="container mx-auto px-4 lg:px-8">
             <ScrollReveal className="text-center mb-20">
               <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
@@ -58,7 +58,7 @@ export default function SuccessfulCases({ locale, cases }: Props) {
       )}
 
       {rest.length > 0 && (
-        <section className="py-[6.5rem] md:py-[9.1rem] bg-cream">
+        <section className="py-[4rem] md:py-[9.1rem] bg-cream">
           <div className="container mx-auto px-4 lg:px-8">
             <ScrollReveal className="text-center mb-20">
               <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />

@@ -35,7 +35,7 @@ export default async function ServicesPage() {
   return (
     <div className="pt-[140px] md:pt-[255px]" style={{ background: 'white' }}>
       {/* Services */}
-      <section className="py-[6.5rem] md:py-[9.1rem] px-4 lg:px-8" style={{ background: 'white' }}>
+      <section className="py-[4rem] md:py-[9.1rem] px-4 lg:px-8" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-20">
             <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
@@ -65,12 +65,12 @@ export default async function ServicesPage() {
                     )}
 
                     {/* Title */}
-                    <h2 className="font-heading mb-4 leading-tight" style={{ fontSize: 'var(--typo-serviceTitle-size, 1.125rem)', color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
+                    <h2 className="font-heading mb-4 leading-tight" style={{ fontSize: 'var(--typo-serviceTitle-size, 1.46rem)', color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
                       {locale === 'ka' ? service.titleKa : service.titleEn}
                     </h2>
 
                     {/* Description */}
-                    <p className="leading-relaxed mb-6 font-[520] italic text-justify" style={{ fontSize: 'var(--typo-serviceBody-size, 1rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)' }}>
+                    <p className="leading-relaxed mb-6 font-[520] text-left" style={{ fontSize: 'var(--typo-serviceBody-size, 1.3rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)' }}>
                       {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                     </p>
 

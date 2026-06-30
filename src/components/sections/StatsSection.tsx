@@ -10,7 +10,7 @@ interface Props {
 
 export default function StatsSection({ stats, locale }: Props) {
   return (
-    <section className="py-[6.5rem] md:py-[9.1rem] bg-section-gradient text-white relative overflow-hidden">
+    <section className="py-[4rem] md:py-[9.1rem] bg-section-gradient text-white relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-dark-pattern" />
 

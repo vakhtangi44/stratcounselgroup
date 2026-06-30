@@ -56,8 +56,8 @@ export default async function BlogPage({ searchParams }: Props) {
 
   return (
     <div className="pt-[140px] md:pt-[255px]">
-      <section className="bg-section-gradient text-white py-[6.5rem] md:py-[9.1rem] text-center px-4 lg:px-8">
-        <RichText html={s(settings, 'page.blog', locale)} as="h1" className="font-heading text-4xl mb-4" />
+      <section className="bg-white py-[4rem] md:py-[9.1rem] text-center px-4 lg:px-8">
+        <RichText html={s(settings, 'page.blog', locale)} as="h1" className="font-heading text-4xl text-dark mb-4" />
       </section>
 
       <section className="py-8 px-4 lg:px-8 bg-bg-alt border-b border-gray-100">
@@ -76,7 +76,7 @@ export default async function BlogPage({ searchParams }: Props) {
         </div>
       </section>
 
-      <section className="py-[6.5rem] md:py-[9.1rem] px-4 lg:px-8 bg-white">
+      <section className="py-[4rem] md:py-[9.1rem] px-4 lg:px-8 bg-white">
         <div className="container mx-auto">
           {displayPosts.length === 0 ? (
             <p className="text-center text-secondary py-16">{isKa ? 'სტატია ვერ მოიძებნა' : 'No articles found'}</p>

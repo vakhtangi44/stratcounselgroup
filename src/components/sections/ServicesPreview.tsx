@@ -26,7 +26,7 @@ export default function ServicesPreview({ services, locale }: Props) {
   const prefix = locale === 'en' ? '/en' : ''
 
   return (
-    <section className="py-[6.5rem] md:py-[9.1rem] bg-cream">
+    <section className="py-[4rem] md:py-[9.1rem] bg-cream">
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-20">
           <p className="text-[12px] uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--typo-label-color, var(--color-dark))', fontFamily: 'var(--typo-label-font)' }}>
@@ -58,11 +58,11 @@ export default function ServicesPreview({ services, locale }: Props) {
                   {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                 </div>
 
-                <h3 className="font-heading mb-3 leading-snug" style={{ fontSize: 'var(--typo-serviceTitle-size, 1.125rem)', color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
+                <h3 className="font-heading mb-3 leading-snug" style={{ fontSize: 'var(--typo-serviceTitle-size, 1.46rem)', color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
                   {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
                 </h3>
 
-                <p className="font-light leading-relaxed mb-5 line-clamp-3 text-justify" style={{ fontSize: 'var(--typo-serviceBody-size, 0.875rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)' }}>
+                <p className="font-light leading-relaxed mb-5 line-clamp-3 text-left" style={{ fontSize: 'var(--typo-serviceBody-size, 1.14rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)' }}>
                   {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                 </p>
 
