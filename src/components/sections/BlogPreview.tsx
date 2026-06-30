@@ -22,9 +22,9 @@ export default function BlogPreview({ posts, locale, strings }: Props) {
   return (
     <section className="py-[4rem] md:py-[9.1rem] bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <ScrollReveal className="text-center mb-20">
+        <ScrollReveal className="text-center mb-10 md:mb-20">
           <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
-          <RichText html={strings.title} as="h2" className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block" />
+          <RichText html={strings.title} as="h2" className="font-heading text-2xl md:text-4xl text-dark gold-underline inline-block" />
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -45,7 +45,7 @@ export default function BlogPreview({ posts, locale, strings }: Props) {
                     <div className="absolute inset-0 bg-gradient-to-t from-dark/20 to-transparent" />
                   </div>
                 )}
-                <div className="p-7">
+                <div className="p-4 sm:p-7">
                   {/* Category chip */}
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-[11px] uppercase tracking-[0.15em] text-gold bg-gold/8 px-3 py-1 font-medium">
@@ -71,7 +71,7 @@ export default function BlogPreview({ posts, locale, strings }: Props) {
           ))}
         </div>
 
-        <ScrollReveal className="text-center mt-[4.5rem]">
+        <ScrollReveal className="text-center mt-8 md:mt-[4.5rem]">
           <Link
             href={`${prefix}/blog`}
             className="inline-flex items-center gap-2 text-gold hover:text-gold-dark text-sm font-medium uppercase tracking-[0.15em] transition-colors duration-300"

@@ -24,7 +24,7 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
   return (
     <section className="py-[4rem] md:py-[9.1rem] bg-white">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-16">
           <h2
             className="font-heading font-bold"
             style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}
@@ -65,7 +65,7 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
         </div>
 
         {showViewAll && (
-          <div className="mt-16 text-center">
+          <div className="mt-8 sm:mt-16 text-center">
             <Link
               href={`${prefix}/clients`}
               className="text-dark/40 hover:text-gold text-xs uppercase tracking-[0.2em] font-medium transition-colors duration-300"

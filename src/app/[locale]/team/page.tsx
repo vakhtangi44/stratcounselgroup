@@ -22,20 +22,20 @@ export default async function TeamPage() {
   ])
 
   return (
-    <div className="pt-[140px] md:pt-[255px]">
+    <div className="pt-[110px] md:pt-[255px]">
       {/* Compact Hero */}
-      <section className="relative bg-white pt-[4rem] md:pt-[9.1rem] pb-[2rem] md:pb-[3rem] text-center px-4 lg:px-8 overflow-hidden">
+      <section className="relative bg-white pt-[2rem] md:pt-[4rem] pb-0 text-center px-4 lg:px-8 overflow-hidden">
         <div className="relative z-10">
           <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
-          <RichText html={s(settings, 'page.team.subtitle', locale)} as="p" className="text-gold text-[16.5px] uppercase tracking-[0.3em] mb-3" />
+          <RichText html={s(settings, 'page.team.subtitle', locale)} as="p" className="text-gold text-[12px] sm:text-[16.5px] uppercase tracking-[0.3em] mb-3" />
           <RichText html={s(settings, 'page.team', locale)} as="h1" className="font-heading tracking-[-0.02em]" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }} />
         </div>
       </section>
 
       {/* Team Grid */}
-      <section className="pt-[2rem] md:pt-[3rem] pb-[4rem] md:pb-[9.1rem] px-4 lg:px-8 bg-white">
+      <section className="pt-[2rem] md:pt-[3rem] pb-[4rem] md:pb-[4rem] px-4 lg:px-8 bg-white">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
             {members.map((member, i) => (
               <ScrollReveal key={member.id} delay={i * 150}>
                 <Link href={`${prefix}/team/${member.slug}`} className="group block">
@@ -52,10 +52,10 @@ export default async function TeamPage() {
                     )}
                   </div>
                   <div>
-                    <h2 className="font-heading text-[19.9px] text-dark group-hover:text-gold transition-colors duration-300 leading-snug font-bold tracking-tight">
+                    <h2 className="font-heading text-[13px] sm:text-[19.9px] text-dark group-hover:text-gold transition-colors duration-300 leading-snug font-bold tracking-tight">
                       {isKa ? member.nameKa : member.nameEn}
                     </h2>
-                    <p className="text-secondary text-[14.4px] mt-1 font-medium uppercase tracking-[0.02em] leading-snug">
+                    <p className="text-secondary text-[11px] sm:text-[14.4px] mt-1 font-medium uppercase tracking-[0.02em] leading-snug">
                       {isKa ? member.titleKa : member.titleEn}
                     </p>
                     {member.gbaNumber && (

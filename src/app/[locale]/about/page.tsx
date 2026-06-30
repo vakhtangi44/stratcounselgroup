@@ -19,7 +19,7 @@ export default async function AboutPage() {
   const prefix = locale === 'en' ? '/en' : ''
 
   return (
-    <div className="pt-[140px] md:pt-[255px]">
+    <div className="pt-[110px] md:pt-[255px]">
       {/* About body — white section, same style as homepage AboutPreview */}
       <AboutPreview
         locale={locale}
@@ -38,7 +38,7 @@ export default async function AboutPage() {
       {/* Advantages */}
       <section className="py-[4rem] md:py-[9.1rem] px-4 lg:px-8" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-5xl">
-          <ScrollReveal className="text-center mb-20">
+          <ScrollReveal className="text-center mb-10 md:mb-20">
             <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
             <h2 className="font-heading" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
               {locale === 'ka' ? 'ჩვენი უპირატესობები' : 'Our Advantages'}
@@ -63,7 +63,7 @@ export default async function AboutPage() {
       {/* Values */}
       <section className="py-[4rem] md:py-[9.1rem] px-4 lg:px-8 bg-cream">
         <div className="container mx-auto max-w-6xl">
-          <ScrollReveal className="text-center mb-20">
+          <ScrollReveal className="text-center mb-10 md:mb-20">
             <RichText html={s(settings, 'about.values.subtitle', locale)} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
             <RichText html={s(settings, 'about.values', locale)} as="h2" className="font-heading gold-underline inline-block" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }} />
           </ScrollReveal>
@@ -82,8 +82,8 @@ export default async function AboutPage() {
               }
               return (
                 <ScrollReveal key={v.id} delay={i * 150} className={colClass}>
-                  <div className="text-center p-8 bg-white border border-gray-100 group card-hover hover:shadow-lg h-full cursor-pointer" style={{ transition: 'transform 0.5s, box-shadow 0.5s' }}>
-                    <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center text-gold border border-gold/20">
+                  <div className="text-center p-5 sm:p-8 bg-white border border-gray-100 group card-hover hover:shadow-lg h-full cursor-pointer" style={{ transition: 'transform 0.5s, box-shadow 0.5s' }}>
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 flex items-center justify-center text-gold border border-gold/20">
                       <AboutValueIcon icon={v.icon} />
                     </div>
                     <h3 className="font-heading mb-3" style={{ fontSize: 'var(--typo-cardTitle-size, 1.125rem)', color: 'var(--typo-cardTitle-color, #1C122C)', fontFamily: 'var(--typo-cardTitle-font)' }}>

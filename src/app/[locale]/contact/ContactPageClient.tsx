@@ -62,7 +62,7 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
     'w-full border border-gray-200 px-5 py-3.5 text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/20 transition-all duration-300 bg-white font-light'
 
   return (
-    <div className="pt-[140px] md:pt-[255px]">
+    <div className="pt-[110px] md:pt-[255px]">
       {/* Split layout */}
       <section className="bg-white py-[4rem] md:py-[9.1rem] px-4 lg:px-8">
         <div className="container mx-auto max-w-[72rem]">
@@ -363,7 +363,8 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
           <iframe
             src={location.embedSrc}
             width="100%"
-            height="450"
+            height="300"
+            className="md:!h-[450px]"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"

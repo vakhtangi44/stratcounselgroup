@@ -28,7 +28,7 @@ export default function ServicesPreview({ services, locale }: Props) {
   return (
     <section className="py-[4rem] md:py-[9.1rem] bg-cream">
       <div className="container mx-auto px-4 lg:px-8">
-        <ScrollReveal className="text-center mb-20">
+        <ScrollReveal className="text-center mb-10 md:mb-20">
           <p className="text-[12px] uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--typo-label-color, var(--color-dark))', fontFamily: 'var(--typo-label-font)' }}>
             {locale === 'ka' ? 'რას გთავაზობთ' : 'What We Offer'}
           </p>
@@ -42,7 +42,7 @@ export default function ServicesPreview({ services, locale }: Props) {
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 max-w-[120rem] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 sm:gap-8 max-w-[120rem] mx-auto">
           {services.map((service, i) => {
             const colClass =
               i < 3
@@ -52,9 +52,9 @@ export default function ServicesPreview({ services, locale }: Props) {
                 : 'lg:col-span-2 lg:col-start-4'
             return (
             <ScrollReveal key={service.id} delay={i * 150} className={colClass}>
-              <div className="relative h-full p-8 bg-white border border-gray-100 group card-hover hover:shadow-lg" style={{ transition: 'transform 0.7s, box-shadow 0.7s' }}>
+              <div className="relative h-full p-5 sm:p-8 bg-white border border-gray-100 group card-hover hover:shadow-lg" style={{ transition: 'transform 0.7s, box-shadow 0.7s' }}>
                 {/* Roman numeral */}
-                <div className="text-dark font-heading text-5xl mb-4 leading-none">
+                <div className="text-dark font-heading text-3xl sm:text-5xl mb-3 sm:mb-4 leading-none">
                   {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                 </div>
 
@@ -88,10 +88,10 @@ export default function ServicesPreview({ services, locale }: Props) {
           })}
         </div>
 
-        <ScrollReveal className="text-center mt-16">
+        <ScrollReveal className="text-center mt-8 sm:mt-16">
           <Link
             href={`${prefix}/services`}
-            className="inline-block bg-gold px-8 py-3.5 uppercase tracking-[0.15em] font-medium hover:bg-gold-dark transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
+            className="inline-block bg-gold px-6 sm:px-8 py-3 sm:py-3.5 uppercase tracking-[0.15em] font-medium hover:bg-gold-dark transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
             style={{ color: 'var(--typo-button-color, #fff)', fontSize: 'var(--typo-button-size, 0.875rem)', fontFamily: 'var(--typo-button-font)' }}
           >
             {locale === 'ka' ? 'ყველა სერვისი' : 'View All Services'}

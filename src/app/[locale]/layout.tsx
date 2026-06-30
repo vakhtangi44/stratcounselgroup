@@ -94,6 +94,7 @@ export default async function LocaleLayout({
           .nav-btn { color: var(--nav-color); font-size: var(--nav-size); }
           .nav-btn:hover { color: var(--nav-hover); }
           .card-hover:hover { transform: scale(${Number(s(settings, 'appearance.cardScale', locale)) || 1.30}); }
+          @media (max-width: 767px) { .card-hover:hover { transform: scale(1.03); } }
           :root { ${typoVars.join(' ')} }
         `}</style>
       )}

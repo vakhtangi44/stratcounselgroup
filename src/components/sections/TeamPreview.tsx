@@ -31,9 +31,9 @@ export default function TeamPreview({ members, locale, strings }: Props) {
   return (
     <section className="py-[4rem] md:py-[9.1rem] bg-cream bg-linen">
       <div className="container mx-auto px-4 lg:px-8">
-        <ScrollReveal className="text-center mb-20">
+        <ScrollReveal className="text-center mb-8 md:mb-20">
           <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
-          <RichText html={strings.title} as="h2" className="font-heading text-3xl md:text-4xl text-dark gold-underline inline-block" />
+          <RichText html={strings.title} as="h2" className="font-heading text-2xl md:text-4xl text-dark gold-underline inline-block" />
         </ScrollReveal>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -56,10 +56,10 @@ export default function TeamPreview({ members, locale, strings }: Props) {
                   )}
                 </div>
                 <div>
-                  <h2 className="font-heading text-[19.9px] text-dark group-hover:text-gold transition-colors duration-300 leading-snug font-bold tracking-tight">
+                  <h2 className="font-heading text-[14px] sm:text-[19.9px] text-dark group-hover:text-gold transition-colors duration-300 leading-snug font-bold tracking-tight">
                     {locale === 'ka' ? member.nameKa : member.nameEn}
                   </h2>
-                  <p className="text-secondary text-[14.4px] mt-1 font-medium uppercase tracking-[0.02em] leading-snug">
+                  <p className="text-secondary text-[11px] sm:text-[14.4px] mt-1 font-medium uppercase tracking-[0.02em] leading-snug">
                     {locale === 'ka' ? member.titleKa : member.titleEn}
                   </p>
                 </div>

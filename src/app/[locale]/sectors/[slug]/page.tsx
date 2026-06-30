@@ -48,7 +48,7 @@ export default async function SectorDetailPage({
   const otherSectors = getSectorsData(settings, locale).filter((s) => s.slug !== slug)
 
   return (
-    <div className="pt-[140px] md:pt-[255px]">
+    <div className="pt-[110px] md:pt-[255px]">
       {/* Hero with sector photo */}
       <section className="relative bg-section-gradient text-white py-[4rem] md:py-[9.1rem] text-center px-4 lg:px-8 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -65,10 +65,10 @@ export default async function SectorDetailPage({
           <p className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4">
             {isKa ? 'სექტორი' : 'Sector'}
           </p>
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]">
+          <h1 className="font-heading text-2xl md:text-5xl lg:text-6xl mb-6 tracking-[-0.02em]">
             {sector.name}
           </h1>
-          <p className="text-white/70 max-w-2xl mx-auto text-lg leading-relaxed font-light whitespace-pre-wrap text-justify">
+          <p className="text-white/70 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-light whitespace-pre-wrap text-left md:text-justify">
             {sector.description}
           </p>
         </div>

@@ -33,11 +33,11 @@ export default async function ServicesPage() {
   ])
 
   return (
-    <div className="pt-[140px] md:pt-[255px]" style={{ background: 'white' }}>
+    <div className="pt-[110px] md:pt-[255px]" style={{ background: 'white' }}>
       {/* Services */}
       <section className="py-[4rem] md:py-[9.1rem] px-4 lg:px-8" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-20">
+          <div className="text-center mb-10 md:mb-20">
             <div className="w-12 h-[2px] bg-gold mx-auto mb-6" />
             <h1 className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
               {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
@@ -48,7 +48,7 @@ export default async function ServicesPage() {
                 : 'Complete legal support — from negotiation to courtroom'}
             </p>
           </div>
-          <div key={Date.now()} className="space-y-16">
+          <div key={Date.now()} className="space-y-10 md:space-y-16">
             {services.map((service, idx) => (
                 <div key={service.id} className="relative group">
                   <div>

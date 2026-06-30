@@ -33,7 +33,7 @@ export default function StatsSection({ stats, locale }: Props) {
                     data-stat-line
                   />
                 </div>
-                <p className="font-heading text-5xl md:text-6xl lg:text-7xl text-gold mb-4 tracking-tight transition-all duration-500 group-hover:animate-shimmer">
+                <p className="font-heading text-4xl md:text-6xl lg:text-7xl text-gold mb-4 tracking-tight transition-all duration-500 group-hover:animate-shimmer">
                   <AnimatedCounter target={parseInt(stat.value)} suffix={stat.suffix ?? ''} />
                 </p>
                 {/* Gold divider */}

@@ -22,7 +22,7 @@ export default function PressStrip({ items, asSeenIn }: Props) {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14">
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-14">
             {items.map((item) => (
               <a
                 key={item.id}

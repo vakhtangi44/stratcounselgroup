@@ -55,9 +55,9 @@ export default async function BlogPage({ searchParams }: Props) {
   const displayPosts = hasMore ? posts.slice(0, PAGE_SIZE) : posts
 
   return (
-    <div className="pt-[140px] md:pt-[255px]">
+    <div className="pt-[110px] md:pt-[255px]">
       <section className="bg-white py-[4rem] md:py-[9.1rem] text-center px-4 lg:px-8">
-        <RichText html={s(settings, 'page.blog', locale)} as="h1" className="font-heading text-4xl text-dark mb-4" />
+        <RichText html={s(settings, 'page.blog', locale)} as="h1" className="font-heading text-2xl md:text-4xl text-dark mb-4" />
       </section>
 
       <section className="py-8 px-4 lg:px-8 bg-bg-alt border-b border-gray-100">
