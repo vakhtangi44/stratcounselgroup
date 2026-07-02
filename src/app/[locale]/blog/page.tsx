@@ -16,6 +16,7 @@ interface BlogPost {
   contentKa: string
   contentEn: string
   coverImage: string | null
+  coverPosition: string | null
   publishedAt: Date | null
 }
 
@@ -86,7 +87,7 @@ export default async function BlogPage({ searchParams }: Props) {
                 <Link key={post.id} href={`${prefix}/blog/${post.slug}`} className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                   {post.coverImage && (
                     <div className="relative h-[244px]">
-                      <Image src={post.coverImage} alt={isKa ? post.titleKa : post.titleEn} fill className="object-cover" />
+                      <Image src={post.coverImage} alt={isKa ? post.titleKa : post.titleEn} fill className="object-cover" style={{ objectPosition: post.coverPosition || 'center' }} />
                     </div>
                   )}
                   <div className="p-6">

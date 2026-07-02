@@ -7,6 +7,7 @@ import RichTextEditor from '@/components/admin/RichTextEditor'
 import ImageUpload from '@/components/admin/ImageUpload'
 import VideoInput from '@/components/admin/VideoInput'
 import PdfUpload from '@/components/admin/PdfUpload'
+import FocalPointPicker from '@/components/admin/FocalPointPicker'
 import { PRACTICE_AREAS } from '@/lib/practice-areas'
 import { slugify } from '@/lib/utils'
 
@@ -21,6 +22,7 @@ interface Post {
   excerptEn: string
   coverImage: string | null
   coverImageHeight?: number | null
+  coverPosition?: string | null
   videoUrl: string | null
   pdfUrl?: string | null
   status: string
@@ -40,6 +42,7 @@ export default function BlogForm({ post }: { post?: Post }) {
     excerptEn: post?.excerptEn || '',
     coverImage: post?.coverImage || '',
     coverImageHeight: post?.coverImageHeight?.toString() || '',
+    coverPosition: post?.coverPosition || '',
     videoUrl: post?.videoUrl || '',
     pdfUrl: post?.pdfUrl || '',
     status: post?.status || 'draft',
@@ -177,6 +180,14 @@ export default function BlogForm({ post }: { post?: Post }) {
             : 'Upload a cover image above first — this size then controls how tall it appears.'}
         </p>
       </div>
+
+      {form.coverImage && (
+        <FocalPointPicker
+          src={form.coverImage}
+          value={form.coverPosition}
+          onChange={(pos) => setForm((f) => ({ ...f, coverPosition: pos }))}
+        />
+      )}
 
       <VideoInput
         value={form.videoUrl}

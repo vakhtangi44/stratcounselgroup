@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
   const body = await req.json()
   const {
     slug, titleKa, titleEn, contentKa, contentEn,
-    excerptKa, excerptEn, coverImage, coverImageHeight, videoUrl, pdfUrl, status, authorId, tags,
+    excerptKa, excerptEn, coverImage, coverImageHeight, coverPosition, videoUrl, pdfUrl, status, authorId, tags,
   } = body
 
   if (!slug || !titleKa || !titleEn) {
@@ -39,6 +39,7 @@ export async function POST(req: NextRequest) {
       excerptEn: excerptEn || '',
       coverImage: coverImage || null,
       coverImageHeight: coverImageHeight ? Number(coverImageHeight) : null,
+      coverPosition: coverPosition || null,
       videoUrl: videoUrl || null,
       pdfUrl: pdfUrl || null,
       status: status || 'draft',

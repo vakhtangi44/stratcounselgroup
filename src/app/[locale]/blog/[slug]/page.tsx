@@ -37,7 +37,7 @@ export default async function BlogPostPage({
               className="relative h-[331px] md:h-[442px] rounded-lg overflow-hidden mb-[1.2rem]"
               style={post.coverImageHeight ? { height: `${post.coverImageHeight}px` } : undefined}
             >
-              <Image src={post.coverImage} alt={title} fill className="object-cover" />
+              <Image src={post.coverImage} alt={title} fill className="object-cover" style={{ objectPosition: post.coverPosition || 'center' }} />
             </div>
           )}
           <h1 className="font-heading text-[1.9125rem] text-dark mb-4">{title}</h1>
@@ -56,7 +56,7 @@ export default async function BlogPostPage({
 
         {/* sanitized via DOMPurify in @/lib/sanitize */}
         <div
-          className="max-w-none text-navy text-[0.9rem] md:text-lg leading-relaxed [&_p]:mb-4 [&_p:last-child]:mb-0 [&_h2]:font-heading [&_h2]:text-dark [&_h2]:mt-8 [&_h2]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-4 [&_li]:mb-1 [&_a]:text-gold [&_a]:underline [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-lg [&_img]:my-6"
+          className="max-w-none text-navy text-[0.9rem] md:text-lg leading-relaxed [&_p]:mb-4 [&_p]:text-justify [&_p:last-child]:mb-0 [&_h2]:font-heading [&_h2]:text-dark [&_h2]:mt-8 [&_h2]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-4 [&_li]:mb-1 [&_a]:text-gold [&_a]:underline [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-lg [&_img]:my-6"
           dangerouslySetInnerHTML={{ __html: sanitized }}
         />
 

@@ -17,6 +17,7 @@ model BlogPost {
   excerptEn   String
   coverImage  String?
   coverImageHeight Int?
+  coverPosition String?
   videoUrl    String?
   pdfUrl      String?
   status      String        @default("draft")
