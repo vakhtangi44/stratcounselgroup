@@ -77,6 +77,7 @@ export default async function HomePage() {
     image: s(settings, 'section.about.image', locale),
     imagePosition: s(settings, 'section.about.imagePosition', locale),
     imageSize: s(settings, 'section.about.imageSize', locale),
+    imageFocal: s(settings, 'section.about.imageFocal', locale),
   }
 
   const heroStrings = {

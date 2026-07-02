@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
   const session = await auth()
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   const body = await req.json()
-  const { titleKa, titleEn, descriptionKa, descriptionEn, order, active, image } = body
+  const { titleKa, titleEn, descriptionKa, descriptionEn, order, active, image, imagePosition } = body
   if (!titleKa || !titleEn || !descriptionKa || !descriptionEn) {
     return NextResponse.json({ error: 'All title and description fields required' }, { status: 400 })
   }
@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
       descriptionKa,
       descriptionEn,
       image: image || null,
+      imagePosition: imagePosition || null,
       order: order ?? 0,
       active: active !== false,
     },

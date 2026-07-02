@@ -206,6 +206,7 @@ model Service {
   descriptionKa String        @db.Text
   descriptionEn String        @db.Text
   image         String?
+  imagePosition String?
   items         ServiceItem[]
   order         Int           @default(0)
   active        Boolean       @default(true)

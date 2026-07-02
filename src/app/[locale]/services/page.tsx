@@ -60,6 +60,7 @@ export default async function ServicesPage() {
                           src={service.image}
                           alt={locale === 'ka' ? service.titleKa : service.titleEn}
                           className="w-full h-full object-cover"
+                          style={{ objectPosition: service.imagePosition || 'center' }}
                         />
                       </div>
                     )}

@@ -15,6 +15,7 @@ interface Props {
     image: string
     imagePosition: string
     imageSize: string
+    imageFocal?: string
   }
 }
 
@@ -87,6 +88,7 @@ export default function AboutPreview({ locale, strings }: Props) {
                 src={strings.image}
                 alt={strings.heading}
                 className="w-full h-full object-cover"
+                style={{ objectPosition: strings.imageFocal?.includes('%') ? strings.imageFocal : 'center' }}
               />
             </ScrollReveal>
           )}

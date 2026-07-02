@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react'
 import ImageUpload from '@/components/admin/ImageUpload'
+import FocalPointPicker from '@/components/admin/FocalPointPicker'
 
 interface ServiceItem {
   id: number
@@ -18,6 +19,7 @@ interface Service {
   descriptionKa: string
   descriptionEn: string
   image: string | null
+  imagePosition: string | null
   order: number
   active: boolean
   items: ServiceItem[]
@@ -72,7 +74,7 @@ export default function ServicesManager({ initialServices }: Props) {
   }
 
   const [newService, setNewService] = useState({
-    titleKa: '', titleEn: '', descriptionKa: '', descriptionEn: '', image: '', order: 0, active: true,
+    titleKa: '', titleEn: '', descriptionKa: '', descriptionEn: '', image: '', imagePosition: '', order: 0, active: true,
   })
   const [newItem, setNewItem] = useState({ textKa: '', textEn: '', order: 0 })
 
@@ -111,6 +113,7 @@ export default function ServicesManager({ initialServices }: Props) {
         descriptionKa: editingService.descriptionKa,
         descriptionEn: editingService.descriptionEn,
         image: editingService.image,
+        imagePosition: editingService.imagePosition,
         order: editingService.order,
         active: editingService.active,
       }),
@@ -251,6 +254,15 @@ export default function ServicesManager({ initialServices }: Props) {
               onChange={(url) => setNewService({ ...newService, image: url })}
               label="Service Photo"
             />
+            {newService.image && (
+              <div className="mt-3">
+                <FocalPointPicker
+                  src={newService.image}
+                  value={newService.imagePosition}
+                  onChange={(pos) => setNewService({ ...newService, imagePosition: pos })}
+                />
+              </div>
+            )}
           </div>
           <label className="flex items-center gap-2 text-sm mb-4">
             <input
@@ -493,6 +505,15 @@ export default function ServicesManager({ initialServices }: Props) {
                 onChange={(url) => setEditingService({ ...editingService, image: url })}
                 label="Service Photo"
               />
+              {editingService.image && (
+                <div className="mt-3">
+                  <FocalPointPicker
+                    src={editingService.image}
+                    value={editingService.imagePosition}
+                    onChange={(pos) => setEditingService({ ...editingService, imagePosition: pos })}
+                  />
+                </div>
+              )}
               {editingService.image && (
                 <button
                   type="button"

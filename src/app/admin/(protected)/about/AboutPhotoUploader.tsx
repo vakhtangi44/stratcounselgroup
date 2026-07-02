@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import FocalPointPicker from '@/components/admin/FocalPointPicker'
 
 interface Props {
   imageSettingId: number | null
@@ -8,9 +9,11 @@ interface Props {
   sizeSettingId: number | null
   statSettingId: number | null
   statLabelSettingId: number | null
+  focalSettingId: number | null
   currentImage: string
   currentPosition: string
   currentSize: string
+  currentFocal: string
   currentStat: string
   currentStatLabelKa: string
   currentStatLabelEn: string
@@ -38,9 +41,11 @@ export default function AboutPhotoUploader({
   sizeSettingId,
   statSettingId,
   statLabelSettingId,
+  focalSettingId,
   currentImage,
   currentPosition,
   currentSize,
+  currentFocal,
   currentStat,
   currentStatLabelKa,
   currentStatLabelEn,
@@ -48,6 +53,7 @@ export default function AboutPhotoUploader({
   const [preview, setPreview] = useState(currentImage || '')
   const [position, setPosition] = useState(currentPosition || 'right')
   const [size, setSize] = useState(currentSize || 'medium')
+  const [focal, setFocal] = useState(currentFocal || '50% 50%')
   const [stat, setStat] = useState(currentStat || '')
   const [statLabelKa, setStatLabelKa] = useState(currentStatLabelKa || '')
   const [statLabelEn, setStatLabelEn] = useState(currentStatLabelEn || '')
@@ -109,6 +115,13 @@ export default function AboutPhotoUploader({
     setSize(value)
     if (!sizeSettingId) return
     await saveSetting(sizeSettingId, value)
+    flashSaved()
+  }
+
+  async function updateFocal(value: string) {
+    setFocal(value)
+    if (!focalSettingId) return
+    await saveSetting(focalSettingId, value)
     flashSaved()
   }
 
@@ -266,6 +279,15 @@ export default function AboutPhotoUploader({
           </div>
         </div>
       </div>
+
+      {/* Focal point */}
+      {preview && (
+        <div className="bg-white rounded-lg shadow-sm p-6">
+          <h2 className="font-heading text-lg text-dark mb-4">Focal Point</h2>
+          <p className="text-xs text-secondary mb-4">Click the main area of the photo — it stays visible when the photo is cropped.</p>
+          <FocalPointPicker src={preview} value={focal} onChange={updateFocal} />
+        </div>
+      )}
 
       {/* Stat Box editor */}
       <div className="bg-white rounded-lg shadow-sm p-6">

@@ -9,6 +9,7 @@ export default async function AdminAboutPage() {
           'section.about.image',
           'section.about.imagePosition',
           'section.about.imageSize',
+          'section.about.imageFocal',
           'section.about.stat',
           'section.about.statLabel',
         ],
@@ -24,11 +25,13 @@ export default async function AdminAboutPage() {
         imageSettingId={byKey['section.about.image']?.id ?? null}
         positionSettingId={byKey['section.about.imagePosition']?.id ?? null}
         sizeSettingId={byKey['section.about.imageSize']?.id ?? null}
+        focalSettingId={byKey['section.about.imageFocal']?.id ?? null}
         statSettingId={byKey['section.about.stat']?.id ?? null}
         statLabelSettingId={byKey['section.about.statLabel']?.id ?? null}
         currentImage={byKey['section.about.image']?.valueEn || ''}
         currentPosition={byKey['section.about.imagePosition']?.valueEn || 'right'}
         currentSize={byKey['section.about.imageSize']?.valueEn || 'medium'}
+        currentFocal={byKey['section.about.imageFocal']?.valueEn || '50% 50%'}
         currentStat={byKey['section.about.stat']?.valueEn || ''}
         currentStatLabelKa={byKey['section.about.statLabel']?.valueKa || ''}
         currentStatLabelEn={byKey['section.about.statLabel']?.valueEn || ''}
