@@ -46,7 +46,10 @@ export default async function BlogPostPage({
       <article className="max-w-4xl mx-auto px-4 py-16">
         <header className="mb-8">
           {post.coverImage && (
-            <div className="relative h-72 md:h-96 rounded-lg overflow-hidden mb-[1.2rem]">
+            <div
+              className="relative h-72 md:h-96 rounded-lg overflow-hidden mb-[1.2rem]"
+              style={post.coverImageHeight ? { height: `${post.coverImageHeight}px` } : undefined}
+            >
               <Image src={post.coverImage} alt={title} fill className="object-cover" />
             </div>
           )}
@@ -69,6 +72,19 @@ export default async function BlogPostPage({
           className="max-w-none text-navy text-[0.9rem] md:text-lg leading-relaxed [&_p]:mb-4 [&_p:last-child]:mb-0 [&_h2]:font-heading [&_h2]:text-dark [&_h2]:mt-8 [&_h2]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-4 [&_li]:mb-1 [&_a]:text-gold [&_a]:underline"
           dangerouslySetInnerHTML={{ __html: sanitized }}
         />
+
+        {post.pdfUrl && (
+          <div className="mt-10">
+            <a
+              href={post.pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-gold text-gold px-6 py-3 rounded-sm hover:bg-gold hover:text-white transition-colors text-sm uppercase tracking-[0.1em]"
+            >
+              📄 {isKa ? 'PDF-ის ჩამოტვირთვა' : 'Download PDF'}
+            </a>
+          </div>
+        )}
 
         <div className="mt-12 pt-8 border-t border-gray-100 flex items-center gap-4">
           <span className="text-sm text-secondary">{isKa ? 'გაზიარება:' : 'Share:'}</span>

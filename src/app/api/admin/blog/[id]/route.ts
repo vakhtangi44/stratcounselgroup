@@ -39,7 +39,7 @@ export async function PUT(
   const body = await req.json()
   const {
     slug, titleKa, titleEn, contentKa, contentEn,
-    excerptKa, excerptEn, coverImage, videoUrl, status, authorId, publishedAt, tags,
+    excerptKa, excerptEn, coverImage, coverImageHeight, videoUrl, pdfUrl, status, authorId, publishedAt, tags,
   } = body
 
   if (!slug || !titleKa || !titleEn) {
@@ -57,7 +57,9 @@ export async function PUT(
       excerptKa: excerptKa || '',
       excerptEn: excerptEn || '',
       coverImage: coverImage || null,
+      coverImageHeight: coverImageHeight ? Number(coverImageHeight) : null,
       videoUrl: videoUrl || null,
+      pdfUrl: pdfUrl || null,
       status: status || 'draft',
       authorId: authorId ? Number(authorId) : null,
       publishedAt: status === 'published' ? (publishedAt ?? new Date()) : null,

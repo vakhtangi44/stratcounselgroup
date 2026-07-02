@@ -48,6 +48,34 @@ export async function saveUploadedFile(
   return blob.url
 }
 
+const MAX_PDF_SIZE = 20 * 1024 * 1024 // 20MB
+
+/** Upload a PDF document to Vercel Blob. Admin-only. Validates the %PDF magic header. */
+export async function saveUploadedPdf(file: File): Promise<string> {
+  if (file.type !== 'application/pdf') {
+    throw new Error('Invalid file type. Only PDF allowed.')
+  }
+  if (file.size > MAX_PDF_SIZE) {
+    throw new Error('File too large. Max 20MB.')
+  }
+  const buffer = Buffer.from(await file.arrayBuffer())
+  // PDF files start with "%PDF"
+  const isPdf = buffer[0] === 0x25 && buffer[1] === 0x50 && buffer[2] === 0x44 && buffer[3] === 0x46
+  if (!isPdf) {
+    throw new Error('File content does not match a valid PDF.')
+  }
+  const filename = `blog-pdf/${uuidv4()}.pdf`
+
+  const blob = await put(filename, buffer, {
+    access: 'public',
+    addRandomSuffix: false,
+    contentType: 'application/pdf',
+    token: process.env.BLOB_READ_WRITE_TOKEN,
+  })
+
+  return blob.url
+}
+
 const ALLOWED_VIDEO_TYPES: Record<string, string> = {
   'video/mp4': 'mp4',
   'video/webm': 'webm',

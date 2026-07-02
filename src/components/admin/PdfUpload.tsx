@@ -1,16 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 
 interface Props {
-  folder: 'blog' | 'team' | 'press' | 'services' | 'logo'
   value?: string
   onChange: (url: string) => void
   label?: string
 }
 
-export default function ImageUpload({ folder, value, onChange, label = 'Image' }: Props) {
+export default function PdfUpload({ value, onChange, label = 'PDF' }: Props) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -23,9 +21,8 @@ export default function ImageUpload({ folder, value, onChange, label = 'Image' }
 
     const formData = new FormData()
     formData.append('file', file)
-    formData.append('folder', folder)
 
-    const res = await fetch('/api/upload', { method: 'POST', body: formData })
+    const res = await fetch('/api/admin/upload-pdf', { method: 'POST', body: formData })
     const data = await res.json()
 
     if (res.ok) {
@@ -40,22 +37,27 @@ export default function ImageUpload({ folder, value, onChange, label = 'Image' }
     <div>
       <label className="block text-sm text-secondary mb-1">{label}</label>
       {value && (
-        <div className="mb-2">
-          <div className="relative w-32 h-32">
-            <Image src={value} alt="Preview" fill className="object-cover rounded" />
-          </div>
+        <div className="mb-2 flex items-center gap-3">
+          <a
+            href={value}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-gold hover:underline break-all"
+          >
+            📄 View uploaded PDF
+          </a>
           <button
             type="button"
             onClick={() => onChange('')}
-            className="mt-1 text-xs text-red-500 hover:text-red-600 hover:underline"
+            className="text-xs text-red-500 hover:text-red-600 hover:underline"
           >
-            ✕ Remove image
+            ✕ Remove
           </button>
         </div>
       )}
       <input
         type="file"
-        accept="image/jpeg,image/png,image/webp"
+        accept="application/pdf"
         onChange={handleFile}
         disabled={loading}
         className="text-sm"

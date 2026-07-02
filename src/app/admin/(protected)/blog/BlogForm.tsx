@@ -6,6 +6,7 @@ import BilingualField from '@/components/admin/BilingualField'
 import RichTextEditor from '@/components/admin/RichTextEditor'
 import ImageUpload from '@/components/admin/ImageUpload'
 import VideoInput from '@/components/admin/VideoInput'
+import PdfUpload from '@/components/admin/PdfUpload'
 import { PRACTICE_AREAS } from '@/lib/practice-areas'
 import { slugify } from '@/lib/utils'
 
@@ -19,7 +20,9 @@ interface Post {
   excerptKa: string
   excerptEn: string
   coverImage: string | null
+  coverImageHeight?: number | null
   videoUrl: string | null
+  pdfUrl?: string | null
   status: string
   tags: { practiceArea: string }[]
   authorId?: number | null
@@ -36,7 +39,9 @@ export default function BlogForm({ post }: { post?: Post }) {
     excerptKa: post?.excerptKa || '',
     excerptEn: post?.excerptEn || '',
     coverImage: post?.coverImage || '',
+    coverImageHeight: post?.coverImageHeight?.toString() || '',
     videoUrl: post?.videoUrl || '',
+    pdfUrl: post?.pdfUrl || '',
     status: post?.status || 'draft',
     tags: post?.tags.map((t) => t.practiceArea) || [],
   })
@@ -133,10 +138,32 @@ export default function BlogForm({ post }: { post?: Post }) {
         label="Cover Image"
       />
 
+      {form.coverImage && (
+        <div>
+          <label className="block text-sm text-secondary mb-1">Cover Image Height (px)</label>
+          <input
+            type="number"
+            min={100}
+            max={900}
+            value={form.coverImageHeight}
+            onChange={(e) => setForm((f) => ({ ...f, coverImageHeight: e.target.value }))}
+            placeholder="default (384)"
+            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-gold"
+          />
+          <p className="text-xs text-secondary mt-1">Leave empty for the default height. Applies on the article page.</p>
+        </div>
+      )}
+
       <VideoInput
         value={form.videoUrl}
         onChange={(url) => setForm((f) => ({ ...f, videoUrl: url }))}
         label="Video (link or upload)"
+      />
+
+      <PdfUpload
+        value={form.pdfUrl}
+        onChange={(url) => setForm((f) => ({ ...f, pdfUrl: url }))}
+        label="PDF attachment"
       />
 
       <div>
