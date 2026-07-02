@@ -3,7 +3,7 @@ import AppearanceEditor from './AppearanceEditor'
 
 export default async function AppearancePage() {
   const settings = await db.siteSetting.findMany({
-    where: { category: 'appearance' },
+    where: { OR: [{ category: 'appearance' }, { key: 'contact.policyEnabled' }] },
     orderBy: { id: 'asc' },
   })
 

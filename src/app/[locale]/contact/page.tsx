@@ -34,6 +34,8 @@ export default async function ContactPage() {
     officeAddress: s(settings, 'footer.address', locale),
   }
 
+  const policyEnabled = s(settings, 'contact.policyEnabled', locale) !== 'false'
+
   const localeAddress = contactAddress(location, locale)
   const mapLocation = {
     address: localeAddress,
@@ -41,5 +43,5 @@ export default async function ContactPage() {
     mapLink: location.mapLink,
   }
 
-  return <ContactPageClient locale={locale} strings={strings} location={mapLocation} />
+  return <ContactPageClient locale={locale} strings={strings} location={mapLocation} policyEnabled={policyEnabled} />
 }

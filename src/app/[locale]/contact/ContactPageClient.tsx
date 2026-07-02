@@ -34,9 +34,10 @@ interface Props {
     officeAddressLabel: string
     officeAddress: string
   }
+  policyEnabled: boolean
 }
 
-export default function ContactPageClient({ locale, strings, location }: Props) {
+export default function ContactPageClient({ locale, strings, location, policyEnabled }: Props) {
   const isKa = locale === 'ka'
 
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
@@ -268,6 +269,7 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                     />
                   </div>
 
+                  {policyEnabled && (
                   <p className="text-secondary text-[0.9rem] md:text-lg leading-relaxed">
                     {isKa ? (
                       <>
@@ -299,12 +301,14 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                       </>
                     )}
                   </p>
+                  )}
 
                   <Turnstile
                     sitekey={process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'}
                     onVerify={setToken}
                   />
 
+                  {policyEnabled && (
                   <p className="text-secondary text-[0.9rem] md:text-lg leading-relaxed">
                     {isKa
                       ? <>შეტყობინების გამოგზავნით ადასტურებთ, რომ გაეცანით და ეთანხმებით{' '}
@@ -329,6 +333,7 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                           </a>.</>
                     }
                   </p>
+                  )}
 
                   {status === 'error' && (
                     <p className="text-red-500 text-sm font-light">
@@ -338,7 +343,7 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
 
                   <button
                     type="submit"
-                    disabled={status === 'loading' || !token || !policyOpened}
+                    disabled={status === 'loading' || !token || (policyEnabled && !policyOpened)}
                     className="w-full bg-gold-dark text-white py-4 text-sm uppercase tracking-[0.15em] font-bold hover:bg-gold disabled:opacity-70 transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
                   >
                     {status === 'loading'
@@ -364,12 +369,11 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
             src={location.embedSrc}
             width="100%"
             height="300"
-            className="md:!h-[450px]"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="w-full pointer-events-none"
+            className="w-full pointer-events-none md:!h-[450px]"
             title="Strategic Counsel Group Office Location"
           />
           <div className="absolute inset-0 bg-dark/5 group-hover:bg-dark/0 transition-all duration-300" />

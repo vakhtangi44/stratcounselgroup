@@ -88,6 +88,13 @@ export default function AppearanceEditor({ settings }: Props) {
       }
     }
 
+    {
+      const key = 'contact.policyEnabled'
+      if (!settings[key] && values[key]) {
+        payload.push({ key, category: 'contact', valueKa: values[key], valueEn: values[key] })
+      }
+    }
+
     const res = await fetch('/api/admin/settings', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -503,6 +510,19 @@ export default function AppearanceEditor({ settings }: Props) {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <h3 className="text-sm font-medium text-dark mb-4">Contact Form</h3>
+            <label className="flex items-center gap-2 text-sm text-dark cursor-pointer">
+              <input
+                type="checkbox"
+                checked={(values['contact.policyEnabled'] ?? 'true') !== 'false'}
+                onChange={(e) => update('contact.policyEnabled', e.target.checked ? 'true' : 'false')}
+              />
+              Show personal data policy notices on the contact form
+            </label>
           </div>
 
           {/* Color Preview */}
