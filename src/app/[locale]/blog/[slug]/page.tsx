@@ -7,6 +7,33 @@ import { formatDate, readTime } from '@/lib/utils'
 import { unstable_noStore as noStore } from 'next/cache'
 import VideoEmbed from '@/components/ui/VideoEmbed'
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale, slug } = await params
+  const post = await db.blogPost.findFirst({ where: { slug, status: 'published' } })
+  if (!post) return {}
+  const isKa = locale === 'ka'
+  const title = isKa ? post.titleKa : post.titleEn
+  const description = (isKa ? post.excerptKa : post.excerptEn) || ''
+  const url = `https://stratcounselgroup.com${locale === 'en' ? '/en' : ''}/blog/${post.slug}`
+  return {
+    title: `${title} | Strategic Counsel Group`,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'article',
+      images: post.coverImage ? [{ url: post.coverImage }] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: post.coverImage ? [post.coverImage] : undefined,
+    },
+  }
+}
+
 export default async function BlogPostPage({
   params,
 }: {
