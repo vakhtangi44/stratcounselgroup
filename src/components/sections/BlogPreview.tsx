@@ -35,7 +35,7 @@ export default function BlogPreview({ posts, locale, strings }: Props) {
                 className="group block bg-white overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-dark/5"
               >
                 {post.coverImage && (
-                  <div className="relative h-52 overflow-hidden">
+                  <div className="relative h-[244px] overflow-hidden">
                     <Image
                       src={post.coverImage}
                       alt={locale === 'ka' ? post.titleKa : post.titleEn}

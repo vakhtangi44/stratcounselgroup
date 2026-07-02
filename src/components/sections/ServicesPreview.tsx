@@ -58,19 +58,19 @@ export default function ServicesPreview({ services, locale }: Props) {
                   {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                 </div>
 
-                <h3 className="font-heading mb-2 leading-snug" style={{ fontSize: 'var(--typo-serviceTitle-size, 1.1rem)', color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
+                <h3 className="font-heading mb-2 leading-snug" style={{ fontSize: '1.274rem', color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
                   {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
                 </h3>
 
-                <p className="leading-relaxed mb-4 line-clamp-3 text-left" style={{ fontSize: 'var(--typo-serviceBody-size, 0.9rem)', color: 'var(--typo-serviceBody-color, #5a5a6e)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
+                <p className="leading-relaxed mb-4 line-clamp-3 text-left" style={{ fontSize: '1.04rem', color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
                   {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                 </p>
 
                 {/* Show first 3 items */}
                 <ul className="space-y-2 mb-4">
                   {service.items.slice(0, 3).map((item) => (
-                    <li key={item.id} className="flex items-start gap-2 text-[0.8rem] text-secondary">
-                      <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
+                    <li key={item.id} className="flex items-start gap-2 text-[1.04rem] text-navy">
+                      <svg className="w-4 h-4 mt-1 flex-shrink-0 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       <span>{locale === 'ka' ? item.textKa : item.textEn}</span>
