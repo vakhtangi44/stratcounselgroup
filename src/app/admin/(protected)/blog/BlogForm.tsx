@@ -138,21 +138,23 @@ export default function BlogForm({ post }: { post?: Post }) {
         label="Cover Image"
       />
 
-      {form.coverImage && (
-        <div>
-          <label className="block text-sm text-secondary mb-1">Cover Image Height (px)</label>
-          <input
-            type="number"
-            min={100}
-            max={900}
-            value={form.coverImageHeight}
-            onChange={(e) => setForm((f) => ({ ...f, coverImageHeight: e.target.value }))}
-            placeholder="default (384)"
-            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-gold"
-          />
-          <p className="text-xs text-secondary mt-1">Leave empty for the default height. Applies on the article page.</p>
-        </div>
-      )}
+      <div>
+        <label className="block text-sm text-secondary mb-1">Cover Image Height (px)</label>
+        <input
+          type="number"
+          min={100}
+          max={900}
+          value={form.coverImageHeight}
+          onChange={(e) => setForm((f) => ({ ...f, coverImageHeight: e.target.value }))}
+          placeholder="default (384)"
+          className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-gold"
+        />
+        <p className="text-xs text-secondary mt-1">
+          {form.coverImage
+            ? 'Leave empty for the default height. Applies to the cover image on the article page.'
+            : 'Upload a cover image above first — this height then controls how tall it appears.'}
+        </p>
+      </div>
 
       <VideoInput
         value={form.videoUrl}

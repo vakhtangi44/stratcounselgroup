@@ -2,7 +2,6 @@ import { db } from '@/lib/db'
 import { notFound } from 'next/navigation'
 import { getLocale } from 'next-intl/server'
 import Image from 'next/image'
-import Link from 'next/link'
 import { sanitizeHtml } from '@/lib/sanitize'
 import { formatDate, readTime } from '@/lib/utils'
 import { unstable_noStore as noStore } from 'next/cache'
@@ -24,18 +23,6 @@ export default async function BlogPostPage({
     include: { author: true, tags: true },
   })
   if (!post) notFound()
-
-  const relatedPosts: Array<{ id: number; slug: string; titleKa: string; titleEn: string }> = await db.blogPost.findMany({
-    where: {
-      status: 'published',
-      id: { not: post.id },
-      ...(post.tags.length > 0
-        ? { tags: { some: { practiceArea: { in: post.tags.map((t: { practiceArea: string }) => t.practiceArea) } } } }
-        : {}),
-    },
-    take: 3,
-    orderBy: { publishedAt: 'desc' },
-  })
 
   const content = isKa ? post.contentKa : post.contentEn
   const title = isKa ? post.titleKa : post.titleEn
@@ -107,22 +94,6 @@ export default async function BlogPostPage({
         </div>
       </article>
 
-      {relatedPosts.length > 0 && (
-        <section className="bg-bg-alt py-16 px-4">
-          <div className="container mx-auto max-w-4xl">
-            <h2 className="font-heading text-2xl text-dark mb-8">{isKa ? 'მსგავსი სტატიები' : 'Related Articles'}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {relatedPosts.map((rp) => (
-                <Link key={rp.id} href={`${prefix}/blog/${rp.slug}`} className="bg-white rounded-lg p-6 hover:shadow-md transition-shadow">
-                  <h3 className="font-heading text-dark hover:text-gold transition-colors line-clamp-2">
-                    {isKa ? rp.titleKa : rp.titleEn}
-                  </h3>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
     </div>
   )
 }
