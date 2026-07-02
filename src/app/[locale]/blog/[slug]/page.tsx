@@ -104,14 +104,6 @@ export default async function BlogPostPage({
           >
             LinkedIn
           </a>
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-accent-orange hover:opacity-70 transition-opacity"
-          >
-            Instagram
-          </a>
         </div>
       </article>
 
