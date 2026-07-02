@@ -42,7 +42,7 @@ export default async function BlogPostPage({
   const sanitized = sanitizeHtml(content)
 
   return (
-    <div className="bg-white min-h-screen pt-16">
+    <div className="bg-white min-h-screen pt-[110px] md:pt-[200px]">
       <article className="max-w-4xl mx-auto px-4 py-16">
         <header className="mb-8">
           {post.coverImage && (
@@ -89,20 +89,28 @@ export default async function BlogPostPage({
         <div className="mt-12 pt-8 border-t border-gray-100 flex items-center gap-4">
           <span className="text-sm text-secondary">{isKa ? 'გაზიარება:' : 'Share:'}</span>
           <a
-            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://stratcounselgroup.com${prefix}/blog/${post.slug}`)}&text=${encodeURIComponent(title)}`}
+            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://stratcounselgroup.com${prefix}/blog/${post.slug}`)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-secondary hover:text-gold transition-colors"
+            className="text-sm text-accent-orange hover:opacity-70 transition-opacity"
           >
-            Twitter/X
+            Facebook
           </a>
           <a
             href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://stratcounselgroup.com${prefix}/blog/${post.slug}`)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-secondary hover:text-gold transition-colors"
+            className="text-sm text-accent-orange hover:opacity-70 transition-opacity"
           >
             LinkedIn
+          </a>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-accent-orange hover:opacity-70 transition-opacity"
+          >
+            Instagram
           </a>
         </div>
       </article>
