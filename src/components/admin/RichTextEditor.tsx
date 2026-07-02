@@ -2,7 +2,8 @@
 
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import { useEffect } from 'react'
+import Image from '@tiptap/extension-image'
+import { useEffect, useState } from 'react'
 
 interface Props {
   value: string
@@ -11,11 +12,30 @@ interface Props {
 }
 
 export default function RichTextEditor({ value, onChange }: Props) {
+  const [uploading, setUploading] = useState(false)
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [StarterKit, Image],
     content: value,
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
   })
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file || !editor) return
+    setUploading(true)
+    const fd = new FormData()
+    fd.append('file', file)
+    fd.append('folder', 'blog')
+    const res = await fetch('/api/upload', { method: 'POST', body: fd })
+    const data = await res.json()
+    if (res.ok && data.url) {
+      editor.chain().focus().setImage({ src: data.url }).run()
+    } else {
+      alert(data.error || 'Image upload failed')
+    }
+    setUploading(false)
+    e.target.value = ''
+  }
 
   useEffect(() => {
     if (editor && value !== editor.getHTML()) {
@@ -47,10 +67,20 @@ export default function RichTextEditor({ value, onChange }: Props) {
             {btn.label}
           </button>
         ))}
+        <label className={`px-2 py-1 text-xs rounded cursor-pointer bg-white border border-gray-200 hover:bg-gray-50 ${uploading ? 'opacity-50 pointer-events-none' : ''}`}>
+          {uploading ? '⏳ Uploading…' : '🖼 Image'}
+          <input
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            className="hidden"
+            disabled={uploading}
+            onChange={handleImageUpload}
+          />
+        </label>
       </div>
       <EditorContent
         editor={editor}
-        className="prose prose-sm max-w-none p-4 min-h-48 focus:outline-none"
+        className="prose prose-sm max-w-none p-4 min-h-48 focus:outline-none [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded [&_img]:my-3"
       />
     </div>
   )
