@@ -50,7 +50,7 @@ export default async function BlogPostPage({
               className="relative h-72 md:h-96 rounded-lg overflow-hidden mb-[1.2rem]"
               style={post.coverImageHeight ? { height: `${post.coverImageHeight}px` } : undefined}
             >
-              <Image src={post.coverImage} alt={title} fill className="object-cover" />
+              <Image src={post.coverImage} alt={title} fill className={post.coverImageHeight ? 'object-contain' : 'object-cover'} />
             </div>
           )}
           <h1 className="font-heading text-4xl text-dark mb-4">{title}</h1>
