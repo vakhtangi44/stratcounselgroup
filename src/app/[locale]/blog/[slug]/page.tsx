@@ -40,7 +40,7 @@ export default async function BlogPostPage({
               <Image src={post.coverImage} alt={title} fill className="object-cover" />
             </div>
           )}
-          <h1 className="font-heading text-[1.575rem] text-dark mb-4">{title}</h1>
+          <h1 className="font-heading text-[1.9125rem] text-dark mb-4">{title}</h1>
           <div className="flex flex-wrap items-center gap-4 text-sm text-secondary">
             {post.author && <span>{isKa ? post.author.nameKa : post.author.nameEn}</span>}
             {post.publishedAt && <span>{formatDate(post.publishedAt, locale)}</span>}
