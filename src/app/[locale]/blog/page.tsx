@@ -77,7 +77,7 @@ export default async function BlogPage({ searchParams }: Props) {
       </section>
 
       <section className="py-[4rem] md:py-[9.1rem] px-4 lg:px-8 bg-white">
-        <div className="max-w-[820px] mx-auto">
+        <div className="max-w-[943px] mx-auto">
           {displayPosts.length === 0 ? (
             <p className="text-center text-secondary py-16">{isKa ? 'სტატია ვერ მოიძებნა' : 'No articles found'}</p>
           ) : (
