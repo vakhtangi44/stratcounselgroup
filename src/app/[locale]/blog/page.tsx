@@ -77,7 +77,7 @@ export default async function BlogPage({ searchParams }: Props) {
       </section>
 
       <section className="py-[4rem] md:py-[9.1rem] px-4 lg:px-8 bg-white">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-[820px] mx-auto">
           {displayPosts.length === 0 ? (
             <p className="text-center text-secondary py-16">{isKa ? 'სტატია ვერ მოიძებნა' : 'No articles found'}</p>
           ) : (
@@ -85,7 +85,7 @@ export default async function BlogPage({ searchParams }: Props) {
               {displayPosts.map((post) => (
                 <Link key={post.id} href={`${prefix}/blog/${post.slug}`} className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                   {post.coverImage && (
-                    <div className="relative h-48">
+                    <div className="relative h-[211px]">
                       <Image src={post.coverImage} alt={isKa ? post.titleKa : post.titleEn} fill className="object-cover" />
                     </div>
                   )}
