@@ -201,7 +201,7 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                   <h2 className="font-heading text-2xl text-dark mb-4">
                     {isKa ? 'მადლობა!' : 'Thank you!'}
                   </h2>
-                  <p className="text-secondary font-light">
+                  <p className="text-secondary text-[0.9rem] md:text-lg leading-relaxed">
                     {isKa
                       ? 'თქვენი შეტყობინება მიღებულია. მალე დაგიკავშირდებით.'
                       : "Your message has been received. We'll be in touch shortly."}
@@ -268,7 +268,7 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                     />
                   </div>
 
-                  <p className="text-secondary text-[13px] leading-relaxed">
+                  <p className="text-secondary text-[0.9rem] md:text-lg leading-relaxed">
                     {isKa ? (
                       <>
                         შეტყობინების გამოგზავნამდე, გთხოვთ, გაეცნოთ{' '}
@@ -305,7 +305,7 @@ export default function ContactPageClient({ locale, strings, location }: Props) 
                     onVerify={setToken}
                   />
 
-                  <p className="text-secondary text-[13px] leading-relaxed">
+                  <p className="text-secondary text-[0.9rem] md:text-lg leading-relaxed">
                     {isKa
                       ? <>შეტყობინების გამოგზავნით ადასტურებთ, რომ გაეცანით და ეთანხმებით{' '}
                           <a

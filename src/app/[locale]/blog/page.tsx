@@ -93,7 +93,7 @@ export default async function BlogPage({ searchParams }: Props) {
                     <h2 className="font-heading text-lg text-dark mb-2 group-hover:text-gold transition-colors line-clamp-2">
                       {isKa ? post.titleKa : post.titleEn}
                     </h2>
-                    <p className="text-secondary text-sm line-clamp-2 mb-4">{isKa ? post.excerptKa : post.excerptEn}</p>
+                    <p className="text-secondary text-[0.9rem] md:text-lg leading-relaxed line-clamp-2 mb-4">{isKa ? post.excerptKa : post.excerptEn}</p>
                     <div className="flex items-center gap-3 text-xs text-secondary">
                       {post.publishedAt && <span>{formatDate(post.publishedAt, locale)}</span>}
                       <span>{readTime(isKa ? post.contentKa : post.contentEn)} min</span>

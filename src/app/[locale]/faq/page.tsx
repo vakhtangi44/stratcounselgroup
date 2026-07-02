@@ -28,7 +28,7 @@ export default async function FaqPage() {
                 {isKa ? faq.questionKa : faq.questionEn}
                 <span className="text-gold ml-4">+</span>
               </summary>
-              <p className="mt-4 text-secondary leading-relaxed">{isKa ? faq.answerKa : faq.answerEn}</p>
+              <p className="mt-4 text-secondary text-[0.9rem] md:text-lg leading-relaxed">{isKa ? faq.answerKa : faq.answerEn}</p>
             </details>
           ))}
         </div>

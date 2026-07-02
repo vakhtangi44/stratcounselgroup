@@ -64,7 +64,7 @@ export default async function TeamMemberPage({
                 {isKa ? member.nameKa : member.nameEn}
               </h1>
               <div className="w-6 h-[1px] bg-gold mb-2" />
-              <p className="text-secondary text-[1.1rem] sm:text-[1.46rem] font-bold mb-4">
+              <p className="text-dark text-[1.1rem] sm:text-[1.46rem] font-bold mb-4">
                 {isKa ? member.titleKa : member.titleEn}
               </p>
               {member.gbaNumber && (
@@ -84,7 +84,7 @@ export default async function TeamMemberPage({
                 </a>
               )}
               {member.shortBioKa && (
-                <p className="text-secondary mt-4 sm:mt-5 text-[1rem] sm:text-[1.3rem] font-bold leading-relaxed">
+                <p className="inline-block border border-accent-orange text-accent-orange rounded-sm mt-4 sm:mt-5 px-4 py-3 text-[0.9rem] md:text-lg leading-relaxed">
                   {isKa ? member.shortBioKa : member.shortBioEn}
                 </p>
               )}

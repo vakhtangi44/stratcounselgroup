@@ -68,7 +68,7 @@ export default function GlossaryPageClient({ locale, pageTitle }: Props) {
           {filtered.map((term) => (
             <div key={term.id} className="border-b border-gray-100 pb-4">
               <h3 className="font-heading text-lg text-dark mb-1">{isKa ? term.termKa : term.termEn}</h3>
-              <p className="text-secondary text-sm">{isKa ? term.definitionKa : term.definitionEn}</p>
+              <p className="text-secondary text-[0.9rem] md:text-lg leading-relaxed">{isKa ? term.definitionKa : term.definitionEn}</p>
             </div>
           ))}
           {filtered.length === 0 && <p className="text-center text-secondary py-8">{isKa ? 'ტერმინი ვერ მოიძებნა' : 'No terms found'}</p>}

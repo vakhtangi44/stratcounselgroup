@@ -65,7 +65,7 @@ export default async function ClientsPage() {
         <div className="text-center px-4 lg:px-8 mb-8 sm:mb-[5.1rem]">
           <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
           <h1 className="font-heading mb-6 tracking-[-0.02em]" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>{title}</h1>
-          <RichText html={description} as="p" className="max-w-none mx-auto text-sm sm:text-lg leading-relaxed font-bold" style={{ color: 'var(--typo-sectionTitle-color, #1C122C)' }} />
+          <RichText html={description} as="p" className="max-w-none mx-auto text-[0.9rem] md:text-lg leading-relaxed" style={{ color: 'var(--typo-sectionTitle-color, #1C122C)' }} />
         </div>
         <div className="px-4 lg:px-8 overflow-visible">
           <div key={Date.now()} className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4 max-w-[95%] sm:max-w-[80%] mx-auto overflow-visible">

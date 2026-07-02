@@ -47,7 +47,7 @@ export default function TestimonialsCarousel({ testimonials, locale, strings }: 
           {/* Large decorative quote marks */}
           <div className="text-gold/20 font-heading text-5xl md:text-9xl leading-none mb-2 select-none">&ldquo;</div>
 
-          <blockquote className="text-dark text-base md:text-2xl leading-relaxed mb-8 md:mb-10 font-heading font-normal -mt-6 md:-mt-12">
+          <blockquote className="text-dark text-[0.9rem] md:text-lg leading-relaxed mb-8 md:mb-10 font-heading font-normal -mt-6 md:-mt-12">
             {locale === 'ka' ? t.quoteKa : t.quoteEn}
           </blockquote>
 

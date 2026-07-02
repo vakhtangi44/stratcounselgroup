@@ -42,11 +42,11 @@ export default async function BlogPostPage({
   const sanitized = sanitizeHtml(content)
 
   return (
-    <div className="pt-16">
+    <div className="bg-white min-h-screen pt-16">
       <article className="max-w-4xl mx-auto px-4 py-16">
         <header className="mb-8">
           {post.coverImage && (
-            <div className="relative h-72 md:h-96 rounded-lg overflow-hidden mb-8">
+            <div className="relative h-72 md:h-96 rounded-lg overflow-hidden mb-[1.2rem]">
               <Image src={post.coverImage} alt={title} fill className="object-cover" />
             </div>
           )}
@@ -66,7 +66,7 @@ export default async function BlogPostPage({
 
         {/* sanitized via DOMPurify in @/lib/sanitize */}
         <div
-          className="prose prose-lg max-w-none text-secondary [&_h2]:font-heading [&_h2]:text-dark"
+          className="max-w-none text-navy text-[0.9rem] md:text-lg leading-relaxed [&_p]:mb-4 [&_p:last-child]:mb-0 [&_h2]:font-heading [&_h2]:text-dark [&_h2]:mt-8 [&_h2]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-4 [&_li]:mb-1 [&_a]:text-gold [&_a]:underline"
           dangerouslySetInnerHTML={{ __html: sanitized }}
         />
 

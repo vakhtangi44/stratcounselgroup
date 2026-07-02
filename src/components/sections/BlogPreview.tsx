@@ -56,7 +56,7 @@ export default function BlogPreview({ posts, locale, strings }: Props) {
                   <h3 className="font-heading text-lg text-dark mb-3 group-hover:text-gold transition-colors duration-300 line-clamp-2 leading-snug">
                     {locale === 'ka' ? post.titleKa : post.titleEn}
                   </h3>
-                  <p className="text-secondary text-sm line-clamp-2 mb-5 font-light leading-relaxed">
+                  <p className="text-secondary text-[0.9rem] md:text-lg line-clamp-2 mb-5 leading-relaxed">
                     {locale === 'ka' ? post.excerptKa : post.excerptEn}
                   </p>
 

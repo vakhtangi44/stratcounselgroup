@@ -30,7 +30,7 @@ function UnsubscribeContent() {
   return (
     <div className="pt-16 min-h-screen flex items-center justify-center px-4">
       <div className="text-center">
-        <p className="text-xl text-dark">{messages[status]}</p>
+        <p className="text-[0.9rem] md:text-lg leading-relaxed text-dark">{messages[status]}</p>
       </div>
     </div>
   )

@@ -22,7 +22,7 @@ export default async function TeamPage() {
   ])
 
   return (
-    <div className="pt-[110px] md:pt-[255px]">
+    <div className="pt-[88px] md:pt-[204px]">
       {/* Compact Hero */}
       <section className="relative bg-white pt-[2rem] md:pt-[4rem] pb-0 text-center px-4 lg:px-8 overflow-hidden">
         <div className="relative z-10">
@@ -55,7 +55,7 @@ export default async function TeamPage() {
                     <h2 className="font-heading text-[13px] sm:text-[19.9px] text-dark group-hover:text-gold transition-colors duration-300 leading-snug font-bold tracking-tight">
                       {isKa ? member.nameKa : member.nameEn}
                     </h2>
-                    <p className="text-secondary text-[11px] sm:text-[14.4px] mt-1 font-medium uppercase tracking-[0.02em] leading-snug">
+                    <p className="text-dark group-hover:text-gold transition-colors duration-300 text-[11px] sm:text-[14.4px] mt-1 font-medium uppercase tracking-[0.02em] leading-snug">
                       {isKa ? member.titleKa : member.titleEn}
                     </p>
                     {member.gbaNumber && (
