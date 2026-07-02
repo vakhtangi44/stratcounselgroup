@@ -139,20 +139,42 @@ export default function BlogForm({ post }: { post?: Post }) {
       />
 
       <div>
-        <label className="block text-sm text-secondary mb-1">Cover Image Height (px)</label>
+        <label className="block text-sm text-secondary mb-1">Cover Image Size</label>
+        <div className="flex flex-wrap gap-2 mb-2">
+          {[
+            { label: 'Small', px: '200' },
+            { label: 'Medium', px: '320' },
+            { label: 'Large', px: '450' },
+            { label: 'X-Large', px: '600' },
+            { label: 'Default', px: '' },
+          ].map((opt) => (
+            <button
+              key={opt.label}
+              type="button"
+              onClick={() => setForm((f) => ({ ...f, coverImageHeight: opt.px }))}
+              className={`px-3 py-1 rounded text-xs border transition-colors ${
+                form.coverImageHeight === opt.px
+                  ? 'bg-gold text-white border-gold'
+                  : 'bg-white text-secondary border-gray-200 hover:border-gold'
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
         <input
           type="number"
           min={100}
           max={900}
           value={form.coverImageHeight}
           onChange={(e) => setForm((f) => ({ ...f, coverImageHeight: e.target.value }))}
-          placeholder="default (384)"
+          placeholder="custom height in px (default 384)"
           className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-gold"
         />
         <p className="text-xs text-secondary mt-1">
           {form.coverImage
-            ? 'Leave empty for the default height. Applies to the cover image on the article page.'
-            : 'Upload a cover image above first — this height then controls how tall it appears.'}
+            ? 'Pick a preset or type a custom height (px). Applies to the cover image on the article page.'
+            : 'Upload a cover image above first — this size then controls how tall it appears.'}
         </p>
       </div>
 
