@@ -27,7 +27,7 @@ export default function BlogPreview({ posts, locale, strings }: Props) {
           <RichText html={strings.title} as="h2" className="font-heading text-2xl md:text-4xl text-dark gold-underline inline-block" />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1222px] mx-auto">
           {posts.map((post, i) => (
             <ScrollReveal key={post.id} delay={i * 150}>
               <Link
