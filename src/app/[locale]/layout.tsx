@@ -99,7 +99,7 @@ export default async function LocaleLayout({
         `}</style>
       )}
       <Header locale={locale} sectorsEnabled={sectorsEnabled} sectors={sectorLinks} logoUrl={logoUrl} logoPosition={headerLogoPos} logoVisible={headerLogoVisible} logoOffsetX={headerOffsetX} logoOffsetY={headerOffsetY} mobileLogoHeight={mobileLogoHeight} mobileOffsetX={mobileOffsetX} mobileOffsetY={mobileOffsetY} mobileLogoVisible={mobileLogoVisible} />
-      <main className="pb-[3rem] md:pb-[6.5rem]">{children}</main>
+      <main className="bg-white pb-[3rem] md:pb-[6.5rem]">{children}</main>
       <Footer locale={locale} />
       {/* Tawk.to live chat */}
       {process.env.NEXT_PUBLIC_TAWKTO_PROPERTY_ID && (
