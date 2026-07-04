@@ -48,9 +48,9 @@ export default async function ServicesPage() {
                 : 'Complete legal support — from negotiation to courtroom'}
             </p>
           </div>
-          <div key={Date.now()} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div key={Date.now()} className="space-y-10 md:space-y-14">
             {services.map((service, idx) => (
-                <div key={service.id} className="relative bg-white border border-gray-100 p-5 sm:p-8 group card-hover hover:shadow-lg hover:z-20 h-full" style={{ transition: 'transform 0.7s, box-shadow 0.7s' }}>
+                <div key={service.id} className="relative group transition-transform duration-500 hover:scale-[1.02]">
                   <div>
                     {/* Service Photo */}
                     {service.image && (
