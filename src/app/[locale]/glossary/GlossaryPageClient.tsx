@@ -38,7 +38,7 @@ export default function GlossaryPageClient({ locale, pageTitle }: Props) {
   const letters = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i))
 
   return (
-    <div className="pt-16">
+    <div className="pt-[110px] md:pt-[255px]">
       <section className="bg-section-gradient text-white py-24 text-center px-4">
         <RichText html={pageTitle} as="h1" className="font-heading text-4xl mb-4" />
       </section>

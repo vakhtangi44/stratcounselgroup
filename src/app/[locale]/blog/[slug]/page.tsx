@@ -56,7 +56,7 @@ export default async function BlogPostPage({
   const sanitized = sanitizeHtml(content)
 
   return (
-    <div className="bg-white min-h-screen pt-[110px] md:pt-[200px]">
+    <div className="bg-white min-h-screen pt-[110px] md:pt-[255px]">
       <article className="max-w-4xl mx-auto px-4 py-16">
         <header className="mb-8">
           {post.coverImage && (
