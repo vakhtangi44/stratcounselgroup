@@ -18,7 +18,7 @@ export default async function PressPage() {
   ])
 
   return (
-    <div className="pt-[85px] md:pt-[195px]">
+    <div className="pt-[72px] md:pt-[166px]">
       <section className="bg-section-gradient text-white py-24 text-center px-4">
         <RichText html={s(settings, 'page.press', locale)} as="h1" className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', fontFamily: 'var(--typo-sectionTitle-font)' }} />
       </section>

@@ -33,7 +33,7 @@ export default async function ServicesPage() {
   ])
 
   return (
-    <div className="pt-[85px] md:pt-[195px]" style={{ background: 'white' }}>
+    <div className="pt-[72px] md:pt-[166px]" style={{ background: 'white' }}>
       {/* Services */}
       <section className="py-[4rem] md:py-[9.1rem] px-4 lg:px-8" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-5xl">
@@ -42,7 +42,7 @@ export default async function ServicesPage() {
             <h1 className="font-heading mb-3" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
               {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
             </h1>
-            <p className="font-medium" style={{ fontSize: 'var(--typo-subtitle-size, 1.05rem)', color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
+            <p className="font-medium" style={{ fontSize: 'calc(var(--typo-subtitle-size, 1.05rem) * 1.2)', color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
               {locale === 'ka'
                 ? 'სრული სამართლებრივი მხარდაჭერა — მოლაპარაკებიდან სასამართლომდე'
                 : 'Complete legal support — from negotiation to courtroom'}

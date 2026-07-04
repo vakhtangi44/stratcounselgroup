@@ -26,7 +26,7 @@ export default async function SectorsPage() {
   const sectors = getSectorsData(settings, locale)
 
   return (
-    <div className="pt-[85px] md:pt-[195px]">
+    <div className="pt-[72px] md:pt-[166px]">
       <section className="py-[4rem] md:py-[9.1rem] bg-white">
         <div className="text-center px-4 lg:px-8 mb-8 md:mb-[4.5rem]">
           <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />

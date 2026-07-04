@@ -19,7 +19,7 @@ export default async function AboutPage() {
   const prefix = locale === 'en' ? '/en' : ''
 
   return (
-    <div className="pt-[85px] md:pt-[195px]">
+    <div className="pt-[72px] md:pt-[166px]">
       {/* About body — white section, same style as homepage AboutPreview */}
       <AboutPreview
         locale={locale}
