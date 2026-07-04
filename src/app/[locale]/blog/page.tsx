@@ -58,7 +58,8 @@ export default async function BlogPage({ searchParams }: Props) {
   return (
     <div className="pt-[110px] md:pt-[255px]">
       <section className="bg-white py-[4rem] md:py-[9.1rem] text-center px-4 lg:px-8">
-        <RichText html={s(settings, 'page.blog', locale)} as="h1" className="font-heading text-2xl md:text-4xl text-dark mb-4" />
+        <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
+        <RichText html={s(settings, 'page.blog', locale)} as="h1" className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }} />
       </section>
 
       <section className="py-8 px-4 lg:px-8 bg-bg-alt border-b border-gray-100">

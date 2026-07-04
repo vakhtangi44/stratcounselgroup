@@ -29,6 +29,7 @@ export default function ServicesPreview({ services, locale }: Props) {
     <section className="py-[4rem] md:py-[9.1rem] bg-cream">
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-10 md:mb-20">
+          <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
           <p className="text-[12px] uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--typo-label-color, var(--color-dark))', fontFamily: 'var(--typo-label-font)' }}>
             {locale === 'ka' ? 'რას გთავაზობთ' : 'What We Offer'}
           </p>

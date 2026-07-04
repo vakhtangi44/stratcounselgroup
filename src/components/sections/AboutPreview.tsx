@@ -48,7 +48,8 @@ export default function AboutPreview({ locale, strings }: Props) {
             <RichText
               html={strings.heading}
               as="h2"
-              className="font-heading text-2xl md:text-4xl text-dark mb-6 md:mb-10 leading-tight"
+              className="font-heading mb-6 md:mb-10 leading-tight"
+              style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}
             />
             <RichText
               html={strings.body}

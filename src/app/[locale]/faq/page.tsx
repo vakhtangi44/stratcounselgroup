@@ -18,7 +18,7 @@ export default async function FaqPage() {
   return (
     <div className="pt-[110px] md:pt-[255px]">
       <section className="bg-section-gradient text-white py-24 text-center px-4">
-        <RichText html={s(settings, 'page.faq', locale)} as="h1" className="font-heading text-4xl mb-4" />
+        <RichText html={s(settings, 'page.faq', locale)} as="h1" className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', fontFamily: 'var(--typo-sectionTitle-font)' }} />
       </section>
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-3xl space-y-4">

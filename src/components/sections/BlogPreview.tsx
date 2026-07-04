@@ -23,8 +23,9 @@ export default function BlogPreview({ posts, locale, strings }: Props) {
     <section className="py-[4rem] md:py-[9.1rem] bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-10 md:mb-20">
+          <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
           <RichText html={strings.subtitle} as="p" className="text-gold text-[12px] uppercase tracking-[0.3em] mb-4" />
-          <RichText html={strings.title} as="h2" className="font-heading text-2xl md:text-4xl text-dark gold-underline inline-block" />
+          <RichText html={strings.title} as="h2" className="font-heading gold-underline inline-block" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }} />
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1222px] mx-auto">
