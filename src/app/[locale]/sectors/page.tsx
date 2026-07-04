@@ -26,11 +26,11 @@ export default async function SectorsPage() {
   const sectors = getSectorsData(settings, locale)
 
   return (
-    <div className="pt-[110px] md:pt-[255px]">
+    <div className="pt-[85px] md:pt-[195px]">
       <section className="py-[4rem] md:py-[9.1rem] bg-white">
         <div className="text-center px-4 lg:px-8 mb-8 md:mb-[4.5rem]">
           <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
-          <h1 className="font-heading text-2xl md:text-5xl lg:text-6xl tracking-[-0.02em] text-dark">
+          <h1 className="font-heading tracking-[-0.02em]" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
             {isKa ? 'სამიზნე სექტორები' : 'Target Sectors'}
           </h1>
         </div>

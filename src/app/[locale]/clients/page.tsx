@@ -59,7 +59,7 @@ export default async function ClientsPage() {
   const confidentialityLabel = s(settings, 'section.trustedBy.confidentiality', locale)
 
   return (
-    <div className="pt-[110px] md:pt-[255px]">
+    <div className="pt-[85px] md:pt-[195px]">
       {/* Page Hero + Client Logos */}
       <section className="py-[4rem] md:py-[9.1rem] overflow-visible bg-cream">
         <div className="text-center px-4 lg:px-8 mb-8 sm:mb-[5.1rem]">

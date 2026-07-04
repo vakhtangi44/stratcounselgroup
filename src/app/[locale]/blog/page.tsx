@@ -56,7 +56,7 @@ export default async function BlogPage({ searchParams }: Props) {
   const displayPosts = hasMore ? posts.slice(0, PAGE_SIZE) : posts
 
   return (
-    <div className="pt-[110px] md:pt-[255px]">
+    <div className="pt-[85px] md:pt-[195px]">
       <section className="bg-white py-[4rem] md:py-[9.1rem] text-center px-4 lg:px-8">
         <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
         <RichText html={s(settings, 'page.blog', locale)} as="h1" className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }} />
