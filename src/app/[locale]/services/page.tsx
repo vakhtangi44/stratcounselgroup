@@ -50,7 +50,7 @@ export default async function ServicesPage() {
           </div>
           <div key={Date.now()} className="space-y-10 md:space-y-14">
             {services.map((service, idx) => (
-                <div key={service.id} className="relative group transition-transform duration-500 hover:scale-[1.05]">
+                <div key={service.id} className="relative group transition-transform duration-500 hover:scale-[1.065]">
                   <div>
                     {/* Service Photo */}
                     {service.image && (
