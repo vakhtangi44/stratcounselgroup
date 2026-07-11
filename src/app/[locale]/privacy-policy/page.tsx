@@ -24,7 +24,7 @@ export default async function PrivacyPolicyPage() {
   const hasContent = content && !content.startsWith('page.privacyPolicy')
 
   return (
-    <div className="pt-[72px] md:pt-[166px]" style={{ background: 'white' }}>
+    <div className="pt-[110px] md:pt-[166px]" style={{ background: 'white' }}>
       <section className="py-[4rem] md:py-[9.1rem] px-4 lg:px-8" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-3xl">
           <div className="w-6 h-[1px] bg-gold mb-3" />

@@ -22,7 +22,7 @@ export default async function TeamPage() {
   ])
 
   return (
-    <div className="pt-[72px] md:pt-[166px]">
+    <div className="pt-[110px] md:pt-[166px]">
       {/* Compact Hero */}
       <section className="relative bg-white pt-[4rem] md:pt-[9.1rem] pb-0 text-center px-4 lg:px-8 overflow-hidden">
         <div className="relative z-10">

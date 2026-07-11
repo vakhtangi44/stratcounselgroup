@@ -32,7 +32,7 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
       : 'text-[1.06rem] sm:text-[1.59rem] md:text-[2.55rem] lg:text-[3.19rem]'
 
   return (
-    <section className="relative min-h-[50vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-[100px] md:pt-[230px] pb-[24px] md:pb-[83px] bg-white">
+    <section className="relative min-h-[50vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-[140px] md:pt-[322px] pb-[24px] md:pb-[83px] bg-white">
 
       <div className="relative z-10 text-center px-4 lg:px-8 max-w-6xl mx-auto">
         <h2
