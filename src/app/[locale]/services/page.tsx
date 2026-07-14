@@ -71,7 +71,7 @@ export default async function ServicesPage() {
                     </h2>
 
                     {/* Description */}
-                    <p className="leading-[1.7] mb-5 text-left" style={{ fontSize: '1.04rem', color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
+                    <p className="leading-[1.7] mb-5 text-justify" style={{ fontSize: '1.04rem', color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
                       {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                     </p>
 
