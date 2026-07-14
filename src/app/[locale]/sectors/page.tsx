@@ -35,19 +35,18 @@ export default async function SectorsPage() {
           </h1>
         </div>
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-6 max-w-[88rem] mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-[88rem] mx-auto">
             {sectors.map((sector, i) => {
               return (
               <ScrollReveal
                 key={sector.slug}
                 delay={i * 100}
-                className="w-[calc(50%-0.75rem)] sm:w-[calc(33.333%-1rem)] lg:w-[calc(20%-1.2rem)]"
               >
                 <Link
                   href={`${prefix}/sectors/${sector.slug}`}
-                  className="group block"
+                  className="group block text-center"
                 >
-                  <div className="relative overflow-hidden h-56 md:h-72 rounded-sm mb-[4.5rem]">
+                  <div className="relative overflow-hidden h-28 sm:h-56 md:h-72 rounded-sm mb-2 md:mb-[4.5rem]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={sector.image}
