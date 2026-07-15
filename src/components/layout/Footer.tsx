@@ -14,6 +14,15 @@ export default async function Footer({ locale }: { locale: string }) {
   const location = getLocation(settings)
   const address = footerAddress(location, locale)
 
+  // Company name + ID are admin-managed (footer.companyName / footer.companyId).
+  // Fall back to defaults when unset; hide the ID line entirely when cleared.
+  const companyNameRaw = s(settings, 'footer.companyName', locale)
+  const companyName = companyNameRaw.startsWith('footer.')
+    ? (isKa ? 'შპს „სტრატეგიულ მრჩეველთა ჯგუფი"' : 'Strategic Counsel Group LLC')
+    : companyNameRaw
+  const companyIdRaw = s(settings, 'footer.companyId', locale)
+  const companyId = companyIdRaw.startsWith('footer.') ? '' : companyIdRaw.replace(/<[^>]*>/g, '').trim()
+
   // Unified body text style — same color, weight, size everywhere in the footer
   const bodyTextClass = 'font-[520] tracking-tight'
   const bodyTextStyle = { fontSize: 'var(--typo-footerBody-size, 0.906rem)', color: 'var(--typo-footerBody-color, #B0B0B0)', fontFamily: 'var(--typo-footerBody-font)' }
@@ -78,11 +87,13 @@ export default async function Footer({ locale }: { locale: string }) {
             />
             <div className={`space-y-2 ${bodyTextClass}`} style={bodyTextStyle}>
               <p className="leading-snug">
-                {isKa ? 'შპს „სტრატეგიულ მრჩეველთა ჯგუფი"' : 'Strategic Counsel Group LLC'}
+                {companyName}
               </p>
-              <p className="leading-snug">
-                {isKa ? 'ს/ნ: 405847213' : 'ID: 405847213'}
-              </p>
+              {companyId && (
+                <p className="leading-snug">
+                  {isKa ? 'ს/ნ: ' : 'ID: '}{companyId}
+                </p>
+              )}
               <p className="leading-snug">
                 {isKa ? 'მის.: ' : 'Address: '}
                 <a

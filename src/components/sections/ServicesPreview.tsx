@@ -53,25 +53,25 @@ export default function ServicesPreview({ services, locale }: Props) {
                 : 'lg:col-span-2 lg:col-start-4'
             return (
             <ScrollReveal key={service.id} delay={i * 150} className={colClass}>
-              <div className="relative h-full p-3 sm:p-8 bg-white border border-gray-100 group card-hover hover:shadow-lg" style={{ transition: 'transform 0.7s, box-shadow 0.7s' }}>
+              <div className="relative h-full p-3 sm:p-7 bg-white border border-gray-100 group card-hover hover:shadow-lg" style={{ transition: 'transform 0.7s, box-shadow 0.7s' }}>
                 {/* Roman numeral */}
-                <div className="text-dark font-heading text-lg sm:text-4xl mb-1 sm:mb-3 leading-none">
+                <div className="text-dark font-heading text-lg sm:text-3xl mb-1 sm:mb-3 leading-none">
                   {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                 </div>
 
-                <h3 className="font-heading mb-1.5 sm:mb-2 leading-snug text-[0.91rem] sm:text-[1.274rem]" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
+                <h3 className="font-heading mb-1.5 sm:mb-2 leading-snug text-[0.91rem] sm:text-[1.08rem]" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
                   {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
                 </h3>
 
-                <p className="leading-relaxed mb-2.5 sm:mb-4 line-clamp-3 text-left text-[0.74rem] sm:text-[1.04rem]" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
+                <p className="leading-relaxed mb-2.5 sm:mb-4 text-justify text-[0.74rem] sm:text-[0.88rem]" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
                   {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                 </p>
 
                 {/* Show first 3 items */}
                 <ul className="space-y-1 sm:space-y-2 mb-2 sm:mb-4">
                   {service.items.slice(0, 3).map((item) => (
-                    <li key={item.id} className="flex items-start gap-1.5 sm:gap-2 text-[0.74rem] sm:text-[1.04rem] text-navy">
-                      <svg className="w-3 sm:w-4 h-3 sm:h-4 mt-1 flex-shrink-0 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
+                    <li key={item.id} className="flex items-start gap-1.5 sm:gap-2 text-[0.74rem] sm:text-[0.88rem] text-navy">
+                      <svg className="w-3 sm:w-3.5 h-3 sm:h-3.5 mt-1 flex-shrink-0 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       <span>{locale === 'ka' ? item.textKa : item.textEn}</span>
