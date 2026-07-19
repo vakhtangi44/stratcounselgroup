@@ -14,7 +14,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
   const serviceId = parseId(id)
   if (!serviceId) return NextResponse.json({ error: 'Bad request' }, { status: 400 })
   const body = await req.json()
-  const { textKa, textEn, order } = body
+  const { textKa, textEn, order, icon } = body
   if (!textKa || !textEn) {
     return NextResponse.json({ error: 'textKa and textEn required' }, { status: 400 })
   }
@@ -24,6 +24,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       textEn,
       serviceId,
       order: order ?? 0,
+      icon: icon || null,
     },
   })
   return NextResponse.json(item, { status: 201 })

@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import { CaseIcon } from '@/lib/case-icons'
 
 interface ServiceItem {
   id: number
   textKa: string
   textEn: string
+  icon?: string | null
   order: number
 }
 
@@ -63,18 +65,22 @@ export default function ServicesPreview({ services, locale }: Props) {
                   {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
                 </h3>
 
-                <p className="leading-relaxed mb-2.5 sm:mb-4 text-justify text-[0.74rem] sm:text-[0.88rem]" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
+                <p className="leading-relaxed mb-2.5 sm:mb-4 text-left text-[0.74rem] sm:text-[0.88rem]" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
                   {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                 </p>
 
                 {/* Show first 3 items */}
-                <ul className="space-y-1 sm:space-y-2 mb-2 sm:mb-4">
+                <ul className="space-y-1.5 sm:space-y-2.5 mb-2 sm:mb-4">
                   {service.items.slice(0, 3).map((item) => (
                     <li key={item.id} className="flex items-start gap-1.5 sm:gap-2 text-[0.74rem] sm:text-[0.88rem] text-navy">
-                      <svg className="w-3 sm:w-3.5 h-3 sm:h-3.5 mt-1 flex-shrink-0 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>{locale === 'ka' ? item.textKa : item.textEn}</span>
+                      {item.icon ? (
+                        <CaseIcon icon={item.icon} className="w-4 h-4 sm:w-[18px] sm:h-[18px] mt-0.5 flex-shrink-0 text-navy" />
+                      ) : (
+                        <svg className="w-3 sm:w-3.5 h-3 sm:h-3.5 mt-1 flex-shrink-0 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                      <span className="flex-1">{locale === 'ka' ? item.textKa : item.textEn}</span>
                     </li>
                   ))}
                   {service.items.length > 3 && (

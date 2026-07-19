@@ -2,6 +2,7 @@ import { getLocale } from 'next-intl/server'
 import Link from 'next/link'
 
 import RichText from '@/components/ui/RichText'
+import { CaseIcon } from '@/lib/case-icons'
 import { db } from '@/lib/db'
 import { getSettings, s } from '@/lib/settings'
 import { unstable_noStore as noStore } from 'next/cache'
@@ -66,24 +67,28 @@ export default async function ServicesPage() {
                     )}
 
                     {/* Title */}
-                    <h2 className="font-heading mb-2 leading-tight" style={{ fontSize: '1.274rem', color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
+                    <h2 className="font-heading mb-2 leading-tight text-[0.89rem] sm:text-[1.274rem]" style={{ color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
                       {locale === 'ka' ? service.titleKa : service.titleEn}
                     </h2>
 
                     {/* Description */}
-                    <p className="leading-[1.7] mb-5 text-justify" style={{ fontSize: '1.04rem', color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
+                    <p className="leading-[1.7] mb-5 text-left text-[0.73rem] sm:text-[1.04rem]" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
                       {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                     </p>
 
                     {/* Items */}
                     {service.items.length > 0 && (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1">
                         {service.items.map((item) => (
                             <div key={item.id} className="flex items-start gap-2.5 py-1.5">
-                              <svg className="w-[14px] h-[14px] text-navy flex-shrink-0 mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                              </svg>
-                              <p className="text-navy text-[1.04rem] leading-[1.6] text-left">
+                              {item.icon ? (
+                                <CaseIcon icon={item.icon} className="w-[18px] h-[18px] text-navy flex-shrink-0 mt-[2px]" />
+                              ) : (
+                                <svg className="w-[14px] h-[14px] text-navy flex-shrink-0 mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                              )}
+                              <p className="flex-1 text-navy text-[0.73rem] sm:text-[1.04rem] leading-[1.6] text-left">
                                 {locale === 'ka' ? item.textKa : item.textEn}
                               </p>
                             </div>

@@ -14,7 +14,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
   const numericId = parseId(id)
   if (!numericId) return NextResponse.json({ error: 'Bad request' }, { status: 400 })
   const body = await req.json()
-  const { textKa, textEn, order } = body
+  const { textKa, textEn, order, icon } = body
   if (!textKa || !textEn) {
     return NextResponse.json({ error: 'textKa and textEn required' }, { status: 400 })
   }
@@ -24,6 +24,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
       textKa,
       textEn,
       order: order ?? 0,
+      icon: icon || null,
     },
   })
   return NextResponse.json(item)

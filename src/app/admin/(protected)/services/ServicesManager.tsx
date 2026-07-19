@@ -3,11 +3,13 @@
 import { useState, useRef } from 'react'
 import ImageUpload from '@/components/admin/ImageUpload'
 import FocalPointPicker from '@/components/admin/FocalPointPicker'
+import { CASE_ICONS, CaseIcon } from '@/lib/case-icons'
 
 interface ServiceItem {
   id: number
   textKa: string
   textEn: string
+  icon?: string | null
   serviceId: number
   order: number
 }
@@ -76,7 +78,7 @@ export default function ServicesManager({ initialServices }: Props) {
   const [newService, setNewService] = useState({
     titleKa: '', titleEn: '', descriptionKa: '', descriptionEn: '', image: '', imagePosition: '', order: 0, active: true,
   })
-  const [newItem, setNewItem] = useState({ textKa: '', textEn: '', order: 0 })
+  const [newItem, setNewItem] = useState({ textKa: '', textEn: '', order: 0, icon: '' })
 
   async function reload() {
     const res = await fetch('/api/admin/services')
@@ -142,7 +144,7 @@ export default function ServicesManager({ initialServices }: Props) {
     })
     if (res.ok) {
       setAddingItemToServiceId(null)
-      setNewItem({ textKa: '', textEn: '', order: 0 })
+      setNewItem({ textKa: '', textEn: '', order: 0, icon: '' })
       await reload()
     }
     setLoading(false)
@@ -158,6 +160,7 @@ export default function ServicesManager({ initialServices }: Props) {
         textKa: editingItem.textKa,
         textEn: editingItem.textEn,
         order: editingItem.order,
+        icon: editingItem.icon || '',
       }),
     })
     if (res.ok) {
@@ -344,7 +347,7 @@ export default function ServicesManager({ initialServices }: Props) {
               <div className="flex justify-between items-center mb-3">
                 <p className="text-xs text-secondary font-medium uppercase tracking-wider">Service Items</p>
                 <button
-                  onClick={() => { setAddingItemToServiceId(svc.id); setNewItem({ textKa: '', textEn: '', order: 0 }); }}
+                  onClick={() => { setAddingItemToServiceId(svc.id); setNewItem({ textKa: '', textEn: '', order: 0, icon: '' }); }}
                   className="text-gold hover:underline text-xs"
                 >
                   + Add Item
@@ -381,6 +384,32 @@ export default function ServicesManager({ initialServices }: Props) {
                       />
                     </div>
                   </div>
+                  <div className="mb-3">
+                    <label className="block text-xs text-secondary mb-2">Icon (optional — defaults to checkmark)</label>
+                    <div className="grid grid-cols-7 gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setNewItem({ ...newItem, icon: '' })}
+                        className={`flex flex-col items-center gap-1 p-2 border rounded text-center transition-colors ${!newItem.icon ? 'border-gold bg-gold/10 text-gold' : 'border-gray-200 text-secondary hover:border-gold/50'}`}
+                        title="Checkmark (default)"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                        <span className="text-[9px] leading-tight">Check</span>
+                      </button>
+                      {CASE_ICONS.map((opt) => (
+                        <button
+                          type="button"
+                          key={opt.key}
+                          onClick={() => setNewItem({ ...newItem, icon: opt.key })}
+                          className={`flex flex-col items-center gap-1 p-2 border rounded text-center transition-colors ${newItem.icon === opt.key ? 'border-gold bg-gold/10 text-gold' : 'border-gray-200 text-secondary hover:border-gold/50'}`}
+                          title={opt.label}
+                        >
+                          <CaseIcon icon={opt.key} className="w-5 h-5" />
+                          <span className="text-[9px] leading-tight">{opt.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                   <div className="flex gap-2">
                     <button
                       onClick={() => handleCreateItem(svc.id)}
@@ -413,7 +442,14 @@ export default function ServicesManager({ initialServices }: Props) {
                   <tbody className="divide-y divide-gray-100">
                     {svc.items.map((item) => (
                       <tr key={item.id} className="hover:bg-bg-alt/50">
-                        <td className="px-3 py-2">{item.textEn}</td>
+                        <td className="px-3 py-2">
+                          <span className="inline-flex items-center gap-2">
+                            {item.icon
+                              ? <CaseIcon icon={item.icon} className="w-4 h-4 text-navy flex-shrink-0" />
+                              : <span className="text-gold flex-shrink-0">✓</span>}
+                            {item.textEn}
+                          </span>
+                        </td>
                         <td className="px-3 py-2 text-secondary">{item.textKa}</td>
                         <td className="px-3 py-2 text-secondary">{item.order}</td>
                         <td className="px-3 py-2 text-right">
@@ -581,6 +617,32 @@ export default function ServicesManager({ initialServices }: Props) {
                   onChange={(e) => setEditingItem({ ...editingItem, order: parseInt(e.target.value) || 0 })}
                   className="w-full border rounded px-3 py-2 text-sm"
                 />
+              </div>
+            </div>
+            <div className="mb-4">
+              <label className="block text-xs text-secondary mb-2">Icon (optional — defaults to checkmark)</label>
+              <div className="grid grid-cols-7 gap-2">
+                <button
+                  type="button"
+                  onClick={() => setEditingItem({ ...editingItem, icon: '' })}
+                  className={`flex flex-col items-center gap-1 p-2 border rounded text-center transition-colors ${!editingItem.icon ? 'border-gold bg-gold/10 text-gold' : 'border-gray-200 text-secondary hover:border-gold/50'}`}
+                  title="Checkmark (default)"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  <span className="text-[9px] leading-tight">Check</span>
+                </button>
+                {CASE_ICONS.map((opt) => (
+                  <button
+                    type="button"
+                    key={opt.key}
+                    onClick={() => setEditingItem({ ...editingItem, icon: opt.key })}
+                    className={`flex flex-col items-center gap-1 p-2 border rounded text-center transition-colors ${editingItem.icon === opt.key ? 'border-gold bg-gold/10 text-gold' : 'border-gray-200 text-secondary hover:border-gold/50'}`}
+                    title={opt.label}
+                  >
+                    <CaseIcon icon={opt.key} className="w-5 h-5" />
+                    <span className="text-[9px] leading-tight">{opt.label}</span>
+                  </button>
+                ))}
               </div>
             </div>
             <div className="flex gap-2">

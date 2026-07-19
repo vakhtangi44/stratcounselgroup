@@ -38,17 +38,17 @@ export default async function AboutPage() {
       {/* Advantages */}
       <section className="py-[4rem] md:py-[9.1rem] px-4 lg:px-8" style={{ background: 'white' }}>
         <div className="container mx-auto max-w-5xl">
-          <ScrollReveal className="text-center mb-10 md:mb-20">
+          <ScrollReveal className="text-center mb-8 md:mb-12">
             <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
             <h2 className="font-heading" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
               {locale === 'ka' ? 'ჩვენი უპირატესობები' : 'Our Advantages'}
             </h2>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-1 max-w-3xl mx-auto">
             {advantages.map((v, i) => (
               <ScrollReveal key={v.id} delay={i * 100}>
-                <div className="flex items-start gap-4 py-4">
+                <div className="flex items-start gap-3 py-2">
                   <svg className="w-5 h-5 text-dark flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
