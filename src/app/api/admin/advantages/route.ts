@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
   const session = await auth()
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   const body = await req.json()
-  const { titleKa, titleEn, descriptionKa, descriptionEn, order, active } = body
+  const { titleKa, titleEn, descriptionKa, descriptionEn, order, active, icon } = body
   if (!titleKa) {
     return NextResponse.json({ error: 'titleKa required' }, { status: 400 })
   }
@@ -25,6 +25,7 @@ export async function POST(req: NextRequest) {
       descriptionEn: descriptionEn || null,
       order: order ?? 0,
       active: active !== false,
+      icon: icon || null,
     },
   })
   return NextResponse.json(advantage, { status: 201 })

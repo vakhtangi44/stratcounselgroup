@@ -150,6 +150,7 @@ model Advantage {
   titleEn       String
   descriptionKa String? @db.Text
   descriptionEn String? @db.Text
+  icon          String?
   order         Int     @default(0)
   active        Boolean @default(true)
 }

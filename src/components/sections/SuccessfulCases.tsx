@@ -21,7 +21,7 @@ function CaseCard({ text, icon }: { text: string; icon: string }) {
       <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 flex items-center justify-center text-gold border border-gold/20 transition-all duration-500">
         <CaseIcon icon={icon} />
       </div>
-      <p className="leading-relaxed font-[316] text-justify group-hover:text-dark group-focus:text-dark transition-colors duration-500" style={{ fontSize: 'var(--typo-cardBody-size, 0.875rem)', color: 'var(--typo-cardBody-color, #1C122C)', fontFamily: 'var(--typo-cardBody-font)' }}>
+      <p className="leading-relaxed font-medium text-justify group-hover:text-dark group-focus:text-dark transition-colors duration-500" style={{ fontSize: 'var(--typo-cardBody-size, 0.875rem)', color: 'var(--typo-cardBody-color, #1C122C)', fontFamily: 'var(--typo-cardBody-font)' }}>
         {text}
       </p>
     </div>

@@ -67,12 +67,12 @@ export default async function ServicesPage() {
                     )}
 
                     {/* Title */}
-                    <h2 className="font-heading mb-2 leading-tight text-[1.02rem] sm:text-[1.274rem]" style={{ color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
+                    <h2 className="font-heading mb-2 leading-tight text-[1.17rem] sm:text-[1.47rem]" style={{ color: 'var(--typo-serviceTitle-color, #1C122C)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
                       {locale === 'ka' ? service.titleKa : service.titleEn}
                     </h2>
 
                     {/* Description */}
-                    <p className="leading-[1.7] mb-5 text-left text-[0.84rem] sm:text-[1.04rem]" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
+                    <p className="leading-[1.7] mb-5 text-left text-[0.84rem] sm:text-[1.04rem] font-medium" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
                       {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                     </p>
 
@@ -82,13 +82,13 @@ export default async function ServicesPage() {
                         {service.items.map((item) => (
                             <div key={item.id} className="flex items-start gap-2.5 py-1.5">
                               {item.icon ? (
-                                <CaseIcon icon={item.icon} className="w-[18px] h-[18px] text-navy flex-shrink-0 mt-[2px]" />
+                                <CaseIcon icon={item.icon} className="w-[18px] h-[18px] text-accent-orange flex-shrink-0 mt-[2px]" />
                               ) : (
-                                <svg className="w-[14px] h-[14px] text-navy flex-shrink-0 mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                                <svg className="w-[14px] h-[14px] text-accent-orange flex-shrink-0 mt-[3px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                               )}
-                              <p className="flex-1 text-navy text-[0.84rem] sm:text-[1.04rem] leading-[1.6] text-left">
+                              <p className="flex-1 text-navy text-[0.84rem] sm:text-[1.04rem] leading-[1.6] text-left font-medium">
                                 {locale === 'ka' ? item.textKa : item.textEn}
                               </p>
                             </div>

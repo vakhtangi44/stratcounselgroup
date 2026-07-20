@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import BilingualField from '@/components/admin/BilingualField'
+import { CASE_ICONS, CaseIcon } from '@/lib/case-icons'
 
 interface Advantage {
   id: number
@@ -10,6 +11,7 @@ interface Advantage {
   titleEn: string
   descriptionKa: string | null
   descriptionEn: string | null
+  icon?: string | null
   order: number
   active: boolean
 }
@@ -21,6 +23,7 @@ export default function AdvantageForm({ advantage }: { advantage?: Advantage }) 
     titleEn: advantage?.titleEn || '',
     descriptionKa: advantage?.descriptionKa || '',
     descriptionEn: advantage?.descriptionEn || '',
+    icon: advantage?.icon || '',
     order: advantage?.order ?? 0,
     active: advantage?.active ?? true,
   })
@@ -65,6 +68,33 @@ export default function AdvantageForm({ advantage }: { advantage?: Advantage }) 
         multiline
         rows={4}
       />
+
+      <div>
+        <label className="block text-sm text-secondary mb-2">Icon (optional — defaults to checkmark)</label>
+        <div className="grid grid-cols-7 gap-2 max-w-2xl">
+          <button
+            type="button"
+            onClick={() => setForm((f) => ({ ...f, icon: '' }))}
+            className={`flex flex-col items-center gap-1 p-2 border rounded text-center transition-colors ${!form.icon ? 'border-gold bg-gold/10 text-gold' : 'border-gray-200 text-secondary hover:border-gold/50'}`}
+            title="Checkmark (default)"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+            <span className="text-[9px] leading-tight">Check</span>
+          </button>
+          {CASE_ICONS.map((opt) => (
+            <button
+              type="button"
+              key={opt.key}
+              onClick={() => setForm((f) => ({ ...f, icon: opt.key }))}
+              className={`flex flex-col items-center gap-1 p-2 border rounded text-center transition-colors ${form.icon === opt.key ? 'border-gold bg-gold/10 text-gold' : 'border-gray-200 text-secondary hover:border-gold/50'}`}
+              title={opt.label}
+            >
+              <CaseIcon icon={opt.key} className="w-5 h-5" />
+              <span className="text-[9px] leading-tight">{opt.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
 
       <div>
         <label className="block text-sm text-secondary mb-1">Order</label>
