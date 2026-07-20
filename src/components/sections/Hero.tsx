@@ -52,15 +52,15 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <Link
             href={`${prefix}/contact`}
-            className="border border-accent-orange text-white bg-accent-orange hover:bg-white hover:text-accent-orange px-6 sm:px-10 py-3 sm:py-4 text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500"
-            style={{ fontSize: 'var(--typo-button-size, 0.875rem)', fontFamily: 'var(--typo-button-font)' }}
+            className="border border-accent-orange text-white bg-accent-orange hover:bg-white hover:text-accent-orange px-[1.4rem] sm:px-[2.33rem] py-[0.69rem] sm:py-[0.94rem] text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500"
+            style={{ fontSize: 'calc(var(--typo-button-size, 0.875rem) * 0.93)', fontFamily: 'var(--typo-button-font)' }}
           >
             <RichText html={strings.cta1} />
           </Link>
           <Link
             href={`${prefix}/services`}
-            className="border border-accent-orange text-white bg-accent-orange hover:bg-white hover:text-accent-orange px-6 sm:px-10 py-3 sm:py-4 text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500"
-            style={{ fontSize: 'var(--typo-button-size, 0.875rem)', fontFamily: 'var(--typo-button-font)' }}
+            className="border border-accent-orange text-white bg-accent-orange hover:bg-white hover:text-accent-orange px-[1.4rem] sm:px-[2.33rem] py-[0.69rem] sm:py-[0.94rem] text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500"
+            style={{ fontSize: 'calc(var(--typo-button-size, 0.875rem) * 0.93)', fontFamily: 'var(--typo-button-font)' }}
           >
             <RichText html={strings.cta2} />
           </Link>
