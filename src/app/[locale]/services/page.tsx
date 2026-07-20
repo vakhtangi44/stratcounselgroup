@@ -45,9 +45,9 @@ export default async function ServicesPage() {
             </h1>
             <p className="font-medium text-[length:var(--typo-subtitle-size,1.05rem)] sm:text-[length:calc(var(--typo-subtitle-size,1.05rem)*1.2)]" style={{ color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
               {locale === 'ka' ? (
-                <>სრული სამართლებრივი მხარდაჭერა —<br className="sm:hidden" /> მოლაპარაკებიდან სასამართლომდე</>
+                <>სრული სამართლებრივი მხარდაჭერა<br className="sm:hidden" /> მოლაპარაკებიდან სასამართლომდე</>
               ) : (
-                <>Complete legal support —<br className="sm:hidden" /> from negotiation to courtroom</>
+                <>Complete legal support<br className="sm:hidden" /> from negotiation to courtroom</>
               )}
             </p>
           </div>

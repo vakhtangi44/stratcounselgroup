@@ -57,13 +57,20 @@ export default function ServicesPreview({ services, locale }: Props) {
             <ScrollReveal key={service.id} delay={i * 150} className={colClass}>
               <div className="relative h-full p-3 sm:p-7 bg-white border border-gray-100 group card-hover hover:shadow-lg" style={{ transition: 'transform 0.7s, box-shadow 0.7s' }}>
                 {/* Roman numeral */}
-                <div className="flex items-baseline gap-2 sm:block">
-                  <div className="text-dark font-heading text-lg sm:text-3xl mb-0 sm:mb-3 leading-none flex-shrink-0">
+                <div className="sm:block">
+                  {/* Desktop: large roman numeral above the title */}
+                  <div className="hidden sm:block text-dark font-heading text-3xl mb-3 leading-none">
                     {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
                   </div>
 
                   <h3 className="font-heading mb-1.5 sm:mb-2 leading-snug text-[0.91rem] sm:text-[1.08rem]" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
-                    {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
+                    {/* Mobile: numeral inline; text after the em-dash wraps to the left, under the numeral */}
+                    <span className="sm:hidden text-dark font-heading text-lg">{(['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString())}. </span>
+                    {(() => {
+                      const raw = locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')
+                      const di = raw.indexOf('—')
+                      return di === -1 ? raw : <>{raw.slice(0, di + 1)}<br />{raw.slice(di + 1).trim()}</>
+                    })()}
                   </h3>
                 </div>
 
