@@ -32,10 +32,7 @@ export default function ServicesPreview({ services, locale }: Props) {
       <div className="container mx-auto px-4 lg:px-8">
         <ScrollReveal className="text-center mb-10 md:mb-20">
           <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
-          <p className="text-[12px] uppercase tracking-[0.3em] mb-4" style={{ color: 'var(--typo-label-color, var(--color-dark))', fontFamily: 'var(--typo-label-font)' }}>
-            {locale === 'ka' ? 'რას გთავაზობთ' : 'What We Offer'}
-          </p>
-          <h2 className="font-heading mb-4 gold-underline inline-block" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
+          <h2 className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
             {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
           </h2>
           <p className="mt-6 max-w-2xl mx-auto leading-relaxed font-medium" style={{ fontSize: 'var(--typo-subtitle-size, 1.5rem)', color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
@@ -57,15 +54,10 @@ export default function ServicesPreview({ services, locale }: Props) {
             <ScrollReveal key={service.id} delay={i * 150} className={colClass}>
               <div className="relative h-full p-3 sm:p-7 bg-white border border-gray-100 group card-hover hover:shadow-lg" style={{ transition: 'transform 0.7s, box-shadow 0.7s' }}>
                 {/* Roman numeral */}
-                <div className="sm:block">
-                  {/* Desktop: large roman numeral above the title */}
-                  <div className="hidden sm:block text-dark font-heading text-3xl mb-3 leading-none">
-                    {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
-                  </div>
-
+                <div>
+                  {/* Numeral inline with the title; text after the em-dash wraps to the left, under the numeral (mobile + desktop) */}
                   <h3 className="font-heading mb-1.5 sm:mb-2 leading-snug text-[0.91rem] sm:text-[1.08rem]" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
-                    {/* Mobile: numeral inline; text after the em-dash wraps to the left, under the numeral */}
-                    <span className="sm:hidden text-dark font-heading text-lg">{(['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString())}. </span>
+                    <span className="text-dark font-heading text-lg sm:text-2xl">{(['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString())}. </span>
                     {(() => {
                       const raw = locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')
                       const di = raw.indexOf('—')

@@ -25,6 +25,7 @@ export default function LogoMarquee({ locale, clients, showViewAll = true }: Pro
     <section className="py-[4rem] md:py-[9.1rem] bg-white">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <div className="text-center mb-8 sm:mb-16">
+          <div className="w-6 h-[1px] bg-gold mx-auto mb-3" />
           <h2
             className="font-heading font-bold"
             style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}

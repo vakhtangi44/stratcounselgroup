@@ -49,17 +49,17 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
           <RichText html={headline} />
         </h1>
 
-        <div className="flex flex-row flex-wrap items-center gap-2 sm:gap-4 justify-center">
+        <div className="flex flex-row items-stretch gap-2 sm:gap-4 justify-center max-w-[18rem] sm:max-w-[28.5rem] mx-auto">
           <Link
             href={`${prefix}/contact`}
-            className="border border-accent-orange text-accent-orange bg-transparent hover:bg-accent-orange hover:text-white px-[0.78rem] sm:px-[2.33rem] py-[0.34rem] sm:py-[0.94rem] text-[calc(var(--typo-button-size,0.875rem)*0.572)] sm:text-[calc(var(--typo-button-size,0.875rem)*0.93)] uppercase tracking-[0.12em] sm:tracking-[0.15em] font-medium transition-all duration-500"
+            className="border border-accent-orange text-accent-orange bg-transparent hover:bg-accent-orange hover:text-white px-[0.55rem] sm:px-[1.5rem] py-[0.22rem] sm:py-[0.45rem] text-[calc(var(--typo-button-size,0.875rem)*0.572)] sm:text-[calc(var(--typo-button-size,0.875rem)*0.93)] uppercase tracking-[0.12em] sm:tracking-[0.15em] font-medium transition-all duration-500 flex-[0.9] sm:flex-1 text-center flex items-center justify-center whitespace-nowrap"
             style={{ fontFamily: 'var(--typo-button-font)' }}
           >
             <RichText html={strings.cta1} />
           </Link>
           <Link
             href={`${prefix}/services`}
-            className="border border-accent-orange text-accent-orange bg-transparent hover:bg-accent-orange hover:text-white px-[0.78rem] sm:px-[2.33rem] py-[0.34rem] sm:py-[0.94rem] text-[calc(var(--typo-button-size,0.875rem)*0.572)] sm:text-[calc(var(--typo-button-size,0.875rem)*0.93)] uppercase tracking-[0.12em] sm:tracking-[0.15em] font-medium transition-all duration-500"
+            className="border border-accent-orange text-accent-orange bg-transparent hover:bg-accent-orange hover:text-white px-[0.55rem] sm:px-[1.5rem] py-[0.22rem] sm:py-[0.45rem] text-[calc(var(--typo-button-size,0.875rem)*0.572)] sm:text-[calc(var(--typo-button-size,0.875rem)*0.93)] uppercase tracking-[0.12em] sm:tracking-[0.15em] font-medium transition-all duration-500 flex-[1.1] sm:flex-1 text-center flex items-center justify-center whitespace-nowrap"
             style={{ fontFamily: 'var(--typo-button-font)' }}
           >
             <RichText html={strings.cta2} />
