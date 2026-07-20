@@ -48,7 +48,7 @@ export default async function TeamMemberPage({
           </Link>
 
           <div className="flex flex-col md:flex-row gap-10 items-start">
-            <div className="relative w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-sm overflow-hidden shrink-0 border border-gray-200" style={{ background: '#ffffff' }}>
+            <div className="relative w-44 h-[202px] sm:w-56 sm:h-[258px] md:w-72 md:h-[331px] rounded-sm overflow-hidden shrink-0 border border-gray-200" style={{ background: '#ffffff' }}>
               {member.photo && (
                 <Image
                   src={member.photo}
