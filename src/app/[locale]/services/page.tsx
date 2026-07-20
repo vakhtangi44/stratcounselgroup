@@ -43,10 +43,12 @@ export default async function ServicesPage() {
             <h1 className="font-heading mb-3" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
               {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
             </h1>
-            <p className="font-medium" style={{ fontSize: 'calc(var(--typo-subtitle-size, 1.05rem) * 1.2)', color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
-              {locale === 'ka'
-                ? 'სრული სამართლებრივი მხარდაჭერა — მოლაპარაკებიდან სასამართლომდე'
-                : 'Complete legal support — from negotiation to courtroom'}
+            <p className="font-medium text-[length:var(--typo-subtitle-size,1.05rem)] sm:text-[length:calc(var(--typo-subtitle-size,1.05rem)*1.2)]" style={{ color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
+              {locale === 'ka' ? (
+                <>სრული სამართლებრივი მხარდაჭერა —<br className="sm:hidden" /> მოლაპარაკებიდან სასამართლომდე</>
+              ) : (
+                <>Complete legal support —<br className="sm:hidden" /> from negotiation to courtroom</>
+              )}
             </p>
           </div>
           <div key={Date.now()} className="space-y-10 md:space-y-14">

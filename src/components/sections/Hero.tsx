@@ -32,7 +32,7 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
       : 'text-[1.06rem] sm:text-[1.59rem] md:text-[2.55rem] lg:text-[3.19rem]'
 
   return (
-    <section className="relative min-h-[50vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-[140px] md:pt-[322px] pb-[24px] md:pb-[83px] bg-white">
+    <section className="relative min-h-[50vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden pt-[140px] md:pt-[322px] pb-[90px] md:pb-[83px] bg-white">
 
       <div className="relative z-10 text-center px-4 lg:px-8 max-w-6xl mx-auto">
         <h2
@@ -52,14 +52,14 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <Link
             href={`${prefix}/contact`}
-            className="border border-accent-orange text-white bg-accent-orange hover:bg-white hover:text-accent-orange px-[0.98rem] sm:px-[2.33rem] py-[0.48rem] sm:py-[0.94rem] text-[calc(var(--typo-button-size,0.875rem)*0.65)] sm:text-[calc(var(--typo-button-size,0.875rem)*0.93)] uppercase tracking-[0.15em] font-medium transition-all duration-500"
+            className="border border-accent-orange text-white bg-accent-orange hover:bg-white hover:text-accent-orange px-[0.78rem] sm:px-[2.33rem] py-[0.38rem] sm:py-[0.94rem] text-[calc(var(--typo-button-size,0.875rem)*0.52)] sm:text-[calc(var(--typo-button-size,0.875rem)*0.93)] uppercase tracking-[0.12em] sm:tracking-[0.15em] font-medium transition-all duration-500"
             style={{ fontFamily: 'var(--typo-button-font)' }}
           >
             <RichText html={strings.cta1} />
           </Link>
           <Link
             href={`${prefix}/services`}
-            className="border border-accent-orange text-white bg-accent-orange hover:bg-white hover:text-accent-orange px-[0.98rem] sm:px-[2.33rem] py-[0.48rem] sm:py-[0.94rem] text-[calc(var(--typo-button-size,0.875rem)*0.65)] sm:text-[calc(var(--typo-button-size,0.875rem)*0.93)] uppercase tracking-[0.15em] font-medium transition-all duration-500"
+            className="border border-accent-orange text-white bg-accent-orange hover:bg-white hover:text-accent-orange px-[0.78rem] sm:px-[2.33rem] py-[0.38rem] sm:py-[0.94rem] text-[calc(var(--typo-button-size,0.875rem)*0.52)] sm:text-[calc(var(--typo-button-size,0.875rem)*0.93)] uppercase tracking-[0.12em] sm:tracking-[0.15em] font-medium transition-all duration-500"
             style={{ fontFamily: 'var(--typo-button-font)' }}
           >
             <RichText html={strings.cta2} />
