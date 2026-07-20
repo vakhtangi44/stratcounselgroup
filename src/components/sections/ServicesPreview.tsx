@@ -73,11 +73,11 @@ export default function ServicesPreview({ services, locale }: Props) {
                 {/* Show first 3 items */}
                 <ul className="space-y-1.5 sm:space-y-2.5 mb-2 sm:mb-4">
                   {service.items.slice(0, 3).map((item) => (
-                    <li key={item.id} className="flex items-start gap-1.5 sm:gap-2 text-[0.74rem] sm:text-[0.88rem] text-navy">
+                    <li key={item.id} className="flex items-start gap-2 text-[0.74rem] sm:text-[0.88rem] text-navy">
                       {item.icon ? (
-                        <CaseIcon icon={item.icon} className="w-4 h-4 sm:w-[18px] sm:h-[18px] mt-0.5 flex-shrink-0 text-accent-orange" />
+                        <CaseIcon icon={item.icon} className="w-[15px] h-[15px] sm:w-[17px] sm:h-[17px] mt-[2px] flex-shrink-0 text-accent-orange" />
                       ) : (
-                        <svg className="w-3 sm:w-3.5 h-3 sm:h-3.5 mt-1 flex-shrink-0 text-accent-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3.5}>
+                        <svg className="w-[15px] h-[15px] sm:w-[17px] sm:h-[17px] mt-[2px] flex-shrink-0 text-accent-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       )}
