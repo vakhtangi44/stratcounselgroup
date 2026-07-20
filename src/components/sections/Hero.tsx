@@ -37,14 +37,14 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
       <div className="relative z-10 text-center px-4 lg:px-8 max-w-6xl mx-auto">
         <h2
           className="font-heading text-[1.3rem] sm:text-[2.3rem] md:text-[3.8rem] font-bold mb-5 sm:mb-9 tracking-[-0.02em] leading-[1.1]"
-          style={{ color: 'var(--typo-heroTitle-color, #1C122C)', fontFamily: 'var(--typo-heroTitle-font)', fontSize: `clamp(1.6rem, 6vw, var(--typo-heroTitle-size, 4.6rem))` }}
+          style={{ color: 'var(--typo-heroTitle-color, #1C122C)', fontFamily: 'var(--typo-heroTitle-font)', fontSize: `clamp(1.84rem, 6.9vw, calc(var(--typo-heroTitle-size, 4.6rem) * 1.15))` }}
         >
           Strategic Counsel Group
         </h2>
 
         <h1
           className={`font-heading ${headingSize} font-bold mb-5 sm:mb-9 leading-[1.1] tracking-[-0.02em]`}
-          style={{ color: 'var(--typo-heroTagline-color, #1C122C)', fontFamily: 'var(--typo-heroTagline-font)', fontSize: `clamp(1.1rem, 4vw, var(--typo-heroTagline-size, 3.19rem))` }}
+          style={{ color: 'var(--typo-heroTagline-color, #1C122C)', fontFamily: 'var(--typo-heroTagline-font)', fontSize: `clamp(1.265rem, 4.6vw, calc(var(--typo-heroTagline-size, 3.19rem) * 1.15))` }}
         >
           <RichText html={headline} />
         </h1>
@@ -52,15 +52,15 @@ export default async function Hero({ locale, strings, dotsColor = '#d88551' }: {
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <Link
             href={`${prefix}/contact`}
-            className="border border-accent-orange text-white bg-accent-orange hover:bg-white hover:text-accent-orange px-[1.4rem] sm:px-[2.33rem] py-[0.69rem] sm:py-[0.94rem] text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500"
-            style={{ fontSize: 'calc(var(--typo-button-size, 0.875rem) * 0.93)', fontFamily: 'var(--typo-button-font)' }}
+            className="border border-accent-orange text-white bg-accent-orange hover:bg-white hover:text-accent-orange px-[0.98rem] sm:px-[2.33rem] py-[0.48rem] sm:py-[0.94rem] text-[calc(var(--typo-button-size,0.875rem)*0.65)] sm:text-[calc(var(--typo-button-size,0.875rem)*0.93)] uppercase tracking-[0.15em] font-medium transition-all duration-500"
+            style={{ fontFamily: 'var(--typo-button-font)' }}
           >
             <RichText html={strings.cta1} />
           </Link>
           <Link
             href={`${prefix}/services`}
-            className="border border-accent-orange text-white bg-accent-orange hover:bg-white hover:text-accent-orange px-[1.4rem] sm:px-[2.33rem] py-[0.69rem] sm:py-[0.94rem] text-sm uppercase tracking-[0.15em] font-medium transition-all duration-500"
-            style={{ fontSize: 'calc(var(--typo-button-size, 0.875rem) * 0.93)', fontFamily: 'var(--typo-button-font)' }}
+            className="border border-accent-orange text-white bg-accent-orange hover:bg-white hover:text-accent-orange px-[0.98rem] sm:px-[2.33rem] py-[0.48rem] sm:py-[0.94rem] text-[calc(var(--typo-button-size,0.875rem)*0.65)] sm:text-[calc(var(--typo-button-size,0.875rem)*0.93)] uppercase tracking-[0.15em] font-medium transition-all duration-500"
+            style={{ fontFamily: 'var(--typo-button-font)' }}
           >
             <RichText html={strings.cta2} />
           </Link>
