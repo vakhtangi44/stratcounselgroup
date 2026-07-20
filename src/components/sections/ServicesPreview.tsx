@@ -67,7 +67,7 @@ export default function ServicesPreview({ services, locale }: Props) {
                   </h3>
                 </div>
 
-                <p className="leading-relaxed mb-2.5 sm:mb-4 text-left text-[0.74rem] sm:text-[0.88rem] font-medium" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
+                <p className="leading-relaxed mb-2.5 sm:mb-4 text-justify text-[0.74rem] sm:text-[0.88rem] font-medium" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
                   {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                 </p>
 
