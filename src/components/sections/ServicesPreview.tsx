@@ -57,13 +57,15 @@ export default function ServicesPreview({ services, locale }: Props) {
             <ScrollReveal key={service.id} delay={i * 150} className={colClass}>
               <div className="relative h-full p-3 sm:p-7 bg-white border border-gray-100 group card-hover hover:shadow-lg" style={{ transition: 'transform 0.7s, box-shadow 0.7s' }}>
                 {/* Roman numeral */}
-                <div className="text-dark font-heading text-lg sm:text-3xl mb-1 sm:mb-3 leading-none">
-                  {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
-                </div>
+                <div className="flex items-baseline gap-2 sm:block">
+                  <div className="text-dark font-heading text-lg sm:text-3xl mb-0 sm:mb-3 leading-none flex-shrink-0">
+                    {['I', 'II', 'III', 'IV', 'V'][i] || (i + 1).toString()}
+                  </div>
 
-                <h3 className="font-heading mb-1.5 sm:mb-2 leading-snug text-[0.91rem] sm:text-[1.08rem]" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
-                  {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
-                </h3>
+                  <h3 className="font-heading mb-1.5 sm:mb-2 leading-snug text-[0.91rem] sm:text-[1.08rem]" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceTitle-font)' }}>
+                    {locale === 'ka' ? service.titleKa.replace(/^[IVX]+\.\s*/, '') : service.titleEn.replace(/^[IVX]+\.\s*/, '')}
+                  </h3>
+                </div>
 
                 <p className="leading-relaxed mb-2.5 sm:mb-4 text-left text-[0.74rem] sm:text-[0.88rem] font-medium" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
                   {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
