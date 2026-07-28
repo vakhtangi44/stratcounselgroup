@@ -467,6 +467,11 @@ export default function AppearanceEditor({ settings }: Props) {
               onChange={(v) => update('appearance.color.accent', v)}
             />
             <ColorPicker
+              label="Hero Buttons"
+              value={values['appearance.color.heroButton'] || '#d88551'}
+              onChange={(v) => update('appearance.color.heroButton', v)}
+            />
+            <ColorPicker
               label="Background"
               value={values['appearance.color.background'] || '#1C122C'}
               onChange={(v) => update('appearance.color.background', v)}

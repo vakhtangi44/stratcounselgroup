@@ -90,6 +90,7 @@ export default async function LocaleLayout({
             --nav-color: ${s(settings, 'appearance.nav.color', locale).startsWith('#') ? s(settings, 'appearance.nav.color', locale) : '#FFFFFF'};
             --nav-hover: ${s(settings, 'appearance.nav.hoverColor', locale).startsWith('#') ? s(settings, 'appearance.nav.hoverColor', locale) : '#668CCE'};
             --nav-size: ${Number(s(settings, 'appearance.nav.size', locale)) || 14.4}px;
+            --hero-btn-color: ${s(settings, 'appearance.color.heroButton', locale).startsWith('#') ? s(settings, 'appearance.color.heroButton', locale) : themeColors.accent};
           }
           .nav-btn { color: var(--nav-color); font-size: var(--nav-size); }
           .nav-btn:hover { color: var(--nav-hover); }

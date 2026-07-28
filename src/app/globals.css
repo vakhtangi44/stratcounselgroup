@@ -459,3 +459,14 @@
     margin-top: 0.5rem;
   }
 }
+
+/* Hero CTA buttons — color controlled by admin (appearance.color.heroButton) */
+.hero-btn {
+  border-color: var(--hero-btn-color, #d88551);
+  color: var(--hero-btn-color, #d88551);
+  background: transparent;
+}
+.hero-btn:hover {
+  background: var(--hero-btn-color, #d88551);
+  color: #ffffff;
+}
