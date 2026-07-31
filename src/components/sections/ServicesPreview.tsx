@@ -99,8 +99,8 @@ export default function ServicesPreview({ services, locale }: Props) {
         <ScrollReveal className="text-center mt-8 sm:mt-16">
           <Link
             href={`${prefix}/services`}
-            className="inline-block bg-gold px-6 sm:px-8 py-3 sm:py-3.5 uppercase tracking-[0.15em] font-medium hover:bg-gold-dark transition-all duration-300 hover:shadow-lg hover:shadow-gold/20"
-            style={{ color: 'var(--typo-button-color, #fff)', fontSize: 'var(--typo-button-size, 0.875rem)', fontFamily: 'var(--typo-button-font)' }}
+            className="hero-btn border inline-block px-[0.55rem] sm:px-[1.5rem] py-[0.22rem] sm:py-[0.45rem] text-[calc(var(--typo-button-size,0.875rem)*0.572)] sm:text-[calc(var(--typo-button-size,0.875rem)*0.93)] uppercase tracking-[0.12em] sm:tracking-[0.15em] font-medium transition-all duration-500 whitespace-nowrap"
+            style={{ fontFamily: 'var(--typo-button-font)' }}
           >
             {locale === 'ka' ? 'ყველა სერვისი' : 'View All Services'}
           </Link>
