@@ -35,7 +35,7 @@ export default function ServicesPreview({ services, locale }: Props) {
           <h2 className="font-heading mb-4" style={{ fontSize: 'var(--typo-sectionTitle-size, 2.25rem)', color: 'var(--typo-sectionTitle-color, #1C122C)', fontFamily: 'var(--typo-sectionTitle-font)' }}>
             {locale === 'ka' ? 'ჩვენი სერვისები' : 'Our Services'}
           </h2>
-          <p className="mt-6 max-w-2xl mx-auto leading-relaxed font-medium" style={{ fontSize: 'var(--typo-subtitle-size, 1.5rem)', color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
+          <p className="mt-6 max-w-2xl mx-auto leading-relaxed font-normal" style={{ fontSize: 'var(--typo-subtitle-size, 1.5rem)', color: 'var(--typo-subtitle-color, #5a5a6e)', fontFamily: 'var(--typo-subtitle-font)' }}>
             {locale === 'ka'
               ? 'სრული სამართლებრივი მხარდაჭერა ყველა ეტაპზე'
               : 'Complete legal support at every stage'}
@@ -66,7 +66,7 @@ export default function ServicesPreview({ services, locale }: Props) {
                   </h3>
                 </div>
 
-                <p className="leading-relaxed mb-2.5 sm:mb-4 text-justify text-[0.74rem] sm:text-[0.88rem] font-medium" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
+                <p className="leading-relaxed mb-2.5 sm:mb-4 text-justify text-[0.74rem] sm:text-[0.88rem] font-normal" style={{ color: 'var(--color-navy)', fontFamily: 'var(--typo-serviceBody-font)', fontStyle: 'normal' }}>
                   {locale === 'ka' ? service.descriptionKa : service.descriptionEn}
                 </p>
 
@@ -81,7 +81,7 @@ export default function ServicesPreview({ services, locale }: Props) {
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       )}
-                      <span className="flex-1 font-medium">{locale === 'ka' ? item.textKa : item.textEn}</span>
+                      <span className="flex-1 font-normal">{locale === 'ka' ? item.textKa : item.textEn}</span>
                     </li>
                   ))}
                   {service.items.length > 3 && (

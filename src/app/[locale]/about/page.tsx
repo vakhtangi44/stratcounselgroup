@@ -94,7 +94,7 @@ export default async function AboutPage() {
                     <h3 className="font-heading mb-3" style={{ fontSize: 'var(--typo-cardTitle-size, 1.125rem)', color: 'var(--typo-cardTitle-color, #1C122C)', fontFamily: 'var(--typo-cardTitle-font)' }}>
                       {locale === 'ka' ? v.titleKa : v.titleEn}
                     </h3>
-                    <p className="font-medium leading-relaxed text-justify" style={{ fontSize: 'var(--typo-cardBody-size, 0.875rem)', color: 'var(--typo-cardBody-color, #5a5a6e)', fontFamily: 'var(--typo-cardBody-font)' }}>
+                    <p className="font-normal leading-relaxed text-justify" style={{ fontSize: 'var(--typo-cardBody-size, 0.875rem)', color: 'var(--typo-cardBody-color, #5a5a6e)', fontFamily: 'var(--typo-cardBody-font)' }}>
                       {locale === 'ka' ? v.descriptionKa : v.descriptionEn}
                     </p>
                   </div>
